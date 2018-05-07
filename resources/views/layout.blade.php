@@ -3,3 +3,5 @@
 
 @yield('banner')
 @yield('content')
+
+@include('footer')
