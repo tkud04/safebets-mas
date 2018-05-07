@@ -3,5 +3,3 @@
 
 @yield('banner')
 @yield('content')
-
-@include('foot')
