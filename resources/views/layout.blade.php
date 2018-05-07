@@ -4,5 +4,4 @@
 @yield('banner')
 @yield('content')
 
-#@include('footer')
 @include('foot')
