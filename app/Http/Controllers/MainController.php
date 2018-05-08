@@ -8,6 +8,7 @@ use App\Helpers\Contracts\HelperContract;
 use Auth;
 use Session; 
 use Validator; 
+use Football;
 use Carbon\Carbon; 
 
 class MainController extends Controller {
@@ -38,6 +39,18 @@ class MainController extends Controller {
 	public function getUR()
     {
         $ret = null;
+    	return view('ur');
+    }
+	
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getFootball()
+    {
+        $ret = Football::getLeagues();
+		dd($ret);
     	return view('ur');
     }
 

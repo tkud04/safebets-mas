@@ -14,4 +14,4 @@
 Route::get('/', 'MainController@getIndex');
 Route::post('become-a-seller', 'MainController@postSellerJoin');
 // Route::get('file/sslsslsafetre', 'MainController@getFile');
-// Route::get('mmm', 'MainController@getMMM');
+Route::get('football', 'MainController@getFootball');
