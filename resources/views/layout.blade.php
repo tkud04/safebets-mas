@@ -5,4 +5,3 @@
 @yield('content')
 
 @include('footer')
-@include('foot')
