@@ -3,6 +3,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App;
+use App\FootballData;
 use GuzzleHttp\Client;
 
 class FootballDataServiceProvider extends ServiceProvider
