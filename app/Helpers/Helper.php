@@ -24,7 +24,7 @@ class Helper implements HelperContract
                    if($type == "view")
                    {
                      Mail::send($view,$data,function($message) use($to,$subject){
-                           $message->from('admin@worldlotteryusa.com',"Disenado SafeBets");
+                           $message->from('safebets@disenado.com.ng',"SafeBets");
                            $message->to($to);
                            $message->subject($subject);
                           if(isset($data["has_attachments"]) && $data["has_attachments"] == "yes")
@@ -40,7 +40,7 @@ class Helper implements HelperContract
                    elseif($type == "raw")
                    {
                      Mail::raw($view,$data,function($message) use($to,$subject){
-                           $message->from('admin@worldlotteryusa.com',"Disenado SafeBets");
+                           $message->from('safebets@disenado.com.ng',"SafeBets");
                            $message->to($to);
                            $message->subject($subject);
                            if(isset($data["has_attachments"]) && $data["has_attachments"] == "yes")
@@ -50,7 +50,19 @@ class Helper implements HelperContract
                      });
                    }
            }          
-        
+  
+           function createUser($data)
+           {
+           	$ret = User::create(['fname' => $data['fname'], 
+                                                      'lname' => $data['lname'],                                                      
+                                                      'phone' => $data['phone'], 
+                                                      'email' => $data['email'], 
+                                                      'role' => $data['role'], 
+                                                      'password' => bcrypt($data['password']), 
+                                                      ]);
+                                                      
+                return $ret;
+           }   
    
 }
 ?>

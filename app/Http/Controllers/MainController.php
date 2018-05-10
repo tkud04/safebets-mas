@@ -50,8 +50,8 @@ class MainController extends Controller {
 	public function getFootball()
     {
         $ret = Football::getLeagues();
-		dd($ret);
-    	return view('ur');
+		#dd($ret);
+    	return view('football_data',compact(['ret']));
     }
 
 	/**
