@@ -44,7 +44,7 @@
 				 </div>
 			     <div class="col-sm-4 col-md-4">
 			        <div class="form-group">
-			           <label for="league">Select fixtures</label>
+			           <label for="fixtures">Select fixtures</label>
 				       <select class="form-control" id="fixtures">
 				         <option value="none">Select fixture</option>
 				       </select>

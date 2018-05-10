@@ -12,10 +12,6 @@
   });
 
   $('#fixtures').change(function(e){
-	  var l = $(this).val();
-	  var u = $(this).attr('data-lef');
-	  if(l == "none") alert("Please select a league to continue");
-	  else getLeague(u,l);
   });
   
   $('#fixture-form').submit(function(e){
