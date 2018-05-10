@@ -28,7 +28,8 @@ function getLeague(url,id){
        //$('#result').html(response);	
 	   if(response == "404"){}
 	   else{
-		 $.each(response,function(i,v){
+		   rr = JSON.parse(response);
+		 $.each(rr,function(i,v){
 			 obj = v;
 			 $('#fixtures').append("<option value='" + obj['href'] + "'>" + obj['d'] + " - " + obj['vs'] + "</option>");
 		 });	  
