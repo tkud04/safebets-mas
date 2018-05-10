@@ -16,9 +16,9 @@
   
   $('#fixture-form').submit(function(e){
 	  e.preventDefault();
-	  var lg = $('#league').val();
-	  var fx = $('#fixtures').val();
-	  var pd = $('#prediction').val();
+	  var lg = $('#league').val(); var lgh = $('#league').html();
+	  var fx = $('#fixtures').val(); var fxh = $('#fixtures').html();
+	  var pd = $('#prediction').val(); var pdh = $('#prediction').html();
 	  
 	  if(lg == "none" || fx == "none" || pd == "")
 	  {
@@ -29,7 +29,7 @@
 	  
 	  else
 	  {
-		  var dt = {"lg":lg,"fx":fx,"pd":pd};
+		  var dt = {"lg":lg,"lgh":lgh,"pd":pd,"pdh":pdh,"fx":fx,"fxh":fxh};
 		  console.log(dt);
 		  userPredictions.push(dt);
 		  //add notification here
@@ -82,9 +82,9 @@ function refreshPredictions()
 	for(var i = 0; i < userPredictions.length; i++){
 		var item = userPredictions[i];
 		var tr = $("<tr></tr>");
-		tr.append("<td>" + item.lg + "</td>");
-		tr.append("<td>" + item.fx + "</td>");
-		tr.append("<td>" + item.pd + "</td>");
+		tr.append("<td>" + item.lgh + "</td>");
+		tr.append("<td>" + item.fxh + "</td>");
+		tr.append("<td>" + item.pdh + "</td>");
 		$("#predictions-tbody").append(tr);
 	}
 	$("#predictions").fadeIn();
