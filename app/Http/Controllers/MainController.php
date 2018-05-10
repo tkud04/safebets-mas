@@ -66,7 +66,7 @@ class MainController extends Controller {
            $ret = "";
                
                 $validator = Validator::make($req, [
-                             'id' => 'required|email',
+                             'id' => 'required',
                    ]);
          
                  if($validator->fails())

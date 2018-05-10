@@ -20,6 +20,7 @@ function getLeague(url,id){
     $("#error").fadeOut();
     $("#result").fadeOut();
     $("#working").html('<br><br><div class="alert alert-info" role="alert" style=" text-align: center;"><strong class="block" style="font-weight: bold;">  <i class = "fa fa-spinner fa-2x slow-spin"></i>  Connecting.... </strong></div>');
+	$('#working').fadeOut();
    },
    success :  function(response)
       {         
