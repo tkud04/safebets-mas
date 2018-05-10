@@ -86,7 +86,7 @@ function refreshPredictions()
 		tr.append("<td>" + item.lgh + "</td>");
 		tr.append("<td>" + item.fxh + "</td>");
 		tr.append("<td>" + item.pdh + "</td>");
-		td.append("<a href='#' class='btn btn-danger' onclick='sssh(" + i + ");'>Remove</a>");
+		td.append("<a href='#' class='btn btn-danger' onclick='sssh(" + i + ");return false;'>Remove</a>");
 		tr.append(td);
 		$("#predictions-tbody").append(tr);
 	}

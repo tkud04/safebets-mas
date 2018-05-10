@@ -77,25 +77,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ret = [];
-                       $fixtures = Football::getLeagueFixtures($req["id"],"","n7");
-					   #dd($fixtures);
-					   foreach($fixtures->fixtures as $f)
-					   {
-						   $temp = [];
-						   
-						   $href = $f->_links->self->href;
-						   $u = parse_url($href);
-                           $path = $u['path'];
-                           $id = explode("/v1/fixtures/",$path);
-					       $temp['href'] = $id[1]; 
-						   
-					       $d = Carbon::parse($f->date);
-					       $temp['d'] = $d->format("jS F, Y h:i A");
-						   
-						   $temp['vs'] = $f->homeTeamName." vs ".$f->awayTeamName;
-						   array_push($ret,$temp);
-					   }
+			           $ret = $this->helpers->getFixtures("n7");
                        #dd($ret);					   
                   }       
            return json_encode($ret);

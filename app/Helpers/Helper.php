@@ -6,6 +6,7 @@ use Crypt;
 use Carbon\Carbon; 
 use Mail;
 use Auth; 
+use Football; 
 
 class Helper implements HelperContract
 {
@@ -61,6 +62,40 @@ class Helper implements HelperContract
                                                       'password' => bcrypt($data['password']), 
                                                       ]);
                                                       
+                return $ret;
+           }  
+
+           function getFixtures($filter)
+           {
+			$ret = [];
+           	$fixtures = Football::getLeagueFixtures($req["id"],"",$filter);
+					   #dd($fixtures);
+					   foreach($fixtures->fixtures as $f)
+					   {
+						   $temp = [];
+						   
+						   $href = $f->_links->self->href;
+						   $u = parse_url($href);
+                           $path = $u['path'];
+                           $id = explode("/v1/fixtures/",$path);
+					       $temp['href'] = $id[1]; 
+						   
+					       $d = Carbon::parse($f->date);
+					       $temp['d'] = $d->format("jS F, Y h:i A");
+						   
+						   $temp['vs'] = $f->homeTeamName." vs ".$f->awayTeamName;
+						   $temp['status'] = $f->status;
+						   $temp['home'] = isset($f->result->goalsHomeTeam) ? $f->result->goalsHomeTeam : null;
+						   $temp['away'] = isset($f->result->goalsAwayTeam) ? $f->result->goalsAwayTeam : null;
+						   
+						   $temp['homeExtraTime'] = isset($f->result->extraTime->goalsHomeTeam) ? $f->result->extraTime->goalsHomeTeam : null;
+						   $temp['awayExtraTime'] = isset($f->result->extraTime->goalsAwayTeam) ? $f->result->extraTime->goalsAwayTeam : null;
+						   
+						   $temp['homePK'] = isset($f->result->penaltyShootout->goalsHomeTeam) ? $f->result->penaltyShootout->goalsHomeTeam : null;
+						   $temp['awayPK'] = isset($f->result->penaltyShootout->goalsAwayTeam) ? $f->result->penaltyShootout->goalsAwayTeam : null;
+						   
+						   array_push($ret,$temp);
+					   }
                 return $ret;
            }   
    
