@@ -4,6 +4,13 @@
 (function($) {
   "use strict"; // Start of use strict
   
+  $('.osh').click(function(e){
+	  e.preventDefault();
+	  var gbene = $(this).attr('data-gbene');
+	  removePrediction(gbene);
+	  window.setTimeout(refreshPredictions,1500);
+  });
+
   $('#league').change(function(e){
 	  var l = $(this).val();
 	  var u = $(this).attr('data-lef');
@@ -16,9 +23,9 @@
   
   $('#fixture-form').submit(function(e){
 	  e.preventDefault();
-	  var lg = $('#league').val(); var lgh = $('#league').html();
-	  var fx = $('#fixtures').val(); var fxh = $('#fixtures').html();
-	  var pd = $('#prediction').val(); var pdh = $('#prediction').html();
+	  var lg = $('#league').val(); var lgh = $('#league > option:selected').html();
+	  var fx = $('#fixtures').val(); var fxh = $('#fixtures > option:selected').html();
+	  var pd = $('#prediction').val(); var pdh = $('#prediction > option:selected').html();
 	  
 	  if(lg == "none" || fx == "none" || pd == "")
 	  {
@@ -82,10 +89,22 @@ function refreshPredictions()
 	for(var i = 0; i < userPredictions.length; i++){
 		var item = userPredictions[i];
 		var tr = $("<tr></tr>");
+		var td = $("<td></td>");
 		tr.append("<td>" + item.lgh + "</td>");
 		tr.append("<td>" + item.fxh + "</td>");
 		tr.append("<td>" + item.pdh + "</td>");
+		td.append("<a href='#' data-gbene='" + url + "' class='osh btn btn-danger'>Remove</a>");
 		$("#predictions-tbody").append(tr);
 	}
 	$("#predictions").fadeIn();
+}
+
+function removePrediction(gb)
+{
+	for(var i = 0; i < userPredictions.length; i++){
+		if(gb == i){
+			userPredictions.splice(i,1);
+			break;
+		}
+	}
 }
