@@ -81,7 +81,11 @@ function refreshPredictions()
 	console.log(userPredictions);
 	for(var i = 0; i < userPredictions.length; i++){
 		var item = userPredictions[i];
-		$("#predictions > table > tbody").append("<tr><td>" + item.lg + "</td><td>" + item.fx + "</td><td>" + item.pd + "</td></tr>");
+		var tr = $("<tr></tr>");
+		tr.append("<td>" + item.lg + "</td>");
+		tr.append("<td>" + item.fx + "</td>");
+		tr.append("<td>" + item.pd + "</td>");
+		$("#predictions > table > tbody").append(tr);
 	}
 	$("#predictions").fadeIn();
 }
