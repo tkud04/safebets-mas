@@ -79,8 +79,8 @@ class MainController extends Controller {
                  { 
 			           $ret = [];
                        $fixtures = Football::getLeagueFixtures($req["id"],"","n7");
-					   dd($fixtures);
-					   foreach($fixtures as $f)
+					   #dd($fixtures);
+					   foreach($fixtures->fixtures as $f)
 					   {
 						   $temp = [];
 					     $temp['href'] = $f->_links->self->href; 
