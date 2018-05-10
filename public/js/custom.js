@@ -25,7 +25,7 @@ function getLeague(url,id){
    success :  function(response)
       {         
        $('#working').fadeOut();	   
-       $('#result').html(response);	   
+       //$('#result').html(response);	   
        setTimeout(function(){$('#result').fadeIn();},1500);    
      
      }

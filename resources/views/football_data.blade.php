@@ -44,6 +44,10 @@
 			     <label for="league">Select fixtures</label>
 				 <select class="form-control" id="fixtures">
 				    <option value="none">Select fixture</option>
+					@foreach($fixtures as $f)
+					
+					  <option value="{{$href}}">{{$vs}} - {{$d}}</option>
+					@endforeach
 				 </select>
 			   </div>
 			  </div>

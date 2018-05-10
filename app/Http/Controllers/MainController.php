@@ -77,8 +77,17 @@ class MainController extends Controller {
                 
                  else
                  { 
+			           $ret = [];
                        $fixtures = Football::getLeagueFixtures($req["id"],"","n7");
-                       dd($fixtures);					   
+					   foreach($fixtures as $f)
+					   {
+						   $temp = [];
+					     $temp['href'] = $f->links->self->href; 
+					     $temp['d'] = date("jS F, Y h:i A",$f->date);
+						 $temp['vs'] = $f->homeTeamName." vs ".$f->awayTeamName;
+						 array_push($ret,$temp);
+					   }
+                       dd($ret);					   
                   }       
            return $ret;
     }
