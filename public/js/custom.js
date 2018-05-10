@@ -1,8 +1,8 @@
+ var userPredictions = [];
 (function($) {
   "use strict"; // Start of use strict
 
   $('#predictions').hide();
-  var userPredictions = [];
   
   $('#league').change(function(e){
 	  var l = $(this).val();
