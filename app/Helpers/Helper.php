@@ -65,10 +65,10 @@ class Helper implements HelperContract
                 return $ret;
            }  
 
-           function getFixtures($filter)
+           function getFixtures($id,$filter)
            {
 			$ret = [];
-           	$fixtures = Football::getLeagueFixtures($req["id"],"",$filter);
+           	$fixtures = Football::getLeagueFixtures($id,"",$filter);
 					   #dd($fixtures);
 					   foreach($fixtures->fixtures as $f)
 					   {

@@ -63,7 +63,7 @@ class MainController extends Controller {
     {
            $req = $request->all();
 		   #dd($req);
-           $ret = "";
+           $ret = [];
                
                 $validator = Validator::make($req, [
                              'id' => 'required',
@@ -77,7 +77,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ret = $this->helpers->getFixtures("n7");
+			           $ret = $this->helpers->getFixtures($req["id"],"n7");
                        #dd($ret);					   
                   }       
            return json_encode($ret);
