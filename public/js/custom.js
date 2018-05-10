@@ -3,13 +3,6 @@
    
 (function($) {
   "use strict"; // Start of use strict
-  
-  $('.osh').click(function(e){
-	  e.preventDefault();
-	  var gbene = $(this).attr('data-gbene');
-	  removePrediction(gbene);
-	  window.setTimeout(refreshPredictions,1500);
-  });
 
   $('#league').change(function(e){
 	  var l = $(this).val();
@@ -93,7 +86,7 @@ function refreshPredictions()
 		tr.append("<td>" + item.lgh + "</td>");
 		tr.append("<td>" + item.fxh + "</td>");
 		tr.append("<td>" + item.pdh + "</td>");
-		td.append("<a href='#' data-gbene='" + i + "' class='osh btn btn-danger'>Remove</a>");
+		td.append("<a href='#' class='btn btn-danger' onclick='sssh(" + i + ");'>Remove</a>");
 		tr.append(td);
 		$("#predictions-tbody").append(tr);
 	}
@@ -108,4 +101,9 @@ function removePrediction(gb)
 			break;
 		}
 	}
+}
+
+function sssh(gb){
+    removePrediction(gb);
+    window.setTimeout(refreshPredictions,1500);	
 }
