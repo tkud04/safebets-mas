@@ -82,7 +82,7 @@ class MainController extends Controller {
 					   foreach($fixtures as $f)
 					   {
 						   $temp = [];
-					     $temp['href'] = $f->links->self->href; 
+					     $temp['href'] = $f->_links->self->href; 
 					     $temp['d'] = date("jS F, Y h:i A",$f->date);
 						 $temp['vs'] = $f->homeTeamName." vs ".$f->awayTeamName;
 						 array_push($ret,$temp);
