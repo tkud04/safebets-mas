@@ -89,9 +89,9 @@ class MainController extends Controller {
 						 $temp['vs'] = $f->homeTeamName." vs ".$f->awayTeamName;
 						 array_push($ret,$temp);
 					   }
-                       dd($ret);					   
+                       #dd($ret);					   
                   }       
-           return $ret;
+           return json_encode($ret);
     }
 
 	/**

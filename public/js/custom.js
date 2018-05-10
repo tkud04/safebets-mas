@@ -25,7 +25,14 @@ function getLeague(url,id){
    success :  function(response)
       {         
        $('#working').fadeOut();	   
-       //$('#result').html(response);	   
+       //$('#result').html(response);	
+	   if(response == "404"){}
+	   else{
+		 $.each(response,function(i,v){
+			 obj = v;
+			 $('#fixtures').append("<option value='" + obj['href'] + "'>" + obj['d'] + " - " + obj['vs'] + "</option>");
+		 });	  
+	   }   
        setTimeout(function(){$('#result').fadeIn();},1500);    
      
      }
