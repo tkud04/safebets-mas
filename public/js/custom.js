@@ -1,8 +1,8 @@
  var userPredictions = [];
+   $('#predictions').hide();
+   
 (function($) {
   "use strict"; // Start of use strict
-
-  $('#predictions').hide();
   
   $('#league').change(function(e){
 	  var l = $(this).val();
@@ -76,12 +76,12 @@ function getLeague(url,id){
 
 function refreshPredictions()
 {
-	$("#predictions > table > tbody").hide("");
+	$("#predictions").hide("");
 	$("#predictions > table > tbody").html("");
 	console.log(userPredictions);
 	for(var i = 0; i < userPredictions.length; i++){
 		var item = userPredictions[i];
 		$("#predictions > table > tbody").append("<tr><td>" + item.lg + "</td><td>" + item.fx + "</td><td>" + item.pd + "</td></tr>");
 	}
-	$("#predictions > table > tbody").fadeIn();
+	$("#predictions").fadeIn();
 }
