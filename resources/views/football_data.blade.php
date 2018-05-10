@@ -85,7 +85,7 @@
 			    <th>Action</th>
 			  </thead>
 			  
-			  <tbody>
+			  <tbody id="predictions-tbody">
 			  </tbody>
 			</table>
 		   </div>

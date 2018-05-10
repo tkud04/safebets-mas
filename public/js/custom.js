@@ -77,7 +77,7 @@ function getLeague(url,id){
 function refreshPredictions()
 {
 	$("#predictions").hide("");
-	$("#predictions > table > tbody").html("");
+	$("#predictions-tbody").html("");
 	console.log(userPredictions);
 	for(var i = 0; i < userPredictions.length; i++){
 		var item = userPredictions[i];
@@ -85,7 +85,7 @@ function refreshPredictions()
 		tr.append("<td>" + item.lg + "</td>");
 		tr.append("<td>" + item.fx + "</td>");
 		tr.append("<td>" + item.pd + "</td>");
-		$("#predictions > table > tbody").append(tr);
+		$("#predictions-tbody").append(tr);
 	}
 	$("#predictions").fadeIn();
 }
