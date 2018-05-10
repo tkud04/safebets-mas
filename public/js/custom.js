@@ -29,7 +29,7 @@
 	  
 	  else
 	  {
-		  dt = {"lg":lg,"fx":fx,"pd":pd};
+		  var dt = {"lg":lg,"fx":fx,"pd":pd};
 		  predictions.push(dt);
 		  //add notification here
 		  window.setTimeout(refreshPredictions,1500);
