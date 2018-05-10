@@ -56,9 +56,9 @@
 				       <select class="form-control" id="prediction">
 				         <option value="none">Select prediction</option>
 				         <option value="none" disabled>1X2</option>
-				         <option value="none">1</option>
-				         <option value="none">X</option>
-				         <option value="none">2</option>
+				         <option value="1">1</option>
+				         <option value="X">X</option>
+				         <option value="2">2</option>
 				       </select>
 			        </div>
 			    </div>
