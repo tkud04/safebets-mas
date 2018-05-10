@@ -77,7 +77,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-                       $fixtures = Football::getLeagueFixtures($req["id"],"",date("Y-m-d"));
+                       $fixtures = Football::getLeagueFixtures($req["id"],"","n7");
                        dd($fixtures);					   
                   }       
            return $ret;
