@@ -16,9 +16,9 @@
   
   $('#fixture-form').submit(function(e){
 	  e.preventDefault();
-	  lg = $('#league').val();
-	  fx = $('#fixtures').val();
-	  pd = $('#prediction').val();
+	  var lg = $('#league').val();
+	  var fx = $('#fixtures').val();
+	  var pd = $('#prediction').val();
 	  
 	  if(lg == "none" || fx == "none" || pd == "")
 	  {
