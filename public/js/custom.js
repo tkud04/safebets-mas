@@ -77,8 +77,10 @@ function refreshPredictions()
 {
 	$("#predictions > table > tbody").hide("");
 	$("#predictions > table > tbody").html("");
-	predictions.forEach(function(item){
+	console.log(predictions);
+	for(var i = 0; i < predictions.length; i++){
+		var item = predictions[i];
 		$("#predictions > table > tbody").append("<tr><td>" + item.lg + "</td><td>" + item.fx + "</td><td>" + item.pd + "</td></tr>");
-	});
+	}
 	$("#predictions > table > tbody").fadeIn();
 }
