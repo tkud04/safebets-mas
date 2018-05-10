@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Predictions extends Model {
+class Purchases extends Model {
 
 	/**
 	 * The attributes that are mass assignable.
