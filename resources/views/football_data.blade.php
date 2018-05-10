@@ -29,8 +29,8 @@
 			</table><br><br>
 			
 			<form id="fixture-form">
+			  <h3>Get fixtures for a competition</h3><br>
 			  <div class="row">
-			     <h3>Get fixtures for a competition</h3><br>
 			     <div class="col-sm-3 col-md-3">			
 			        <div class="form-group">
 			           <label for="league">Select league</label>
