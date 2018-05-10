@@ -2,7 +2,7 @@
   "use strict"; // Start of use strict
 
   $('#predictions').hide();
-  var predictions = [];
+  var userPredictions = [];
   
   $('#league').change(function(e){
 	  var l = $(this).val();
@@ -30,7 +30,8 @@
 	  else
 	  {
 		  var dt = {"lg":lg,"fx":fx,"pd":pd};
-		  predictions.push(dt);
+		  console.log(dt);
+		  userPredictions.push(dt);
 		  //add notification here
 		  window.setTimeout(refreshPredictions,1500);
 		  $('#league').val("none");
@@ -77,9 +78,9 @@ function refreshPredictions()
 {
 	$("#predictions > table > tbody").hide("");
 	$("#predictions > table > tbody").html("");
-	console.log(predictions);
-	for(var i = 0; i < predictions.length; i++){
-		var item = predictions[i];
+	console.log(userPredictions);
+	for(var i = 0; i < userPredictions.length; i++){
+		var item = userPredictions[i];
 		$("#predictions > table > tbody").append("<tr><td>" + item.lg + "</td><td>" + item.fx + "</td><td>" + item.pd + "</td></tr>");
 	}
 	$("#predictions > table > tbody").fadeIn();
