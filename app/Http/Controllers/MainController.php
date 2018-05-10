@@ -84,7 +84,9 @@ class MainController extends Controller {
 					   {
 						   $temp = [];
 					     $temp['href'] = $f->_links->self->href; 
-					     $temp['d'] = date("jS F, Y h:i A",$f->date);
+					     $d = Carbon::parse($f->date);
+						 dd($d);
+					     $temp['d'] = $d;
 						 $temp['vs'] = $f->homeTeamName." vs ".$f->awayTeamName;
 						 array_push($ret,$temp);
 					   }
