@@ -80,7 +80,7 @@
 		    <table class="table table-responsive">
 			  <thead>
 			    <th>League</th>
-			    <th>Fixture - Date</th>
+			    <th>Date - Fixture</th>
 			    <th>Prediction</th>
 			    <th>Action</th>
 			  </thead>

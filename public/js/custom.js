@@ -94,6 +94,7 @@ function refreshPredictions()
 		tr.append("<td>" + item.fxh + "</td>");
 		tr.append("<td>" + item.pdh + "</td>");
 		td.append("<a href='#' data-gbene='" + i + "' class='osh btn btn-danger'>Remove</a>");
+		tr.append(td);
 		$("#predictions-tbody").append(tr);
 	}
 	$("#predictions").fadeIn();
