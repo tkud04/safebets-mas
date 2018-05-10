@@ -55,6 +55,35 @@ class MainController extends Controller {
     }
 
 	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getFixtures(Request $request)
+    {
+           $req = $request->all();
+		   #dd($req);
+           $ret = "";
+               
+                $validator = Validator::make($req, [
+                             'id' => 'required|email',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                       $ret = "Select a league/competition to continue!";
+                       
+                 }
+                
+                 else
+                 { 
+                       $fixtures = Football::getLeagueFixtures($req["id"]);
+                       dd($fixtures);					   
+                  }       
+           return $ret;
+    }
+
+	/**
 	 * Show the application file screen to the user.
 	 *
 	 * @return Response
