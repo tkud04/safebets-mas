@@ -30,8 +30,8 @@
 			
 			<form id="fixture-form">
 			  <div class="row">
-			     <div class="col-sm-3 col-md-3">
-			        <h3>Get fixtures for a competition</h3><br>
+			     <h3>Get fixtures for a competition</h3><br>
+			     <div class="col-sm-3 col-md-3">			
 			        <div class="form-group">
 			           <label for="league">Select league</label>
 				      <select class="form-control" id="league" data-lef="{{url('gf')}}">
@@ -75,6 +75,21 @@
 			<div id="error"></div>
           </div>
         </div>
+		<div class="row" id="predictions">
+		   <div class="col-sm-12">
+		    <table class="table table-responsive">
+			  <thead>
+			    <th>League</th>
+			    <th>Fixture - Date</th>
+			    <th>Prediction</th>
+			    <th>Action</th>
+			  </thead>
+			  
+			  <tbody>
+			  </tbody>
+			</table>
+		   </div>
+		</div>
       </div>
     </section>
 @stop

@@ -85,7 +85,7 @@ class MainController extends Controller {
 						   $temp = [];
 						   
 						   $href = $f->_links->self->href;
-						   $u = parse_url($u);
+						   $u = parse_url($href);
                            $path = $u['path'];
                            $id = explode("/v1/fixtures/",$path);
 					       $temp['href'] = $id[1]; 
