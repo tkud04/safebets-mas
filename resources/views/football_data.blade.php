@@ -29,23 +29,44 @@
 			</table><br><br>
 			
 			<form id="fixture-form">
-			  <div class="form-row">
-			   <h3>Get fixtures for a competition</h3><br>
-			   <div class="form-group col-sm-6 col-md-6">
-			     <label for="league">Select league</label>
-				 <select class="form-control" id="league" data-lef="{{url('gf')}}">
-				    <option value="none">Select League</option>
-				    @foreach($ret as $r)
-					  <option value="{{$r->id}}">{{$r->caption}}</option>
-					@endforeach
-				 </select>
-			   </div>
-			   <div class="form-group col-sm-6 col-md-6">
-			     <label for="league">Select fixtures</label>
-				 <select class="form-control" id="fixtures">
-				    <option value="none">Select fixture</option>
-				 </select>
-			   </div>
+			  <div class="row">
+			     <div class="col-sm-3 col-md-3">
+			        <h3>Get fixtures for a competition</h3><br>
+			        <div class="form-group">
+			           <label for="league">Select league</label>
+				      <select class="form-control" id="league" data-lef="{{url('gf')}}">
+				        <option value="none">Select League</option>
+				        @foreach($ret as $r)
+					       <option value="{{$r->id}}">{{$r->caption}}</option>
+					    @endforeach
+				      </select>
+			        </div>
+				 </div>
+			     <div class="col-sm-4 col-md-4">
+			        <div class="form-group">
+			           <label for="league">Select fixtures</label>
+				       <select class="form-control" id="fixtures">
+				         <option value="none">Select fixture</option>
+				       </select>
+			        </div>
+			    </div>
+				<div class="col-sm-3 col-md-3">
+			        <div class="form-group">
+			           <label for="league">Prediction</label>
+				       <select class="form-control" id="prediction">
+				         <option value="none">Select prediction</option>
+				         <option value="none" disabled>1X2</option>
+				         <option value="none">1</option>
+				         <option value="none">X</option>
+				         <option value="none">2</option>
+				       </select>
+			        </div>
+			    </div>
+			     <div class="col-sm-2 col-md-2">
+			        <div class="form-group">
+			           <button type="submit" class="btn btn-success">Add</button>
+			        </div>
+			    </div>
 			  </div>
 			</form>
 			
