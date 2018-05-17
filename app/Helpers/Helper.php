@@ -126,6 +126,7 @@ class Helper implements HelperContract
 			   $temp["game-status"] = "fail";
 			   $temp["status"] = "paid";
 			   $temp["type"] = "single";
+			   $temp["category"] = "regular";
 			   $temp["user-2"] = "arsenalfan69";
 			   $temp["date"] = date("js F, Y h:i A");
 			   array_push($ret,$temp);			   
@@ -135,6 +136,7 @@ class Helper implements HelperContract
 			   $temp["id"] = "320459";	
 			   $temp["game-status"] = "win";
 			   $temp["status"] = "sold";
+			   $temp["category"] = "premium";
 			   $temp["type"] = "multi";
 			   $temp["user-2"] = "Oshozondi442";
 			   $temp["date"] = date("js F, Y h:i A");
