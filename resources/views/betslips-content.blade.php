@@ -52,6 +52,7 @@
                                                 <td><a class="btn btn-warning text-white" href="#" onclick="viewBS({{$id}},'{{$url}}')">View</a></td>
                                             </tr>  
 											@endforeach
+											@endif
                                         </tbody>
 										
                                     </table>
