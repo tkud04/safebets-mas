@@ -116,7 +116,7 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
-		   function getBetSlipsPurchashed($user)
+		   function getBetSlipsPurchased($user)
 		   {
 			   $ret = [];
 			   
