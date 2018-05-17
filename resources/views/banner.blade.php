@@ -10,7 +10,7 @@
           </div>
           <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5">SafeBets is launching soon! Are you good at predicting football games? Make money by selling your games on SafeBets! To become a seller click below:</p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Become A Seller</a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">About Us</a>
           </div>
         </div>
       </div>

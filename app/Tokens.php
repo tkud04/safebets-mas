@@ -9,6 +9,6 @@ class Tokens extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['user_id', 'total_count'];
+	protected $fillable = ['user_id', 'balance'];
 
 }

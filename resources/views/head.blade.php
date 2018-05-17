@@ -21,9 +21,13 @@
 
     <!-- Plugin CSS -->
     <link href="{{asset('vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
+	
+	 <!-- Data table bootstrap -->
+	 <link href="{{asset('css/datatables.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/creative.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/creative.min.css')}}" rel="stylesheet">  
+    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
 
   </head>
 

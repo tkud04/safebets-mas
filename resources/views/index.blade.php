@@ -7,5 +7,12 @@
 @stop
 
 @section('content')
-@include('seller-join')
+@include('cta')
+@include('services')
+@include('ad-section')
+@include('todays-games')
+@include('about')
+@include('premium-games')
+@include('ad-section')
+@include('regular-games')
 @stop

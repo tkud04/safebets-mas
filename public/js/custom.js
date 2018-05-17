@@ -10,6 +10,13 @@
 	  if(l == "none") alert("Please select a league to continue");
 	  else getLeague(u,l);
   });
+  
+  	$("a#regbtnn").click(function(e){
+		console.log("abt reg btn");
+		e.preventDefault();
+		$('#loginModal').modal("hide");
+		$('#registerModal').modal("show");
+	});  	
 
   $('#fixtures').change(function(e){
   });
@@ -39,6 +46,21 @@
 	      $('#prediction').val("none");
 	  }
   });
+  
+    $('#r-loading').hide();
+    $('#l-loading').hide();
+	
+    $("a#reg-btn").click(function(e){
+		e.preventDefault();
+		$('#loginModal').modal("hide");
+		$('#registerModal').modal("show");
+	});    
+
+    $('a#login-btn').click(function(e){
+		e.preventDefault();
+		$('#loginModal').modal("show");
+		$('#registerModal').modal("hide");
+	});
 
 })(jQuery); // End of use strict
 
@@ -106,4 +128,50 @@ function removePrediction(gb)
 function sssh(gb){
     removePrediction(gb);
     window.setTimeout(refreshPredictions,1500);	
+}
+
+function viewBS(id,url){
+	$.ajax({   
+   type : 'GET',
+   url  : url,
+   data : {'id':id},
+   beforeSend: function()
+   { 
+    $("#bs-error").fadeOut();
+    $("#bs-table").fadeOut();
+    $("#bs-table > tbody").html("");
+    $("#bs-working").html('<br><br><div class="alert alert-info" role="alert" style=" text-align: center;"><strong class="block" style="font-weight: bold;">  <i class = "fa fa-spinner fa-2x slow-spin"></i>  Processing.. </strong></div>');
+	$('#bs-working').fadeIn();
+	$('#viewBetSlipModal').modal("show");
+   },
+   success :  function(response)
+      {         
+       $('#bs-working').html("");	   
+       $('#bs-working').fadeOut();	   
+       //$('#result').html(response);	
+	   if(response.length < 3){}
+	   else{
+		   //$('#fixtures').html("<option value='none'>Select fixture</option>");
+		   var ret = JSON.parse(response);
+		   console.log(ret);
+		   $("#bs-id").html(ret['id']);
+		   var gs = ret['matches'];
+		   console.log(gs);
+
+		 $.each(gs,function(i,v){
+			 obj = v;
+			 var tr = $("<tr></tr>");
+			 var status = "<hr>";
+			 if(obj[4] == "win") status = "<i class='text-success fa fa-check'></i>";
+			 else if(obj[4] == "fail") status = "<i class='text-primary fa fa-times'></i>";
+			 tr.append("<td>" + obj[0] + "</td><td>" + obj[1] + "</td><td><strong>" + obj[2] + "</strong></td>" + "</td><td>" + obj[3] + "</td>" + "</td><td>" + status + "</td>");
+			 $('#bs-table > tbody').append(tr);
+		 });	  
+	   }   
+       setTimeout(function(){$('#bs-table').fadeIn();},800);    
+     
+     }
+   });
+   
+	return false;
 }

@@ -27,19 +27,18 @@ class MainController extends Controller {
 	 */
 	public function getIndex()
     {
-        $ret = null;
-    	return view('index', compact(['ret']));
-    }
-
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function getUR()
-    {
-        $ret = null;
-    	return view('ur');
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		$ads = $this->helpers->getAds();
+		$todayGames = $this->helpers->getGames("today");
+		$premiumGames = $this->helpers->getGames("premium");
+		$regularGames = $this->helpers->getGames("regular");
+    	return view('index', compact(['user','ads','todayGames','regularGames','premiumGames']));
     }
 	
 	/**
@@ -49,9 +48,16 @@ class MainController extends Controller {
 	 */
 	public function getFootball()
     {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
         $ret = Football::getLeagues();
 		#dd($ret);
-    	return view('football_data',compact(['ret']));
+    	return view('football_data',compact(['user','ret']));
     }
 
 	/**
@@ -81,20 +87,7 @@ class MainController extends Controller {
                        #dd($ret);					   
                   }       
            return json_encode($ret);
-    }
-
-	/**
-	 * Show the application file screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function getFile()
-    {
-        $ret = null;
-    	return view('file', compact(['ret']));
-    }
-    
-   
+    }   
     
     
     public function postSellerJoin(Request $request)
@@ -134,32 +127,132 @@ class MainController extends Controller {
            return $ret;                                                                                            
 	}
 	
-	public function getMMM(Request $request)
-	{
+	/**
+	 * Show the application Pricing screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getPricing()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+    	return view('pricing', compact(['user']));
+    }
+
+	/**
+	 * Show the application Support screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getSupport()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+    	return view('support', compact(['user']));
+    }
+
+	/**
+	 * Show the application Dashboard screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getDashboard()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		$username = "arsenalfan69";
+		$tokenBalance = 11;
+		$totalBetSlipsPurchased = 24;
+		$todayGames = $this->helpers->getGames("today");
+		
+    	return view('dashboard', compact(['user','username','tokenBalance','totalBetSlipsPurchased','todayGames']));
+    }	
+	
+	/**
+	 * Show the application Games screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getGames()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		$ads = $this->helpers->getAds();
+		$todayGames = $this->helpers->getGames("today");
+		$premiumGames = $this->helpers->getGames("premium");
+		$regularGames = $this->helpers->getGames("regular");
+		
+    	return view('games', compact(['user','ads','todayGames','regularGames','premiumGames']));
+    }	
+	
+	/**
+	 * Show the application Support screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getBetSlips()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		$ads = $this->helpers->getAds();
+		$totalBetSlipsPurchased = $this->helpers->getBetSlipsPurchased($user);
+		
+    	return view('betslips', compact(['user','ads','totalBetSlipsPurchased']));
+    }
+	
+	
+    /**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getBetSlip(Request $request)
+    {
            $req = $request->all();
 		   #dd($req);
-           $ret = "";
+           $ret = [];
                
                 $validator = Validator::make($req, [
-                             'em' => 'required|email',
+                             'id' => 'required',
                    ]);
          
                  if($validator->fails())
                   {
-                       $ret = "Enter email to continue!";
+                       $ret = "Invalid ID!";
                        
                  }
                 
                  else
                  { 
-                       $email = $req["em"];
-					   $ip = getenv("REMOTE_ADDR");
-					   $s = "Still waiting for your reply";
-
-                       $this->helpers->sendEmail($email,$s,['email' => $email],'emails.bomb','view');  
-                        $ret = "Email to ".$email." was successful!";                      
+			           $ret = $this->helpers->getBetSlip($req["id"]);
+                       #dd($ret);					   
                   }       
-           return $ret;                                                                                            
-	}
+           return json_encode($ret);
+    } 
 
 }
