@@ -101,10 +101,13 @@ class Helper implements HelperContract
 		   
 		   function getAds()
 		   {
+			   $ret = [];
+			   
 			   $ads = ["img/portfolio/thumbnails/1.jpg","img/portfolio/thumbnails/2.jpg","img/portfolio/thumbnails/3.jpg",
 					   "img/portfolio/thumbnails/4.jpg","img/portfolio/thumbnails/5.jpg","img/portfolio/thumbnails/6.jpg",];
 			   
 			   shuffle($ads);
+			   
 			   for($i=0; $i < 3; $i++) array_push($ret,$ads[$i]);
 			   
 			   return $ret;
