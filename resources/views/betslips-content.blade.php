@@ -28,8 +28,8 @@
 												$gs = "";
 												
 												$gameStatus = $bs['game-status'];
-												if($gameStatus == "win") $gs = "<i class='text-success fa fa-check'></i>";
-												else $gs = "<i class='text-primary fa fa-times'></i>";
+												if($gameStatus == "win") $gs = "text-success fa-check";
+												else $gs = "text-primary fa-times'";
 												
 												$badgeClass = "badge-info";
 												$statusClass = "badge-info";
@@ -48,7 +48,7 @@
                                                 <td>Single-game bet slip</td>
                                                 <td><span class="badge {{$badgeClass}}">{{$category}}</span></td>
                                                 <td><a href='#'>{{$exchangeUser}}</a><br><span class='badge {{$statusClass}}'>{{$status}}</span></td>
-                                                <td>{{$gs}}</td>
+                                                <td><i class="fa {{$gs}}"></i></td>
                                                 <td><a class="btn btn-warning text-white" href="#" onclick="viewBS({{$id}},'{{$url}}')">View</a></td>
                                             </tr>  
 											@endforeach
