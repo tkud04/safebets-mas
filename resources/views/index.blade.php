@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title',"Launching Soon!")
+@section('title',"Welcome")
 
 @section('banner')
 @include('banner')

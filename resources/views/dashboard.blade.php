@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-@include('dashboard-content')
+@include('dashboard-content',['tokenBalance' => $tokenBalance,'totalBetSlipsPurchased' => $totalBetSlipsPurchased])
 @include('ad-section')
 @include('todays-games')
 @stop
