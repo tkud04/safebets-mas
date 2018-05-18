@@ -22,7 +22,7 @@ Route::post('login', 'LoginController@postLogin');
 Route::get('logout', 'LoginController@getLogout');
 Route::get('lost-password', 'LoginController@getPassword');
 Route::post('lost-password', 'LoginController@postPassword');
-Route::get('change-password', 'LoginController@getChangePassword');
+Route::get('change-password/{rxf?}', 'LoginController@getChangePassword');
 Route::post('change-password', 'LoginController@postChangePassword');
 
 Route::get('dashboard', 'MainController@getDashboard');
