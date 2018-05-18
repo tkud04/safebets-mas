@@ -149,24 +149,16 @@ class LoginController extends Controller {
                   
     }  
 	
-	public function getChangePassword(Request $request)
+	public function getChangePassword($rxf="")
     {
-		$req = $request->all(); 
-        $validator = Validator::make($req, [
-                             'rxf' => 'required'
-                  ]);
                   
-         if($validator->fails())
+         if($rxf == "")
          {
-             $messages = $validator->messages();
-             //dd($messages);
-             
              return redirect()->intended("/");
          }
 		 
 		 else
 		 {
-			 $rxf = $req["rxf"];
 			 return view('auth.reset',compact(['rxf']));
 		 } 
     }
@@ -192,16 +184,18 @@ class LoginController extends Controller {
          }
          
          else{
-         	$ret = $req['email'];
+         	$rxf = $req['rxf'];
+             $arr =bexplode("+#",$rxf);
+             $id = $arr[1];
 
-                $user = User::where('email',$ret)->first();
+                $user = User::where('id',$id)->first();
 
                 if(is_null($user))
                 {
-                        return redirect()->back()->withErrors("This user doesn't exist!","errors"); 
+                        return redirect()->back()->withErrors("Invalid token","errors"); 
                 }
                 
-                $this->helpers->sendEmail($user->email,'Password changed','emails.reset_alert','view');                                                         
+                $user->update(['password' => bcrypt($req["password"])]);                                                         
             Session::flash("reset-status","success");           
             return redirect()->intended('/');
 
