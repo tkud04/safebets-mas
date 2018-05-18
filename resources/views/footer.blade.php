@@ -44,8 +44,8 @@
 						<button type="button" class="close btn btn-warning" data-dismiss="modal">&times; close</button>
 						<div class="modal-body">
 											<p class="coupon-text">Returning customer? Sign in here.</p>
-											<form action="{{url('login')}}" method="post">
-											   <?php //{{csrf_field()}} ?>
+											<form data-href="{{url('login')}}" id="login-form">
+											   {{csrf_field()}}
 												<div class="form-group">
 												    <label for="email"><strong>Username or email <span class="required">*</span></strong></label>
 													<input class="form-control" type="email" id="email" name="email" placeholder="Email address" value="{{old('email')}}" />
@@ -62,7 +62,7 @@
 													</label>
 												</div>
 												<p class="lost-password">
-													<a href="{{url('lost-password')}}">Lost your password?</a>
+													<a href="{{url('lost-password')}}">Forgot password?</a>
 												</p>
 											</form>
 
@@ -104,6 +104,14 @@
 														 </div>
 													 </div>													 
 											   </div>											   
+											   <div class="row">
+													 <div class="col-sm-12">
+														 <div class="form-group">
+															 <label for="email"><strong>Phone number  <span class="required">*</span></strong></label>
+															 <input class="form-control" type="text" name="phone" placeholder="Phone number" value="{{old('phone')}}" />
+														 </div>
+													 </div>													 
+											   </div>											   
 											   <div class="row">												 
 													 <div class="col-sm-12 col-md-6">
 														 <div class="form-group">
@@ -115,6 +123,15 @@
 														 <div class="form-group">
 															 <label for="r-pass2"><strong>Confirm password  <span class="required">*</span></strong></label>
 															 <input class="form-control" type="password" id="r-pass2" name="pass_confirmation" placeholder="Confirm password" />
+														 </div>
+													 </div>
+											   </div>											   
+											   <div class="row">												 												 
+													 <div class="col-md-12">
+														 <div class="form-group">
+															 <label>
+														     By clicking Submit below you agree to the <a href="#" id="login-btn">Terms and Conditions</a>
+													         </label>
 														 </div>
 													 </div>
 											   </div>

@@ -28,39 +28,50 @@ class LoginController extends Controller {
     {
         $req = $request->all();
         //dd($req);
+		 $rt = null;
         
         $validator = Validator::make($req, [
                              'password' => 'required|min:6',
-                             'email' => 'required|email|exists:users'
+                             'email' => 'required'
          ]);
          
          if($validator->fails())
          {
              $messages = $validator->messages();
-             return redirect()->back()->withInput()->with('errors',$messages);
              //dd($messages);
+             
+             return redirect()->back()->withInput()->with('errors',$messages);
          }
          
          else
          {
+			$ret = $req['email'];
+			
+
+            $user = User::where('email',$ret)->orWhere('username',$ret)->first();
+
+                if(is_null($user))
+                {
+                     return redirect()->back()->withInput()->withErrors("This user doesn't exist!","errors"); 
+                }
          	//authenticate this login
-            if(Auth::attempt(['email' => $req['email'],'password' => $req['password']]))
+            if(Auth::attempt(['email' => $req['email'],'password' => $req['password']]) || Auth::attempt(['username' => $req['email'],'password' => $req['password']]))
             {
             	//Login successful               
                $user = Auth::user();          
-           
-               if($user->role == "admin"){return redirect()->intended('/');}
-               else if($user->role == "seller"){return redirect()->intended('experts');}
-               if($user->role == "buyer"){return redirect()->intended('dashboard');}
-               else{return redirect()->intended('/');}
+			   
+               if($user->role == "admin"){return redirect()->intended("nimda");}
+               else if($user->role == "expert"){return redirect()->intended("dashboard");}
+               else if($user->role == "punter"){return redirect()->intended("dashboard");}
             }
-         }        
+         }  
     }
 	
     public function postRegister(Request $request)
     {
         $req = $request->all();
         //dd($req);
+		$rt = null;
         
         $validator = Validator::make($req, [
                              'password' => 'required|confirmed',
@@ -69,8 +80,6 @@ class LoginController extends Controller {
                              'lname' => 'required',
                              'phone' => 'required|numeric',
                              #'g-recaptcha-response' => 'required',
-                             'terms' => 'accepted',
-                             'role' => 'required',
          ]);
          
          if($validator->fails())
@@ -94,6 +103,111 @@ class LoginController extends Controller {
              return redirect()->intended('/');
           }
     }
+	
+	
+	public function getPassword()
+    {
+         return view('auth.password');
+    }	
+	
+/**
+     * Request a new password for the given user.
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function postPassword(Request $request)
+    {
+    	$req = $request->all(); 
+        $validator = Validator::make($req, [
+                             'email' => 'required|email'
+                  ]);
+                  
+         if($validator->fails())
+         {
+             $messages = $validator->messages();
+             //dd($messages);
+             
+             return redirect()->back()->withInput()->with('errors',$messages);
+         }
+         
+         else{
+         	$ret = $req['email'];
+
+                $user = User::where('email',$ret)->first();
+
+                if(is_null($user))
+                {
+                        return redirect()->back()->withErrors("This user doesn't exist!","errors"); 
+                }
+				
+				$userHash = bcrypt($user->email);
+                
+                $this->helpers->sendEmail($user->email,'Change your password',['rxf' => $userHash],'emails.password_alert','view');                                                         
+            Session::flash("password-status","success");           
+            return redirect()->intended('/');
+
+      }
+                  
+    }  
+	
+	public function getChangePassword(Request $request)
+    {
+		$req = $request->all(); 
+        $validator = Validator::make($req, [
+                             'rxf' => 'required'
+                  ]);
+                  
+         if($validator->fails())
+         {
+             $messages = $validator->messages();
+             //dd($messages);
+             
+             return redirect()->intended("/");
+         }
+		 
+		 else
+		 {
+			 $rxf = $req["rxf"];
+			 return view('auth.reset',compact(['rxf']));
+		 } 
+    }
+    
+/**
+     * Send username to the given user.
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function postChangePassword(Request $request)
+    {
+    	$req = $request->all(); 
+        $validator = Validator::make($req, [
+                             'rxf' => 'required|confirmed'
+                             'password' => 'required|confirmed'
+                  ]);
+                  
+                 if($validator->fails())
+         {
+             $messages = $validator->messages();
+             //dd($messages);
+             
+             return redirect()->back()->withInput()->with('errors',$messages);
+         }
+         
+         else{
+         	$ret = $req['email'];
+
+                $user = User::where('email',$ret)->first();
+
+                if(is_null($user))
+                {
+                        return redirect()->back()->withErrors("This user doesn't exist!","errors"); 
+                }
+                
+                $this->helpers->sendEmail($user->email,'Password changed','emails.reset_alert','view');                                                         
+            Session::flash("reset-status","success");           
+            return redirect()->intended('/');
+
+      }
+                  
+    }    
     
     
     public function getLogout()

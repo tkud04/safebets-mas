@@ -17,10 +17,17 @@ Route::post('become-a-seller', 'MainController@postSellerJoin');
 Route::get('football', 'MainController@getFootball');
 Route::get('gf', 'MainController@getFixtures');
 
+Route::post('register', 'LoginController@postRegister');
+Route::post('login', 'LoginController@postLogin');
+Route::get('logout', 'LoginController@getLogout');
+Route::get('lost-password', 'LoginController@getPassword');
+Route::post('lost-password', 'LoginController@postPassword');
+Route::get('change-password', 'LoginController@getChangePassword');
+Route::post('change-password', 'LoginController@postChangePassword');
+
 Route::get('dashboard', 'MainController@getDashboard');
 Route::get('games', 'MainController@getGames');
 Route::get('betslips', 'MainController@getBetSlips');
 Route::get('view-bs', 'MainController@getBetSlip');
-Route::get('signout', 'LoginController@getLogout');
 Route::get('support', 'MainController@getSupport');
 Route::get('pricing', 'MainController@getPricing');

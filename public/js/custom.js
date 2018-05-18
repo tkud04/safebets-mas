@@ -132,7 +132,7 @@ function sssh(gb){
 
 function viewBS(id,url){
 	$.ajax({   
-   type : 'GET',
+   type : 'POST',
    url  : url,
    data : {'id':id},
    beforeSend: function()
