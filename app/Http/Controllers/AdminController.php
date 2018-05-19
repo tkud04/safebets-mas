@@ -11,7 +11,7 @@ use Validator;
 use Football;
 use Carbon\Carbon; 
 
-class MainController extends Controller {
+class AdminController extends Controller {
 
 	protected $helpers; //Helpers implementation
     
