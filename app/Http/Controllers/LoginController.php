@@ -77,7 +77,7 @@ class LoginController extends Controller {
                              'password' => 'required|confirmed',
                              'email' => 'required|email',
                              'fname' => 'required',
-                             'lname' => 'required',
+                             'lname' => 'required', 'username' => 'required',		
                              'phone' => 'required|numeric',
                              #'g-recaptcha-response' => 'required',
          ]);
