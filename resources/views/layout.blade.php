@@ -12,9 +12,10 @@
 				<?php
 				     $msg = "";
 			       if(Session::has("reset-status") && Session::get("reset-status") == "success") $msg = "Your password change was successful";
+			       if(Session::has("signup-status") && Session::get("signup-status") == "success") $msg = "Signup successful! You can now login";
 				?>
 				<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                      {{$msg}}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
