@@ -23,7 +23,7 @@
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a href="mailto:your-email@your-domain.com">safebets.disenado@gmail.com</a>
+              <a href="mailto:safeBets.disenado@gmail.com">safebets.disenado@gmail.com</a>
             </p>
           </div>
         </div>
@@ -95,7 +95,15 @@
 															 <input class="form-control" type="text" id="lname" name="lname" placeholder="Last name" value="{{old('lname')}}" />
 														 </div>
 													 </div>
-											   </div>											   
+											   </div>	
+											    <div class="row">
+													 <div class="col-sm-12">
+														 <div class="form-group">
+															 <label for="username"><strong>Username  <span class="required">*</span></strong></label>
+															 <input class="form-control" type="text" name="username" placeholder="Your username" value="{{old('username')}}" />
+														 </div>
+													 </div>													 
+											   </div>	
 											   <div class="row">
 													 <div class="col-sm-12">
 														 <div class="form-group">
