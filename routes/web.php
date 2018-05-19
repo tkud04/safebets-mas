@@ -31,3 +31,17 @@ Route::get('betslips', 'MainController@getBetSlips');
 Route::get('view-bs', 'MainController@getBetSlip');
 Route::get('support', 'MainController@getSupport');
 Route::get('pricing', 'MainController@getPricing');
+
+
+/**
+ Admin routes
+**/
+Route::get('nimda', 'AdminController@getDashboard');
+Route::get('nimda/users', 'AdminController@getUsers');
+Route::get('nimda/user/{id?}/{action?}', 'AdminController@getManageTokens');
+Route::post('nimda/user', 'AdminController@postManageTokens');
+
+Route::get('nimda/betslips', 'AdminController@getBetSlips');
+Route::get('nimda/betslip/{id?}', 'AdminController@getBetSlip');
+Route::get('nimda/mark-betslip/{id?}/{result?}', 'AdminController@getMarkBetSlip');
+Route::get('nimda/mark-game/{id?}/{result?}', 'AdminController@getMarkGame');

@@ -9,6 +9,6 @@ class Tickets extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['type', 'seller_id', 'total_odds', 'result'];
+	protected $fillable = ['type', 'user_id', 'total_odds','booking_code', 'result'];
 
 }

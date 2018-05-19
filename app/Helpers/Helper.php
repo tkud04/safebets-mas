@@ -150,7 +150,57 @@ class Helper implements HelperContract
 			   return $ret;
 		   }
 		   
+		   function getUsers()
+		   {
+			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
+			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
+			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
+	        ];
+			   
+			   return $ret;
+		   }		   
+		   
+		   function getUser($id)
+		   {
+			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
+			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
+			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
+	        ];
+			   
+			   return $ret;
+		   }		   
+		   
+		   function getBetSlips()
+		   {
+			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
+			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
+			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
+	        ];
+			   
+			   return $ret;
+		   }		   
+		   
 		   function getBetSlip($id)
+		   {
+			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
+			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
+			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
+	        ];
+			   
+			   return $ret;
+		   }		   
+		   
+		   function markBetSlip($id,$result)
+		   {
+			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
+			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
+			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
+	        ];
+			   
+			   return $ret;
+		   }		   
+		   
+		   function markGame($id,$result)
 		   {
 			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
 			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
