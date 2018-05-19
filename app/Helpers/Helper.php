@@ -57,8 +57,8 @@ class Helper implements HelperContract
            	$ret = User::create(['fname' => $data['fname'], 
                                                       'lname' => $data['lname'],                                                      
                                                       'phone' => $data['phone'], 
-                                                      'email' => $data['email'], 
-                                                      'role' => $data['role'], 
+                                                      'email' => $data['email'], 'username' => $data['username'], 
+                                                      'role' => "admin", 
                                                       'password' => bcrypt($data['password']), 
                                                       ]);
                                                       
