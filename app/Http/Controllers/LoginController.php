@@ -171,7 +171,7 @@ class LoginController extends Controller {
     {
     	$req = $request->all(); 
         $validator = Validator::make($req, [
-                             'rxf' => 'required|confirmed'
+                             'rxf' => 'required|confirmed', 
                              'password' => 'required|confirmed'
                   ]);
                   
