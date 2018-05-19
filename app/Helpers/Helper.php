@@ -60,7 +60,7 @@ class Helper implements HelperContract
                                                       'phone' => $data['phone'], 
                                                       'email' => $data['email'], 'username' => $data['username'], 
                                                       'role' => "admin", 
-                                                      'password' => bcrypt($data['password']), 
+                                                      'password' => bcrypt($data['pass']), 
                                                       ]);
                                                       
                 return $ret;
