@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Mail;
 use Auth; 
 use Football; 
+use App\User;
 
 class Helper implements HelperContract
 {
