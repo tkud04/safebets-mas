@@ -44,11 +44,11 @@
 						<button type="button" class="close btn btn-warning" data-dismiss="modal">&times; close</button>
 						<div class="modal-body">
 											<p class="coupon-text">Returning customer? Sign in here.</p>
-											<form data-href="{{url('login')}}" id="login-form">
+											<form data-href="{{url('login')}}" id="login-form" method="post">
 											   {{csrf_field()}}
 												<div class="form-group">
 												    <label for="email"><strong>Username or email <span class="required">*</span></strong></label>
-													<input class="form-control" type="email" id="email" name="email" placeholder="Email address" value="{{old('email')}}" />
+													<input class="form-control" type="text" id="email" name="email" placeholder="Username or Email address" value="{{old('email')}}" />
 												</div>
 												<div class="form-group">
 													<label for="pass"><strong>Password <span class="required">*</span></strong></label>
