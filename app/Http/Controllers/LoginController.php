@@ -9,6 +9,7 @@ use Auth;
 use Session; 
 use Validator; 
 use Carbon\Carbon; 
+use App\User;
 
 class LoginController extends Controller {
 
