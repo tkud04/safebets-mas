@@ -44,7 +44,7 @@
 						<button type="button" class="close btn btn-warning" data-dismiss="modal">&times; close</button>
 						<div class="modal-body">
 											<p class="coupon-text">Returning customer? Sign in here.</p>
-											<form data-href="{{url('login')}}" id="login-form" method="post">
+											<form action="{{url('login')}}" id="login-form" method="post">
 											   {{csrf_field()}}
 												<div class="form-group">
 												    <label for="email"><strong>Username or email <span class="required">*</span></strong></label>
