@@ -97,7 +97,7 @@ class AdminController extends Controller {
 		{
 			$ret = $this->helpers->getUser($id);
 			$breadCrumb = "Add/Remove tokens";
-			return view('admin.ut', compact(['user','breadCrumb','ret','action']));
+			return view('admin.ut', compact(['user','breadCrumb','ret']));
 		}		
     	
     }	
@@ -266,7 +266,7 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
+		if($user == null || $user->role != "admin" || $id == "")
 		{
 			return redirect()->intended('/');
 		}
@@ -293,7 +293,7 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
+		if($user == null || $user->role != "admin" || $id == "")
 		{
 			return redirect()->intended('/');
 		}

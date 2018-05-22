@@ -172,7 +172,6 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
-		   
 		   function getUsers()
 		   {
 			   $ret  = [];
@@ -190,7 +189,6 @@ class Helper implements HelperContract
 					   $temp['status'] = $user->status;
 					   $temp['email'] = $user->email;
 					   $temp['phone'] = $user->phone;
-					   $temp['role'] = $user->role;
 				   }
 			   }
 			   
@@ -217,6 +215,7 @@ class Helper implements HelperContract
 			   
 			   return $ret;
 		   }		   
+		   
 		   
 		   function getBetSlip($id)
 		   {
