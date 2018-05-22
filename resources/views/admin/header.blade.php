@@ -12,7 +12,7 @@
                 <!-- Logo -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{{url('nimda')}}">
-                        SAFEBETS ADMIN
+                        ADMIN
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -156,7 +156,7 @@
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('images/users/5.jpg')}}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>

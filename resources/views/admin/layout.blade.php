@@ -14,12 +14,13 @@
 			       if(Session::has("mark-game-status") && Session::get("mark-game-status") == "success") $msg = "Game result successfully updated";
 			       else if(Session::has("mark-bet-slip-status") && Session::get("mark-bet-slip-status") == "success") $msg = "Bet slip result successfully updated";
 				?>
+				<!--
 				<div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-               </div>
+               </div>-->
 			   <input type="hidden" id="msg" value="{{$msg}}"/>
 			   <script>
 			     $('#toastr-success-top-right').on("click", function() {

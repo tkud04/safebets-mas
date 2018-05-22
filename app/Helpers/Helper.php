@@ -65,7 +65,7 @@ class Helper implements HelperContract
                                                       'phone' => $data['phone'], 
                                                       'email' => $data['email'], 
 													  'username' => $data['username'], 
-                                                      'role' => "admin", 
+                                                      'role' => "punter", 
                                                       'password' => bcrypt($data['pass']), 
                                                       ]);
                                                       
@@ -278,7 +278,7 @@ class Helper implements HelperContract
 			   
 			   if($user != null)
 			   {
-				   $purchases = Purchases::where('user_id',$user->id)->get();
+				   $purchases = Purchases::where('buyer_id',$user->id)->orWhere('seller_id',$user->id)->get();
 				   if($purchases != null) $ret = count($purchases);
 			   }
 			   
@@ -308,9 +308,8 @@ class Helper implements HelperContract
 						   if($type == "single") $typeText = "Single-game bet slip";
 						   else if($type == "multi") $typeText = "Multi-game bet slip";
 						   $temp["product"] = $typeText;
-						   
-						   $betSlipCategory = Settings::where("user_id",$p->seller_id)->first();
-						   $temp["category"] = $betSlipCategory;
+						   				
+						   $temp["category"] = $t->category;
 						   
 						   $temp["status"] = $p->status;
 						   $temp["game-status"] = $t->result;

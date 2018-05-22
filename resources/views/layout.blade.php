@@ -5,11 +5,9 @@
 <section id="">
     <div class="container">
          <div class="row">
-	            @if(isset($errors))
 		     <div class="col-md-12">
 			     @include("input-errors")
 			 </div>
-			 @endif 
 			 
 			 <?php
 				     $msg = "";

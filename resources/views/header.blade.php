@@ -23,7 +23,7 @@
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" id="reg-btn" href="#">Sign up</a>
             </li>
-		   @elseif($user->role == "user" || $user->role == "expert")
+		   @elseif($user->role == "punter" || $user->role == "expert")
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('dashboard')}}">Dashboard</a>
             </li>
