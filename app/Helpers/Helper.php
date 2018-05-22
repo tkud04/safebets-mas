@@ -180,7 +180,7 @@ class Helper implements HelperContract
 			   
 			   if($users != null)
 			   {
-				   foreach($user as $user)
+				   foreach($users as $user)
 				   {
 					   $temp['id'] = $user->id;
 					   $temp['date'] = $user->created_at->format("jS F, Y h:i A");
