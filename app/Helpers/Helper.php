@@ -11,7 +11,6 @@ use App\User;
 use App\Tickets;
 use App\Predictions;
 use App\Purchases;
-use App\User;
 use App\Settings;
 use App\Tokens;
 
