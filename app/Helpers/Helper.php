@@ -167,34 +167,6 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
-		   function getBetSlipsPurchased($user)
-		   {
-			   $ret = [];
-			   
-			   $temp = [];
-			   
-			   $temp["id"] = "455633";	
-			   $temp["game-status"] = "fail";
-			   $temp["status"] = "paid";
-			   $temp["type"] = "single";
-			   $temp["category"] = "regular";
-			   $temp["user-2"] = "arsenalfan69";
-			   $temp["date"] = date("js F, Y h:i A");
-			   array_push($ret,$temp);			   
-			   
-			   $temp = [];
-			   
-			   $temp["id"] = "320459";	
-			   $temp["game-status"] = "win";
-			   $temp["status"] = "sold";
-			   $temp["category"] = "premium";
-			   $temp["type"] = "multi";
-			   $temp["user-2"] = "Oshozondi442";
-			   $temp["date"] = date("js F, Y h:i A");
-			   array_push($ret,$temp);
-			   
-			   return $ret;
-		   }
 		   
 		   function getUsers()
 		   {
