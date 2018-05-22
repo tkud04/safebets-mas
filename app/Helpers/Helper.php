@@ -176,12 +176,13 @@ class Helper implements HelperContract
 		   {
 			   $ret  = [];
 			   
-			   $users = User::all();
+			   $users = User::where('role',"punter")->orWhere('role',"expert")->get();
 			   
 			   if($users != null)
 			   {
 				   foreach($users as $user)
 				   {
+					   $temp = [];
 					   $temp['id'] = $user->id;
 					   $temp['date'] = $user->created_at->format("jS F, Y h:i A");
 					   $temp['name'] = $user->fname." ".$user->lname;
@@ -189,6 +190,7 @@ class Helper implements HelperContract
 					   $temp['status'] = $user->status;
 					   $temp['email'] = $user->email;
 					   $temp['phone'] = $user->phone;
+					   array_push($ret,$temp);
 				   }
 			   }
 			   
