@@ -27,8 +27,9 @@ Route::post('change-password', 'LoginController@postChangePassword');
 
 Route::get('dashboard', 'MainController@getDashboard');
 Route::get('games', 'MainController@getGames');
-Route::get('betslips', 'MainController@getBetSlips');
+Route::get('transactions', 'MainController@getBetSlips');
 Route::get('view-bs', 'MainController@getBetSlip');
+Route::get('v-g', 'MainController@getGame');
 Route::get('support', 'MainController@getSupport');
 Route::get('pricing', 'MainController@getPricing');
 

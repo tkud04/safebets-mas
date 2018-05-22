@@ -35,9 +35,9 @@ class MainController extends Controller {
 		}
 		
 		$ads = $this->helpers->getAds();
-		$todayGames = $this->helpers->getGames("today");
-		$premiumGames = $this->helpers->getGames("premium");
-		$regularGames = $this->helpers->getGames("regular");
+		$todayGames = $this->helpers->getGames($user,"today");
+		$premiumGames = $this->helpers->getGames($user,"premium");
+		$regularGames = $this->helpers->getGames($user,"regular");
     	return view('index', compact(['user','ads','todayGames','regularGames','premiumGames']));
     }
 	
@@ -175,10 +175,9 @@ class MainController extends Controller {
 			$user = Auth::user();
 		}
 		
-		$username = "arsenalfan69";
-		$tokenBalance = 11;
-		$totalBetSlipsPurchased = 24;
-		$todayGames = $this->helpers->getGames("today");
+		$tokenBalance = $this->helpers->getTokenBalance($user);
+		$totalBetSlipsPurchased = $this->helpers->getTotalBetSlipsPurchased($user);
+		$todayGames = $this->helpers->getGames($user,"today");
 		
     	return view('dashboard', compact(['user','username','tokenBalance','totalBetSlipsPurchased','todayGames']));
     }	
@@ -198,9 +197,9 @@ class MainController extends Controller {
 		}
 		
 		$ads = $this->helpers->getAds();
-		$todayGames = $this->helpers->getGames("today");
-		$premiumGames = $this->helpers->getGames("premium");
-		$regularGames = $this->helpers->getGames("regular");
+		$todayGames = $this->helpers->getGames($user,"today");
+		$premiumGames = $this->helpers->getGames($user,"premium");
+		$regularGames = $this->helpers->getGames($user,"regular");
 		
     	return view('games', compact(['user','ads','todayGames','regularGames','premiumGames']));
     }	
@@ -232,6 +231,35 @@ class MainController extends Controller {
 	 * @return Response
 	 */
 	public function getBetSlip(Request $request)
+    {
+           $req = $request->all();
+		   #dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'id' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                       $ret = "Invalid ID!";
+                       
+                 }
+                
+                 else
+                 { 
+			           $ret = $this->helpers->getBetSlip($req["id"]);
+                       #dd($ret);					   
+                  }       
+           return json_encode($ret);
+    } 
+
+    /**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getGame(Request $request)
     {
            $req = $request->all();
 		   #dd($req);

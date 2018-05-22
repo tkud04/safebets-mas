@@ -58,7 +58,8 @@ class Helper implements HelperContract
            	$ret = User::create(['fname' => $data['fname'], 
                                                       'lname' => $data['lname'],                                                      
                                                       'phone' => $data['phone'], 
-                                                      'email' => $data['email'], 'username' => $data['username'], 
+                                                      'email' => $data['email'], 
+													  'username' => $data['username'], 
                                                       'role' => "admin", 
                                                       'password' => bcrypt($data['pass']), 
                                                       ]);
@@ -98,6 +99,14 @@ class Helper implements HelperContract
 						   array_push($ret,$temp);
 					   }
                 return $ret;
+           }             
+		   
+		   function getFixture($id)
+           {
+			$ret = [];
+           	$fixtures = Football::getFixture($id);
+			
+            return $ret;
            }   
 		   
 		   function getAds()
@@ -114,10 +123,46 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
-		   function getGames($type)
+		   function getGames($user,$type)
 		   {
 			   $ret = [];
-			   shuffle($ret);
+			   $games = null;
+			   
+			   if($type == "today") $games = Tickets::all();
+			   else if($type == "premium") $games = Tickets::where("category","premium")->get();
+			   else if($type == "regular") $games = Tickets::where("category","regular")->get();
+			   
+			   if($games != null)
+			   {
+				   foreach($games as $g)
+				   {
+					   $temp = [];
+					   $temp["date"] = $g->created_at->format("jS F, Y h:i A");
+					   $temp["id"] = $g->id;
+					   $temp["category"] = $g->category;
+					   $temp["type"] = $g->type;
+					   $temp["odds"] = $g->total_odds;
+					   $seller = User::where('id',$g->user_id)->first();
+					   $temp["seller"] = $seller->username;
+					   
+					   
+					   $ct = "";
+					   if($g->category == "premium" && $g->type == "single") $ct = "ps";
+					   else if($g->category == "premium" && $g->type == "multi") $ct = "pm";
+					   else if($g->category == "regular" && $g->type == "single") $ct = "rs";
+					   else if($g->category == "regular" && $g->type == "multi") $ct = "rm";
+					   $temp["ct"] = $ct;
+					   
+					   $al = "np";
+					   $isAllowed = Purchases::where('ticket_id',$g->id)
+					                         ->where('buyer_id',$user->id)->first();
+						
+						if($isAllowed != null) $al = "py";
+						 $temp["al"] = $al;
+					   
+					    array_push($ret,$temp);
+				   }
+			   }
 			   
 			   return $ret;
 		   }		   
@@ -183,12 +228,38 @@ class Helper implements HelperContract
 		   
 		   function getBetSlip($id)
 		   {
-			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
-			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
-			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
-	        ];
+			   $ret  = null;
 			   
-			   return $ret;
+			   if($user != null)
+			   {
+				   $ticket= Tickets::where('id',$id)->first();
+				   
+				   if($ticket != null)
+				   {
+					   $ret = [];
+					   $ret["id"] = $id;
+					   $ret["status"] = $ticket->result;
+					   $ret["matches"] = [];
+					   
+					   $matches = Predictions::where('ticket_id',$id)->first();
+					   
+					   foreach($matches as $m)
+					   {
+						   $fixture = $this->getFixture($m->fixture_id);
+						   $fixtureMatch = $fixture["match"];
+						   $fixtureDate = $fixture["date"];
+						   $fixtureOutcome = $fixture["outcome"];
+						   
+						   $prediction = $m->prediction;
+						   $outcome = $m->outcome;
+						   
+						   $temp = [$fixtureDate,$fixtureMatch,$prediction,$fixtureOutcome,$outcome];
+						   array_push($ret["matches"],$temp);
+					   }
+				   }
+			   }
+			   
+			   return json_encode($ret);
 		   }		   
 		   
 		   function markBetSlip($id,$result)
@@ -209,7 +280,82 @@ class Helper implements HelperContract
 	        ];
 			   
 			   return $ret;
-		   }
-   
+		   }		   
+		   
+		   function getTokenBalance($user)
+		   {
+			   $ret = null;
+			   
+			   if($user != null)
+			   {
+				   $tk = Tokens::where('user_id',$user->id)->first();
+				   if($tk != null) $ret = $tk->balance;
+			   }
+			   
+			   return $ret;
+		   }		   
+		   
+		   function getTotalBetSlipsPurchased($user)
+		   {
+			   $ret = null;
+			   
+			   if($user != null)
+			   {
+				   $purchases = Purchases::where('user_id',$user->id)->get();
+				   if($purchases != null) $ret = count($purchases);
+			   }
+			   
+			   return $ret;
+		   }		   
+		   
+		   function getBetSlipsPurchased($user)
+		   {
+			   $ret = null;
+			   
+			   if($user != null)
+			   {
+				   $purchases = Purchases::where('buyer_id',$user->id)->orWhere('seller_id',$user->id)->get();
+				   if($purchases != null)
+				   {
+					   $ret = [];
+					   
+					   foreach($purchases as $p)
+					   {
+						   $temp = [];
+						   $t = Tickets::where('id',$p->ticket_id)->first();
+						   $temp["date"] = $p->created_at->format("jS F, Y h:i A");
+						   $temp["id"] = $p->id;
+						   $temp["bs-id"] = $p->ticket_id;
+						   
+						   $type = $t->type;
+						   if($type == "single") $typeText = "Single-game bet slip";
+						   else if($type == "multi") $typeText = "Multi-game bet slip";
+						   $temp["product"] = $typeText;
+						   
+						   $betSlipCategory = Settings::where("user_id",$p->seller_id)->first();
+						   $temp["category"] = $betSlipCategory;
+						   
+						   $temp["status"] = $p->status;
+						   $temp["game-status"] = $t->result;
+						   
+						   $user_2 = null;
+						   if($p->buyer_id == $user->id)
+						   {
+							   $user_2 = $p->seller_id;
+						   }
+						   else if($p->seller_id == $user->id)
+						   {
+							   $user_2 = $p->buyer_id;
+						   }
+						   
+						   $temp["user-2"] = $user_2;
+						   array_push($ret,$temp);
+					   }
+				   }
+			   }
+			   
+			   return $ret;
+		   }		   
+		   
 }
 ?>

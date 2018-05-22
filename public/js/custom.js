@@ -157,16 +157,8 @@ function viewBS(id,url){
 		   $("#bs-id").html(ret['id']);
 		   var gs = ret['matches'];
 		   console.log(gs);
-
-		 $.each(gs,function(i,v){
-			 obj = v;
-			 var tr = $("<tr></tr>");
-			 var status = "<hr>";
-			 if(obj[4] == "win") status = "<i class='text-success fa fa-check'></i>";
-			 else if(obj[4] == "fail") status = "<i class='text-primary fa fa-times'></i>";
-			 tr.append("<td>" + obj[0] + "</td><td>" + obj[1] + "</td><td><strong>" + obj[2] + "</strong></td>" + "</td><td>" + obj[3] + "</td>" + "</td><td>" + status + "</td>");
-			 $('#bs-table > tbody').append(tr);
-		 });	  
+		   
+		   fillTable("bs",gs);  
 	   }   
        setTimeout(function(){$('#bs-table').fadeIn();},800);    
      
@@ -174,4 +166,21 @@ function viewBS(id,url){
    });
    
 	return false;
+}
+
+function fillTable(table,data){
+	$.each(data,function(i,v){
+			 obj = v;
+			 var tr = $("<tr></tr>");
+			 var status = "<hr>";
+			 
+			 var tbody = "";
+			 if(table == "vg") tbody = '#vg-table > tbody';
+			 else if(table == "bs") tbody = '#bs-table > tbody';
+			 
+			 if(obj[4] == "win") status = "<i class='text-success fa fa-check'></i>";
+			 else if(obj[4] == "fail") status = "<i class='text-primary fa fa-times'></i>";
+			 tr.append("<td>" + obj[0] + "</td><td>" + obj[1] + "</td><td><strong>" + obj[2] + "</strong></td>" + "</td><td>" + obj[3] + "</td>" + "</td><td>" + status + "</td>");
+			 $(tbody).append(tr);
+		 });
 }

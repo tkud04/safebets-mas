@@ -31,7 +31,7 @@
               <a class="nav-link js-scroll-trigger" href="{{url('games')}}">Games</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('betslips')}}">My Bet slips</a>
+              <a class="nav-link js-scroll-trigger" href="{{url('transactions')}}">Transactions</a>
             </li>            	
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">Settings</a>

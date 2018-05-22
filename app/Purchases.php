@@ -9,6 +9,6 @@ class Purchases extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['user_id', 'ticket_id', 'status'];
+	protected $fillable = ['id','buyer_id', 'seller_id', 'ticket_id', 'status'];
 
 }

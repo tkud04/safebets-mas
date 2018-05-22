@@ -1,103 +1,82 @@
-document.querySelector('.sweet-wrong').onclick = function(){
-    sweetAlert("Oops...", "Something went wrong !!", "error");
-};
-document.querySelector('.sweet-message').onclick = function(){
-    swal("Hey, Here's a message !!")
-};
-document.querySelector('.sweet-text').onclick = function(){
-    swal("Hey, Here's a message !!", "It's pretty, isn't it?")
-};
-document.querySelector('.sweet-success').onclick = function(){
-    swal("Hey, Good job !!", "You clicked the button !!", "success")
-};
-document.querySelector('.sweet-confirm').onclick = function(){
-    swal({
-            title: "Are you sure to delete ?",
-            text: "You will not be able to recover this imaginary file !!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it !!",
-            closeOnConfirm: false
-        },
-        function(){
-            swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
-        });
-};
-document.querySelector('.sweet-success-cancel').onclick = function(){
-    swal({
-            title: "Are you sure to delete ?",
-            text: "You will not be able to recover this imaginary file !!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it !!",
-            cancelButtonText: "No, cancel it !!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        },
-        function(isConfirm){
-            if (isConfirm) {
-                swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
-            }
-            else {
-                swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
-            }
-        });
-};
-document.querySelector('.sweet-image-message').onclick = function(){
-    swal({
-        title: "Sweet !!",
-        text: "Hey, Here's a custom image !!",
-        imageUrl: "images/hand.jpg"
-    });
-};
-document.querySelector('.sweet-html').onclick = function(){
-    swal({
-        title: "Sweet !!",
-        text: "<span style='color:#ff0000'>Hey, you are using HTML !!<span>",
-        html: true
-    });
-};
-document.querySelector('.sweet-auto').onclick = function(){
-    swal({
-        title: "Sweet auto close alert !!",
-        text: "Hey, i will close in 2 seconds !!",
-        timer: 2000,
-        showConfirmButton: false
-    });
-};
-document.querySelector('.sweet-prompt').onclick = function(){
-    swal({
-            title: "Enter an input !!",
-            text: "Write something interesting !!",
-            type: "input",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            animation: "slide-from-top",
-            inputPlaceholder: "Write something"
-        },
-        function(inputValue){
-            if (inputValue === false) return false;
-            if (inputValue === "") {
-                swal.showInputError("You need to write something!");
-                return false
-            }
-            swal("Hey !!", "You wrote: " + inputValue, "success");
-        });
-};
-document.querySelector('.sweet-ajax').onclick = function(){
-    swal({
-            title: "Sweet ajax request !!",
-            text: "Submit to run ajax request !!",
+document.querySelector('.buy-game').onclick = function(){
+	var ct = $(this).attr("data-ct");
+	var xe = $(this).attr("data-xe");
+	var al = $(this).attr("data-al");
+	var urlx = $("#urlx").val();
+	var fee = 0;
+	
+	if(ct == "pm") fee = 8;
+	if(ct == "ps") fee = 4;
+	else if(ct == "rm") fee = 2;
+	else if(ct == "rs") fee = 1;
+	
+	var tt = " token";
+	if(fee == 0 || fee > 1) tt = " tokens";
+	
+	var swalConfig = {};
+	
+	if(al == "py"){
+		swalConfig = {
+            title: "Confirm Action",
+            text: "Click OK to continue ",
+            type: "info",
+        }
+	}
+	
+	else if(al == "np"){
+		swalConfig = {
+            title: "Confirm Purchase",
+            text: "Fee: " + fee + tt,
             type: "info",
             showCancelButton: true,
             closeOnConfirm: false,
             showLoaderOnConfirm: true,
-        },
+        }
+	}
+	
+    swal(swalConfig,
         function(){
             setTimeout(function(){
-                swal("Hey, your ajax request finished !!");
+				gg(al,xe,urlx);
             }, 2000);
         });
 };
+
+function gg(al,id,url){
+	$.ajax({   
+   type : 'POST',
+   url  : url,
+   data : {'id':id},
+   beforeSend: function()
+   { 
+    $("#vg-error").fadeOut();
+    $("#vg-table").fadeOut();
+    $("#vg-table > tbody").html("");
+    $("#vg-working").html('<br><br><div class="alert alert-info" role="alert" style=" text-align: center;"><strong class="block" style="font-weight: bold;">  <i class = "fa fa-spinner fa-2x slow-spin"></i>  Processing.. </strong></div>');
+	$('#vg-working').fadeIn();
+   },
+   success :  function(response)
+      {         
+       $('#vg-working').html("");	   
+       $('#vg-working').fadeOut();	   
+       //$('#result').html(response);	
+	   if(response.length < 3){}
+	   else{
+		   //$('#fixtures').html("<option value='none'>Select fixture</option>");
+		   var ret = JSON.parse(response);
+		   console.log(ret);
+		   $("#vg-id").html(ret['id']);
+		   var vg = ret['matches'];
+		   console.log(vg);
+		   
+		   fillTable("vg",vg);  
+	   }   
+	   if(al == "np") swal("Payment successful!! Click View to continue");
+	   $('#viewGameModal').modal("show");
+       $('#vg-table').fadeIn();    
+     
+     }
+   });
+   
+	return false;
+}

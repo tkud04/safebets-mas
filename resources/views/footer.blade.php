@@ -191,3 +191,42 @@
 					</div>
 				</div>
 			</div>
+			
+		
+		
+			<!-- View Game Modal -->
+			<div id="viewGameModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<button type="button" class="close btn btn-warning" data-dismiss="modal">&times; close</button>
+						<div class="modal-body">
+
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>Bet Slip #<span id="vg-id"></span> </h4>
+								<div id="vg-error"></div>
+								<div id="vg-working"></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped" id="vg-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Match</th>
+                                                <th>Prediction</th>
+                                                <th>Result</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			

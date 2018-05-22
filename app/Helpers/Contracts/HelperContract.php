@@ -5,6 +5,7 @@ Interface HelperContract
 {
         public function sendEmail($to,$subject,$data,$view,$type);
         public function getFixtures($id,$filter);
+        public function getFixture($id);
         public function getAds();
         public function getGames($type);
         public function getUsers();
@@ -14,5 +15,8 @@ Interface HelperContract
         public function getBetSlip($id);
         public function markBetSlip($id,$result);
         public function markGame($id,$result);
+        public function getTokenBalance($user);
+        public function getTotalBetSlipsPurchased($user);
+        public function getBetSlipsPurchased($user);
 }
  ?>
