@@ -201,9 +201,24 @@ class Helper implements HelperContract
 		   
 		   function getUser($id)
 		   {
-			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
-			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
-			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
+			   $ret  = [];
+			   
+			   $users = User::where('id',$id)->first();
+			   
+			   if($user != null)
+			   {
+					   $ret['id'] = $user->id;
+					   $ret['date'] = $user->created_at->format("jS F, Y h:i A");
+					   $ret['name'] = $user->fname." ".$user->lname;
+					   $ret['username'] = $user->username;
+					   $ret['status'] = $user->status;
+					   $ret['email'] = $user->email;
+					   $ret['phone'] = $user->phone;
+					   $ret['role'] = $user->role;
+			   }
+			   
+			   
+			   return $ret;
 	        ];
 			   
 			   return $ret;
@@ -211,10 +226,42 @@ class Helper implements HelperContract
 		   
 		   function getBetSlips()
 		   {
-			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
-			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
-			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
-	        ];
+			   $ret = [];
+			   
+				   $betslips = Tickets::all();
+				   if($betslips != null)
+				   {   
+					   foreach($betslips as $ticket)
+					   {
+					   $temp = [];
+					   $temp["id"] = $ticket->id;
+					   $temp["status"] = $ticket->result;
+					   $seller = User:where('id',$ticket->user_id)->first();
+					   $temp["seller"] = $seller->username;
+					   $temp["product"] = $ticket->type;
+					   $temp["odds"] = $ticket->total_odds;
+					   $temp["category"] = $ticket->category;
+					   $temp["booking-code"] = $ticket->booking_code;
+					   $temp["matches"] = [];
+					   
+					   $matches = Predictions::where('ticket_id',$ticket->id)->get();
+					   
+					   foreach($matches as $m)
+					   {
+						   $fixture = $this->getFixture($m->fixture_id);
+						   $fixtureMatch = $fixture["match"];
+						   $fixtureDate = $fixture["date"];
+						   $fixtureOutcome = $fixture["outcome"];
+						   
+						   $prediction = $m->prediction;
+						   $outcome = $m->outcome;
+						   
+						   $temp = [$fixtureDate,$fixtureMatch,$prediction,$fixtureOutcome,$outcome];
+						   array_push($ret["matches"],$temp);
+					   }
+						   array_push($ret,$temp);
+					   }
+				   }
 			   
 			   return $ret;
 		   }		   
@@ -253,7 +300,7 @@ class Helper implements HelperContract
 				   }
 			   }
 			   
-			   return json_encode($ret);
+			   return $ret;
 		   }		   
 		   
 		   function markBetSlip($id,$result)

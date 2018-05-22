@@ -27,7 +27,9 @@ Route::post('change-password', 'LoginController@postChangePassword');
 
 Route::get('dashboard', 'MainController@getDashboard');
 Route::get('games', 'MainController@getGames');
-Route::get('transactions', 'MainController@getBetSlips');
+Route::get('betslips', 'MainController@getBetSlips');
+Route::get('transactions', 'MainController@getPurchases');
+Route::get('transactions', 'MainController@getPurchases');
 Route::get('view-bs', 'MainController@getBetSlip');
 Route::get('v-g', 'MainController@getGame');
 Route::get('support', 'MainController@getSupport');
@@ -40,11 +42,13 @@ Route::get('pricing', 'MainController@getPricing');
 Route::get('nimda', 'AdminController@getDashboard');
 Route::get('nimda/enable/{id?}', 'AdminController@getEnable');
 Route::get('nimda/disable/{id?}', 'AdminController@getDisable');
+
+Route::get('nimda/shez/{status?}/{id?}', 'AdminController@getMarkTicket');
+Route::get('nimda/swqq/{status?}/{id?}', 'AdminController@getMarkGame');
 Route::get('nimda/users', 'AdminController@getUsers');
 Route::get('nimda/ut/{action?}/{id?}', 'AdminController@getManageTokens');
 Route::post('nimda/ut', 'AdminController@postManageTokens');
 
-Route::get('nimda/betslips', 'AdminController@getBetSlips');
+Route::get('nimda/transactions', 'AdminController@getPurchases');
+Route::get('nimda/betslips', 'AdminController@getTickets');
 Route::get('nimda/betslip/{id?}', 'AdminController@getBetSlip');
-Route::get('nimda/mark-betslip/{id?}/{result?}', 'AdminController@getMarkBetSlip');
-Route::get('nimda/mark-game/{id?}/{result?}', 'AdminController@getMarkGame');

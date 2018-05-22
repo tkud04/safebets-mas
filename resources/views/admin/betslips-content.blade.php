@@ -5,75 +5,72 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Bet Slips</h4>
-                                <h6 class="card-subtitle">List of all bet slips posted on SafeBets</h6>
+                                <h6 class="card-subtitle">List of all transactions on SafeBets</h6>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
-                                                <th>Type</th>
+                                                <th>Product</th>
                                                 <th>Category</th>
-                                                <th>Sold by</th>
+                                                <th>Odds</th>
+                                                <th>Booking code</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>                                        
 										<tbody>
+										    @if(isset($betslips))
+											@foreach($betslips as $bs)
+										    <?php
+											    $category = $bs["category"];
+												$product = $bs["product"];
+												$gameStatus = $bs['status'];
+												$odds = $bs['odds'];
+												$bookingCode = $bs['booking-code'];
+												$gs = "fa fa-question-circle";
+												
+												if($gameStatus == "win") $gs = "text-success fa fa-check";
+												else if($gameStatus == "loss") $gs = "text-primary fa fa-times";
+											
+												
+												$badgeClass = "badge-info";
+												$statusClass = "badge-info";
+			
+												if($category == "regular") $badgeClass = "badge-success";
+												else if($category == "premium") $badgeClass = "badge-premium";
+																								
+												$url = url('nimda/betslip');
+												$seller = $bs["seller"];
+												$id = $bs["id"];
+												$url .= "/".$id;
+												
+												$winURL = url("nimda/shez/quee")."/".$id;
+												$lossURL = url("nimda/shez/abra")."/".$id;
+											?>
                                             <tr>
-                                                <td><?php echo date("jS F, Y h:i A"); ?></td>
-                                                <td>Single-game bet slip</td>
-                                                <td><span class="badge badge-success">REGULAR</span></td>
-                                                <td><a href='#'>arsenalfan69</a></td>
-                                                <td><i class="text-primary fa fa-times"></i></td>
-                                                <td>
-												 <a class="btn btn-warning text-white" href="vbs.php">View</a>
-												 
+                                                <td>{{$bs["date"]}}</td>
+                                                <td>{{$product}}</td>
+                                                <td><span class="badge {{$badgeClass}}">{{$category}}</span></td>
+                                                <td><a href='#'>{{$odds}}</a><br></td>
+                                                <td><a href='#'>{{$bookingCode}}</a><br></td>
+                                                <td><a href='#'>{{$seller}}</a><br></td>
+                                                <td><i class="{{$gs}}"></i></td>
+												<td>
+												 <a class="btn btn-warning text-white" href="{{$url}}">View</a>
+												 @if($status == "uncleared")
 												 <div class="btn-group" role="group">
 												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
 												 <div class="dropdown-menu" aria-labelledby="mark-btn">
-												    <a class="dropdown-item" href="#">Win</a>
-												    <a class="dropdown-item" href="#">Loss</a>
+												    <a class="dropdown-item" href="{{$winURL}}">Win</a>
+												    <a class="dropdown-item" href="{{$lossURL}}">Loss</a>
 												 </div>													
 												 </div>
+												 @endif
 												</td>
-                                            </tr>                                            
-											<tr>
-                                                <td><?php echo date("jS F, Y h:i A"); ?></td>
-                                                <td>Multi-game bet slip</td>
-                                                <td><span class="badge badge-danger">PREMIUM</span></td>
-                                                <td><a href='#'>Oshozondi</a></td>
-                                                <td><i class="text-primary fa fa-times"></i></td>
-                                                <td>
-												 <a class="btn btn-warning text-white" href="vbs.php">View</a>
-												 
-												 <div class="btn-group" role="group">
-												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
-												 <div class="dropdown-menu" aria-labelledby="mark-btn">
-												    <a class="dropdown-item" href="#">Win</a>
-												    <a class="dropdown-item" href="#">Loss</a>
-												 </div>													
-												 </div>
-												</td>
-                                            </tr>											
-											<tr>
-                                                <td><?php echo date("jS F, Y h:i A"); ?></td>
-                                                <td>Multi-game bet slip</td>
-                                                <td><span class="badge badge-danger">PREMIUM</span></td>
-                                                <td><a href='#'>Oshozondi</a></td>
-                                                <td><i class="text-primary fa fa-times"></i></td>
-                                                <td>
-												 <a class="btn btn-warning text-white" href="vbs.php">View</a>
-
-												 <div class="btn-group" role="group">
-												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
-												 <div class="dropdown-menu" aria-labelledby="mark-btn">
-												    <a class="dropdown-item" href="#">Win</a>
-												    <a class="dropdown-item" href="#">Loss</a>
-												 </div>													
-												 </div>												 
-												 
-												</td>
-                                            </tr>
+                                            </tr>  
+											@endforeach
+											@endif
                                         </tbody>
 										
                                     </table>

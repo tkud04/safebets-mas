@@ -36,8 +36,8 @@
 											}
 											
 											$href .= "/".$u['id'];
-											$addUrl = url('ut/ad')."/".$u['id'];
-											$removeUrl = url('ut/rm')."/".$u['id'];
+											$addUrl = url('nimda/ut/ad')."/".$u['id'];
+											$removeUrl = url('nimda/ut/rm')."/".$u['id'];
 										  ?>
 										    <tr>
 											  <td>{{$u['date']}}</td>

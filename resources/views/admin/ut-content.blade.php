@@ -7,7 +7,7 @@
                                 <h4 class="m-b-0 text-white">User Management</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{url('nimda/user')}}" method="post">
+                                <form action="{{url('nimda/ut')}}" method="post">
                                     <div class="form-body">
 									{{csrf_field()}}
                                         <h3 class="card-title m-t-15">Add/Remove Tokens</h3>
@@ -30,6 +30,10 @@
                                                 <div class="form-group">
                                                     <label>Username</label>
                                                     <input type="text" class="form-control" name="username" value="{{old('username')}}">
+                                                    <input type="hidden" class="form-control" name="gggg" value="{{$userr['id']}}">
+													<script>
+													  document.querySelector('#username').value = "{{$user['username']}}";
+													</script>
                                                 </div>
                                             </div>
                                             <!--/span-->

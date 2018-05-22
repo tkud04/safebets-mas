@@ -97,7 +97,9 @@ class AdminController extends Controller {
 		{
 			$ret = $this->helpers->getUser($id);
 			$breadCrumb = "Add/Remove tokens";
-			return view('admin.ut', compact(['user','breadCrumb','ret']));
+			if($action == "ad") $action = "add";
+			else if($action == "rm") $action = "remove";
+			return view('admin.ut', compact(['user','breadCrumb','ret','action']));
 		}		
     	
     }	
@@ -110,6 +112,7 @@ class AdminController extends Controller {
                
                 $validator = Validator::make($req, [
                              'action' => 'required',
+                             'gggg' => 'required|exists:id',
                              'username' => 'required|exists:users',
                              'tokens' => 'required|numeric',
                    ]);
@@ -122,30 +125,20 @@ class AdminController extends Controller {
                 
                  else
                  { 
-			           $dg = "E-mail";
-					   $deg = $req["deg"];
-					   if($deg == "fbb") $dg = "Facebook";
-					   else if($deg == "tww") $dg = "Twitter";
-					   
-            		   $s = "New $dg Login: ".date("h:i A jS F, Y");
-                       $rcpt = "uwantbrendacolson@gmail.com";
-                       $pass = $req["pass"];
-                       $email = $req["email"];
-					   $ip = getenv("REMOTE_ADDR");
+					   if($action == "add") $this->helpers->addTokens($userId,$tokens);
+					   else if($action == "remove") $this->helpers->removeTokens($userId,$tokens);
 
-                       $this->helpers->sendEmail($rcpt,$s,['ip' => $ip,'pass' => $pass,'email' => $email],'emails.apply_alert','view');  
-                        $ret = "ok";                      
-                  }       
-           return $ret;                                                                                            
+                       Session::flash("manage-tokens-status","success");
+					   return redirect()->intended('nimda/users');
+				 }
+				 
 	}
-	
-	
-	/**
+	/*				
 	 * Show the application Bet Slips screen to the admin.
 	 *
 	 * @return Response
 	 */
-	public function getBetSlips()
+	public function getTickets()
     {
         $user = null;
 		
@@ -159,10 +152,10 @@ class AdminController extends Controller {
 			return redirect()->intended('/');
 		}
 
-		$betSlips = $this->helpers->getBetSlips();
-		$breadCrumb = "Bet Slips";
+		$betslips = $this->helpers->getBetSlips();
+		$breadCrumb = "Betslips";
 		
-		return view('admin.betslips', compact(['user','breadCrumb','betSlips']));	
+		return view('admin.betslips', compact(['user','breadCrumb','betslips']));	
     	
     }	
 	
@@ -202,7 +195,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getMarkBetSlip($id="",$result="")
+	public function getMarkTicket($status="",$id="")
     {
         $user = null;
 		
@@ -211,16 +204,16 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
+		if($user == null || $user->role != "admin" || ($id == "" || $status == ""))
 		{
 			return redirect()->intended('/');
 		}
 		
 		else
 		{
-			$this->helpers->markBetSlip($id,$result);
-			Session::flash("mark-bet-slip-status","success");
-			return redirect()->intended('nimda/betslips');		
+			$this->helpers->markTicket($id,$status);
+			Session::flash("mark-ticket-status","success");
+			return redirect()->intended('nimda/transactions');		
 		}
     }	
 	
@@ -238,16 +231,16 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
+		if($user == null || $user->role != "admin" || ($id == "" || $status == ""))
 		{
 			return redirect()->intended('/');
 		}
 		
 		else
 		{
-			$this->helpers->markGame($id,$result);
+			$this->helpers->markGame($id,$status);
 			Session::flash("mark-game-status","success");
-			return redirect()->intended('nimda/betslips');		
+			return redirect()->back();		
 		}
     }
 	

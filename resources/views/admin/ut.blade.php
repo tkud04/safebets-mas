@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title',"User Management")
+@section('title',"Add/Remove Tokens")
 
 
 @section('content')
