@@ -219,9 +219,7 @@ class Helper implements HelperContract
 			   
 			   
 			   return $ret;
-	        ];
-			   
-			   return $ret;
+	        
 		   }		   
 		   
 		   function getBetSlips()
