@@ -234,7 +234,7 @@ class Helper implements HelperContract
 					   $temp = [];
 					   $temp["id"] = $ticket->id;
 					   $temp["status"] = $ticket->result;
-					   $seller = User:where('id',$ticket->user_id)->first();
+					   $seller = User::where('id',$ticket->user_id)->first();
 					   $temp["seller"] = $seller->username;
 					   $temp["product"] = $ticket->type;
 					   $temp["odds"] = $ticket->total_odds;
