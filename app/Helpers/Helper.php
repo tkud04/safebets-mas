@@ -8,6 +8,12 @@ use Mail;
 use Auth; 
 use Football; 
 use App\User;
+use App\Tickets;
+use App\Predictions;
+use App\Purchases;
+use App\User;
+use App\Settings;
+use App\Tokens;
 
 class Helper implements HelperContract
 {
