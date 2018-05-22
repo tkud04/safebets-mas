@@ -175,10 +175,25 @@ class Helper implements HelperContract
 		   
 		   function getUsers()
 		   {
-			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
-			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
-			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
-	        ];
+			   $ret  = [];
+			   
+			   $users = User::all();
+			   
+			   if($users != null)
+			   {
+				   foreach($user as $user)
+				   {
+					   $temp['id'] = $user->id;
+					   $temp['date'] = $user->created_at->format("jS F, Y h:i A");
+					   $temp['name'] = $user->fname." ".$user->lname;
+					   $temp['username'] = $user->username;
+					   $temp['status'] = $user->status;
+					   $temp['email'] = $user->email;
+					   $temp['phone'] = $user->phone;
+					   $temp['role'] = $user->role;
+				   }
+			   }
+			   
 			   
 			   return $ret;
 		   }		   
@@ -333,5 +348,28 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
+		   function enable($user_id)
+		   {
+			   $u = User::where('id',$user_id)->first();
+			   
+			   if($u != null)
+			   {
+				   $u->update(['status' => "enabled"]);
+			   }
+			   
+			   return $ret;
+		   }		   
+		   
+		   function disable($user_id)
+		   {
+			   $u = User::where('id',$user_id)->first();
+			   
+			   if($u != null)
+			   {
+				   $u->update(['status' => "disabled"]);
+			   }
+			   
+			   return $ret;
+		   }
 }
 ?>

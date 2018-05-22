@@ -32,7 +32,7 @@ class MainController extends Controller {
 		if(Auth::check())
 		{
 			$user = Auth::user();
-		}
+	    }
 		
 		$ads = $this->helpers->getAds();
 		$todayGames = $this->helpers->getGames($user,"today");
@@ -174,6 +174,10 @@ class MainController extends Controller {
 		{
 			$user = Auth::user();
 		}
+		else
+		{
+			return redirect()->intended('/');
+		}
 		
 		$tokenBalance = $this->helpers->getTokenBalance($user);
 		$totalBetSlipsPurchased = $this->helpers->getTotalBetSlipsPurchased($user);
@@ -194,6 +198,10 @@ class MainController extends Controller {
 		if(Auth::check())
 		{
 			$user = Auth::user();
+		}
+		else
+		{
+			return redirect()->intended('/');
 		}
 		
 		$ads = $this->helpers->getAds();
@@ -216,6 +224,10 @@ class MainController extends Controller {
 		if(Auth::check())
 		{
 			$user = Auth::user();
+		}
+		else
+		{
+			return redirect()->intended('/');
 		}
 		
 		$ads = $this->helpers->getAds();

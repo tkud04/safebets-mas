@@ -71,7 +71,7 @@ class AdminController extends Controller {
 		
 		$users = $this->helpers->getUsers();
 		$breadCrumb = "Users";
-    	return view('admin.ut', compact(['user','breadCrumb','users']));
+    	return view('admin.vu', compact(['user','breadCrumb','users']));
     }	
 	
 	/**
@@ -248,6 +248,61 @@ class AdminController extends Controller {
 			$this->helpers->markGame($id,$result);
 			Session::flash("mark-game-status","success");
 			return redirect()->intended('nimda/betslips');		
+		}
+    }
+	
+	
+	/**
+	 * Enables user.
+	 *
+	 * @return Response
+	 */
+	public function getEnable($id="")
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+			$this->helpers->enable($id);
+			Session::flash("enable-status","success");
+			return redirect()->intended('nimda/users');		
+		}
+    }	
+	
+	/**
+	 * Disables user.
+	 *
+	 * @return Response
+	 */
+	public function getDisable($id="")
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+			$this->helpers->disable($id);
+			Session::flash("disable-status","success");
+			return redirect()->intended('nimda/users');		
 		}
     }
 

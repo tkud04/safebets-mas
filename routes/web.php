@@ -38,9 +38,11 @@ Route::get('pricing', 'MainController@getPricing');
  Admin routes
 **/
 Route::get('nimda', 'AdminController@getDashboard');
+Route::get('nimda/enable/{id?}', 'AdminController@getEnable');
+Route::get('nimda/disable/{id?}', 'AdminController@getDisable');
 Route::get('nimda/users', 'AdminController@getUsers');
-Route::get('nimda/user/{id?}/{action?}', 'AdminController@getManageTokens');
-Route::post('nimda/user', 'AdminController@postManageTokens');
+Route::get('nimda/ut/{action?}/{id?}', 'AdminController@getManageTokens');
+Route::post('nimda/ut', 'AdminController@postManageTokens');
 
 Route::get('nimda/betslips', 'AdminController@getBetSlips');
 Route::get('nimda/betslip/{id?}', 'AdminController@getBetSlip');
