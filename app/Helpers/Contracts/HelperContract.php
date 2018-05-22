@@ -7,7 +7,7 @@ Interface HelperContract
         public function getFixtures($id,$filter);
         public function getFixture($id);
         public function getAds();
-        public function getGames($type);
+        public function getGames($user,$type);
         public function getUsers();
         public function getUser($id);
         public function getBetSlipsPurchased($user);
