@@ -60,20 +60,23 @@ function gg(al,id,url){
        $('#vg-working').html("");	   
        $('#vg-working').fadeOut();	   
        //$('#result').html(response);	
-	   if(response.length < 3){}
+	   if(ret['error'] == "insufficient-funds"){
+		   sweetAlert("Oops...", "You don't have enough tokens to buy this game.", "error");
+	   }
 	   else{
 		   //$('#fixtures').html("<option value='none'>Select fixture</option>");
-		   var ret = JSON.parse(response);
-		   console.log(ret);
 		   $("#vg-id").html(ret['id']);
 		   var vg = ret['matches'];
 		   console.log(vg);
 		   
 		   fillTable("vg",vg);  
+		   
+	     if(al == "np"){
+		   swal("Payment successful!! Click View to continue");
+	       $('#viewGameModal').modal("show");
+           $('#vg-table').fadeIn(); 
+	     }
 	   }   
-	   if(al == "np") swal("Payment successful!! Click View to continue");
-	   $('#viewGameModal').modal("show");
-       $('#vg-table').fadeIn();    
      
      }
    });

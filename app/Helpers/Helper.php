@@ -233,6 +233,7 @@ class Helper implements HelperContract
 					   {
 					   $temp = [];
 					   $temp["id"] = $ticket->id;
+					   $temp["date"] = $ticket->created_at->format("jS F, Y h:i A");
 					   $temp["status"] = $ticket->result;
 					   $seller = User::where('id',$ticket->user_id)->first();
 					   $temp["seller"] = $seller->username;
@@ -267,58 +268,74 @@ class Helper implements HelperContract
 		   
 		   function getBetSlip($id)
 		   {
-			   $ret  = null;
+			   $ret  = [];
 			   
-			   if($user != null)
-			   {
 				   $ticket= Tickets::where('id',$id)->first();
 				   
 				   if($ticket != null)
 				   {
-					   $ret = [];
-					   $ret["id"] = $id;
-					   $ret["status"] = $ticket->result;
-					   $ret["matches"] = [];
+					   $temp = [];
+					   $temp["id"] = $ticket->id;
+					   $temp["date"] = $ticket->created_at->format("jS F, Y h:i A");
+					   $temp["status"] = $ticket->result;
+					   $seller = User::where('id',$ticket->user_id)->first();
+					   $temp["seller"] = $seller->username;
+					   $temp["product"] = $ticket->type;
+					   $temp["odds"] = $ticket->total_odds;
+					   $temp["category"] = $ticket->category;
+					   $temp["booking-code"] = $ticket->booking_code;
+					   $temp["matches"] = [];
 					   
-					   $matches = Predictions::where('ticket_id',$id)->first();
+					   $matches = Predictions::where('ticket_id',$ticket->id)->get();
 					   
 					   foreach($matches as $m)
 					   {
 						   $fixture = $this->getFixture($m->fixture_id);
 						   $fixtureMatch = $fixture["match"];
 						   $fixtureDate = $fixture["date"];
-						   $fixtureOutcome = $fixture["outcome"];
+						   $fixtureResult = $fixture["result"];
 						   
 						   $prediction = $m->prediction;
 						   $outcome = $m->outcome;
 						   
-						   $temp = [$fixtureDate,$fixtureMatch,$prediction,$fixtureOutcome,$outcome];
-						   array_push($ret["matches"],$temp);
+						   $temp_2 = [$fixtureDate,$fixtureMatch,$prediction,$fixtureResult,$outcome];
+						   array_push($temp["matches"],$temp_2);
 					   }
 				   }
-			   }
-			   
+			   $ret = $temp; 
 			   return $ret;
 		   }		   
 		   
 		   function markBetSlip($id,$result)
 		   {
-			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
-			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
-			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
-	        ];
+			   $betslip = Tickets::where('id',$id)->first();
 			   
-			   return $ret;
-		   }		   
+			   if($betslip != null)
+			   {
+				   $status = "";
+				   if($result == "quee") $status = "win";
+				   else if($result == "abra") $status = "loss";
+				   
+				   $betslip->update(['result' => $status]);
+			   }
+			   
+			   return "ok";
+		   }				   
 		   
 		   function markGame($id,$result)
 		   {
-			   $ret  = [["17th May, 2018 12:29 PM","Chelsea v Manchester United","Over 1.5","1 - 0","fail"],
-			 ["17th May, 2018 12:29 PM","Bayern Munich v PSG","Over 2.5","3 - 2","win"],
-			 ["17th May, 2018 12:29 PM","Liverpool v AS Roma","Over 2.5","5 - 3","win"],
-	        ];
+			   $game = Predictions::where('id',$id)->first();
 			   
-			   return $ret;
+			   if($game != null)
+			   {
+				   $status = "";
+				   if($result == "quee") $status = "win";
+				   else if($result == "abra") $status = "loss";
+				   
+				   $game->update(['outcome' => $status]);
+			   }
+			   
+			   return "ok";
 		   }		   
 		   
 		   function getTokenBalance($user)
@@ -347,13 +364,11 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
-		   function getBetSlipsPurchased($user)
+		   function getUserPurchases($user)
 		   {
-			   $ret = null;
+			   $ret = [];
 			   
-			   if($user != null)
-			   {
-				   $purchases = Purchases::where('buyer_id',$user->id)->orWhere('seller_id',$user->id)->get();
+				   $purchases = Purchases::where("buyer_id",$user->id)->orWhere("seller_id",$user->id)->get();
 				   if($purchases != null)
 				   {
 					   $ret = [];
@@ -374,23 +389,15 @@ class Helper implements HelperContract
 						   $temp["category"] = $t->category;
 						   
 						   $temp["status"] = $p->status;
-						   $temp["game-status"] = $t->result;
 						   
-						   $user_2 = null;
-						   if($p->buyer_id == $user->id)
-						   {
-							   $user_2 = $p->seller_id;
-						   }
-						   else if($p->seller_id == $user->id)
-						   {
-							   $user_2 = $p->buyer_id;
-						   }
+						   $buyer = User::where('id',$p->buyer_id)->first();
+						   $seller = User::where('id',$p->seller_id)->first();
 						   
-						   $temp["user-2"] = $user_2;
+						   $temp["buyer"] = $buyer->username;
+						   $temp["seller"] = $seller->username;
 						   array_push($ret,$temp);
 					   }
 				   }
-			   }
 			   
 			   return $ret;
 		   }		   
@@ -418,5 +425,43 @@ class Helper implements HelperContract
 			   
 			   return $ret;
 		   }
+		   
+		   function getPurchases()
+		   {
+			   $ret = [];
+			   
+				   $purchases = Purchases::all();
+				   if($purchases != null)
+				   {
+					   $ret = [];
+					   
+					   foreach($purchases as $p)
+					   {
+						   $temp = [];
+						   $t = Tickets::where('id',$p->ticket_id)->first();
+						   $temp["date"] = $p->created_at->format("jS F, Y h:i A");
+						   $temp["id"] = $p->id;
+						   $temp["bs-id"] = $p->ticket_id;
+						   
+						   $type = $t->type;
+						   if($type == "single") $typeText = "Single-game bet slip";
+						   else if($type == "multi") $typeText = "Multi-game bet slip";
+						   $temp["product"] = $typeText;
+						   				
+						   $temp["category"] = $t->category;
+						   
+						   $temp["status"] = $p->status;
+						   
+						   $buyer = User::where('id',$p->buyer_id)->first();
+						   $seller = User::where('id',$p->seller_id)->first();
+						   
+						   $temp["buyer"] = $buyer->username;
+						   $temp["seller"] = $seller->username;
+						   array_push($ret,$temp);
+					   }
+				   }
+			   
+			   return $ret;
+		   }	
 }
 ?>

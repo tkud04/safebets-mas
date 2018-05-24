@@ -10,7 +10,8 @@ Interface HelperContract
         public function getGames($user,$type);
         public function getUsers();
         public function getUser($id);
-        public function getBetSlipsPurchased($user);
+        public function getUserPurchases($user);
+        public function getPurchases();
         public function getBetSlips();
         public function getBetSlip($id);
         public function markBetSlip($id,$result);

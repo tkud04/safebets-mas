@@ -20,60 +20,54 @@
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-										    <tr>
-											  <td><?php echo date("jS F, Y h:i A"); ?></td>
-											  <td>Chelsea vs Manchester United</td>
-											  <td><strong>Over 1.5</strong></td>
-											  <td><strong>3 - 1</strong></td>
-											  <td>Uncleared</td>
-                                              <td>
+                                            </tr>
+                                        </thead>                                        
+										<tbody>
+										    @if(isset($bs))
+											@foreach($bs['matches'] as $m)
+										    <?php
+											    $date = $m[0];
+												$match = $m[1];
+												$prediction = $m[2];
+												$result = $m[3];
+												$status = $m[4];
+
+												$gs = "fa fa-question-circle";
+												
+												if($status == "win") $gs = "text-success fa fa-check";
+												else if($status == "loss") $gs = "text-primary fa fa-times";
+											
+												
+												$badgeClass = "badge-info";
+												$statusClass = "badge-info";
+												
+												$winURL = url("nimda/swqq/quee")."/".$id;
+												$lossURL = url("nimda/swqq/abra")."/".$id;
+											?>
+											<script>
+													  document.querySelector('#bs-id').value = "{{$id}}";
+											</script>
+                                            <tr>
+                                                <td>{{$date}}</td>
+                                                <td>{{$match}}</td>
+                                                <td>{{$prediction}}</td>
+                                                <td>{{$result}}</td>
+                                                <td>{{$status}}</td>
+												<td>
+												 @if($status == "uncleared")
 												 <div class="btn-group" role="group">
 												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
 												 <div class="dropdown-menu" aria-labelledby="mark-btn">
-												    <a class="dropdown-item" href="#">Win</a>
-												    <a class="dropdown-item" href="#">Loss</a>
+												    <a class="dropdown-item" href="{{$winURL}}">Win</a>
+												    <a class="dropdown-item" href="{{$lossURL}}">Loss</a>
 												 </div>													
-												 </div>												 
-												 
-											  </td>
-											</tr>										    
-											<tr>
-											  <td><?php echo date("jS F, Y h:i A"); ?></td>
-											  <td>Chelsea vs Manchester United</td>
-											  <td><strong>Over 1.5</strong></td>
-											  <td><strong>3 - 1</strong></td>
-											  <td>Uncleared</td>
-                                              <td>
-												 <div class="btn-group" role="group">
-												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
-												 <div class="dropdown-menu" aria-labelledby="mark-btn">
-												    <a class="dropdown-item" href="#">Win</a>
-												    <a class="dropdown-item" href="#">Loss</a>
-												 </div>													
-												 </div>												 
-												 
-											  </td>
-											</tr>										    
-											<tr>
-											  <td><?php echo date("jS F, Y h:i A"); ?></td>
-											  <td>Chelsea vs Manchester United</td>
-											  <td><strong>Over 1.5</strong></td>
-											  <td><strong>3 - 1</strong></td>
-											  <td>Uncleared</td>
-                                              <td>
-												 <div class="btn-group" role="group">
-												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
-												 <div class="dropdown-menu" aria-labelledby="mark-btn">
-												    <a class="dropdown-item" href="#">Win</a>
-												    <a class="dropdown-item" href="#">Loss</a>
-												 </div>													
-												 </div>												 
-												 
-											  </td>
-											</tr>
-										</tbody>
+												 </div>
+												 @endif
+												</td>
+                                            </tr>  
+											@endforeach
+											@endif
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

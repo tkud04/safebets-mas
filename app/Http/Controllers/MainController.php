@@ -235,6 +235,27 @@ class MainController extends Controller {
 		
     	return view('betslips', compact(['user','ads','totalBetSlipsPurchased']));
     }
+
+	/**
+	 * Show the application Support screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getAddBetSlip()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		else
+		{
+			return redirect()->intended('/');
+		}
+		
+    	return view('add-bs', compact(['user']));
+    }
 	
 	
     /**
@@ -265,6 +286,31 @@ class MainController extends Controller {
                   }       
            return json_encode($ret);
     } 
+	
+	/*				
+	 * Show the application Transactions screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getPurchases()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null)
+		{
+			return redirect()->intended('/');
+		}
+
+		$purchases = $this->helpers->getUserPurchases($user);
+		
+		return view('transactions', compact(['user','purchases']));	
+    	
+    }	
 
     /**
 	 * Show the application welcome screen to the user.

@@ -27,11 +27,17 @@ Route::post('change-password', 'LoginController@postChangePassword');
 
 Route::get('dashboard', 'MainController@getDashboard');
 Route::get('games', 'MainController@getGames');
+
 Route::get('betslips', 'MainController@getBetSlips');
+Route::get('add-betslip', 'MainController@getAddBetSlip');
+Route::post('add-betslip', 'MainController@postAddBetSlip');
+
 Route::get('transactions', 'MainController@getPurchases');
 Route::get('transactions', 'MainController@getPurchases');
+
 Route::get('view-bs', 'MainController@getBetSlip');
 Route::get('v-g', 'MainController@getGame');
+
 Route::get('support', 'MainController@getSupport');
 Route::get('pricing', 'MainController@getPricing');
 

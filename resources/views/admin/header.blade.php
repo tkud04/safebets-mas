@@ -38,6 +38,7 @@
                                         <!-- List style -->
                                         <ul class="list-style-none">
                                             <li><a href="{{url('nimda/betslips')}}"><i class="fa fa-check text-success"></i> View Bet slips</a></li>
+                                            <li><a href="{{url('nimda/transactions')}}"><i class="fa fa-check text-success"></i> View Transactions</a></li>
                                         </ul>
                                     </li>
                                 </ul>

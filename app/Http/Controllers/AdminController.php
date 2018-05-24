@@ -133,6 +133,7 @@ class AdminController extends Controller {
 				 }
 				 
 	}
+	
 	/*				
 	 * Show the application Bet Slips screen to the admin.
 	 *
@@ -158,6 +159,32 @@ class AdminController extends Controller {
 		return view('admin.betslips', compact(['user','breadCrumb','betslips']));	
     	
     }	
+
+	/*				
+	 * Show the application Transactions screen to the admin.
+	 *
+	 * @return Response
+	 */
+	public function getPurchases()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+
+		$purchases = $this->helpers->getPurchases();
+		$breadCrumb = "Purchases";
+		
+		return view('admin.vt', compact(['user','breadCrumb','purchases']));	
+    	
+    }	
 	
 	/**
 	 * Show the application Bet Slips screen to the admin.
@@ -180,10 +207,10 @@ class AdminController extends Controller {
 		
 		else
 		{
-			$betSlip = $this->helpers->getBetSlip($id);
+			$bs = $this->helpers->getBetSlip($id);
 			$breadCrumb = "View bet slip";
 			
-			return view('admin.vbs', compact(['user','breadCrumb','betSlip']));			
+			return view('admin.vbs', compact(['user','breadCrumb','bs']));			
 		}
 
 	

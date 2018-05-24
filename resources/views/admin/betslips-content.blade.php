@@ -5,7 +5,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Bet Slips</h4>
-                                <h6 class="card-subtitle">List of all transactions on SafeBets</h6>
+                                <h6 class="card-subtitle">List of all betslips on SafeBets</h6>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>

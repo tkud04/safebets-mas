@@ -172,7 +172,7 @@ function fillTable(table,data){
 	$.each(data,function(i,v){
 			 obj = v;
 			 var tr = $("<tr></tr>");
-			 var status = "<hr>";
+			 var status = "<i class='text-success fa fa-question-circle'></i>";
 			 
 			 var tbody = "";
 			 if(table == "vg") tbody = '#vg-table > tbody';
