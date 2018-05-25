@@ -1,4 +1,5 @@
     <section id="dashboard">
+	    <h2 class="section-header">Dashboard</h2>
 	     <div class="container">
                 <div class="row">
 				    <div class="col-md-2"></div>
@@ -16,6 +17,20 @@
                             </div>
                         </div>
                     </div>                    
+					<div class="col-md-4 text-primary">
+                        <div class="card crd p-30">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span><i class="db-icon fa fa-soccer-ball-o fa-2x f-s-40 color-primary mt-3"></i></span>
+                                </div>
+                                <div class="col-md-8">
+                                    <h2>{{$totalBetSlipsSold}}</h2>
+                                    <p class="m-b-0">Bet slips sold</p>
+									<a href="{{url('betslips')}}" class="btn btn-primary">View bet slips</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
 					<div class="col-md-4 text-info">
                         <div class="card crd p-30">
                             <div class="row">

@@ -180,6 +180,7 @@ class MainController extends Controller {
 		}
 		
 		$tokenBalance = $this->helpers->getTokenBalance($user);
+		$totalBetSlipsSold = $this->helpers->getTotalBetSlipsSold($user);
 		$totalBetSlipsPurchased = $this->helpers->getTotalBetSlipsPurchased($user);
 		$todayGames = $this->helpers->getGames($user,"today");
 		

@@ -357,7 +357,7 @@ class Helper implements HelperContract
 		   
 		   function getTokenBalance($user)
 		   {
-			   $ret = null;
+			   $ret = 0;
 			   
 			   if($user != null)
 			   {
@@ -370,11 +370,23 @@ class Helper implements HelperContract
 		   
 		   function getTotalBetSlipsPurchased($user)
 		   {
-			   $ret = null;
+			   $ret = 0;
 			   
 			   if($user != null)
 			   {
-				   $purchases = Purchases::where('buyer_id',$user->id)->orWhere('seller_id',$user->id)->get();
+				   $purchases = Purchases::where('buyer_id',$user->id)->get();
+				   if($purchases != null) $ret = count($purchases);
+			   }
+			   
+			   return $ret;
+		   }		 
+		   function getTotalBetSlipsSold($user)
+		   {
+			   $ret = 0;
+			   
+			   if($user != null)
+			   {
+				   $purchases = Purchases::where('seller_id',$user->id)->get();
 				   if($purchases != null) $ret = count($purchases);
 			   }
 			   
