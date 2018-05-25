@@ -184,7 +184,7 @@ class MainController extends Controller {
 		$totalBetSlipsPurchased = $this->helpers->getTotalBetSlipsPurchased($user);
 		$todayGames = $this->helpers->getGames($user,"today");
 		
-    	return view('dashboard', compact(['user','username','tokenBalance','totalBetSlipsPurchased','todayGames']));
+    	return view('dashboard', compact(['user','username','tokenBalance','totalBetSlipsPurchased','totalBetSlipsSold','todayGames']));
     }	
 	
 	/**
