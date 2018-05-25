@@ -255,7 +255,8 @@ class MainController extends Controller {
 			return redirect()->intended('/');
 		}
 		
-    	return view('add-bs', compact(['user']));
+		$ret = Football::getLeagues();
+    	return view('add-bs', compact(['user','ret']));
     }
 	
 	

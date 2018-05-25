@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title',"Exploring Football Data API")
+@section('title',"Add Bet Slip")
 
 @section('content')
     <section id="add-bs">
