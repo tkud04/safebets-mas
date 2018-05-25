@@ -66,6 +66,12 @@ class LoginController extends Controller {
                else if($user->role == "expert"){return redirect()->intended("dashboard");}
                else if($user->role == "punter"){return redirect()->intended("dashboard");}
             }
+			
+			else
+			{
+				Session::flash("notif","yes");
+                     return redirect()->back()->withInput()->withErrors("Inavlid login details, please try again.","errors"); 
+			}
          }  
     }
 	
