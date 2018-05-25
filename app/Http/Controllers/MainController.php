@@ -83,7 +83,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ret = $this->helpers->getFixtures($req["id"],"n7");
+			           $ret = $this->helpers->getFixtures($req["id"],"n14");
                        #dd($ret);					   
                   }       
            return json_encode($ret);

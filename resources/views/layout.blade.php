@@ -1,9 +1,10 @@
 @include('head')
 @include('header')
+@include('notifications')
 
 @yield('banner')
 
-@include('notifications')
+
 
 @yield('content')
 
