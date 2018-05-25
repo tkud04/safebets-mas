@@ -22,5 +22,6 @@ Interface HelperContract
         public function getTotalBetSlipsSold($user);
         public function enable($user_id);
         public function disable($user_id);
+        public function getOtherLeagues();
 }
  ?>

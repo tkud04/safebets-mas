@@ -16,6 +16,8 @@ use App\Tokens;
 
 class Helper implements HelperContract
 {
+	
+	     public $otherLeagues = [];
 
           /**
            * Sends an email(blade view or text) to the recipient
@@ -72,6 +74,12 @@ class Helper implements HelperContract
                 return $ret;
            }  
 
+           function getOtherLeagues()
+		   {
+			   $ret = $this->otherLeagues;
+			   return $ret;
+		   }
+		   
            function getFixtures($id,$filter)
            {
 			$ret = [];

@@ -256,7 +256,8 @@ class MainController extends Controller {
 		}
 		
 		$ret = Football::getLeagues();
-    	return view('add-bs', compact(['user','ret']));
+		$otherLeagues = $this->helpers->getOtherLeagues();
+    	return view('add-bs', compact(['user','ret','otherLeagues']));
     }
 	
 	
