@@ -17,17 +17,37 @@
 				      <select class="form-control" id="league" data-lef="{{url('gf')}}">
 				        <option value="none">Select League</option>
 				        @foreach($ret as $r)
-					       <option value="{{$r->id}}">{{$r->caption}}</option>
+						  <?php $id = "aqwei_".$r->id; ?>
+					       <option value="{{$id}}">{{$r->caption}}</option>
 					    @endforeach
+						
+						@foreach($otherLeagues as $o)
+						   <?php $od = "oqwei_".$o['id']; ?>
+					       <option value="{{$od}}">{{$o['caption']}}</option>
+						@endforeach
 				      </select>
 			        </div>
 				 </div>
 			     <div class="col-sm-4 col-md-4">
-			        <div class="form-group">
+			        <div class="form-group" id="for-fxt">
 			           <label for="fixtures">Select fixtures</label>
 				       <select class="form-control" id="fixtures">
 				         <option value="none">Select fixture</option>
 				       </select>
+			        </div>			        
+					<div id="for-mt">
+					<div class="form-group">
+			           <label for="other-home">Home team</label>
+				       <select class="form-control" id="other-home">
+				         <option value="none">Select home team</option>
+				       </select>
+			        </div>					
+					<div class="form-group">
+			           <label for="other-away">Away team</label>
+				       <select class="form-control" id="other-away">
+				         <option value="none">Select away team</option>
+				       </select>
+			        </div>
 			        </div>
 			    </div>
 				<div class="col-sm-3 col-md-3">
