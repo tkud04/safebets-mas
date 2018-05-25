@@ -40,7 +40,7 @@ class LoginController extends Controller {
          {
              $messages = $validator->messages();
              //dd($messages);
-             
+             Session::flash("notif","yes");
              return redirect()->back()->withInput()->with('errors',$messages);
          }
          
@@ -53,6 +53,7 @@ class LoginController extends Controller {
 
                 if(is_null($user))
                 {
+					Session::flash("notif","yes");
                      return redirect()->back()->withInput()->withErrors("This user doesn't exist!","errors"); 
                 }
          	//authenticate this login
@@ -87,7 +88,7 @@ class LoginController extends Controller {
          {
              $messages = $validator->messages();
              //dd($messages);
-             
+             Session::flash("notif","yes");
              return redirect()->back()->withInput()->with('errors',$messages);
          }
          
@@ -101,6 +102,7 @@ class LoginController extends Controller {
              //after creating the user, send back to the registration view with a success message
              #$this->helpers->sendEmail($user->email,'Welcome To Disenado!',['name' => $user->fname, 'id' => $user->id],'emails.welcome','view');
              Session::flash("signup-status", "success");
+			 Session::flash("notif","yes");
              return redirect()->intended('/');
           }
     }
@@ -126,7 +128,7 @@ class LoginController extends Controller {
          {
              $messages = $validator->messages();
              //dd($messages);
-             
+             Session::flash("notif","yes");
              return redirect()->back()->withInput()->with('errors',$messages);
          }
          
@@ -143,7 +145,8 @@ class LoginController extends Controller {
 				$userHash = bcrypt($user->email);
                 
                 $this->helpers->sendEmail($user->email,'Change your password',['rxf' => $userHash],'emails.password_alert','view');                                                         
-            Session::flash("password-status","success");           
+            Session::flash("password-status","success");  
+            Session::flash("notif","yes");			
             return redirect()->intended('/');
 
       }
@@ -182,6 +185,7 @@ class LoginController extends Controller {
              //dd($messages);
              
              return redirect()->back()->withInput()->with('errors',$messages);
+			 Session::flash("notif","yes");
          }
          
          else{
@@ -193,7 +197,8 @@ class LoginController extends Controller {
 
                 if(is_null($user))
                 {
-                        return redirect()->back()->withErrors("Invalid token","errors"); 
+                        return redirect()->back()->withErrors("Invalid token","errors");
+						Session::flash("notif","yes");
                 }
                 
                 $user->update(['password' => bcrypt($req["password"])]);                                                         
