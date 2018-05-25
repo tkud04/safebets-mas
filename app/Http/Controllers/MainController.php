@@ -231,7 +231,7 @@ class MainController extends Controller {
 		}
 		
 		$ads = $this->helpers->getAds();
-		$totalBetSlipsPurchased = $this->helpers->getBetSlipsPurchased($user);
+		$totalBetSlipsPurchased = $this->helpers->getUserBetSlips($user);
 		
     	return view('betslips', compact(['user','ads','totalBetSlipsPurchased']));
     }

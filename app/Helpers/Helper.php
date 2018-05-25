@@ -269,38 +269,13 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   $purchases = $this->getUserPurchases($user);
+			   
 				   if(count($purchases) > 0)
 				   {   
 					   foreach($purchases as $p)
 					   {
-					   $temp = $this->getBetSlip($p['bs-id']);
-					   $temp["id"] = $ticket->id;
-					   $temp["date"] = $ticket->created_at->format("jS F, Y h:i A");
-					   $temp["status"] = $ticket->result;
-					   $seller = User::where('id',$ticket->user_id)->first();
-					   $temp["seller"] = $seller->username;
-					   $temp["product"] = $ticket->type;
-					   $temp["odds"] = $ticket->total_odds;
-					   $temp["category"] = $ticket->category;
-					   $temp["booking-code"] = $ticket->booking_code;
-					   $temp["matches"] = [];
-					   
-					   $matches = Predictions::where('ticket_id',$ticket->id)->get();
-					   
-					   foreach($matches as $m)
-					   {
-						   $fixture = $this->getFixture($m->fixture_id);
-						   $fixtureMatch = $fixture["match"];
-						   $fixtureDate = $fixture["date"];
-						   $fixtureOutcome = $fixture["outcome"];
-						   
-						   $prediction = $m->prediction;
-						   $outcome = $m->outcome;
-						   
-						   $temp2 = [$fixtureDate,$fixtureMatch,$prediction,$fixtureOutcome,$outcome];
-						   array_push($ret["matches"],$temp2);
-					   }
-						   array_push($ret,$temp);
+						 $temp = $this->getBetSlip($p['bs-id']);
+					     array_push($ret,$temp);
 					   }
 				   }
 			   
