@@ -60,6 +60,13 @@
 		e.preventDefault();
 		$('#loginModal').modal("show");
 		$('#registerModal').modal("hide");
+	});    
+	
+	$('a#save-btn').click(function(e){
+		e.preventDefault();
+		$("#ssp").val(JSON.stringify(userPredictions));
+		
+		$("#save-form").submit();
 	});
 
 })(jQuery); // End of use strict
@@ -95,6 +102,7 @@ function getLeague(url,id){
      }
    });
 }
+
 
 function refreshPredictions()
 {

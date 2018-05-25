@@ -1,4 +1,4 @@
-@if(Session::has("notif") && Session::get("notif") == "success")
+@if(Session::has("notif") && Session::get("notif") == "yes")
 <section id="">
     <div class="container">
          <div class="row">

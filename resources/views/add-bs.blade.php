@@ -103,7 +103,12 @@
 			  
 			  <tbody id="predictions-tbody">
 			  </tbody>
-			</table>
+			</table><br>
+			<form id="save-form" method="post" action="{{url('add-betslip')}}">
+				{{csrf_field()}}
+				<input type="hidden" id="ssp" name="ssp" value=""/>
+			</form>
+			<a class="btn btn-success" href="#" id="save-btn">Save Bet Slip</a>
 		   </div>
 		</div>
       </div>
