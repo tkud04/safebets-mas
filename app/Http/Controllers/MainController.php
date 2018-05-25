@@ -264,6 +264,36 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function postAddBetSlip(Request $request)
+    {
+           $req = $request->all();
+		   dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'id' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                       $ret = "Invalid ID!";
+                       
+                 }
+                
+                 else
+                 { 
+			           $ret = $this->helpers->getBetSlip($req["id"]);
+                       #dd($ret);					   
+                  }       
+           return json_encode($ret);
+    } 
+	
+	
+    /**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
 	public function getBetSlip(Request $request)
     {
            $req = $request->all();
