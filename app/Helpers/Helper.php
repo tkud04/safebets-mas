@@ -13,6 +13,9 @@ use App\Predictions;
 use App\Purchases;
 use App\Settings;
 use App\Tokens;
+use App\Countries;
+use App\Competitions;
+use App\Teams;
 
 class Helper implements HelperContract
 {

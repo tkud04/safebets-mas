@@ -11,7 +11,7 @@
 			<form id="fixture-form">
 			  <h3>Add Bet Slip</h3><br>
 			  <div class="row">
-			     <div class="col-sm-3 col-md-3">			
+			     <div class="col-sm-2 col-md-2">			
 			        <div class="form-group">
 			           <label for="league">Select league</label>
 				      <select class="form-control" id="league" data-lef="{{url('gf')}}">
@@ -20,15 +20,11 @@
 						  <?php $id = "aqwei_".$r->id; ?>
 					       <option value="{{$id}}">{{$r->caption}}</option>
 					    @endforeach
-						
-						@foreach($otherLeagues as $o)
-						   <?php $od = "oqwei_".$o['id']; ?>
-					       <option value="{{$od}}">{{$o['caption']}}</option>
-						@endforeach
+						   <option value="other">Other</option>
 				      </select>
 			        </div>
 				 </div>
-			     <div class="col-sm-4 col-md-4">
+			     <div class="col-sm-5 col-md-5">
 			        <div class="form-group" id="for-fxt">
 			           <label for="fixtures">Select fixtures</label>
 				       <select class="form-control" id="fixtures">
@@ -36,18 +32,40 @@
 				       </select>
 			        </div>			        
 					<div id="for-mt">
-					<div class="form-group">
-			           <label for="other-home">Home team</label>
-				       <select class="form-control" id="other-home">
-				         <option value="none">Select home team</option>
-				       </select>
-			        </div>					
-					<div class="form-group">
-			           <label for="other-away">Away team</label>
-				       <select class="form-control" id="other-away">
-				         <option value="none">Select away team</option>
-				       </select>
-			        </div>
+					  <div class="row">
+					     <div class="col-sm-3 col-md-3">
+							<div class="form-group">
+								<label for="other-country">Country</label>
+								<select class="form-control" id="other-country">
+									<option value="none">Select country</option>
+								</select>
+							</div>							     
+						 </div>					     
+						 <div class="col-sm-3 col-md-3">
+							<div class="form-group">
+								<label for="other-competition">Competition</label>
+								<select class="form-control" id="other-competition">
+									<option value="none">Select competition</option>
+								</select>
+							</div>							     
+						 </div>					     
+						 <div class="col-sm-3 col-md-3">
+							<div class="form-group">
+								<label for="other-home">Home</label>
+								<select class="form-control" id="other-home">
+									<option value="none">Home team</option>
+								</select>
+							</div>							     
+						 </div>					     
+						 <div class="col-sm-3 col-md-3">
+							<div class="form-group">
+								<label for="other-away">Away</label>
+								<select class="form-control" id="other-away">
+									<option value="none">Away team</option>
+								</select>
+							</div>							     
+						 </div>
+					  </div>
 			        </div>
 			    </div>
 				<div class="col-sm-3 col-md-3">

@@ -1,5 +1,6 @@
  var userPredictions = [];
    $('#predictions').hide();
+   $('#for-mt').hide();
    
 (function($) {
   "use strict"; // Start of use strict
@@ -8,6 +9,7 @@
 	  var l = $(this).val();
 	  var u = $(this).attr('data-lef');
 	  if(l == "none") alert("Please select a league to continue");
+	  else if(l == "other") getOtherLeagues();
 	  else getLeague(u,l);
   });
   
@@ -90,8 +92,6 @@ function getLeague(url,id){
        //$('#result').html(response);	
 	   if(response == "404"){}
 	   else{
-		   var qwei = id.split('_');
-		   if(qwei[0] == "aqwei"){
 			 $('#for-mt').hide();
 			 $('#for-fxt').fadeIn();
 			 
@@ -100,25 +100,7 @@ function getLeague(url,id){
 		     $.each(rr,function(i,v){
 			    obj = v;
 			    $('#fixtures').append("<option value='" + obj['href'] + "'>" + obj['d'] + " - " + obj['vs'] + "</option>");
-		     });
-		   }
-          
-           else if(qwei[0] == "oqwei"){
-			 $('#for-fxt').hide();
-			 $('#for-mt').fadeIn();
-		     $('#other-home').html("<option value='none'>Select home team</option>");
-		     $('#other-away').html("<option value='none'>Select home team</option>");
-		     rr = JSON.parse(response);
-		     $.each(rr.home,function(i,v){
-			    obj = v;
-			    $('#other-home').append("<option value='" + obj['id'] + "'>" + obj['name'] + "</option>");
-		     });		     
-			 
-			 $.each(rr.away,function(i,v){
-			    obj = v;
-			    $('#other-away').append("<option value='" + obj['id'] + "'>" + obj['name'] + "</option>");
-		     });			   
-		   }		  
+		     });		  
 	   }   
        setTimeout(function(){$('#result').fadeIn();},1500);    
      
