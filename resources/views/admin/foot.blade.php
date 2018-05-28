@@ -24,7 +24,7 @@
 					   else if($op == "add-competition") $msg = "Competition ";
 					   else if($op == "add-team") $msg = "Team ";
 					   
-					   $status = Session::get("status");
+					   $status = Session::get("op-status");
 					   if($status == "success") $msg .= "added!";
 				   }
 				?>
