@@ -400,7 +400,7 @@ class AdminController extends Controller {
 				 }	
 		}
 		
-		return $ret;
+		return json_encode($ret);
     }	
 	
 	/**
