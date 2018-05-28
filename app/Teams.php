@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Competitions extends Model {
+class Teams extends Model {
 
 	/**
 	 * The attributes that are mass assignable.
