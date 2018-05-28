@@ -29,6 +29,5 @@ Interface HelperContract
         public function getOtherLeagues();
         public function getTeams($competition);
         public function getCompetitions($country);
-        public function getLeagueTeams($league);
 }
  ?>
