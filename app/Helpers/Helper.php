@@ -86,7 +86,7 @@ class Helper implements HelperContract
 		   
 		   function addCompetition($data)
            {
-           	$ret = Countries::create(['country_id' => $data['country_id'],
+           	$ret = Competitions::create(['country_id' => $data['country_id'],
 									  'name' => $data['name'],
 			                         ]);
                                                       
@@ -95,7 +95,7 @@ class Helper implements HelperContract
 		   
 		   function addTeam($data)
            {
-           	$ret = Countries::create(['competition_id' => $data['competition_id'],
+           	$ret = Teams::create(['competition_id' => $data['competition_id'],
 									  'uid' => $data['uid'],
 									  'name' => $data['name'],
 			                         ]);
