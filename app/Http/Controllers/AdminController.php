@@ -324,6 +324,176 @@ class AdminController extends Controller {
 			Session::flash("disable-status","success");
 			return redirect()->intended('nimda/users');		
 		}
+    }	
+	
+	/**
+	 * Displays the Add Other Leagues view to admin.
+	 *
+	 * @return Response
+	 */
+	public function getOtherLeagues()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+			$breadCrumb = "Manage other leagues";
+			$countries = $this->helpers->getCountries();
+			$competitions = $this->helpers->getCompetitions();
+
+			return view('admin.ols', compact(['user','breadCrumb','countries','competitions']));			
+		}
     }
+	
+	/**
+	 * Adds country
+	 *
+	 * @return Response
+	 */
+	public function getAddCountry(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+           $req = $request->all();
+		   #dd($req);
+           $ret = "";
+               
+                $validator = Validator::make($req, [
+                             'name' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                      return redirect()->back()->withInput()->with('errors',$messages);
+                       
+                 }
+                
+                 else
+                 { 
+					   $this->helpers->addCountry($req);
+
+                       Session::flash("op","add-country");
+                       Session::flash("op-status","success");
+					   return redirect()->intended('nimda/other-leagues');
+				 }	
+		}
+    }
+
+	/**
+	 * Adds competition
+	 *
+	 * @return Response
+	 */
+	public function getAddCompetition(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+           $req = $request->all();
+		   #dd($req);
+           $ret = "";
+               
+                $validator = Validator::make($req, [
+                             'country_id' => 'required|numeric',
+                             'name' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                       return redirect()->back()->withInput()->with('errors',$messages);
+                       
+                 }
+                
+                 else
+                 { 
+					   $this->helpers->addCompetition($req);
+
+                       Session::flash("op","add-competition");
+                       Session::flash("op-status","success");
+					   return redirect()->intended('nimda/other-leagues');
+				 }	
+		}
+    }
+
+	/**
+	 * Adds team
+	 *
+	 * @return Response
+	 */
+	public function getAddTeam(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+           $req = $request->all();
+		   #dd($req);
+           $ret = "";
+               
+                $validator = Validator::make($req, [
+                             'competition_id' => 'required|numeric',
+                             'uid' => 'required|numeric',
+                             'name' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                      return redirect()->back()->withInput()->with('errors',$messages);
+                       
+                 }
+                
+                 else
+                 { 
+					   $this->helpers->addTeam($req);
+
+                       Session::flash("op","add-team");
+                       Session::flash("op-status","success");
+					   return redirect()->intended('nimda/other-leagues');
+				 }	
+		}
+    }	
 
 }

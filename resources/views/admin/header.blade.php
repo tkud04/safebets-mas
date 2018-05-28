@@ -26,21 +26,28 @@
                         <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-th-large"></i></a>
                             <div class="dropdown-menu animated zoomIn">
                                 <ul class="mega-dropdown-menu row">
-                                    <li class="col-lg-6 col-xlg-6 m-b-30">
+                                    <li class="col-lg-4 col-xlg-4 m-b-30">
                                         <h4 class="m-b-20">Users</h4>
                                         <!-- List style -->
                                         <ul class="list-style-none">
                                             <li><a href="{{url('nimda/users')}}"><i class="fa fa-check text-success"></i> View Users</a></li>
                                         </ul>
                                     </li>
-                                    <li class="col-lg-6 col-xlg-6 m-b-30">
-                                        <h4 class="m-b-20">Bet slips</h4>
+                                    <li class="col-lg-4 col-xlg-4 m-b-30">
+                                        <h4 class="m-b-20">Predictions</h4>
                                         <!-- List style -->
                                         <ul class="list-style-none">
                                             <li><a href="{{url('nimda/betslips')}}"><i class="fa fa-check text-success"></i> View Bet slips</a></li>
                                             <li><a href="{{url('nimda/transactions')}}"><i class="fa fa-check text-success"></i> View Transactions</a></li>
                                         </ul>
                                     </li>
+                                    <li class="col-lg-4 col-xlg-4 m-b-30">
+                                        <h4 class="m-b-20">Other leagues</h4>
+                                        <!-- List style -->
+                                        <ul class="list-style-none">
+                                            <li><a href="{{url('nimda/other-leagues')}}"><i class="fa fa-check text-success"></i> Manage Other Leagues</a></li>
+                                        </ul>
+                                    </li>									
                                 </ul>
                             </div>
                         </li>

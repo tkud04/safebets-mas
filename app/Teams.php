@@ -9,6 +9,6 @@ class Competitions extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['id', 'competition_id', 'name'];
+	protected $fillable = ['id', 'competition_id', 'uid', 'name'];
 
 }

@@ -14,10 +14,17 @@
                                 <li><a href="{{url('nimda/users')}}">View Users</a></li>
                             </ul>
                         </li>
-                        <li class="nav-label">Bet slips</li>
+                        <li class="nav-label">Predictions</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Bet slips<span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{url('nimda/betslips')}}">View Bet slips</a></li>
+								<li><a href="{{url('nimda/transactions')}}">View Transactions</a></li>
+                            </ul>
+                        </li>                        
+						<li class="nav-label">Other leagues</li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Bet slips<span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{url('nimda/other-leagues')}}">Manage other leagues</a></li>
                             </ul>
                         </li>
                     </ul>

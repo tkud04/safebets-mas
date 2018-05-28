@@ -75,11 +75,87 @@ class Helper implements HelperContract
                                                       ]);
                                                       
                 return $ret;
-           }  
+           }           
+		   
+		   function addCountry($data)
+           {
+           	$ret = Countries::create(['name' => $data['name']]);
+                                                      
+                return $ret;
+           }  		   
+		   
+		   function addCompetition($data)
+           {
+           	$ret = Countries::create(['country_id' => $data['country_id'],
+									  ['name' => $data['name'],
+			                         ]);
+                                                      
+                return $ret;
+           }		   
+		   
+		   function addTeam($data)
+           {
+           	$ret = Countries::create(['competition_id' => $data['competition_id'],
+									  ['uid' => $data['uid'],
+									  ['name' => $data['name'],
+			                         ]);
+                                                      
+                return $ret;
+           }  		   
+		   
 
            function getOtherLeagues()
 		   {
 			   $ret = $this->otherLeagues;
+			   return $ret;
+		   }           
+		   
+		   function getCountries()
+		   {
+			   $ret = [];
+			   
+			   $countries = Countries::all();
+			   
+			   foreach($countries as $country)
+			   {
+				   $temp = [];
+				   $temp["id"] = $country->id;
+				   $temp["name"] = $country->name;
+				   array_push($ret,$temp);
+				   
+			   }
+			   return $ret;
+		   }		   
+		   
+		   function getCompetitions($country)
+		   {
+			   $ret = [];
+			   
+			   $competitions = Competitions::where("country_id",$country)->get();
+			   
+			   foreach($competitions as $competition)
+			   {
+				   $temp = [];
+				   $temp["id"] = $competition->id;
+				   $temp["name"] = $competition->name;
+				   array_push($ret,$temp);
+			   }
+			   return $ret;
+		   }		   
+		   
+		   function getTeams($competition)
+		   {
+			   $ret = [];
+			   
+			   $teams = Teams::where("competition_id",$competition)->get();
+			   
+			   foreach($teams as $team)
+			   {
+				   $temp = [];
+				   $temp["uid"] = $team->uid;
+				   $temp["name"] = $team->name;
+				   array_push($ret,$temp);
+			   }
 			   return $ret;
 		   }
 		   

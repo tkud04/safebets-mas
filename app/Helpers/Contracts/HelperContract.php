@@ -23,7 +23,12 @@ Interface HelperContract
         public function enable($user_id);
         public function disable($user_id);
         public function getCountries();
+        public function addCountry($data);
+        public function addCompetition($data);
+        public function addTeam($data);
         public function getOtherLeagues($country);
+        public function getTeams($competition);
+        public function getCompetitions($country);
         public function getLeagueTeams($league);
 }
  ?>

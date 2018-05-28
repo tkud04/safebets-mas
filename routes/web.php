@@ -58,3 +58,8 @@ Route::post('nimda/ut', 'AdminController@postManageTokens');
 Route::get('nimda/transactions', 'AdminController@getPurchases');
 Route::get('nimda/betslips', 'AdminController@getTickets');
 Route::get('nimda/betslip/{id?}', 'AdminController@getBetSlip');
+
+Route::get('nimda/other-leagues', 'AdminController@getOtherLeagues');
+Route::get('nimda/add-country', 'AdminController@getAddCountry');
+Route::get('nimda/add-competition', 'AdminController@getAddCompetition');
+Route::get('nimda/add-team', 'AdminController@getAddTeam');
