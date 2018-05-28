@@ -356,6 +356,104 @@ class AdminController extends Controller {
     }
 	
 	/**
+	 * Gets competitions for a country
+	 *
+	 * @return Response
+	 */
+	public function getCompetitions(Request $request)
+    {
+        $user = null;
+		$ret = [];
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			$ret = ["status" => "error","msg" => "An unknown problem has occured."];
+		}
+		
+		else
+		{
+           $req = $request->all();
+		   #dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'xid' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                      $ret = ["status" => "error","msg" => "Please fill the required fields."];
+                       
+                 }
+                
+                 else
+                 { 
+					   $competitions = $this->helpers->getCompetitions($req["xid"]);
+
+                       $ret["status"] = "success";
+                       $ret["msg"] = "ok";
+                       $ret["competitions"] = $competitions;
+				 }	
+		}
+		
+		return $ret;
+    }	
+	
+	/**
+	 * Gets teams for a competition
+	 *
+	 * @return Response
+	 */
+	public function getTeams(Request $request)
+    {
+        $user = null;
+		$ret = [];
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			$ret = ["status" => "error","msg" => "An unknown problem has occured."];
+		}
+		
+		else
+		{
+           $req = $request->all();
+		   #dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'xid' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                      $ret = ["status" => "error","msg" => "Please fill the required fields."];
+                       
+                 }
+                
+                 else
+                 { 
+					   $teams = $this->helpers->getTeams($req["xid"]);
+
+                       $ret["status"] = "success";
+                       $ret["msg"] = "ok";
+                       $ret["teams"] = $teams;
+				 }	
+		}
+		
+		return $ret;
+    }	
+	
+	/**
 	 * Adds country
 	 *
 	 * @return Response
@@ -474,6 +572,7 @@ class AdminController extends Controller {
            $ret = "";
                
                 $validator = Validator::make($req, [
+                             'country_id' => 'required|numeric',
                              'competition_id' => 'required|numeric',
                              'uid' => 'required|numeric',
                              'name' => 'required',

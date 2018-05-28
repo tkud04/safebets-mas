@@ -63,3 +63,6 @@ Route::get('nimda/other-leagues', 'AdminController@getOtherLeagues');
 Route::get('nimda/add-country', 'AdminController@getAddCountry');
 Route::get('nimda/add-competition', 'AdminController@getAddCompetition');
 Route::get('nimda/add-team', 'AdminController@getAddTeam');
+
+Route::get('nimda/get-competitions', 'AdminController@getCompetitions');
+Route::get('nimda/get-teams', 'AdminController@getTeams');
