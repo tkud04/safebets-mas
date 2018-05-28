@@ -10,8 +10,47 @@
     <!--stickey kit -->
     <script src="{{asset('admin/js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
     <!--Custom JavaScript -->
-
-
+	
+    <!--Toastr -->
+    <script src="{{asset('admin/js/lib/toastr/toastr.min.js')}}"></script>
+				<?php
+				     $msg = "";
+			       if(Session::has("mark-game-status") && Session::get("mark-game-status") == "success") $msg = "Game result successfully updated";
+			       else if(Session::has("mark-bet-slip-status") && Session::get("mark-bet-slip-status") == "success") $msg = "Bet slip result successfully updated";
+				   else if(Session::has("op"))
+				   {
+					   $op = Session::get("op");
+					   if($op == "add-country") $msg = "Country ";
+					   else if($op == "add-competition") $msg = "Competition ";
+					   else if($op == "add-team") $msg = "Team ";
+					   
+					   $status = Session::get("status");
+					   if($status == "success") $msg .= "added!";
+				   }
+				?>
+			   <script>
+			     var msg = "{{$msg}}";
+			     
+					toastr.success(msg,'Top Right',{
+					timeOut: 5000,
+					"closeButton": true,
+					"debug": false,
+					"newestOnTop": true,
+					"progressBar": true,
+					"positionClass": "toast-top-right",
+					"preventDuplicates": true,
+					"onclick": null,
+					"showDuration": "300",
+					"hideDuration": "1000",
+					"extendedTimeOut": "1000",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut",
+					"tapToDismiss": false
+					});
+			   </script>
+			   
 	<script src="{{asset('admin/js/lib/calendar-2/moment.latest.min.js')}}"></script>
     <!-- scripit init-->
     <script src="{{asset('admin/js/lib/calendar-2/semantic.ui.min.js')}}"></script>
