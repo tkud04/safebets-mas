@@ -349,9 +349,8 @@ class AdminController extends Controller {
 		{
 			$breadCrumb = "Manage other leagues";
 			$countries = $this->helpers->getCountries();
-			$competitions = $this->helpers->getCompetitions();
 
-			return view('admin.ols', compact(['user','breadCrumb','countries','competitions']));			
+			return view('admin.ols', compact(['user','breadCrumb','countries']));			
 		}
     }
 	
