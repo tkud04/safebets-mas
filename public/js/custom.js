@@ -18,7 +18,7 @@
 	  var oc = $(this).val();
 	  var ocu = $(this).attr('data-lef');
 
-	  if(l == "none") alert("Please select a country to continue");
+	  if(oc == "none") alert("Please select a country to continue");
 	  else getOtherLeagues(ocu,oc);
   });  
   
@@ -26,7 +26,7 @@
 	  var occ = $(this).val();
 	  var occu = $(this).attr('data-lef');
 
-	  if(l == "none") alert("Please select a competition to continue");
+	  if(occ == "none") alert("Please select a competition to continue");
 	  else getOtherTeams(occu,occ);
   });
   
