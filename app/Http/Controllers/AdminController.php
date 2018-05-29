@@ -119,6 +119,7 @@ class AdminController extends Controller {
          
                  if($validator->fails())
                   {
+					  $messages = $validator->messages();
                        return redirect()->back()->withInput()->with('errors',$messages);
                        
                  }
@@ -483,6 +484,7 @@ class AdminController extends Controller {
          
                  if($validator->fails())
                   {
+					  $messages = $validator->messages();
                       return redirect()->back()->withInput()->with('errors',$messages);
                        
                  }
@@ -530,6 +532,7 @@ class AdminController extends Controller {
          
                  if($validator->fails())
                   {
+					  $messages = $validator->messages();
                        return redirect()->back()->withInput()->with('errors',$messages);
                        
                  }
@@ -579,6 +582,7 @@ class AdminController extends Controller {
          
                  if($validator->fails())
                   {
+					  $messages = $validator->messages();
                       return redirect()->back()->withInput()->with('errors',$messages);
                        
                  }
