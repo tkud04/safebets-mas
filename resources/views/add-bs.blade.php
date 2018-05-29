@@ -36,15 +36,19 @@
 					     <div class="col-sm-3 col-md-3">
 							<div class="form-group">
 								<label for="other-country">Country</label>
-								<select class="form-control" id="other-country">
+								<select class="form-control" data-lef="{{url('gc')}}" id="other-country">
 									<option value="none">Select country</option>
+									 @foreach($countries as $c)
+						              <?php $id = $c['id']; $name = $c['name']; ?>
+					                   <option value="{{$id}}">{{$name}}</option>
+					                 @endforeach
 								</select>
 							</div>							     
 						 </div>					     
 						 <div class="col-sm-3 col-md-3">
 							<div class="form-group">
 								<label for="other-competition">Competition</label>
-								<select class="form-control" id="other-competition">
+								<select class="form-control" data-lef="{{url('gt')}}" id="other-competition">
 									<option value="none">Select competition</option>
 								</select>
 							</div>							     

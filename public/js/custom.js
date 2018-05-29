@@ -1,7 +1,4 @@
  var userPredictions = [];
- var ol = [];
- var mu = $('#mu').val();
- getOtherLeagues(mu);
    $('#predictions').hide();
    $('#for-mt').hide();
    
@@ -15,6 +12,22 @@
 	  if(l == "none") alert("Please select a league to continue");
 	  else if(l == "other") showOtherLeagues();
 	  else getLeague(u,l);
+  });  
+  
+  $('#other-country').change(function(e){
+	  var oc = $(this).val();
+	  var ocu = $(this).attr('data-lef');
+
+	  if(l == "none") alert("Please select a country to continue");
+	  else getOtherLeagues(ocu,oc);
+  });  
+  
+  $('#other-competition').change(function(e){
+	  var occ = $(this).val();
+	  var occu = $(this).attr('data-lef');
+
+	  if(l == "none") alert("Please select a competition to continue");
+	  else getOtherTeams(occu,occ);
   });
   
   	$("a#regbtnn").click(function(e){
@@ -112,10 +125,18 @@ function getLeague(url,id){
    });
 }
 
-function getOtherLeagues(url){
+function getOtherLeagues(url,country){
 	$.ajax({   
    type : 'GET',
    url  : url,
+   data: {'xid':country},
+   beforeSend: function()
+   { 
+    $("#error").fadeOut();
+    $("#result").fadeOut();
+    $("#working").html('<br><br><div class="alert alert-info" role="alert" style=" text-align: center;"><strong class="block" style="font-weight: bold;">  <i class = "fa fa-spinner fa-2x slow-spin"></i>  Connecting.... </strong></div>');
+	$('#working').fadeIn();
+   },
    success :  function(response)
       {         
        $('#working').html("");	   
@@ -123,8 +144,52 @@ function getOtherLeagues(url){
        //$('#result').html(response);	
 	   if(response == "404"){}
 	   else{
-		     ol = JSON.parse(response);
-             console.log(ol);			 
+			 $('#for-fxt').hide();
+			 $('#for-mt').fadeIn();
+			 
+		     $('#other-competition').html("<option value='none'>Select competition</option>");
+		     rr = JSON.parse(response);
+		     $.each(rr,function(i,v){
+			    obj = v;
+			    $('#other-competition').append("<option value='" + obj['id'] + "'>" + obj['name'] + "</option>");
+		     });			 
+	   }   
+     
+     }
+   });
+}
+
+function getOtherTeams(url,league){
+	$.ajax({   
+   type : 'GET',
+   url  : url,
+   data: {'xid':league},
+   beforeSend: function()
+   { 
+    $("#error").fadeOut();
+    $("#result").fadeOut();
+    $("#working").html('<br><br><div class="alert alert-info" role="alert" style=" text-align: center;"><strong class="block" style="font-weight: bold;">  <i class = "fa fa-spinner fa-2x slow-spin"></i>  Connecting.... </strong></div>');
+	$('#working').fadeIn();
+   },
+   success :  function(response)
+      {         
+       $('#working').html("");	   
+       $('#working').fadeOut();	   
+       //$('#result').html(response);	
+	   if(response == "404"){}
+	   else{
+			 $('#for-fxt').hide();
+			 $('#for-mt').fadeIn();
+			 
+		     $('#other-home').html("<option value='none'>Select home team</option>");
+		     $('#other-away').html("<option value='none'>Select away team</option>");
+			 
+		     rr = JSON.parse(response);
+		     $.each(rr,function(i,v){
+			    obj = v;
+			    $('#other-home').append("<option value='" + obj['uid'] + "'>" + obj['name'] + "</option>");
+			    $('#other-away').append("<option value='" + obj['uid'] + "'>" + obj['name'] + "</option>");
+		     });			 
 	   }   
      
      }
@@ -135,18 +200,10 @@ function showOtherLeagues()
 {
 	$("#for-fxt").hide();
 	$("#for-mt").fadeIn();
-	$('#other-country').html("<option value='none'>Select country</option>");
 	$('#other-competition').html("<option value='none'>Select competition</option>");
 	$('#other-home').html("<option value='none'>Home team</option>");
 	$('#other-away').html("<option value='none'>Away team</option>");
-	
-	var countries = ol['countries'];
-	for(var i = 0; i < countries.length; i++){
-		var country = userPredictions[i];
-		var oc = $('#other-country');
-		oc.append("<option value='" + country + "'>" + country + "</option>");
-	}
-	$("#predictions").fadeIn();
+	//$("#predictions").fadeIn();
 }
 
 function refreshPredictions()

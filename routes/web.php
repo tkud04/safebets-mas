@@ -41,6 +41,9 @@ Route::get('v-g', 'MainController@getGame');
 Route::get('support', 'MainController@getSupport');
 Route::get('pricing', 'MainController@getPricing');
 
+Route::get('gc', 'MainController@getCompetitions');
+Route::get('gt', 'MainController@getTeams');
+
 
 /**
  Admin routes
