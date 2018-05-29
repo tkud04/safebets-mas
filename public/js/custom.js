@@ -113,7 +113,9 @@ function getLeague(url,id){
 			 $('#for-fxt').fadeIn();
 			 
 		     $('#fixtures').html("<option value='none'>Select fixture</option>");
+			 
 		     rr = JSON.parse(response);
+			 
 		     $.each(rr,function(i,v){
 			    obj = v;
 			    $('#fixtures').append("<option value='" + obj['href'] + "'>" + obj['d'] + " - " + obj['vs'] + "</option>");
@@ -148,6 +150,7 @@ function getOtherLeagues(url,country){
 			 $('#for-mt').fadeIn();
 			 
 		     $('#other-competition').html("<option value='none'>Select competition</option>");
+			 console.log(response);
 		     rr = JSON.parse(response);
 		     $.each(rr,function(i,v){
 			    obj = v;
@@ -183,6 +186,8 @@ function getOtherTeams(url,league){
 			 
 		     $('#other-home').html("<option value='none'>Select home team</option>");
 		     $('#other-away').html("<option value='none'>Select away team</option>");
+			 
+			 console.log(response);
 			 
 		     rr = JSON.parse(response);
 		     $.each(rr,function(i,v){
