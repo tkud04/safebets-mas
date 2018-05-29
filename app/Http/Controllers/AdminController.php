@@ -495,7 +495,8 @@ class AdminController extends Controller {
 
                        Session::flash("op","add-country");
                        Session::flash("op-status","success");
-					   return redirect()->intended('nimda/other-leagues');
+					   if(isset($req['mode']) && $req['mode'] == "json") return json_encode(["op" => "add-country","status" => "success"]);
+					   else return redirect()->intended('nimda/other-leagues');
 				 }	
 		}
     }
@@ -543,7 +544,8 @@ class AdminController extends Controller {
 
                        Session::flash("op","add-competition");
                        Session::flash("op-status","success");
-					   return redirect()->intended('nimda/other-leagues');
+					   if(isset($req['mode']) && $req['mode'] == "json") return json_encode(["op" => "add-competition","status" => "success"]);
+					   else return redirect()->intended('nimda/other-leagues');
 				 }	
 		}
     }
@@ -593,6 +595,7 @@ class AdminController extends Controller {
 
                        Session::flash("op","add-team");
                        Session::flash("op-status","success");
+					   if(isset($req['mode']) && $req['mode'] == "json") return json_encode(["op" => "add-team","status" => "success"]);
 					   return redirect()->intended('nimda/other-leagues');
 				 }	
 		}
