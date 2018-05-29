@@ -191,7 +191,7 @@ function getOtherTeams(url,league){
 			 console.log(response);
 			 
 		     rr = JSON.parse(response);
-			 var ms = rr['matches'];
+			 var ms = rr['teams'];
 		     $.each(ms,function(i,v){
 			    obj = v;
 			    $('#other-home').append("<option value='" + obj['uid'] + "'>" + obj['name'] + "</option>");
