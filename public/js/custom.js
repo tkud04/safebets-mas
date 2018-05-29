@@ -144,7 +144,7 @@ function getOtherLeagues(url,country){
        $('#working').html("");	   
        $('#working').fadeOut();	   
        //$('#result').html(response);	
-	   if(response == "404"){}
+	   if(response.status == "error"){}
 	   else{
 			 $('#for-fxt').hide();
 			 $('#for-mt').fadeIn();
@@ -152,7 +152,8 @@ function getOtherLeagues(url,country){
 		     $('#other-competition').html("<option value='none'>Select competition</option>");
 			 console.log(response);
 		     rr = JSON.parse(response);
-		     $.each(rr,function(i,v){
+			 var comps = rr['competitions'];
+		     $.each(comps,function(i,v){
 			    obj = v;
 			    $('#other-competition').append("<option value='" + obj['id'] + "'>" + obj['name'] + "</option>");
 		     });			 
@@ -179,7 +180,7 @@ function getOtherTeams(url,league){
        $('#working').html("");	   
        $('#working').fadeOut();	   
        //$('#result').html(response);	
-	   if(response == "404"){}
+	   if(response.status == "error"){}
 	   else{
 			 $('#for-fxt').hide();
 			 $('#for-mt').fadeIn();
@@ -190,7 +191,8 @@ function getOtherTeams(url,league){
 			 console.log(response);
 			 
 		     rr = JSON.parse(response);
-		     $.each(rr,function(i,v){
+			 var ms = rr['matches'];
+		     $.each(ms,function(i,v){
 			    obj = v;
 			    $('#other-home').append("<option value='" + obj['uid'] + "'>" + obj['name'] + "</option>");
 			    $('#other-away').append("<option value='" + obj['uid'] + "'>" + obj['name'] + "</option>");
