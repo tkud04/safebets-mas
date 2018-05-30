@@ -51,7 +51,7 @@
 	  e.preventDefault();
 	  var lg = "",lgh="",fx="",fxh="",pd="",pdh="";
 	  var ct = "",cth="",cc="",cch="",ho="",hoh="",aw="",awh="",dy="";
-	  var status == "",errMsgs = [], dt = {};
+	  var status = "",errMsgs = [], dt = {};
 	  
 	  if(currentP == "fxt"){
 		  lg = $('#league').val(); lgh = $('#league > option:selected').html();
