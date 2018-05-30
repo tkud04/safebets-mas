@@ -75,7 +75,7 @@
 		  cc = $('#other-competition').val(); cch = $('#other-competition > option:selected').html();
 		  ho = $('#other-home').val(); hoh = $('#other-home > option:selected').html();
 		  aw = $('#other-away').val(); awh = $('#other-away > option:selected').html();
-		  dy = $('#other-date').val(); var cnow = Date(); var validDt = false;
+		  dy = $('#other-date').val(); var cnow = new Date(); var validDt = false;
 		  
 		  if(dy != ""){
 			  var ddy = new Date(dy); validDt = cnow < ddy;
