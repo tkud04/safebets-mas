@@ -1,6 +1,7 @@
  var userPredictions = [];
    $('#predictions').hide();
    $('#for-mt').hide();
+   var currentP = "fxt";
    
 (function($) {
   "use strict"; // Start of use strict
@@ -10,8 +11,14 @@
 	  var u = $(this).attr('data-lef');
 
 	  if(l == "none") alert("Please select a league to continue");
-	  else if(l == "other") showOtherLeagues();
-	  else getLeague(u,l);
+	  else if(l == "other"){
+		  currentP = "mt";
+		  showOtherLeagues();
+	  } 
+	  else{
+		  currentP = "fxt";
+		  getLeague(u,l);
+	  }
   });  
   
   $('#other-country').change(function(e){
@@ -42,20 +49,62 @@
   
   $('#fixture-form').submit(function(e){
 	  e.preventDefault();
-	  var lg = $('#league').val(); var lgh = $('#league > option:selected').html();
-	  var fx = $('#fixtures').val(); var fxh = $('#fixtures > option:selected').html();
-	  var pd = $('#prediction').val(); var pdh = $('#prediction > option:selected').html();
+	  var lg = "",lgh="",fx="",fxh="",pd="",pdh="";
+	  var ct = "",cth="",cc="",cch="",ho="",hoh="",aw="",awh="",dy="";
+	  var status == "",errMsgs = [], dt = {};
 	  
-	  if(lg == "none" || fx == "none" || pd == "")
-	  {
-		  if(lg == "none") alert("Select a competition to continue.");
-		  if(fx == "none") alert("Select a fixture to continue.");
-		  if(pd == "none") alert("Select a prediction to continue.");
+	  if(currentP == "fxt"){
+		  lg = $('#league').val(); lgh = $('#league > option:selected').html();
+		  fx = $('#fixtures').val(); fxh = $('#fixtures > option:selected').html();
+		  
+		  if(lg == "none" || fx == "none")
+	      {
+   		     status = "err"; errMsgs = [];
+		     if(lg == "none") errMsgs.push("Select a competition to continue.");
+		     if(fx == "none") errMsgs.push("Select a fixture to continue.");
+	      }
+		  
+		  else
+	      {
+		      dt = {"md":"fxt","lg":lg,"lgh":lgh,"pd":pd,"pdh":pdh,"fx":fx,"fxh":fxh};
+	      }
 	  }
 	  
-	  else
-	  {
-		  var dt = {"lg":lg,"lgh":lgh,"pd":pd,"pdh":pdh,"fx":fx,"fxh":fxh};
+	  else if(currentP == "mt"){
+		  ct = $('#other-country').val(); cth = $('#other-country > option:selected').html();
+		  cc = $('#other-competition').val(); cch = $('#other-competition > option:selected').html();
+		  ho = $('#other-home').val(); hoh = $('#other-home > option:selected').html();
+		  aw = $('#other-away').val(); awh = $('#other-away > option:selected').html();
+		  dy = $('#other-date').val();
+		  
+		  if(ct == "none" || cc == "none" || ho == "none" || aw == "none" || dy == "none")
+	      {
+   		     status = "err"; errMsgs = [];
+		     if(ct == "none") errMsgs.push("Select a country to continue.");
+		     if(cc == "none") errMsgs.push("Select a competition to continue.");
+		     if(ho == "none") errMsgs.push("Select the home team to continue.");
+		     if(aw == "none") errMsgs.push("Select the away team to continue.");
+		     if(dy == "none") errMsgs.push("Input the fixture date to continue.");
+	      }
+		  
+		  else
+	      {
+		      dt = {"md":"mt","pd":pd,"pdh":pdh,"ct":ct,"cth":cth,"cc":cc,"cch":cch,"ho":ho,"hoh":hoh,"aw":aw,"awh":awh,"dy":dy};
+	      }
+	  }
+	  
+	  var pd = $('#prediction').val(); var pdh = $('#prediction > option:selected').html();
+	  if(pd == "none"){
+		  status = "err";
+		  errMsgs.push("Select a prediction to continue.");
+
+	  }
+	  
+      if(status == "err"){
+		  for(var i = 0; i < errMsgs.length; i++) alert(errMsgs[i]);
+	  }
+	  
+	  else{
 		  console.log(dt);
 		  userPredictions.push(dt);
 		  //add notification here
@@ -222,9 +271,20 @@ function refreshPredictions()
 		var item = userPredictions[i];
 		var tr = $("<tr></tr>");
 		var td = $("<td></td>");
-		tr.append("<td>" + item.lgh + "</td>");
-		tr.append("<td>" + item.fxh + "</td>");
-		tr.append("<td>" + item.pdh + "</td>");
+		
+		if(item.md == "fxt"){
+		 tr.append("<td>" + item.lgh + "</td>");
+		 tr.append("<td>" + item.fxh + "</td>");
+		 tr.append("<td>" + item.pdh + "</td>");
+		}
+		
+		else if(item.md == "mt"){
+		//{"md":"mt","pd":pd,"pdh":pdh,"ct":ct,"cth":cth,"cc":cc,"cch":cch,"ho":ho,"hoh":hoh,"aw":aw,"awh":awh,"dy":dy};
+		 tr.append("<td>" + item.cth + " > " + item.cch + "</td>");
+		 tr.append("<td>" + item.dy + " - " + item.hoh + " vs " + item.awh + "</td>");
+		 tr.append("<td>" + item.pdh + "</td>");
+		}
+		
 		td.append("<a href='#' class='btn btn-danger' onclick='sssh(" + i + ");return false;'>Remove</a>");
 		tr.append(td);
 		$("#predictions-tbody").append(tr);
