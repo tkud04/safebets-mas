@@ -78,7 +78,7 @@
 		  dy = $('#other-date').val(); var cnow = Date(); var validDt = false;
 		  
 		  if(dy != ""){
-			  var ddy = new Date(dy); validDt = cnow > ddy;
+			  var ddy = new Date(dy); validDt = cnow < ddy;
 		  }
 		  
 		  if(ct == "none" || cc == "none" || ho == "none" || aw == "none" || dy == "" || validDt == false)
