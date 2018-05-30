@@ -75,16 +75,21 @@
 		  cc = $('#other-competition').val(); cch = $('#other-competition > option:selected').html();
 		  ho = $('#other-home').val(); hoh = $('#other-home > option:selected').html();
 		  aw = $('#other-away').val(); awh = $('#other-away > option:selected').html();
-		  dy = $('#other-date').val();
+		  dy = $('#other-date').val(); var cnow = Date(); var validDt = false;
 		  
-		  if(ct == "none" || cc == "none" || ho == "none" || aw == "none" || dy == "none")
+		  if(dy != ""){
+			  var ddy = new Date(dy); validDt = cnow > ddy;
+		  }
+		  
+		  if(ct == "none" || cc == "none" || ho == "none" || aw == "none" || dy == "" || validDt == false)
 	      {
    		     status = "err"; errMsgs = [];
 		     if(ct == "none") errMsgs.push("Select a country to continue.");
 		     if(cc == "none") errMsgs.push("Select a competition to continue.");
 		     if(ho == "none") errMsgs.push("Select the home team to continue.");
 		     if(aw == "none") errMsgs.push("Select the away team to continue.");
-		     if(dy == "none") errMsgs.push("Input the fixture date to continue.");
+		     if(dy == "") errMsgs.push("Input the fixture date to continue.");
+		     if(validDt == false) errMsgs.push("Invalid date, please try again.");
 	      }
 		  
 		  else
@@ -98,6 +103,9 @@
 		  status = "err";
 		  errMsgs.push("Select a prediction to continue.");
 
+	  }
+	  else{
+		  dt.pd = pd; dt.pdh = pdh;
 	  }
 	  
       if(status == "err"){
@@ -280,7 +288,7 @@ function refreshPredictions()
 		
 		else if(item.md == "mt"){
 		//{"md":"mt","pd":pd,"pdh":pdh,"ct":ct,"cth":cth,"cc":cc,"cch":cch,"ho":ho,"hoh":hoh,"aw":aw,"awh":awh,"dy":dy};
-		 tr.append("<td>" + item.cth + " > " + item.cch + "</td>");
+		 tr.append("<td>(" + item.cth + ") " + item.cch + "</td>");
 		 tr.append("<td>" + item.dy + " - " + item.hoh + " vs " + item.awh + "</td>");
 		 tr.append("<td>" + item.pdh + "</td>");
 		}

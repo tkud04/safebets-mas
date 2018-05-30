@@ -33,7 +33,13 @@
 			        </div>			        
 					<div id="for-mt">
 					  <div class="row">
-					     <div class="col-sm-3 col-md-3">
+					     <div class="col-md-12">
+							<div class="form-group">
+								<label for="other-date">Fixture Date</label>
+								<input class="form-control" type="text" placeholder="YYYY/MM/DD HH:MM AM/PM" id="other-date"/>
+							</div>							     
+						 </div><br>						     
+						 <div class="col-md-12">
 							<div class="form-group">
 								<label for="other-country">Country</label>
 								<select class="form-control" data-lef="{{url('gc')}}" id="other-country">
@@ -44,31 +50,31 @@
 					                 @endforeach
 								</select>
 							</div>							     
-						 </div>					     
-						 <div class="col-sm-3 col-md-3">
+						 </div><br>					     
+						 <div class="col-md-12">
 							<div class="form-group">
 								<label for="other-competition">Competition</label>
 								<select class="form-control" data-lef="{{url('gt')}}" id="other-competition">
 									<option value="none">Select competition</option>
 								</select>
 							</div>							     
-						 </div>					     
-						 <div class="col-sm-3 col-md-3">
+						 </div><br>					     
+						 <div class="col-md-12">
 							<div class="form-group">
 								<label for="other-home">Home</label>
 								<select class="form-control" id="other-home">
 									<option value="none">Home team</option>
 								</select>
 							</div>							     
-						 </div>					     
-						 <div class="col-sm-3 col-md-3">
+						 </div><br>					     
+						 <div class="col-md-12">
 							<div class="form-group">
 								<label for="other-away">Away</label>
 								<select class="form-control" id="other-away">
 									<option value="none">Away team</option>
 								</select>
 							</div>							     
-						 </div>
+						 </div><br>
 					  </div>
 			        </div>
 			    </div>
