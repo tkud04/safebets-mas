@@ -35,7 +35,7 @@ Route::post('add-betslip', 'MainController@postAddBetSlip');
 Route::get('transactions', 'MainController@getPurchases');
 Route::get('transactions', 'MainController@getPurchases');
 
-Route::get('view-bs', 'MainController@getBetSlip');
+Route::post('view-bs', 'MainController@postBetSlip');
 Route::get('v-g', 'MainController@getGame');
 
 Route::get('support', 'MainController@getSupport');

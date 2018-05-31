@@ -313,7 +313,7 @@ class MainController extends Controller {
 					                   "category" => $category,
 									   "ssp" => $ssp];	
 									   
-                       dd($betSlipData);									   
+                       #dd($betSlipData);									   
 					   $this->helpers->addBetSlip($betSlipData);
 					   Session::flash("status","success");
                   } 
@@ -328,8 +328,19 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getBetSlip(Request $request)
+	public function postBetSlip(Request $request)
     {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		else
+		{
+			return redirect()->intended('/');
+		}
+		
            $req = $request->all();
 		   #dd($req);
            $ret = [];

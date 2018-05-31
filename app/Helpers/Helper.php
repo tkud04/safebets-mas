@@ -462,13 +462,28 @@ class Helper implements HelperContract
 					   
 					   foreach($matches as $m)
 					   {
-						   $fixture = $this->getFixture($m->fixture_id);
-						   $fixtureMatch = $fixture["match"];
-						   $fixtureDate = $fixture["date"];
-						   $fixtureResult = $fixture["result"];
+						   $temp_2 = [];
+						   $fixtureDate = ""; $fixtureMatch = ""; $fixtureResult = "";
 						   
+						   $dataString = $m->data;
+						   $md = $m->md;
 						   $prediction = $m->prediction;
 						   $outcome = $m->outcome;
+						   
+						   $data = explode("_",$dataString);
+						   
+						   //mt: ct_cth_cc_cch_ho_hoh_aw_awh_dy
+						   if($md == "mt")
+						   {
+							   $fixtureDate = $data[8];
+							   $fixtureMatch = $data[3].": ".$data[5]." vs ".$data[7];
+							   $fixtureResult = "0 - 0";
+						   }						   
+						   
+						   else if($md == "fxt")
+						   {
+							   
+						   }
 						   
 						   $temp_2 = [$fixtureDate,$fixtureMatch,$prediction,$fixtureResult,$outcome];
 						   array_push($temp["matches"],$temp_2);
