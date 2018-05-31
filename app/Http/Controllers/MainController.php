@@ -10,6 +10,7 @@ use Session;
 use Validator; 
 use Football;
 use Carbon\Carbon; 
+use App\Settings;
 
 class MainController extends Controller {
 
