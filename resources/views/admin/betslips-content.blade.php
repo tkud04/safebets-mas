@@ -15,6 +15,7 @@
                                                 <th>Category</th>
                                                 <th>Odds</th>
                                                 <th>Booking code</th>
+                                                <th>Seller</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
