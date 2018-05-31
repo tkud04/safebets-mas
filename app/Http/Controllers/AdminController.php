@@ -155,6 +155,7 @@ class AdminController extends Controller {
 		}
 
 		$betslips = $this->helpers->getBetSlips();
+		dd($betslips);
 		$breadCrumb = "Betslips";
 		
 		return view('admin.betslips', compact(['user','breadCrumb','betslips']));	
