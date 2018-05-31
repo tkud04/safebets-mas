@@ -7,6 +7,7 @@
                                 <h4 class="card-title">Bet Slips</h4>
                                 <h6 class="card-subtitle">List of your betslips on SafeBets</h6><br>
 								<a href="{{url('add-betslip')}}" class="btn btn-lg btn-primary">Add new bet slip</a><br>
+								<input type="hidden" value="{{csrf_token()}}" id="tk"/>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                        <thead>

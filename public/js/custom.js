@@ -340,10 +340,11 @@ function sssh(gb){
 }
 
 function viewBS(id,url){
+	var tk = $('#tk').val)();
 	$.ajax({   
    type : 'POST',
    url  : url,
-   data : {'id':id},
+   data : {'_token':tk,'id':id},
    beforeSend: function()
    { 
     $("#bs-error").fadeOut();

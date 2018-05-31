@@ -7,6 +7,7 @@
 	
 		@foreach($todayGames as $t)
 	    <input type="hidden" value="{{url('v-g')}}" id="urlx"/>
+	    <input type="hidden" value="{{csrf_token()}}" id="tk"/>
 		<?php ++$itemCount; ?>
 		@if($itemCount == 1 || $itemCount % 4 == 0)
         <div class="row">

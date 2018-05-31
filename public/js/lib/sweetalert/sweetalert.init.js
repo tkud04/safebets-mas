@@ -34,19 +34,21 @@ document.querySelector('.buy-game').onclick = function(){
         }
 	}
 	
+	var tk = $('#tk').val();
+	
     swal(swalConfig,
         function(){
             setTimeout(function(){
-				gg(al,xe,urlx);
+				gg(al,xe,tk,urlx);
             }, 2000);
         });
 };
 
-function gg(al,id,url){
+function gg(al,id,tk,url){
 	$.ajax({   
    type : 'POST',
    url  : url,
-   data : {'id':id},
+   data : {'_token':tk,'id':id},
    beforeSend: function()
    { 
     $("#vg-error").fadeOut();
