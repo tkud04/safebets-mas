@@ -340,7 +340,7 @@ function sssh(gb){
 }
 
 function viewBS(id,url){
-	var tk = $('#tk').val)();
+	var tk = $('#tk').val();
 	$.ajax({   
    type : 'POST',
    url  : url,
