@@ -26,9 +26,9 @@
 										    <?php
 											    $category = $bs["category"];
 												$product = $bs["product"];
-												$gameStatus = $bs['status'];
-												$odds = $bs['odds'];
-												$bookingCode = $bs['booking-code'];
+												$gameStatus = $bs["status"];
+												$odds = $bs["odds"];
+												$bookingCode = $bs["booking-code"];
 												$gs = "fa fa-question-circle";
 												
 												if($gameStatus == "win") $gs = "text-success fa fa-check";
@@ -41,10 +41,9 @@
 												if($category == "regular") $badgeClass = "badge-success";
 												else if($category == "premium") $badgeClass = "badge-premium";
 																								
-												$url = url('nimda/betslip');
+												$url = url('view-bs');
 												$seller = $bs["seller"];
 												$id = $bs["id"];
-												$url .= "/".$id;
 											?>
                                             <tr>
                                                 <td>{{$bs["date"]}}</td>

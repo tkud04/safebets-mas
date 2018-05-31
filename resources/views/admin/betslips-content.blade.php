@@ -25,9 +25,9 @@
 										    <?php
 											    $category = $bs["category"];
 												$product = $bs["product"];
-												$gameStatus = $bs['status'];
-												$odds = $bs['odds'];
-												$bookingCode = $bs['booking-code'];
+												$gameStatus = $bs["status"];
+												$odds = $bs["odds"];
+												$bookingCode = $bs["booking-code"];
 												$gs = "fa fa-question-circle";
 												
 												if($gameStatus == "win") $gs = "text-success fa fa-check";
