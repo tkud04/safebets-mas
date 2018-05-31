@@ -279,3 +279,29 @@
 				</div>
 			</div>
 			
+			<!-- Save Bet Slip Modal -->
+			<div id="saveBetSlipModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<button type="button" class="close btn btn-warning" data-dismiss="modal">&times; close</button>
+						<div class="modal-body">
+											<p class="coupon-text">Enter the total odds and booking code.</p>
+											<form>
+												<div class="form-group">
+												    <label for="booking_code"><strong>Booking code <span class="required">*</span></strong></label>
+													<input class="form-control" type="text" id="booking_code" placeholder="Booking code.."/>
+												</div>
+												<div class="form-group">
+													<label for="total_odds"><strong>Total odds <span class="required">*</span></strong></label>
+													<input class="form-control" type="text" id="total_odds" placeholder="Total odds.."/>
+												</div>
+												<div class="form-group">					
+													<button id="sbs-btn" class="btn btn-success">Submit</button> 
+												</div>
+											</form>
+
+						</div>
+					</div>
+				</div>
+			</div>

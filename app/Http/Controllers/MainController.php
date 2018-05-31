@@ -271,7 +271,8 @@ class MainController extends Controller {
            $req = $request->all();
 		   #dd($req);
            $ret = [];
-               
+           Session::flash("op","add-betslip");
+		   
                 $validator = Validator::make($req, [
                              'ssp' => 'required',
                              'booking_code' => 'required',
@@ -298,8 +299,7 @@ class MainController extends Controller {
 					   $this->helpers->addBetSlip($betSlipData);
 					   Session::flash("status","success");
                   } 
-				  
-           Session::flash("op","add-betslip");				  
+				  				  
            Session::flash("notif","yes");				  
            return redirect()->intended('betslips');				  
     } 

@@ -5,7 +5,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Bet Slips</h4>
-                                <h6 class="card-subtitle">List of your betslips on SafeBets</h6>
+                                <h6 class="card-subtitle">List of your betslips on SafeBets</h6><br>
+								<a href="{{url('add-bs')}}">Add new bet slip</a>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                        <thead>

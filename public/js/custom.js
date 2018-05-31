@@ -143,7 +143,25 @@
 		e.preventDefault();
 		$("#ssp").val(JSON.stringify(userPredictions));
 		
-		$("#save-form").submit();
+		$("#saveBetSlipModal").modal("show");
+	});
+
+	$('a#sbs-btn').click(function(e){
+		e.preventDefault();
+		var bc = $('#booking_code').val();
+		var tod = $('#total_odds').val();
+		
+		if(bc == "" || tod == ""){
+			if(bc == "") alert("Enter the booking code to continue");
+			if(tod == "") alert("Enter the total odds to continue");
+		}
+		
+		else{
+			$('#bcc').val(bc);
+			$('#todd').val(tod);
+			$("#save-form").submit();
+		}
+		
 	});
 
 })(jQuery); // End of use strict
