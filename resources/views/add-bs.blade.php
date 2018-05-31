@@ -17,7 +17,7 @@
 				      <select class="form-control" id="league" data-lef="{{url('gf')}}">
 				        <option value="none">Select League</option>
 				        @foreach($ret as $r)
-						  <?php $id = "aqwei_".$r->id; ?>
+						  <?php $id = $r->id; ?>
 					       <option value="{{$id}}">{{$r->caption}}</option>
 					    @endforeach
 						   <option value="other">Other</option>
