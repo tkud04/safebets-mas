@@ -10,7 +10,6 @@ use Session;
 use Validator; 
 use Football;
 use Carbon\Carbon; 
-use App\Settings;
 
 class MainController extends Controller {
 
@@ -29,9 +28,7 @@ class MainController extends Controller {
 	public function getIndex()
     {
         $user = null;
-        $arr = [ ["id" => 42,"category" => "premium"],["id" => 52,"category" => "unverified"] ];
-		
-		foreach($arr as $a){Settings::create($a);}
+
 		if(Auth::check())
 		{
 			$user = Auth::user();
