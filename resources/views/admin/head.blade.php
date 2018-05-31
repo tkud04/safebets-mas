@@ -15,6 +15,7 @@
     <link href="{{asset('admin/css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
 
+    <link href="{{asset('admin/css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/lib/calendar2/semantic.ui.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/lib/calendar2/pignose.calendar.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/lib/owl.carousel.min.css')}}" rel="stylesheet" />

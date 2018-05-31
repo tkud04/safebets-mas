@@ -24,6 +24,8 @@
 	
 	 <!-- Data table bootstrap -->
 	 <link href="{{asset('css/datatables.css')}}" rel="stylesheet">
+	 
+	 <link href="{{asset('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{asset('css/creative.min.css')}}" rel="stylesheet">  
