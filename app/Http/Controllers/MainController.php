@@ -236,9 +236,9 @@ class MainController extends Controller {
 		}
 		
 		$ads = $this->helpers->getAds();
-		$totalBetSlipsPurchased = $this->helpers->getUserBetSlips($user);
+		$betslips = $this->helpers->getUserBetSlips($user);
 		
-    	return view('betslips', compact(['user','ads','totalBetSlipsPurchased']));
+    	return view('betslips', compact(['user','ads','betslips']));
     }
 
 	/**
@@ -397,7 +397,7 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getGame(Request $request)
+	public function postGame(Request $request)
     {
            $req = $request->all();
 		   #dd($req);

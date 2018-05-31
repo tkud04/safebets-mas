@@ -36,7 +36,7 @@ Route::get('transactions', 'MainController@getPurchases');
 Route::get('transactions', 'MainController@getPurchases');
 
 Route::post('view-bs', 'MainController@postBetSlip');
-Route::get('v-g', 'MainController@getGame');
+Route::post('v-g', 'MainController@postGame');
 
 Route::get('support', 'MainController@getSupport');
 Route::get('pricing', 'MainController@getPricing');
