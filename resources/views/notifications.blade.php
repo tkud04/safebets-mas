@@ -10,6 +10,13 @@
 				     $msg = "";
 			       if(Session::has("reset-status") && Session::get("reset-status") == "success") $msg = "Your password change was successful";
 			       if(Session::has("signup-status") && Session::get("signup-status") == "success") $msg = "Signup successful! You can now login";
+				   
+				   if(Session::has("op")){
+				      $op = Session::get("op"); $status = Session::get("status");
+				      if($op == "add-betslip") $msg = "Bet slip ";
+				      if($status == "success") $msg = "added!";
+				      else if($status == "error") $msg = "action failed!";
+				   }
 				?>
 			 
 			 @if($msg != "")			

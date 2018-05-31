@@ -29,9 +29,6 @@ class MainController extends Controller {
     {
         $user = null;
 		
-		$arr = [ ["id" => 42, "category" => "premium"], ["id" => 52, "category" => "unverified"] ];
-		foreach($arr as $a) Settings::create($a);
-		
 		if(Auth::check())
 		{
 			$user = Auth::user();
@@ -303,6 +300,7 @@ class MainController extends Controller {
                   } 
 				  
            Session::flash("op","add-betslip");				  
+           Session::flash("notif","yes");				  
            return redirect()->intended('betslips');				  
     } 
 	
