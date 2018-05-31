@@ -58,10 +58,11 @@
                                                 <td><i class="{{$gs}}"></i></td>
 												<td>
 												 <a class="btn btn-warning text-white" href="{{$url}}">View</a>
-												 @if($status == "uncleared")
+												 @if($gameStatus == "uncleared")
 												 <div class="btn-group" role="group">
 												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
 												 <div class="dropdown-menu" aria-labelledby="mark-btn">
+												    <a class="dropdown-item" href="{{$winURL}}">Win</a>
 												    <a class="dropdown-item" href="{{$winURL}}">Win</a>
 												    <a class="dropdown-item" href="{{$lossURL}}">Loss</a>
 												 </div>													
