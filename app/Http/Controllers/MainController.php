@@ -83,7 +83,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ret = $this->helpers->getFixtures($req["id"],"n7");
+			           $ret = $this->helpers->getFixtures($req["id"],"n14");
                        #dd($ret);					   
                   }       
            return json_encode($ret);
@@ -269,27 +269,28 @@ class MainController extends Controller {
 	public function postAddBetSlip(Request $request)
     {
            $req = $request->all();
-		   dd($req);
+		   #dd($req);
            $ret = [];
                
                 $validator = Validator::make($req, [
-                             'id' => 'required',
+                             'ssp' => 'required',
                    ]);
          
                  if($validator->fails())
                   {
-                       $ret = "Invalid ID!";
-                       
+					   Session::flash("status","error");                  
                  }
                 
                  else
                  { 
+			           $ssp = json_decode($req["xxp"]);
+					   dd($ssp);
 			           $ret = $this->helpers->getBetSlip($req["id"]);
-                       #dd($ret);					  
-					   Session::flash("op","add-betslip");
 					   Session::flash("status","success");
-					   return redirect()->intended('betslips');
-                  }       
+                  } 
+				  
+           Session::flash("op","add-betslip");				  
+           return redirect()->intended('betslips');				  
     } 
 	
 	

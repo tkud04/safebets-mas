@@ -207,7 +207,7 @@ function getOtherLeagues(url,country){
 			 $('#for-fxt').hide();
 			 $('#for-mt').fadeIn();
 			 
-		     $('#other-competition').html("<option value='none'>Select competition</option>");
+		     clearMT();
 			 console.log(response);
 		     rr = JSON.parse(response);
 			 var comps = rr['competitions'];
@@ -243,9 +243,8 @@ function getOtherTeams(url,league){
 			 $('#for-fxt').hide();
 			 $('#for-mt').fadeIn();
 			 
-		     $('#other-home').html("<option value='none'>Select home team</option>");
-		     $('#other-away').html("<option value='none'>Select away team</option>");
-			 
+		     
+			 clearMT();
 			 console.log(response);
 			 
 		     rr = JSON.parse(response);
@@ -259,6 +258,12 @@ function getOtherTeams(url,league){
      
      }
    });
+}
+
+function clearMT(){
+	$('#other-competition').html("<option value='none'>Select competition</option>");
+	$('#other-home').html("<option value='none'>Select home team</option>");
+    $('#other-away').html("<option value='none'>Select away team</option>");
 }
 
 function showOtherLeagues()
