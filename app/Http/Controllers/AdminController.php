@@ -260,14 +260,14 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin" || ($id == "" || $status == ""))
+		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
 		{
 			return redirect()->intended('/');
 		}
 		
 		else
 		{
-			$this->helpers->markGame($id,$status);
+			$this->helpers->markGame($id,$result);
 			Session::flash("mark-game-status","success");
 			return redirect()->back();		
 		}
