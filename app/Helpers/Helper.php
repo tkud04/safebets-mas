@@ -147,7 +147,7 @@ class Helper implements HelperContract
 			   foreach($ssp as $d)
 			   {
 				   $d['ticket_id'] = $betslip->id;
-			      $this->helpers->addPrediction($d);			  
+			      $this->addPrediction($d);			  
 			   }
 			   
 			   return $betslip;
