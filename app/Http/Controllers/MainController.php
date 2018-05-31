@@ -276,13 +276,20 @@ class MainController extends Controller {
                 $validator = Validator::make($req, [
                              'ssp' => 'required',
                              'booking_code' => 'required',
-                             'total_odds' => 'required|numeric',
+                             'total_odds' => 'required',
                    ]);
          
                  if($validator->fails())
                   {
 					   Session::flash("status","error");                  
-                 }
+					   Session::flash("msg","Please fill all the required fields.");                  
+                 }                 
+				 
+				 else if(!is_numeric($req['total_odds']))
+                  {
+					   Session::flash("status","error");                  
+					   Session::flash("msg","Booking code is not a valid number.");                  
+                  }
                 
                  else
                  { 

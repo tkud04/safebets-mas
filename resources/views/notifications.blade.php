@@ -13,9 +13,11 @@
 				   
 				   if(Session::has("op")){
 				      $op = Session::get("op"); $status = Session::get("status");
-				      if($op == "add-betslip") $msg = "Bet slip ";
-				      if($status == "success") $msg = "added!";
-				      else if($status == "error") $msg = "action failed!";
+				      if($op == "add-betslip"){
+						 if($status == "success") $msg = "Bet slip added!";
+				         else if($status == "error") $msg = Session::get("msg"); 
+					  }
+				      
 				   }
 				?>
 			 
