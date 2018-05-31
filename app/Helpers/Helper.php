@@ -423,17 +423,35 @@ class Helper implements HelperContract
 		   function getUserBetSlips($user)
 		   {
 			   $ret = [];
-			   $purchases = $this->getUserPurchases($user);
 			   
+			   $allBetSlipIDs = [];
+			   $sb = Tickets::where('user_id',$user->id)->get();
+			   
+			   if($sb != null)
+			   {
+				   foreach($sb as $s)
+				   {
+					   array_push($allBetSlipIDs,$s->id);
+				   }
+			   }
+			   
+			   $purchases = $this->getUserPurchases($user);
 				   if(count($purchases) > 0)
 				   {   
 					   foreach($purchases as $p)
-					   {
-						 $temp = $this->getBetSlip($p['bs-id']);
-					     array_push($ret,$temp);
+					   {						 
+					     array_push($allBetSlipIDs,$p['bs-id']);
 					   }
 				   }
-			   
+				   
+				   $allBetSlipIDs = array_unique($allBetSlipIDs);
+			       
+				   foreach($allBetSlipIDs as $abs)
+				   {
+					   $temp = [];
+					   $temp = $this->getBetSlip($abs);
+					   array_push($ret,$temp);
+				   }
 			   return $ret;
 		   }		   
 		   
