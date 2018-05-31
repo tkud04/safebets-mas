@@ -283,7 +283,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ssp = json_decode($req["xxp"]);
+			           $ssp = json_decode($req["ssp"]);
 					   dd($ssp);
 			           $ret = $this->helpers->getBetSlip($req["id"]);
 					   Session::flash("status","success");
