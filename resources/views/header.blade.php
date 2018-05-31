@@ -23,7 +23,7 @@
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" id="reg-btn" href="#">Sign up</a>
             </li>
-		   @elseif($user->role == "punter" || $user->role == "expert" || $user->role == "admin")
+		   @elseif($user->role == "punter" || $user->role == "admin")
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('dashboard')}}">Dashboard</a>
             </li>
@@ -40,7 +40,7 @@
               <a class="nav-link js-scroll-trigger" href="#">Settings</a>
             </li>
 		   <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('signout')}}">Sign out</a>
+              <a class="nav-link js-scroll-trigger" href="{{url('logout')}}">Sign out</a>
             </li>
 		   @endif
 			<li class="nav-item">
