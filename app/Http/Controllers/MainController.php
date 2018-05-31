@@ -268,6 +268,17 @@ class MainController extends Controller {
 	 */
 	public function postAddBetSlip(Request $request)
     {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		else
+		{
+			return redirect()->intended('/');
+		}
+		
            $req = $request->all();
 		   #dd($req);
            $ret = [];
