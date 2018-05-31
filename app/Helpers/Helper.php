@@ -314,10 +314,13 @@ class Helper implements HelperContract
 					   $temp["ct"] = $ct;
 					   
 					   $al = "np";
-					   $isAllowed = Purchases::where('ticket_id',$g->id)
-					                         ->where('buyer_id',$user->id)->first();
-						
-						if($isAllowed != null) $al = "py";
+					   if($user != null)
+					   {
+						   $isAllowed = Purchases::where('ticket_id',$g->id)
+					                         ->where('buyer_id',$user->id)->first();						
+						   if($isAllowed != null) $al = "py";
+					   }
+					   
 						 $temp["al"] = $al;
 					   
 					    array_push($ret,$temp);

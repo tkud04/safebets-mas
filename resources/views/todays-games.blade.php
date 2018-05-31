@@ -3,10 +3,14 @@
 	  <hr>
       <div class="container">
 	    @if(isset($todayGames) && count($todayGames) > 0)
-		@foreach($todayGames as $tg)
+		<?php $itemCount = 0; ?>
+	
+		@foreach($todayGames as $t)
 	    <input type="hidden" value="{{url('v-g')}}" id="urlx"/>
+		<?php ++$itemCount; ?>
+		@if($itemCount == 1 || $itemCount % 4 == 0)
         <div class="row">
-		  @foreach($tg as $t)
+	    @endif
 		  <?php 
 		    $category = $t["category"];
 		    $type = $t["type"];
@@ -37,7 +41,7 @@
 			}
 		
 		  ?>
-          <div class="col-lg-3col-md-12 ml-auto text-center">
+          <div class="col-lg-3 col-md-12 ml-auto text-center">
                         <div class="card mt-5">
                             <div class="card-header"><span class="badge {{$badgeClass}}">{{$t["category"]}}</span></div>
                             <div class="card-body">
@@ -51,8 +55,9 @@
 							<div class="card-footer text-muted">{{$t["date"]}}</div>
                         </div>
           </div>
-		  @endforeach
+		@if($itemCount % 4 == 0)
         </div> 
+	    @endif
         @endforeach	
         @endif		
 		
