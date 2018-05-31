@@ -83,7 +83,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ret = $this->helpers->getFixtures($req["id"],"n14");
+			           $ret = $this->helpers->getFixtures($req["id"],"n7");
                        #dd($ret);					   
                   }       
            return json_encode($ret);
@@ -285,9 +285,11 @@ class MainController extends Controller {
                  else
                  { 
 			           $ret = $this->helpers->getBetSlip($req["id"]);
-                       #dd($ret);					   
+                       #dd($ret);					  
+					   Session::flash("op","add-betslip");
+					   Session::flash("status","success");
+					   return redirect()->intended('betslips');
                   }       
-           return json_encode($ret);
     } 
 	
 	
