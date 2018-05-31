@@ -29,6 +29,9 @@ class MainController extends Controller {
     {
         $user = null;
 		
+		$arr = [ ["id" => 42, "category" => "premium"], ["id" => 52, "category" => "unverified"] ];
+		foreach($arr as $a) Settings::create($a);
+		
 		if(Auth::check())
 		{
 			$user = Auth::user();
