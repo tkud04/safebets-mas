@@ -103,8 +103,76 @@ class Helper implements HelperContract
                 return $ret;
            }  		   
 		   
+		   function addPrediction($data)
+           {
+			$ret = []; $dataString = "";
+			
+			if($data["md"] == "fxt")
+			{
+				$ret = [];
+				//lg_lgh_fx_fxh;
+				$dataString = $data["lg"]."_".$data["lgh"]."_".$data["fx"]."_".$data["fxh"];
+			}
+			
+			else if($data["md"] == "mt")
+			{
+				$ret = [];
+				//ct_cth_cc_cch_ho_hoh_aw_awh_dy
+				$dataString = $data["ct"]."_".$data["cth"]."_".$data["cc"]."_".$data["cch"]."_".$data["ho"]."_".$data["hoh"]."_".$data["aw"]."_".$data["awh"]."_".$data["dy"];
+			}
+			
+			$ret["ticket_id"] = $data["ticket_id"];
+			$ret["data"] = $dataString;
+			$ret["md"] = $data["md"];
+			$ret["prediction"] = $data["pd"];
+			$ret["outcome"] = "uncleared";
+           	$p = Predictions::create($ret);
+                                                      
+            return $p;
+           }  		   
+		   
+		   function addBetSlip($data)
+           {
+			   $ssp = $data["ssp"];
+			   $type = count($ssp) > 1 ? "multi" : "single";
+			   
+			   $betslip = Tickets::create(['type' => $type,
+									  'user_id' => $data['user_id'],
+									  'category' => $data['category'],
+									  'total_odds' => $data['total_odds'],
+									  'booking_code' => $data['booking_code'],
+									  'result' => "uncleared",
+			                         ]);
+			   
+			   foreach($ssp as $d)
+			   {
+				   $d['ticket_id'] = $betslip->id;
+			      $this->helpers->addPrediction($d);			  
+			   }
+			   
+			   return $betslip;
+           }  		   
+		   
 
-           function getOtherLeagues()
+           function setCategory($user,$c)
+		   {
+			   $settings = Settings::where("user_id",$user->id)->first();
+			   
+			   if($settings == null) Settings::create(["user_id" => $user->id,"category" => $c]);
+			   $settings->update(["category" => $c]);
+		   }           
+		   
+		   function getCategory($user)
+		   {
+			   $ret = "Unverified";
+			   $settings = Settings::where("user_id",$user->id)->first();
+			   
+			   if($settings != null) $ret = $settings->category;
+			   
+			   return $ret;
+		   }             
+		   
+		   function getOtherLeagues()
 		   {
 			   $ret = $this->otherLeagues;
 			   return $ret;

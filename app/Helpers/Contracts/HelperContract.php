@@ -26,6 +26,9 @@ Interface HelperContract
         public function addCountry($data);
         public function addCompetition($data);
         public function addTeam($data);
+        public function addPrediction($data);
+        public function addBetSlip($data);
+        public function getCategory($user);
         public function getOtherLeagues();
         public function getTeams($competition);
         public function getCompetitions($country);

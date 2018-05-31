@@ -9,6 +9,6 @@ class Predictions extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['ticket_id', 'fixture_id', 'prediction', 'outcome'];
+	protected $fillable = ['ticket_id', 'md', 'data', 'prediction', 'outcome'];
 
 }

@@ -274,6 +274,8 @@ class MainController extends Controller {
                
                 $validator = Validator::make($req, [
                              'ssp' => 'required',
+                             'booking_code' => 'required',
+                             'total_odds' => 'required|numeric',
                    ]);
          
                  if($validator->fails())
@@ -283,9 +285,17 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ssp = json_decode($req["ssp"]);
-					   dd($ssp);
-			           $ret = $this->helpers->getBetSlip($req["id"]);
+			           $ssp = json_decode($req["ssp"]);					   
+					   $category = $this->helpers->getCategory($user);
+					   
+                       $betSlipData = ["booking_code" => $req['booking_code'],
+					                   "total_odds" => $req['total_odds'],
+					                   "user_id" => $user->id,
+					                   "category" => $category,
+									   "ssp" => $ssp];	
+									   
+                       dd($betSlipData);									   
+					   $this->helpers->addBetSlip($betSlipData);
 					   Session::flash("status","success");
                   } 
 				  
