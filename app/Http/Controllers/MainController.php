@@ -304,7 +304,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ssp = json_decode($req["ssp"]);					   
+			           $ssp = json_decode($req["ssp"],true);					   
 					   $category = $this->helpers->getCategory($user);
 					   
                        $betSlipData = ["booking_code" => $req['booking_code'],
