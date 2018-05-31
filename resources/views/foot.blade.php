@@ -24,6 +24,11 @@
 	
 	<!-- Custom scripts for this template -->
     <script src="{{asset('js/creative.min.js')}}"></script>
+	
+	<!-- Sweet alert -->
+    <script src="{{asset('js/lib/sweetalert/sweetalert.min.js')}}"></script>
+    <!-- scripit init-->
+    <script src="{{asset('js/lib/sweetalert/sweetalert.init.js')}}"></script>
 
   </body>
 

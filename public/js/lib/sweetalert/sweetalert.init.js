@@ -59,9 +59,11 @@ function gg(al,id,url){
       {         
        $('#vg-working').html("");	   
        $('#vg-working').fadeOut();	   
-       //$('#result').html(response);	
+       //$('#result').html(response);
+	   var ret = JSON.parse(response);	   
 	   if(ret['error'] == "insufficient-funds"){
 		   sweetAlert("Oops...", "You don't have enough tokens to buy this game.", "error");
+		   $('#insufficientFundsModal').modal("show");
 	   }
 	   else{
 		   //$('#fixtures').html("<option value='none'>Select fixture</option>");
@@ -76,7 +78,7 @@ function gg(al,id,url){
 	       $('#viewGameModal').modal("show");
            $('#vg-table').fadeIn(); 
 	     }
-	   }   
+	   }	   
      
      }
    });
