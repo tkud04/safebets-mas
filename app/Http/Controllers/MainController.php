@@ -269,7 +269,7 @@ class MainController extends Controller {
 	public function postAddBetSlip(Request $request)
     {
            $req = $request->all();
-		   dd($req);
+		   #dd($req);
            $ret = [];
            Session::flash("op","add-betslip");
 		   

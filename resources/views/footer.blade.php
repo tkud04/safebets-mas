@@ -297,7 +297,7 @@
 													<input class="form-control" type="text" id="total_odds" placeholder="Total odds.."/>
 												</div>
 												<div class="form-group">					
-													<button id="sbs-btn" class="btn btn-success">Submit</button> 
+													<a id="sbs-btn" class="btn btn-success" href="#">Submit</a> 
 												</div>
 											</form>
 
