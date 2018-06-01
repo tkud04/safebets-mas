@@ -33,7 +33,7 @@ function getGame(evt){
 	}
 	
   else{
-	if(al == "py"){
+	if(al == "py" || al == "mn"){
 		swalConfig = {
             title: "Confirm Action",
             text: "Click OK to continue ",
@@ -57,17 +57,17 @@ function getGame(evt){
     swal(swalConfig,
         function(){
             setTimeout(function(){
-				gg(al,xe,tk,urlx);
+				gg(al,ct,xe,tk,urlx);
             }, 2000);
         });
   }
 }
 
-function gg(al,id,tk,url){
+function gg(al,ct,id,tk,url){
 	$.ajax({   
    type : 'POST',
    url  : url,
-   data : {'_token':tk,'id':id},
+   data : {'_token':tk,'al':al,,'ct':ct,'id':id},
    beforeSend: function()
    { 
     $("#vg-error").fadeOut();
@@ -82,11 +82,13 @@ function gg(al,id,tk,url){
        $('#vg-working').fadeOut();	   
        //$('#result').html(response);
 	   var ret = JSON.parse(response);	   
-	   if(ret['error'] == "insufficient-funds"){
+	   if(ret['opstatus'] == "error"){
+	     if(ret['error'] == "insufficient-funds"){
 		   sweetAlert("Oops...", "You don't have enough tokens to buy this game.", "error");
 		   $('#insufficientFundsModal').modal("show");
+	     }
 	   }
-	   else{
+	   else if(ret['opstatus'] == "ok"){
 		   //$('#fixtures').html("<option value='none'>Select fixture</option>");
 		   $("#vg-id").html(ret['id']);
 		   var vg = ret['matches'];

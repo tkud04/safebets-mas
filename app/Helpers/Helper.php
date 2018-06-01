@@ -325,7 +325,9 @@ class Helper implements HelperContract
 					                         ->where('buyer_id',$user->id)						
 					                         ->orWhere('seller_id',$user->id)->first();
 											 
-						   if($isAllowed != null) $al = "py";
+						   $isMine = Tickets::where('user_id',$user->id)->first();
+											 
+						   if($isAllowed != null || $isMine != null) $al = "py";
 					   }
 					   
 						 $temp["al"] = $al;
@@ -703,6 +705,71 @@ class Helper implements HelperContract
 						   array_push($ret,$temp);
 					   }
 				   }
+			   
+			   return $ret;
+		   }			   
+		   
+		   function addToPurchases($user,$betSlipID)
+		   {
+			   $ticket = Tickets::where('id',$betSlipID)->first();
+			   $p = null;
+			   
+			   if($ticket != null)
+			   {
+				   //buyer paid
+				   $data = [];
+				   $data['buyer_id'] = $user->id;
+				   $data['seller_id'] = $ticket->user_id;
+				   $data['ticket_id'] = $ticket->id;
+				   $data['status'] = "sold";
+				   
+				   $p = Purchases::create($data);
+			   }
+			   
+			   return $p;
+		   }		   
+		   
+		   function buyGame($user,$data)
+		   {
+			   $ret = ["status" => "unkown"];
+			   $userTokens = $this->getTokenBalance($user);
+			   $amount = 0; $allowed = false; $buying = false;
+			   
+			   $al = $data["al"]; $ct = $data["ct"]; $id = $data["id"];
+			   
+			   if($al == "py" || $al == "mn"){ $allowed = true; }
+			   else
+			   {
+				   if($ct == "rs") $amount = 1;
+				   elseif($ct == "rm") $amount = 2;
+			       elseif($ct == "ps") $amount = 4;
+			       elseif($ct == "pm") $amount = 8;
+			   
+			       $allowed = $userTokens >= $amount ? true: false;
+				   $buying = true;
+			   }
+			   
+			   if($allowed)
+			   {
+				   if($buying)
+				   {
+					   $userTokens -= $amount;
+					   
+					   //update user bal and register transaction
+					   $tk = Tokens::where('user_id',$user->id)->first();
+					   if($tk != null) $tk->update(["balance" => $userTokens]);
+					   
+					   $p = $this->addToPurchases($user,$id);
+				   }
+				   $ret = $this->getBetSlip($id);
+				   $ret["opstatus"] = "ok";
+			   }
+			   
+			   else
+			   {
+				   $ret["opstatus"] = "error";
+				   $ret["error"] = "insufficient-funds";
+			   }
 			   
 			   return $ret;
 		   }	

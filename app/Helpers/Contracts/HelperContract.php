@@ -32,5 +32,7 @@ Interface HelperContract
         public function getOtherLeagues();
         public function getTeams($competition);
         public function getCompetitions($country);
+        public function buyGame($user,$data);
+        public function addToPurchases($user,$betSlipID);
 }
  ?>

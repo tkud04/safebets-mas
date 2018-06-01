@@ -404,6 +404,8 @@ class MainController extends Controller {
            $ret = [];
                
                 $validator = Validator::make($req, [
+                             'al' => 'required',
+                             'ct' => 'required',
                              'id' => 'required',
                    ]);
          
@@ -415,7 +417,8 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $ret = $this->helpers->getBetSlip($req["id"]);
+			           $data = ["al" => $req["al"], "id" => $req["id"] ];
+			           $ret = $this->helpers->buyGame($user,$data);
                        #dd($ret);					   
                   }       
            return json_encode($ret);
