@@ -1,4 +1,4 @@
-document.querySelector('.buy-game').onclick = function(){
+document.querySelectorAll('.buy-game').onclick = function(){
 	var ct = $(this).attr("data-ct");
 	var xe = $(this).attr("data-xe");
 	var al = $(this).attr("data-al");
@@ -9,6 +9,7 @@ document.querySelector('.buy-game').onclick = function(){
 	else if(ct == "ps") fee = 4;
 	else if(ct == "rm") fee = 2;
 	else if(ct == "rs") fee = 1;
+	else if(ct == "uv") fee = 0;
 	
 	var tt = " token";
 	if(fee == 0 || fee > 1) tt = " tokens";
