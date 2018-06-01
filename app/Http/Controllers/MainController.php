@@ -35,12 +35,12 @@ class MainController extends Controller {
 		if(Auth::check())
 		{
 			$user = Auth::user();
-			$todayGames = $this->helpers->getGames($user,"today");
-		    $premiumGames = $this->helpers->getGames($user,"premium");
-		    $regularGames = $this->helpers->getGames($user,"regular");
 	    }
 		
 		$ads = $this->helpers->getAds();
+		$todayGames = $this->helpers->getGames($user,"today");
+		$premiumGames = $this->helpers->getGames($user,"premium");
+		$regularGames = $this->helpers->getGames($user,"regular");
 		
     	return view('index', compact(['user','ads','todayGames','regularGames','premiumGames']));
     }
