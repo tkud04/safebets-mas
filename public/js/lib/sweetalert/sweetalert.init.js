@@ -1,7 +1,19 @@
-document.querySelectorAll('.buy-game').onclick = function(){
-	var ct = $(this).attr("data-ct");
-	var xe = $(this).attr("data-xe");
-	var al = $(this).attr("data-al");
+addEventListenerBySelector('.buy-game', 'click', getGame);
+
+
+function addEventListenerBySelector(className, event, func){
+	var slips = document.querySelectorAll(className);
+
+   for(var q = 0; q < slips.length; q++){
+	slips[q].addEventListener(event, func, false);
+   }
+}
+
+function getGame(evt){
+	var dis = evt.target;
+	var ct = dis.getAttribute("data-ct");
+	var xe = dis.getAttribute("data-xe");
+	var al = dis.getAttribute("data-al");
 	var urlx = $("#urlx").val();
 	var fee = 0;
 	
@@ -49,7 +61,7 @@ document.querySelectorAll('.buy-game').onclick = function(){
             }, 2000);
         });
   }
-};
+}
 
 function gg(al,id,tk,url){
 	$.ajax({   
