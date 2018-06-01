@@ -6,7 +6,7 @@ document.querySelector('.buy-game').onclick = function(){
 	var fee = 0;
 	
 	if(ct == "pm") fee = 8;
-	if(ct == "ps") fee = 4;
+	else if(ct == "ps") fee = 4;
 	else if(ct == "rm") fee = 2;
 	else if(ct == "rs") fee = 1;
 	
@@ -15,6 +15,11 @@ document.querySelector('.buy-game').onclick = function(){
 	
 	var swalConfig = {};
 	
+	if(al == "lg"){
+		$("#loginModal").modal("show");
+	}
+	
+  else{
 	if(al == "py"){
 		swalConfig = {
             title: "Confirm Action",
@@ -42,6 +47,7 @@ document.querySelector('.buy-game').onclick = function(){
 				gg(al,xe,tk,urlx);
             }, 2000);
         });
+  }
 };
 
 function gg(al,id,tk,url){

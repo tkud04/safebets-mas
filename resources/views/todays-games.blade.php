@@ -21,24 +21,34 @@
 			$xe = $t["id"];
 			
 			$badgeClass = "badge-info";
+			$hrClass = "hr-info";
+			$btnClass = "btn-info";
 			
-			if($category == "regular") $badgeClass = "badge-success";
-			else if($category == "premium") $badgeClass = "badge-premium";
+			if($category == "regular"){
+				$badgeClass = "badge-success";
+				$hrClass = "hr-success";
+				$btnClass = "btn-success";
+			} 
+			else if($category == "premium"){
+				$badgeClass = "badge-premium";
+				$hrClass = "hr";
+				$btnClass = "btn-primary";				
+			}
 			
 			$typeText = "";
 			
 			if($type == "single")
 			{
-				$typeText = "single game";
+				$typeText = "Single game";
 				if($category == "beginner") $cta = "View this game";
-				else $cta = "Get this game";
+				else $cta = "View game";
 			}			
 			
 			else if($type == "multi")
 			{
-				$typeText = "bet slip";
+				$typeText = "Bet slip";
 				if($category == "beginner") $cta = "View games";
-				else $cta = "Get this game";
+				else $cta = "View bet slip";
 			}
 		
 		  ?>
@@ -47,11 +57,11 @@
                             <div class="card-header"><span class="badge {{$badgeClass}}">{{$t["category"]}}</span></div>
                             <div class="card-body">
                                 <h4 class="card-title">{{$t["seller"]}}</h4>
-								<hr class="hr-info">
+								<hr class="{{$hrClass}}">
                                 <h6 class="card-subtitle">{{$typeText}}</h6>
 								<p>Odds: <strong>{{$t["odds"]}}</strong></p>
-								<hr class="hr-info">
-								<a href="#" class="btn btn-info buy-game" data-al="{{$al}}" data-ct="{{$ct}}" data-xe="{{$xe}}">{{$cta}}</a>
+								<hr class="{{$hrClass}}">
+								<a href="#" class="btn {{$btnClass}} buy-game" data-al="{{$al}}" data-ct="{{$ct}}" data-xe="{{$xe}}">{{$cta}}</a>
                             </div>
 							<div class="card-footer text-muted">{{$t["date"]}}</div>
                         </div>

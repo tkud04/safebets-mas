@@ -289,8 +289,8 @@ class Helper implements HelperContract
 			   $games = null;
 			   
 			   if($type == "today") $games = Tickets::orderBy('created_at',"DESC")->get();
-			   else if($type == "premium") $games = Tickets::where("category","premium")->get();
-			   else if($type == "regular") $games = Tickets::where("category","regular")->get();
+			   else if($type == "premium") $games = Tickets::where("category","premium")->orderBy('created_at',"DESC")->get();
+			   else if($type == "regular") $games = Tickets::where("category","regular")->orderBy('created_at',"DESC")->get();
 			   
 			   if($games != null)
 			   {
@@ -306,7 +306,7 @@ class Helper implements HelperContract
 					   $temp["seller"] = $seller->username;
 					   
 					   
-					   $ct = "";
+					   $ct = "uv";
 					   if($g->category == "premium" && $g->type == "single") $ct = "ps";
 					   else if($g->category == "premium" && $g->type == "multi") $ct = "pm";
 					   else if($g->category == "regular" && $g->type == "single") $ct = "rs";
@@ -314,10 +314,17 @@ class Helper implements HelperContract
 					   $temp["ct"] = $ct;
 					   
 					   $al = "np";
-					   if($user != null)
+					   
+					   if($user == null)
+					   {
+						   $al = "lg";
+					   }
+					   else
 					   {
 						   $isAllowed = Purchases::where('ticket_id',$g->id)
-					                         ->where('buyer_id',$user->id)->first();						
+					                         ->where('buyer_id',$user->id)						
+					                         ->orWhere('seller_id',$user->id)->first();
+											 
 						   if($isAllowed != null) $al = "py";
 					   }
 					   
