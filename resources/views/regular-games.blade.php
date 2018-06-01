@@ -1,12 +1,17 @@
     <section id="todays-games">
-	  <center><h2 class="section-heading">Top Premium Predictions</h2></center>
+	  <center><h2 class="section-heading">Regular Predictions</h2></center>
 	  <hr>
       <div class="container">
 	    @if(isset($regularGames) && count($regularGames) > 0)
-		@foreach($regularGames as $tg)
+		<?php $itemCount = 0; ?>
+	
+		@foreach($regularGames as $t)
 	    <input type="hidden" value="{{url('v-g')}}" id="urlx"/>
+	    <input type="hidden" value="{{csrf_token()}}" id="tk"/>
+		<?php ++$itemCount; ?>
+		@if($itemCount == 1 || $itemCount % 4 == 0)
         <div class="row">
-		  @foreach($tg as $t)
+	    @endif
 		  <?php 
 		    $category = $t["category"];
 		    $type = $t["type"];
@@ -37,7 +42,7 @@
 			}
 		
 		  ?>
-          <div class="col-lg-3col-md-12 ml-auto text-center">
+          <div class="col-lg-3 col-md-12 ml-auto text-center">
                         <div class="card mt-5">
                             <div class="card-header"><span class="badge {{$badgeClass}}">{{$t["category"]}}</span></div>
                             <div class="card-body">
@@ -51,15 +56,16 @@
 							<div class="card-footer text-muted">{{$t["date"]}}</div>
                         </div>
           </div>
-		  @endforeach
+		@if($itemCount % 4 == 0)
         </div> 
+	    @endif
         @endforeach	
         @endif		
 		
 		<br><br>
 		<div class="row">
 		     <div class="col-md-12">
-			     <center><a href="{{url('games')}}" class="btn btn-primary btn-lg">View more predictions</a></center>
+			     <center><a href="{{url('games')}}" class="btn btn-primary btn-lg">View more games</a></center>
 			 </div>
 		</div>
       </div>

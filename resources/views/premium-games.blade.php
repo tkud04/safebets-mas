@@ -1,5 +1,5 @@
     <section id="todays-games">
-	  <center><h2 class="section-heading">Top Predictions</h2></center>
+	  <center><h2 class="section-heading">Premium Predictions</h2></center>
 	  <hr>
       <div class="container">
 	    @if(isset($premiumGames) && count($premiumGames) > 0)
@@ -47,11 +47,11 @@
                             <div class="card-header"><span class="badge {{$badgeClass}}">{{$t["category"]}}</span></div>
                             <div class="card-body">
                                 <h4 class="card-title">{{$t["seller"]}}</h4>
-								<hr class="hr-success">
+								<hr class="hr">
                                 <h6 class="card-subtitle">{{$typeText}}</h6>
 								<p>Odds: <strong>{{$t["odds"]}}</strong></p>
-								<hr class="hr-success">
-								<a href="#" class="btn btn-success buy-game" data-al="{{$al}}" data-ct="{{$ct}}" data-xe="{{$xe}}">{{$cta}}</a>
+								<hr class="hr">
+								<a href="#" class="btn btn-primary buy-game" data-al="{{$al}}" data-ct="{{$ct}}" data-xe="{{$xe}}">{{$cta}}</a>
                             </div>
 							<div class="card-footer text-muted">{{$t["date"]}}</div>
                         </div>
