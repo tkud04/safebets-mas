@@ -182,7 +182,7 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-			   $countries = Countries::all();
+			   $countries = Countries::orderBy('created_at',"DESC")->get();
 			   
 			   foreach($countries as $country)
 			   {
@@ -288,7 +288,7 @@ class Helper implements HelperContract
 			   $ret = [];
 			   $games = null;
 			   
-			   if($type == "today") $games = Tickets::all();
+			   if($type == "today") $games = Tickets::orderBy('created_at',"DESC")->get();
 			   else if($type == "premium") $games = Tickets::where("category","premium")->get();
 			   else if($type == "regular") $games = Tickets::where("category","regular")->get();
 			   
@@ -384,7 +384,7 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $betslips = Tickets::all();
+				   $betslips = Tickets::orderBy('created_at',"DESC")->get();
 				   if($betslips != null)
 				   {   
 					   foreach($betslips as $ticket)
@@ -666,7 +666,7 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $purchases = Purchases::all();
+				   $purchases = Purchases::orderBy('created_at',"DESC")->get();
 				   if($purchases != null)
 				   {
 					   $ret = [];

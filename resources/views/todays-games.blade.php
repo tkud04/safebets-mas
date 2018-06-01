@@ -1,5 +1,5 @@
     <section id="todays-games">
-	  <center><h2 class="section-heading">Top Games Today</h2></center>
+	  <center><h2 class="section-heading">Top Predictions</h2></center>
 	  <hr>
       <div class="container">
 	    @if(isset($todayGames) && count($todayGames) > 0)
