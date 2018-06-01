@@ -244,9 +244,9 @@
                                 <h4>Not enough tokens? </h4>
                             </div>
                             <div class="card-body">
-        <div class="row">
-         <div class="well text-center">Buy a token pack now!</div>		
-		  <div class="col-lg-6 col-md-12 ml-auto text-center">
+         <div class="well text-center">Buy a token pack now!</div>	
+         <div class="row">		 
+		  <div class="col-lg-4 col-md-12 ml-auto text-center">
                         <div class="card mt-5">
                             <div class="card-body">
 							    <span class="badge badge-info">STARTER PACK</span><br><br>
@@ -258,7 +258,7 @@
                             </div>
                         </div>
           </div>		  
-		  <div class="col-lg-6 col-md-12 ml-auto text-center">
+		  <div class="col-lg-4 col-md-12 ml-auto text-center">
                         <div class="card mt-5">
                             <div class="card-body">
 							    <span class="badge badge-success">JUMBO PACK</span><br><br>
