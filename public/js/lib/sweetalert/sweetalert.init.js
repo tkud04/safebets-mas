@@ -67,7 +67,7 @@ function gg(al,ct,id,tk,url){
 	$.ajax({   
    type : 'POST',
    url  : url,
-   data : {'_token':tk,'al':al,,'ct':ct,'id':id},
+   data : {'_token':tk,'al':al,'ct':ct,'id':id},
    beforeSend: function()
    { 
     $("#vg-error").fadeOut();
