@@ -428,7 +428,7 @@ class MainController extends Controller {
                 
                  else
                  { 
-			           $data = ["al" => $req["al"], "id" => $req["id"] ];
+			           $data = ["al" => $req["al"], "id" => $req["id"], "ct" => $req["ct"] ];
 			           $ret = $this->helpers->buyGame($user,$data);
                        #dd($ret);					   
                   }       
