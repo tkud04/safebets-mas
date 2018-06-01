@@ -325,7 +325,8 @@ class Helper implements HelperContract
 					                         ->where('buyer_id',$user->id)						
 					                         ->orWhere('seller_id',$user->id)->first();
 											 
-						   $isMine = Tickets::where('user_id',$user->id)->first();
+						   $isMine = Tickets::where('id',$g->id)
+						                    ->where('user_id',$user->id)->first();
 											 
 						   if($isAllowed != null || $isMine != null) $al = "py";
 					   }

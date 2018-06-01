@@ -399,6 +399,17 @@ class MainController extends Controller {
 	 */
 	public function postGame(Request $request)
     {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null)
+		{
+			return redirect()->intended('/');
+		}
            $req = $request->all();
 		   #dd($req);
            $ret = [];
