@@ -37,7 +37,7 @@
               <a class="nav-link js-scroll-trigger" href="{{url('transactions')}}">Transactions</a>
             </li>            	
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">Settings</a>
+              <a class="nav-link js-scroll-trigger" href="{{url('settings')}}">Settings</a>
             </li>
 		   <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('logout')}}">Sign out</a>

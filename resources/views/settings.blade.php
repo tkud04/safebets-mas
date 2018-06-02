@@ -4,5 +4,5 @@
 
 @section('content')
 @include('ad-section')
-@include('settinngs-content')
+@include('settings-content')
 @stop
