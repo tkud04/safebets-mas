@@ -30,9 +30,9 @@
                                                 <div class="form-group">
                                                     <label>Username</label>
                                                     <input type="text" class="form-control" name="username" value="{{old('username')}}">
-                                                    <input type="hidden" class="form-control" name="gggg" value="{{$userr['id']}}">
+                                                    <input type="hidden" class="form-control" name="gggg" value="{{$ret['id']}}">
 													<script>
-													  document.querySelector('#username').value = "{{$user['username']}}";
+													  document.querySelector('#username').value = "{{$ret['username']}}";
 													</script>
                                                 </div>
                                             </div>
