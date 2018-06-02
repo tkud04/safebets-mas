@@ -534,6 +534,74 @@ class MainController extends Controller {
 		}
 		
 		return json_encode($ret);
+    }		
+	
+	/**
+	 * Gets Settings view and displays to the user
+	 *
+	 * @return Response
+	 */
+	public function getSettings()
+    {
+        $user = null;
+		$ret = [];
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null)
+		{
+			return redirect()->intended('/');
+		}
+		
+		$ret = $this->helpers->getSettings($user);
+		
+		return view('settings', compact(['user','ret']));	
     }	
+	
+
+    /**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function postSettings(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		else
+		{
+			return redirect()->intended('/');
+		}
+		
+           $req = $request->all();
+		   #dd($req);
+           $ret = [];
+           Session::flash("op","settings");
+		   
+                $validator = Validator::make($req, [
+                             'fname' => 'required',
+                             'lname' => 'required',
+                             'phone' => 'required|numeric',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+					  return redirect()->back()->withInput()->withErrors($validator);                
+                 }                 
+                
+                 else
+                 { 									   
+					   $this->helpers->updateSettings($user,$req);
+					   Session::flash("status","success");
+                  } 				  
+           return redirect()->intended('settings');				  
+    } 
 
 }

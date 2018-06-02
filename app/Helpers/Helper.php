@@ -773,6 +773,37 @@ class Helper implements HelperContract
 			   }
 			   
 			   return $ret;
+		   }			   
+		   
+		   function getSettings($user)
+		   {
+			   $ret = [];
+			   $tokens = $this->getTokenBalance($user);
+			   $settings = Settings::where('user_id',$user->id)->first();
+			   
+			   if($settings != null)
+			   {
+				   $ret["fname"] = $user->fname;
+				   $ret["lname"] = $user->lname;
+				   $ret["phone"] = $user->phone;				   
+				   
+				   $ret["balance"] = $tokens;
+				   $ret["category"] = $settings->category;
+				   $ret["status"] = $user->status;   
+			   }
+			   
+			   
+			   return $ret;
 		   }	
+		   
+           function updateSettings($user,$data)
+		   {
+			   $this->setCategory($user,$data['category']);
+			   $user->update(["fname" =>$data['fname'],
+			                  "lname" =>$data['lname'],
+			                  "phone" =>$data['phone'],
+			                ]);
+		   } 
+		   
 }
 ?>

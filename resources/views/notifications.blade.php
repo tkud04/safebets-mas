@@ -16,6 +16,10 @@
 				      if($op == "add-betslip"){
 						 if($status == "success") $msg = "Bet slip added!";
 				         else if($status == "error") $msg = Session::get("msg"); 
+					  }				      
+					  elseif($op == "settings"){
+						 if($status == "success") $msg = "Info updated!";
+				         else if($status == "error") $msg = Session::get("msg"); 
 					  }
 				      
 				   }

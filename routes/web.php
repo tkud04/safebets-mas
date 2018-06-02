@@ -44,6 +44,9 @@ Route::get('pricing', 'MainController@getPricing');
 Route::get('gc', 'MainController@getCompetitions');
 Route::get('gt', 'MainController@getTeams');
 
+Route::get('settings', 'MainController@getSettings');
+Route::post('settings', 'MainController@postSettings');
+
 
 /**
  Admin routes
