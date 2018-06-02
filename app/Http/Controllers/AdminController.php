@@ -79,7 +79,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getManageTokens($id="",$action="")
+	public function getManageTokens($action="",$id="")
     {
         $user = null;
 		
