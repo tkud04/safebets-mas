@@ -371,7 +371,7 @@ class Helper implements HelperContract
 		   {
 			   $ret  = [];
 			   
-			   $users = User::where('id',$id)->first();
+			   $user = User::where('id',$id)->first();
 			   
 			   if($user != null)
 			   {
@@ -803,6 +803,28 @@ class Helper implements HelperContract
 			                  "lname" =>$data['lname'],
 			                  "phone" =>$data['phone'],
 			                ]);
+		   }            
+		   
+		   function addTokens($userId,$tokens)
+		   {
+			   $tokens = Tokens::where('user_id',$userId)->first();
+			   if($tokens != null)
+			   {
+				   $newBalance = $token->balance + $tokens;
+				  $tokens->update(["balance" =>$newBalance]);  
+			   }
+			   
+		   } 		   
+		   
+		   function removeTokens($userId,$tokens)
+		   {
+			   $tokens = Tokens::where('user_id',$userId)->first();
+			   if($tokens != null)
+			   {
+				   $newBalance = $token->balance - $tokens;
+				  $tokens->update(["balance" =>$newBalance]);  
+			   }
+			   
 		   } 
 		   
 }

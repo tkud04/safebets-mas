@@ -36,5 +36,7 @@ Interface HelperContract
         public function addToPurchases($user,$betSlipID);
         public function getSettings($user);
         public function updateSettings($user,$data);
+        public function addTokens($userId,$tokens);
+        public function removeTokens($userId,$tokens);
 }
  ?>
