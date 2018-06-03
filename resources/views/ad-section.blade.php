@@ -1,4 +1,5 @@
 @if(isset($ads) && count($ads) >= 3)
+	<?php shuffle($ads); ?>
     <section class="p-0" id="">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">

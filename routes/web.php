@@ -47,6 +47,8 @@ Route::get('gt', 'MainController@getTeams');
 Route::get('settings', 'MainController@getSettings');
 Route::post('settings', 'MainController@postSettings');
 
+Route::post('become-an-expert', 'MainController@postRequestExpert');
+
 
 /**
  Admin routes

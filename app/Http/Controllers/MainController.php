@@ -602,6 +602,6 @@ class MainController extends Controller {
 					   Session::flash("status","success");
                   } 				  
            return redirect()->intended('settings');				  
-    } 
+    }     
 
 }

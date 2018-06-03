@@ -165,7 +165,7 @@ class Helper implements HelperContract
 		   
 		   function getCategory($user)
 		   {
-			   $ret = "Unverified";
+			   $ret = "unverified";
 			   $settings = Settings::where("user_id",$user->id)->first();
 			   
 			   if($settings != null) $ret = $settings->category;

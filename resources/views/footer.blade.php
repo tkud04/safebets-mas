@@ -1,6 +1,6 @@
     <section class="bg-dark text-white">
       <div class="container text-center">
-        <h2 class="mb-4">Win big by buying winning predictions or get a refund</h2>
+        <h2 class="mb-4">Stop betting on your own, bet with SafeBets and we won't let you down.</h2>
        <?php #<a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a> 
 	   ?>
       </div>
@@ -304,4 +304,4 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>		

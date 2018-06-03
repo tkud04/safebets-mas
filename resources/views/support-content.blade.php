@@ -59,7 +59,7 @@
 				 <div class="card">
 					 <div class="card-header" id="heading-3">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-3" aria-expanded="true" aria-controls="collapse-3">How accurate are the predictions on this site?</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-3" aria-expanded="true" aria-controls="collapse-3">How accurate are the predictions?</button>
                          </h5>
 					 </div>
 
@@ -73,7 +73,7 @@
 				 <div class="card">
 					 <div class="card-header" id="heading-4">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">Can I get fixed matches on this site?</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">Can I get fixed matches?</button>
                          </h5>
 					 </div>
 
@@ -86,7 +86,7 @@
 				 <div class="card">
 					 <div class="card-header" id="heading-5">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-5" aria-expanded="true" aria-controls="collapse-5">What happens if a bet slip I bought is lost?</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-5" aria-expanded="true" aria-controls="collapse-5">What happens if a bet slip is lost?</button>
                          </h5>
 					 </div>
 
@@ -99,7 +99,7 @@
 				 <div class="card">
 					 <div class="card-header" id="heading-6">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-6" aria-expanded="true" aria-controls="collapse-6">I want to make money selling match predictions on SafeBets. How do I go about it?</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-6" aria-expanded="true" aria-controls="collapse-6">I want to be an expert. How do I go about it?</button>
                          </h5>
 					 </div>
 
@@ -107,9 +107,9 @@
 					     <div class="card-body">
 							 SafeBets is dedicated to building a community of top experts that provide high-yield match predictions that can guarantee continuous profit for our customers. In order to be a part of this community you must follow our terms:<br><br>
 							 <ul align="left">
+							     <li>You must have a SafeBets account.</li>
 							     <li>You must post predictions <strong>DAILY</strong>. Failure to do so will affect your ranking and visibility on our platform.</li>
 							     <li>Your predictions must be thorough, well researched and at least 80% accurate all the time. Failure to meet this standard will affect your ranking and visibility on our platform.</li>
-							     <li>If you are able to meet our requirements then you can <a href="#">click here to request to become an expert.</a></li>
 							 </ul>
 						 </div>
 					 </div>
@@ -117,7 +117,7 @@
 				 <div class="card">
 					 <div class="card-header" id="heading-7">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-7" aria-expanded="true" aria-controls="collapse-7">How much will I earn selling match predictions on this site?</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-7" aria-expanded="true" aria-controls="collapse-7">How much will I earn as an expert?</button>
                          </h5>
 					 </div>
 
@@ -145,26 +145,26 @@
 				 <div class="card">
 					 <div class="card-header" id="heading-8">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-8" aria-expanded="true" aria-controls="collapse-8">What happens if a bet slip I post on the site is lost?</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-8" aria-expanded="true" aria-controls="collapse-8">What happens if a bet slip I post is lost?</button>
                          </h5>
 					 </div>
 
 					 <div id="collapse-8" class="collapse" aria-labelledby="heading-8" data-parent="#accordion">
 					     <div class="card-body">
-							 In the event that a bet slip you post is lost, <strong>you will be NOT earn anything from that bet slip</strong>, as all users who bought the bet slip will be refunded 						 
+							 In the event that a bet slip you post is lost, <strong style="color:red;">you will be NOT earn anything from that bet slip</strong>, as all punters who bought the bet slip will be refunded 						 
 						 </div>
 					 </div>
 				 </div>				 
 				 <div class="card">
 					 <div class="card-header" id="heading-9">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-9" aria-expanded="true" aria-controls="collapse-9">What is the minimum withdrawal amount?</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-9" aria-expanded="true" aria-controls="collapse-9">When can i withdraw my earnings?</button>
                          </h5>
 					 </div>
 
 					 <div id="collapse-9" class="collapse" aria-labelledby="heading-9" data-parent="#accordion">
 					     <div class="card-body">
-							 Experts can withdraw their earnings once it's up to <strong>&#8358;5000</strong>
+							 Experts can withdraw their earnings once it's up to the minimum threshold of <strong>&#8358;5000</strong>
 						 </div>
 					 </div>
 				 </div>

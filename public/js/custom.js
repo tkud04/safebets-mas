@@ -42,6 +42,11 @@
 		e.preventDefault();
 		$('#loginModal').modal("hide");
 		$('#registerModal').modal("show");
+	});   	
+	
+	$("a#request-expert-btn").click(function(e){
+		e.preventDefault();
+		$('#requestExpertModal').modal("hide");
 	});  	
 
   $('#fixtures').change(function(e){
