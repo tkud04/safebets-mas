@@ -274,8 +274,24 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-			   $ads = ["img/portfolio/thumbnails/1.jpg","img/portfolio/thumbnails/2.jpg","img/portfolio/thumbnails/3.jpg",
-					   "img/portfolio/thumbnails/4.jpg","img/portfolio/thumbnails/5.jpg","img/portfolio/thumbnails/6.jpg",];
+			   $ads = [ /**["img" => "img/portfolio/thumbnails/1.jpg", "href" => "#"],
+			            ["img" => "img/portfolio/thumbnails/2.jpg", "href" => "#"],
+			            ["img" => "img/portfolio/thumbnails/3.jpg", "href" => "#"],
+			            ["img" => "img/portfolio/thumbnails/4.jpg", "href" => "#"],
+			            ["img" => "img/portfolio/thumbnails/5.jpg", "href" => "#"],
+			            ["img" => "img/portfolio/thumbnails/6.jpg", "href" => "#"],**/
+			            ["img" => "img/sbimages/ad-1.jpeg", "href" => "http://www.informationhood.com/top-7-best-betting-websites-companies-nigeria"],
+			            ["img" => "img/sbimages/ad-2.jpeg", "href" => "http://www.nairabet.com"],
+			            ["img" => "img/sbimages/ad-3.jpeg", "href" => "http://www.nairabet.com"],
+			            ["img" => "img/sbimages/ad-4.jpeg", "href" => "http://www.nairabet.com"],
+			            ["img" => "img/sbimages/ad-5.jpeg", "href" => "http://www.nairabet.com"],
+			            ["img" => "img/sbimages/ad-6.png", "href" => "http://bet9ja.com"],
+			            ["img" => "img/sbimages/ad-7.jpeg", "href" => "#"],
+			            ["img" => "img/sbimages/ad-8.jpeg", "href" => "http://bet9ja.com"],
+			            ["img" => "img/sbimages/ad-9.jpeg", "href" => "http://bet9ja.com"],
+			            ["img" => "img/sbimages/ad-10.jpeg", "href" => "http://bet9ja.com"],
+			            ["img" => "img/sbimages/ad-11.jpeg", "href" => "#"],
+                      ];
 			   
 			   shuffle($ads);
 			   
