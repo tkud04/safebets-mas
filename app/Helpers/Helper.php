@@ -71,6 +71,7 @@ class Helper implements HelperContract
                                                       'email' => $data['email'], 
 													  'username' => $data['username'], 
                                                       'role' => "punter", 
+                                                      'status' => "active", 
                                                       'password' => bcrypt($data['pass']), 
                                                       ]);
                                                       

@@ -15,7 +15,7 @@
 											    $fname = $ret['fname'];
 											    $lname = $ret['lname'];
 											    $phone = $ret['phone'];
-											    $balance = $ret['status'];
+											    $balance = $ret['balance'];
 												
 											   $categoryClass = "info";
 											   
@@ -45,7 +45,7 @@
 									   <div class="col-lg-4 col-md-12">
 							              <div class="form-group">
 								             <label for="phone">Phone number</label>
-								             <input class="form-control" type="text" placeholder="Last name" id="phone" value="{{old('phone')}}"/>
+								             <input class="form-control" type="text" placeholder="Last name" id="phone" value="{{old('phone')}}" disabled />
 							              </div>							     
 							           </div>							     
 						            </div><br>						

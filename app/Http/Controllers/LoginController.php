@@ -10,6 +10,8 @@ use Session;
 use Validator; 
 use Carbon\Carbon; 
 use App\User;
+use App\Tokens;
+use App\Settings;
 
 class LoginController extends Controller {
 
@@ -93,6 +95,7 @@ class LoginController extends Controller {
          if($validator->fails())
          {
              $messages = $validator->messages();
+			 
              //dd($messages);
              Session::flash("notif","yes");
              return redirect()->back()->withInput()->with('errors',$messages);
@@ -103,8 +106,10 @@ class LoginController extends Controller {
             
                        #dd($req);            
 
-            $user =  $this->helpers->createUser($req);  
-            $this->setCategory($user,"Unverified");
+            $user =  $this->helpers->createUser($req);
+            $tk = Tokens::create(["user_id" => $user->id,"balance" => 0]);			
+            $st = Settings::create(["user_id" => $user->id,"category" => "unverified"]);			
+            $this->setCategory($user,"unverified");
 			
              //after creating the user, send back to the registration view with a success message
              #$this->helpers->sendEmail($user->email,'Welcome To Disenado!',['name' => $user->fname, 'id' => $user->id],'emails.welcome','view');

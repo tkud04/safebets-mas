@@ -16,7 +16,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">What do you want to do?</label>
-                                                    <select class="form-control custom-select" value="{{$action}}" name="action">
+                                                    <select id="action" class="form-control custom-select" value="{{$action}}" name="action">
                                                         <option value="none">Select desired action</option>
                                                         <option value="add">Add tokens</option>
                                                         <option value="remove">Remove tokens</option>
@@ -29,9 +29,10 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Username</label>
-                                                    <input type="text" class="form-control" name="username" value="{{old('username')}}">
+                                                    <input type="text" id="username" class="form-control" name="username" value="{{old('username')}}">
                                                     <input type="hidden" class="form-control" name="gggg" value="{{$ret['id']}}">
 													<script>
+													  document.querySelector('#action').value = "{{$action}}";
 													  document.querySelector('#username').value = "{{$ret['username']}}";
 													</script>
                                                 </div>
