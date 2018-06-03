@@ -6,7 +6,7 @@
 		  <?php $img = $ad['img']; $img = asset($img); $href = $ad['href']; ?>
           <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="{{$href}}" target="_blank">
-              <img class="img-fluid" src="{{$ad}}" alt="" width="650" height="350">
+              <img class="img-fluid" src="{{$img}}" alt="" width="650" height="350">
             </a>
           </div>
 		  @endforeach
