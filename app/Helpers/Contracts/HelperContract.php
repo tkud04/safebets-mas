@@ -38,5 +38,12 @@ Interface HelperContract
         public function updateSettings($user,$data);
         public function addTokens($userId,$tokens);
         public function removeTokens($userId,$tokens);
+		public function getExchangeRate();
+		public function getTotalRevenue();
+		public function getTotalTokens();
+		public function getTotalBetSlips();
+		public function getTotalPunters();
+		public function getRecentPurchases();
+		public function getRecentMessages();
 }
  ?>

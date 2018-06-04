@@ -39,15 +39,15 @@ class AdminController extends Controller {
 			return redirect()->intended('/');
 		}
 		
-		$totalRevenue = 15296875;
-		$tokenSold = 979;
-		$totalExperts = 25;
-		$totalPunters = 700;
-		$recentOrders = [];
-		$recentMessages = [];
+		$totalRevenue = $this->helpers->getTotalRevenue();
+		$tokenSold = $this->helpers->getTotalTokens();
+		$totalBetSlips = $this->helpers->getTotalBetSlips();
+		$totalPunters = $this->helpers->getTotalPunters();
+		$recentOrders = $this->helpers->getRecentOrders();
+		$recentMessages = $this->helpers->getRecentMessages();
 		$breadCrumb = "Dashboard";
 		
-    	return view('admin.dashboard', compact(['user','breadCrumb','totalRevenue','tokenSold','totalPunters','totalExperts','recentOrders','recentMessages']));
+    	return view('admin.dashboard', compact(['user','breadCrumb','totalRevenue','tokenSold','totalPunters','totalBetSlips','recentOrders','recentMessages']));
     }	
 	
 	/**

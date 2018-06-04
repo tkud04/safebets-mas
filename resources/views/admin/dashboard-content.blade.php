@@ -35,8 +35,8 @@
                                     <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>{{$totalExperts}}</h2>
-                                    <p class="m-b-0">Experts</p>
+                                    <h2>{{$totalBetSlips}}</h2>
+                                    <p class="m-b-0">Bet slips</p>
                                 </div>
                             </div>
                         </div>
@@ -76,8 +76,8 @@
                                     <div class="item">
                                         <div class="testimonial-content">
                                             <img class="testimonial-author-img" src="{{asset('admin/images/avatar/3.jpg')}}" alt="" />
-                                            <div class="testimonial-author">Abraham</div>
-                                            <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
+                                            <div class="testimonial-author">Ryan</div>
+                                            <div class="testimonial-author-position">Founder-Coo. Dell Corp</div>
 
                                             <div class="testimonial-text">
                                                 <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
@@ -89,7 +89,7 @@
                                         <div class="testimonial-content">
                                             <img class="testimonial-author-img" src="{{asset('admin/images/avatar/1.jpg')}}" alt="" />
                                             <div class="testimonial-author">Lincoln</div>
-                                            <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
+                                            <div class="testimonial-author-position">Founder-Cfo. Dell Corp</div>
 
                                             <div class="testimonial-text">
                                                 <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
@@ -121,18 +121,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="item">
-                                        <div class="testimonial-content">
-                                            <img class="testimonial-author-img" src="{{asset('admin/images/avatar/6.jpg')}}" alt="" />
-                                            <div class="testimonial-author">TYRION LANNISTER</div>
-                                            <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                            <div class="testimonial-text">
-                                                <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                                <i class="fa fa-quote-right"></i>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -155,51 +143,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach($recentOrders as $order)
+											<?php
+											  $username = $orders['username'];
+											  $product = $orders['product'];
+											  $quantity = $orders['quantity'];
+											  $status = $orders['status'];
+											  
+											  $statusClass = "badge-success";
+											  
+											  if($status == "refunded") $statusClass = "badge-danger";
+											  $status = strtoupper($status);
+											?>
                                             <tr>
                                                 <td>
                                                     <div class="round-img">
                                                         <a href="#"><i class="fa fa-user"></i></a>
                                                     </div>
                                                 </td>
-                                                <td>svegelly</td>
-                                                <td><span>Tokens</span></td>
-                                                <td><span>40 pcs</span></td>
-                                                <td><span class="badge badge-success">PAID</span></td>
+                                                <td>{{$username}}</td>
+                                                <td><span>{{$tokens}}</span></td>
+                                                <td><span>{{$quantity}} pcs</span></td>
+                                                <td><span class="badge {{$statusClass}}">{{$status}}</span></td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href="#"><i class="fa fa-user"></i></a>
-                                                    </div>
-                                                </td>
-                                                <td>kemiWhyte</td>
-                                                <td><span>Multi-game ticket, Regular</span></td>
-                                                <td><span>1 pcs</span></td>
-                                                <td><span class="badge badge-success">PAID</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href="#"><i class="fa fa-user"></i></a>
-                                                    </div>
-                                                </td>
-                                                <td>Oshozondi747</td>
-                                                <td><span>Single-game ticket, Premium</span></td>
-                                                <td><span>1 pcs</span></td>
-                                                <td><span class="badge badge-danger">REFUNDED</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href="#"><i class="fa fa-user"></i></a>
-                                                    </div>
-                                                </td>
-                                                <td>arsenalfan69</td>
-                                                <td><span>Tokens</span></td>
-                                                <td><span>20 pcs</span></td>
-                                                <td><span class="badge badge-success">Paid</span></td>
-                                            </tr>
+											@endforeach            
                                         </tbody>
                                     </table>
                                 </div>
@@ -213,51 +180,30 @@
 						<div class="col-lg-6">
 							<div class="card">
 								<div class="card-title">
-									<h4>Message </h4>
+									<h4>Messages</h4>
 								</div>
 								<div class="recent-comment">
-									<div class="media">
+								    @foreach($messages as $msg)
+									<?php
+									   $sender = $msg['sender'];
+									   $m = $msg['msg'];
+									   $date = $msg['date'];
+									   
+									   $mediaClass = "media";
+									   if($counter == count($messages)) $mediaClass = "media no-border";
+									   
+									?>
+									<div class="{{$mediaClass}}">
 										<div class="media-left">
 											<a href="#"><img alt="..." src="images/avatar/1.jpg" class="media-object"></a>
 										</div>
 										<div class="media-body">
-											<h4 class="media-heading">john doe</h4>
-											<p>Cras sit amet nibh libero, in gravida nulla. </p>
-											<p class="comment-date">October 21, 2018</p>
+											<h4 class="media-heading">{{$sender}}</h4>
+											<p>{{$m}}</p>
+											<p class="comment-date">{{$date}}</p>
 										</div>
 									</div>
-									<div class="media">
-										<div class="media-left">
-											<a href="#"><img alt="..." src="images/avatar/1.jpg" class="media-object"></a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">john doe</h4>
-											<p>Cras sit amet nibh libero, in gravida nulla. </p>
-											<p class="comment-date">October 21, 2018</p>
-										</div>
-									</div>
-
-									<div class="media">
-										<div class="media-left">
-											<a href="#"><img alt="..." src="images/avatar/1.jpg" class="media-object"></a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">john doe</h4>
-											<p>Cras sit amet nibh libero, in gravida nulla. </p>
-											<p class="comment-date">October 21, 2018</p>
-										</div>
-									</div>
-
-									<div class="media no-border">
-										<div class="media-left">
-											<a href="#"><img alt="..." src="images/avatar/1.jpg" class="media-object"></a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Mr. Michael</h4>
-											<p>Cras sit amet nibh libero, in gravida nulla. </p>
-											<div class="comment-date">October 21, 2018</div>
-										</div>
-									</div>
+									@endforeach
 								</div>
 							</div>
 							<!-- /# card -->

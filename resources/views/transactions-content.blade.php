@@ -12,6 +12,7 @@
                                             <tr>
                                                 <th>Date</th>
                                                 <th>Product</th>
+                                                <th>Qty</th>
                                                 <th>Category</th>
                                                 <th>Buyer</th>
                                                 <th>Seller</th>
@@ -24,10 +25,10 @@
 										    <?php
 											    $category = $p["category"];
 												$product = $p["product"];
+												$qty = $p["qty"];
 												$buyer = $p['buyer'];
 												$seller = $p['seller'];
-												$status = $p['status'];
-												$bs_id = $p['bs-id'];
+												$status = $p['status'];												
 												
 												$badgeClass = "badge-info";
 												$statusClass = "badge-info";
@@ -35,13 +36,12 @@
 												if($category == "regular") $badgeClass = "badge-success";
 												else if($category == "premium") $badgeClass = "badge-premium";
 																								
-												$url = "#";
-												$id = $p["id"];
-												$url .= "/".$bs_id;
+												
 											?>
                                             <tr>
                                                 <td>{{$p["date"]}}</td>
                                                 <td>{{$product}}</td>
+                                                <td>{{$qty}} pcs.</td>
                                                 <td><span class="badge {{$badgeClass}}">{{$category}}</span></td>
                                                 <td><a href='#'>{{$buyer}}</a><br></td>
                                                 <td><a href='#'>{{$seller}}</a><br></td>

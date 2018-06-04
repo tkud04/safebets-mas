@@ -701,25 +701,42 @@ class Helper implements HelperContract
 					   foreach($purchases as $p)
 					   {
 						   $temp = [];
-						   $t = Tickets::where('id',$p->ticket_id)->first();
+						 
 						   $temp["date"] = $p->created_at->format("jS F, Y h:i A");
 						   $temp["id"] = $p->id;
-						   $temp["bs-id"] = $p->ticket_id;
 						   
-						   $type = $t->type;
-						   if($type == "single") $typeText = "Single-game bet slip";
-						   else if($type == "multi") $typeText = "Multi-game bet slip";
+						   $typeText = "";
+						   
+						   $pt = $p->type;
+						   
+						   if($pt == "betslip")
+						   {
+							   $temp["bs-id"] = $p->ticket_id;
+							   $t = Tickets::where('id',$p->ticket_id)->first();
+							   $type = $t->type;
+							   if($type == "single") $typeText = "Single-game bet slip";
+						       else if($type == "multi") $typeText = "Multi-game bet slip";
+							   
+							   $temp["category"] = $t->category;
+						   }
+						   
+						   elseif($pt == "tokens")
+						   {
+							    $typeText = "Tokens";   
+								$temp["category"] = "Tokens";
+						   }
+						   
 						   $temp["product"] = $typeText;
-						   				
-						   $temp["category"] = $t->category;
-						   
+						   $temp["qty"] = $t->qty;
+
+							   $buyer = User::where('id',$p->buyer_id)->first();
+							   $temp["buyer"] = $buyer->username;
+
+							   $seller = User::where('id',$p->seller_id)->first();
+							   $temp["seller"] = $seller->username;
+							   
 						   $temp["status"] = $p->status;
-						   
-						   $buyer = User::where('id',$p->buyer_id)->first();
-						   $seller = User::where('id',$p->seller_id)->first();
-						   
-						   $temp["buyer"] = $buyer->username;
-						   $temp["seller"] = $seller->username;
+						   						   
 						   array_push($ret,$temp);
 					   }
 				   }
@@ -727,22 +744,35 @@ class Helper implements HelperContract
 			   return $ret;
 		   }			   
 		   
-		   function addToPurchases($user,$betSlipID)
+		   function addToPurchases($user,$dt)
 		   {
-			   $ticket = Tickets::where('id',$betSlipID)->first();
+			   $type = $dt['type'];
 			   $p = null;
+			   $data = [];
 			   
-			   if($ticket != null)
+			   if($type == "betslip")
 			   {
-				   //buyer paid
-				   $data = [];
-				   $data['buyer_id'] = $user->id;
-				   $data['seller_id'] = $ticket->user_id;
-				   $data['ticket_id'] = $ticket->id;
-				   $data['status'] = "sold";
-				   
-				   $p = Purchases::create($data);
+				   $betSlipID = $dt['id'];
+			      $ticket = Tickets::where('id',$betSlipID)->first();
+			   
+			      if($ticket != null)
+			      {
+				      $data['buyer_id'] = $user->id;
+				      $data['seller_id'] = $ticket->user_id;
+				      $data['ticket_id'] = $ticket->id;
+                      $data['qty'] = 1; 					  
+			      }
 			   }
+			   
+			   elseif($type == "tokens")
+			   {
+				   $data['buyer_id'] = $user->id;
+				   $data['seller_id'] = 42;
+				   $data['qty'] = $dt['qty']; 
+			   }
+			   
+			   $data['status'] = "sold"; 
+			   $p = Purchases::create($data);
 			   
 			   return $p;
 		   }		   
@@ -776,8 +806,8 @@ class Helper implements HelperContract
 					   //update user bal and register transaction
 					   $tk = Tokens::where('user_id',$user->id)->first();
 					   if($tk != null) $tk->update(["balance" => $userTokens]);
-					   
-					   $p = $this->addToPurchases($user,$id);
+					   $dat = ["type" => "betslip", "id" => $id];
+					   $p = $this->addToPurchases($user,$dat);
 				   }
 				   $ret = $this->getBetSlip($id);
 				   $ret["opstatus"] = "ok";
@@ -843,6 +873,162 @@ class Helper implements HelperContract
 			   }
 			   
 		   } 
+
+		   /**
+		public function getRecentPurchases();
+		public function getRecentMessages();
+		   **/
+
+		   function getTotalRevenue()
+		   {
+			   $ret = 0;
+			   $exchangeRate = $this->getExchangeRate();
+			   
+			   $purchases = Purchases::where('status',"sold")->get();
+			   
+			   if($purchases != null)
+			   {
+				   foreach($purchases as $p)
+				   {
+					      $temp = 0;
+						  
+						   $t = Tickets::where('id',$p->ticket_id)->first();						   
+						   $type = $t->type;
+						   
+						   if($type == "single" || $type == "multi"){
+							  if($type == "single") $temp = 1;
+							  else if($type == "multi") $temp = 4;
+							  
+							  if($t->category == "premium") $temp *= 2;
+							  
+							  $temp *= $exchangeRate;
+						   }
+						   
+				           else if($type == "tokens")
+						   {
+							   $tk = $p->qty;
+							   $temp = $tk * $exchangeRate;
+						   }
+						   
+						   $ret += $temp;
+				   }				  
+			   }
+			   
+               return $ret;			   
+		   }
+
+		   function getTotalTokens()
+		   {
+			   $ret = 0;
+
+			   $purchases = Purchases::where('status',"sold")->where('type',"tokens")->get();
+			   
+			   if($purchases != null)
+			   {
+				   foreach($purchases as $p)
+				   {
+						  $temp = $p->qty;			   
+						   $ret += $temp;
+				   }				  
+			   }
+			   
+               return $ret;			   
+		   } 
+
+		   function getExchangeRate()
+		   {
+			   $ret = 125;
+               return $ret;			   
+		   }
+		   
+		   function getTotalBetSlips()
+		   {
+			   $ret = Tickets::count();			   
+               return $ret;			   
+		   } 
+
+		   function getTotalPunters()
+		   {
+			   $ret = User::where('role',"punter")->count();			   
+               return $ret;			   
+		   } 
+
+		   function getRecentPurchases()
+		   {
+			   $ret = [];
+			   
+				   $purchases = $this->getPurchases();
+				   $pc = count($purchases);
+				   
+				   if($pc > 0)
+				   {
+                       if($pc <= 4) $count = $pc;
+                       else $count = 4;					   
+					   for($i = 0; $i < $count; $i++)
+					   {
+						   $temp = [];
+						   $p = $purchases[$i];
+						   $temp['username'] = $p['buyer'];
+						   $tpt = $p['product'];
+						   
+						   if($tpt == "Tokens")
+						   {
+							   $temp['product'] = $tpt;
+						   }
+						   
+						   else
+						   {
+							   $temp['product'] = $tpt.", ".$temp['category'];
+						   }
+						   						   
+						   $temp["qty"] = $p['qty'];
+						   $temp["status"] = $p['status'];
+						   
+						   array_push($ret,$temp);
+					   }
+				   }
+			   
+			   return $ret;
+		   }
+
+		   function getRecentMessages()
+		   {
+			   $ret = [];
+			   
+				   $purchases = $this->getPurchases();
+				   $pc = count($purchases);
+				   
+				   if($pc > 0)
+				   {
+                       if($pc <= 4) $count = $pc;
+                       else $count = 4;					   
+					   for($i = 0; $i < $count; $i++)
+					   {
+						   $temp = [];
+						   $p = $purchases[$i];
+						   $temp['username'] = $p['buyer'];
+						   $tpt = $p['product'];
+						   
+						   if($tpt == "Tokens")
+						   {
+							   $temp['product'] = $tpt;
+						   }
+						   
+						   else
+						   {
+							   $temp['product'] = $tpt.", ".$temp['category'];
+						   }
+						   						   
+						   $temp["qty"] = $p['qty'];
+						   $temp["status"] = $p['status'];
+						   
+						   array_push($ret,$temp);
+					   }
+				   }
+			   
+			   return $ret;
+		   }			   
+
 		   
 }
 ?>
