@@ -162,7 +162,7 @@
                                                     </div>
                                                 </td>
                                                 <td>{{$username}}</td>
-                                                <td><span>{{$tokens}}</span></td>
+                                                <td><span>{{$product}}</span></td>
                                                 <td><span>{{$quantity}} pcs</span></td>
                                                 <td><span class="badge {{$statusClass}}">{{$status}}</span></td>
                                             </tr>
