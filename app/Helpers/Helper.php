@@ -980,14 +980,15 @@ class Helper implements HelperContract
                        else $count = 4;					   
 					   for($i = 0; $i < $count; $i++)
 					   {
-						   $temp = [];
 						   $p = $purchases[$i];
+						   $temp = $p;
 						   $temp['username'] = $p['buyer'];
 						   $tpt = $p['product'];
 						   
 						   if($tpt == "Tokens")
 						   {
 							   $temp['product'] = $tpt;
+							   $temp['category'] = "Tokens";
 						   }
 						   
 						   else
@@ -995,8 +996,6 @@ class Helper implements HelperContract
 							   $temp['product'] = $tpt.", ".$p["category"];
 						   }
 						   						   
-						   $temp["qty"] = $p['qty'];
-						   $temp["status"] = $p['status'];
 						   
 						   array_push($ret,$temp);
 					   }
