@@ -251,7 +251,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getMarkTicket($status="",$id="")
+	public function getMarkTicket($status,$id)
     {
         $user = null;
 		
@@ -278,7 +278,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getMarkGame($id="",$result="")
+	public function getMarkGame($status,$id)
     {
         $user = null;
 		
@@ -287,14 +287,14 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin" || ($id == "" || $result == ""))
+		if($user == null || $user->role != "admin" || ($id == "" || $status == ""))
 		{
 			return redirect()->intended('/');
 		}
 		
 		else
 		{
-			$this->helpers->markGame($id,$result);
+			$this->helpers->markGame($id,$status);
 			Session::flash("mark-game-status","success");
 			$url = "nimda/betslip/".$id;
 			return redirect()->intended($url);		

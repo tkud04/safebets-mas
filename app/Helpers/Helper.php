@@ -557,7 +557,7 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
-		   function markBetSlip($status,$id)
+		   function markBetSlip($id,$status)
 		   {
 			   $betslip = Tickets::where('id',$id)->first();
 			   
@@ -573,7 +573,7 @@ class Helper implements HelperContract
 			   return "ok";
 		   }				   
 		   
-		   function markGame($status,$id)
+		   function markGame($id,$status)
 		   {
 			   $game = Predictions::where('id',$id)->first();
 			   
