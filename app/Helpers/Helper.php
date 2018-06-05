@@ -991,7 +991,7 @@ class Helper implements HelperContract
 						   
 						   else
 						   {
-							   $temp['product'] = $tpt.", ".$temp['category'];
+							   $temp['product'] = $tpt.", ".$p['category'];
 						   }
 						   						   
 						   $temp["qty"] = $p['qty'];
