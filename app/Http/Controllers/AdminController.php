@@ -79,7 +79,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getManageTokens($action="",$id="")
+	public function getManageTokens($action,$id)
     {
         $user = null;
 		
@@ -95,6 +95,7 @@ class AdminController extends Controller {
 		
 		else
 		{
+			
 			$ret = $this->helpers->getUser($id);
 			$breadCrumb = "Add/Remove tokens";
 			if($action == "ad") $action = "add";
@@ -186,6 +187,32 @@ class AdminController extends Controller {
 		
 		return view('admin.vt', compact(['user','breadCrumb','purchases']));	
     	
+    }
+
+	/*				
+	 * Show the application Messages screen to the admin.
+	 *
+	 * @return Response
+	 */
+	public function getMessages()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+
+		$messages = $this->helpers->getMessages();
+		$breadCrumb = "Messages";
+		
+		return view('admin.msgs', compact(['user','breadCrumb','messages']));	
+    	
     }	
 	
 	/**
@@ -269,7 +296,8 @@ class AdminController extends Controller {
 		{
 			$this->helpers->markGame($id,$result);
 			Session::flash("mark-game-status","success");
-			return redirect()->back();		
+			$url = "nimda/betslip/".$id;
+			return redirect()->intended($url);		
 		}
     }
 	

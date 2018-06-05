@@ -557,33 +557,33 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
-		   function markBetSlip($id,$result)
+		   function markBetSlip($status,$id)
 		   {
 			   $betslip = Tickets::where('id',$id)->first();
 			   
 			   if($betslip != null)
 			   {
-				   $status = "";
-				   if($result == "quee") $status = "win";
-				   else if($result == "abra") $status = "loss";
+				   $ret = "";
+				   if($status == "quee") $ret = "win";
+				   else if($status == "abra") $ret = "loss";
 				   
-				   $betslip->update(['result' => $status]);
+				   $betslip->update(['result' => $ret]);
 			   }
 			   
 			   return "ok";
 		   }				   
 		   
-		   function markGame($id,$result)
+		   function markGame($status,$id)
 		   {
 			   $game = Predictions::where('id',$id)->first();
 			   
 			   if($game != null)
 			   {
-				   $status = "";
-				   if($result == "quee") $status = "win";
-				   else if($result == "abra") $status = "loss";
+				   $ret = "";
+				   if($status == "quee") $ret = "win";
+				   else if($status == "abra") $ret = "loss";
 				   
-				   $game->update(['outcome' => $status]);
+				   $game->update(['outcome' => $ret]);
 			   }
 			   
 			   return "ok";
@@ -639,27 +639,44 @@ class Helper implements HelperContract
 					   foreach($purchases as $p)
 					   {
 						   $temp = [];
-						   $t = Tickets::where('id',$p->ticket_id)->first();
+						 
 						   $temp["date"] = $p->created_at->format("jS F, Y h:i A");
 						   $temp["id"] = $p->id;
-						   $temp["bs-id"] = $p->ticket_id;
 						   
-						   $type = $t->type;
-						   if($type == "single") $typeText = "Single-game bet slip";
-						   else if($type == "multi") $typeText = "Multi-game bet slip";
+						   $typeText = "";
+						   
+						   $pt = $p->type;
+						   
+						   if($pt == "betslip")
+						   {
+							   $temp["bs-id"] = $p->ticket_id;
+							   $t = Tickets::where('id',$p->ticket_id)->first();
+							   $type = $t->type;
+							   if($type == "single") $typeText = "Single-game bet slip";
+						       else if($type == "multi") $typeText = "Multi-game bet slip";
+							   
+							   $temp["category"] = $t->category;
+						   }
+						   
+						   elseif($pt == "tokens")
+						   {
+							    $typeText = "Tokens";   
+								$temp["category"] = "Tokens";
+						   }
+						   
 						   $temp["product"] = $typeText;
-						   				
-						   $temp["category"] = $t->category;
-						   
+						   $temp["qty"] = $p->qty;
+
+							   $buyer = User::where('id',$p->buyer_id)->first();
+							   $temp["buyer"] = $buyer->username;
+
+							   $seller = User::where('id',$p->seller_id)->first();
+							   $temp["seller"] = $seller->username;
+							   
 						   $temp["status"] = $p->status;
-						   
-						   $buyer = User::where('id',$p->buyer_id)->first();
-						   $seller = User::where('id',$p->seller_id)->first();
-						   
-						   $temp["buyer"] = $buyer->username;
-						   $temp["seller"] = $seller->username;
+						   						   
 						   array_push($ret,$temp);
-					   }
+					   }					   
 				   }
 			   
 			   return $ret;
@@ -673,8 +690,6 @@ class Helper implements HelperContract
 			   {
 				   $u->update(['status' => "enabled"]);
 			   }
-			   
-			   return $ret;
 		   }		   
 		   
 		   function disable($user_id)
@@ -685,8 +700,6 @@ class Helper implements HelperContract
 			   {
 				   $u->update(['status' => "disabled"]);
 			   }
-			   
-			   return $ret;
 		   }
 		   
 		   function getPurchases()
@@ -727,7 +740,7 @@ class Helper implements HelperContract
 						   }
 						   
 						   $temp["product"] = $typeText;
-						   $temp["qty"] = $t->qty;
+						   $temp["qty"] = $p->qty;
 
 							   $buyer = User::where('id',$p->buyer_id)->first();
 							   $temp["buyer"] = $buyer->username;
@@ -749,6 +762,7 @@ class Helper implements HelperContract
 			   $type = $dt['type'];
 			   $p = null;
 			   $data = [];
+	           $data['buyer_id'] = $user->id;
 			   
 			   if($type == "betslip")
 			   {
@@ -757,17 +771,17 @@ class Helper implements HelperContract
 			   
 			      if($ticket != null)
 			      {
-				      $data['buyer_id'] = $user->id;
 				      $data['seller_id'] = $ticket->user_id;
 				      $data['ticket_id'] = $ticket->id;
+                      $data['type'] = "betslip"; 					  
                       $data['qty'] = 1; 					  
 			      }
 			   }
 			   
 			   elseif($type == "tokens")
 			   {
-				   $data['buyer_id'] = $user->id;
 				   $data['seller_id'] = 42;
+				   $data['type'] = "tokens"; 
 				   $data['qty'] = $dt['qty']; 
 			   }
 			   
@@ -875,8 +889,7 @@ class Helper implements HelperContract
 		   } 
 
 		   /**
-		public function getRecentPurchases();
-		public function getRecentMessages();
+	public function getRecentMessages();
 		   **/
 
 		   function getTotalRevenue()

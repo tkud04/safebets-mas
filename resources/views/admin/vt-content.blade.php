@@ -12,6 +12,7 @@
                                             <tr>
                                                 <th>Date</th>
                                                 <th>Product</th>
+                                                <th>Qty</th>
                                                 <th>Category</th>
                                                 <th>Buyer</th>
                                                 <th>Seller</th>
@@ -24,6 +25,7 @@
 											@foreach($purchases as $p)
 										    <?php
 											    $category = $p["category"];
+												$qty = $p["qty"];
 												$product = $p["product"];
 												$buyer = $p['buyer'];
 												$seller = $p['seller'];
@@ -45,6 +47,7 @@
                                             <tr>
                                                 <td>{{$p["date"]}}</td>
                                                 <td>{{$product}}</td>
+                                                <td>{{$qty}} pcs.</td>
                                                 <td><span class="badge {{$badgeClass}}">{{$category}}</span></td>
                                                 <td><a href='#'>{{$buyer}}</a><br></td>
                                                 <td><a href='#'>{{$seller}}</a><br></td>

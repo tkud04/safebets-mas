@@ -35,11 +35,11 @@
 												else if($gameStatus == "loss") $gs = "text-primary fa fa-times";
 											
 												
-												$badgeClass = "badge-info";
+												$badgeClass = "label-info";
 												$statusClass = "badge-info";
 			
-												if($category == "regular") $badgeClass = "badge-success";
-												else if($category == "premium") $badgeClass = "badge-premium";
+												if($category == "regular") $badgeClass = "label-success";
+												else if($category == "premium") $badgeClass = "label-danger";
 																								
 												$url = url('nimda/betslip');
 												$seller = $bs["seller"];
@@ -63,8 +63,7 @@
 												 <div class="btn-group" role="group">
 												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
 												 <div class="dropdown-menu" aria-labelledby="mark-btn">
-												    <a class="dropdown-item" href="{{$winURL}}">Win</a>
-												    <a class="dropdown-item" href="{{$winURL}}">Win</a>
+												    <a class="dropdown-item" href="{{$winURL}}">Win</a>												    
 												    <a class="dropdown-item" href="{{$lossURL}}">Loss</a>
 												 </div>													
 												 </div>

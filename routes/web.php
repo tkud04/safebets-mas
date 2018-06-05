@@ -54,18 +54,18 @@ Route::post('become-an-expert', 'MainController@postRequestExpert');
  Admin routes
 **/
 Route::get('nimda', 'AdminController@getDashboard');
-Route::get('nimda/enable/{id?}', 'AdminController@getEnable');
-Route::get('nimda/disable/{id?}', 'AdminController@getDisable');
+Route::get('nimda/enable/{id}', 'AdminController@getEnable');
+Route::get('nimda/disable/{id}', 'AdminController@getDisable');
 
-Route::get('nimda/shez/{status?}/{id?}', 'AdminController@getMarkTicket');
-Route::get('nimda/swqq/{status?}/{id?}', 'AdminController@getMarkGame');
+Route::get('nimda/shez/{status}/{id}', 'AdminController@getMarkTicket');
+Route::get('nimda/swqq/{status}/{id}', 'AdminController@getMarkGame');
 Route::get('nimda/users', 'AdminController@getUsers');
-Route::get('nimda/ut/{action?}/{id?}', 'AdminController@getManageTokens');
+Route::get('nimda/ut/{action}/{id}', 'AdminController@getManageTokens');
 Route::post('nimda/ut', 'AdminController@postManageTokens');
 
 Route::get('nimda/transactions', 'AdminController@getPurchases');
 Route::get('nimda/betslips', 'AdminController@getTickets');
-Route::get('nimda/betslip/{id?}', 'AdminController@getBetSlip');
+Route::get('nimda/betslip/{id}', 'AdminController@getBetSlip');
 
 Route::get('nimda/other-leagues', 'AdminController@getOtherLeagues');
 Route::get('nimda/add-country', 'AdminController@getAddCountry');

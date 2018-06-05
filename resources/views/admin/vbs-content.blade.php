@@ -33,10 +33,10 @@
 												$status = $m[4];
 												$id = $bs["id"];
 
-												$gs = "fa fa-question-circle";
+												$gs = "fa fa-question-circle fa-2x";
 												
-												if($status == "win") $gs = "text-success fa fa-check";
-												else if($status == "loss") $gs = "text-primary fa fa-times";
+												if($status == "win") $gs = "text-success fa fa-check fa-2x";
+												else if($status == "loss") $gs = "text-primary fa fa-times fa-2x";
 											
 												
 												$badgeClass = "badge-info";
@@ -59,6 +59,7 @@
 												 <div class="btn-group" role="group">
 												    <button id="mark-btn" type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mark</button>
 												 <div class="dropdown-menu" aria-labelledby="mark-btn">
+												    <a class="dropdown-item" href="{{$winURL}}">Win</a>
 												    <a class="dropdown-item" href="{{$lossURL}}">Loss</a>
 												 </div>													
 												 </div>

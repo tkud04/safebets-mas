@@ -35,7 +35,12 @@
             </li>             
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('transactions')}}">Transactions</a>
-            </li>            	
+            </li>
+			@if($user->role == "admin")
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{url('nimda')}}">SOS</a>
+            </li>
+            @endif			
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('settings')}}">Settings</a>
             </li>
