@@ -147,7 +147,7 @@
 											<?php
 											  $username = $order['username'];
 											  $product = $order['product'];
-											  $quantity = $order['quantity'];
+											  $quantity = $order['qty'];
 											  $status = $order['status'];
 											  
 											  $statusClass = "badge-success";
