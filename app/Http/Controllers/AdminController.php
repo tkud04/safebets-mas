@@ -44,6 +44,7 @@ class AdminController extends Controller {
 		$totalBetSlips = $this->helpers->getTotalBetSlips();
 		$totalPunters = $this->helpers->getTotalPunters();
 		$recentOrders = $this->helpers->getRecentPurchases();
+		dd($recentOrders);
 		$recentMessages = $this->helpers->getRecentMessages();
 		$breadCrumb = "Dashboard";
 		

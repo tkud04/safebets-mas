@@ -721,6 +721,7 @@ class Helper implements HelperContract
 						   $typeText = "";
 						   
 						   $pt = $p->type;
+						   $temp["category"] = "";
 						   
 						   if($pt == "betslip")
 						   {
@@ -991,7 +992,7 @@ class Helper implements HelperContract
 						   
 						   else
 						   {
-							   $temp['product'] = $tpt.", ".$p['category'];
+							   $temp['product'] = $tpt.", ".$p["category"];
 						   }
 						   						   
 						   $temp["qty"] = $p['qty'];
@@ -1008,36 +1009,6 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $purchases = $this->getPurchases();
-				   $pc = count($purchases);
-				   
-				   if($pc > 0)
-				   {
-                       if($pc <= 4) $count = $pc;
-                       else $count = 4;					   
-					   for($i = 0; $i < $count; $i++)
-					   {
-						   $temp = [];
-						   $p = $purchases[$i];
-						   $temp['username'] = $p['buyer'];
-						   $tpt = $p['product'];
-						   
-						   if($tpt == "Tokens")
-						   {
-							   $temp['product'] = $tpt;
-						   }
-						   
-						   else
-						   {
-							   $temp['product'] = $tpt.", ".$temp['category'];
-						   }
-						   						   
-						   $temp["qty"] = $p['qty'];
-						   $temp["status"] = $p['status'];
-						   
-						   array_push($ret,$temp);
-					   }
-				   }
 			   
 			   return $ret;
 		   }			   

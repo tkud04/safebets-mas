@@ -61,53 +61,6 @@
                             <form class="app-search">
                                 <input type="text" class="form-control" placeholder="Search here"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li>
-                        <!-- Messages -->
-                        <li class="nav-item dropdown">
-								   <?php 
-								   $count = count($recentMessages);
-								   if($count == 0) $count = "no";
-								   ?>
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-envelope"></i>
-								@if($count != "no" && $count > 0)<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div> @endif
-							</a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
-                                <ul>
-                                    <li>
-                                        <div class="drop-title">You have {{$count}} new messages</div>
-                                    </li>
-                                    <li>
-                                        <div class="message-center">
-									<?php $counter = 0; ?>
-									
-								   @foreach($recentMessages as $msg)
-									<?php
-									   ++$counter;
-									   $sender = $msg['name'];
-									   $m = $msg['body'];
-									   $date = $msg['date'];
-									   
-									   $mediaClass = "media";
-									   if($counter == count($messages)) $mediaClass = "media no-border";
-									   
-									?>
-
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="user-img"> <i class="fa fa-user fa-3x"></i> <span class="profile-status online pull-right"></span> </div>
-                                                <div class="mail-contnet">
-                                                    <h5>{{$sender}}</h5> <span class="mail-desc">{{$m}}</span> <span class="time">{{$date}}</span>
-                                                </div>
-                                            </a>
-								   @endforeach
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-center" href="{{url('nimda/messages')}}"> <strong>See all messages</strong> <i class="fa fa-angle-right"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- End Messages -->
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('images/users/5.jpg')}}" alt="user" class="profile-pic" /></a>
