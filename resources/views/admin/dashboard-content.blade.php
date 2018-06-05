@@ -183,6 +183,7 @@
 									<h4>Messages</h4>
 								</div>
 								<div class="recent-comment">
+								    @if(isset($messages))
 								    @foreach($messages as $msg)
 									<?php
 									   $sender = $msg['sender'];
@@ -204,6 +205,7 @@
 										</div>
 									</div>
 									@endforeach
+									@endif
 								</div>
 							</div>
 							<!-- /# card -->
