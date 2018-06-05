@@ -145,10 +145,10 @@
                                         <tbody>
                                             @foreach($recentOrders as $order)
 											<?php
-											  $username = $orders['username'];
-											  $product = $orders['product'];
-											  $quantity = $orders['quantity'];
-											  $status = $orders['status'];
+											  $username = $order['username'];
+											  $product = $order['product'];
+											  $quantity = $order['quantity'];
+											  $status = $order['status'];
 											  
 											  $statusClass = "badge-success";
 											  
