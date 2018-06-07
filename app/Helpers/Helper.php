@@ -895,7 +895,11 @@ class Helper implements HelperContract
 		   function addTokens($userId,$tokens)
 		   {
 			   $tokens = Tokens::where('user_id',$userId)->first();
-			   if($tokens != null)
+			   if($tokens == null)
+			   {
+				   Tokens::create(["user_id" => $userId, "balance" => $tokens);
+			   }
+			   else
 			   {
 				   $balance = $token->balance; $newBalance = $balance + $tokens;
 				  $tokens->update(["balance" =>$newBalance]);  
