@@ -129,6 +129,7 @@ class AdminController extends Controller {
                  { 
 			           $userId = $req['gggg'];
 			           $tokens = $req['tokens'];
+			           $action = $req['action'];
 					   if($action == "add") $this->helpers->addTokens($userId,$tokens);
 					   else if($action == "remove") $this->helpers->removeTokens($userId,$tokens);
 
