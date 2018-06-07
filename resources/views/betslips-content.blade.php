@@ -31,6 +31,7 @@
 												$gameStatus = $bs["status"];
 												$odds = $bs["odds"];
 												$bookingCode = $bs["booking-code"];
+												$bsite = $bs["bsite"];
 												$gs = "fa fa-question-circle";
 												
 												if($gameStatus == "win") $gs = "text-success fa fa-check";
@@ -52,7 +53,7 @@
                                                 <td>{{$product}}</td>
                                                 <td><span class="badge {{$badgeClass}}">{{$category}}</span></td>
                                                 <td><a href='#'>{{$odds}}</a><br></td>
-                                                <td><a href='#'>{{$bookingCode}}</a><br></td>
+                                                <td><a href='#'><strong>{{$bsite}}</strong>: {{$bookingCode}}</a><br></td>
                                                 <td><a href='#'>{{$seller}}</a><br></td>
                                                 <td><i class="{{$gs}}"></i></td>
 												<td>

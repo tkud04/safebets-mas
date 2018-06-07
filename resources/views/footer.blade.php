@@ -138,8 +138,17 @@
 													 <div class="col-md-12">
 														 <div class="form-group">
 															 <label>
-														     By clicking Submit below you agree to the <a href="#" id="login-btn">Terms and Conditions</a>
+														     By clicking Submit below you agree to the <a href="#" id="login-btnn">Terms and Conditions</a>
 													         </label>
+														 </div>
+														 <div class="form-group">
+															 <label for="sub">
+														     I want WINNING predictions, tips and cash prizes sent to my email daily
+													         </label>
+															 <select class="form-control" id="sub" name="sub">
+															   <option value="yes">Yes!</option>
+															   <option value="no">Not interested</option>
+															 </select>
 														 </div>
 													 </div>
 											   </div>
@@ -288,6 +297,14 @@
 						<div class="modal-body">
 											<p class="coupon-text">Enter the total odds and booking code.</p>
 											<form>
+												<div class="form-group">
+												    <label for="bsite"><strong>Betting site <span class="required">*</span></strong></label>
+													<select class="form-control" id="bsite">
+														<option value="bet9ja">Bet9ja</option>
+														<option value="nairabet">Nairabet</option>
+														<option value="merrybet">Merrybet</option>
+													</select>
+												</div>
 												<div class="form-group">
 												    <label for="booking_code"><strong>Booking code <span class="required">*</span></strong></label>
 													<input class="form-control" type="text" id="booking_code" placeholder="Booking code.."/>

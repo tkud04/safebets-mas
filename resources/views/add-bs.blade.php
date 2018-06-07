@@ -157,6 +157,7 @@
 				<input type="hidden" id="ssp" name="ssp" value=""/>
 				<input type="hidden" id="todd" name="total_odds" value=""/>
 				<input type="hidden" id="bcc" name="booking_code" value=""/>
+				<input type="hidden" id="bscs" name="bsite" value=""/>
 			</form>
 			<a class="btn btn-success" href="#" id="save-btn">Save Bet Slip</a>
 		   </div>

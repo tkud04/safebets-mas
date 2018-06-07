@@ -293,6 +293,7 @@ class MainController extends Controller {
 		   
                 $validator = Validator::make($req, [
                              'ssp' => 'required',
+                             'bsite' => 'required',
                              'booking_code' => 'required',
                              'total_odds' => 'required',
                    ]);
@@ -315,6 +316,7 @@ class MainController extends Controller {
 					   $category = $this->helpers->getCategory($user);
 					   
                        $betSlipData = ["booking_code" => $req['booking_code'],
+					                   "bsite" => $req['bsite'],
 					                   "total_odds" => $req['total_odds'],
 					                   "user_id" => $user->id,
 					                   "category" => $category,

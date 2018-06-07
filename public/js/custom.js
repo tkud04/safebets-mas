@@ -153,10 +153,12 @@
 
 	$('a#sbs-btn').click(function(e){
 		e.preventDefault();
+		var bs = $('#bsite').val();
 		var bc = $('#booking_code').val();
 		var tod = $('#total_odds').val();
 		
-		if(bc == "" || tod == ""){
+		if(bc == "" || tod == "" || bs == "none"){
+			if(bs == "none") alert("Enter the betting site to continue");
 			if(bc == "") alert("Enter the booking code to continue");
 			if(tod == "") alert("Enter the total odds to continue");
 		}
@@ -164,6 +166,7 @@
 		else{
 			$('#bcc').val(bc);
 			$('#todd').val(tod);
+			$('#bscs').val(bs);
 			$("#save-form").submit();
 		}
 		

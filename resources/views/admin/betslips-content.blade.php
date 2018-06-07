@@ -28,6 +28,7 @@
 												$product = $bs["product"];
 												$gameStatus = $bs["status"];
 												$odds = $bs["odds"];
+												$bsite = $bs["bsite"];
 												$bookingCode = $bs["booking-code"];
 												$gs = "fa fa-question-circle";
 												
@@ -54,7 +55,7 @@
                                                 <td>{{$product}}</td>
                                                 <td><span class="badge {{$badgeClass}}">{{$category}}</span></td>
                                                 <td><a href='#'>{{$odds}}</a><br></td>
-                                                <td><a href='#'>{{$bookingCode}}</a><br></td>
+                                                <td><a href='#'>{{$bsite}}: {{$bookingCode}}</a><br></td>
                                                 <td><a href='#'>{{$seller}}</a><br></td>
                                                 <td><i class="{{$gs}}"></i></td>
 												<td>

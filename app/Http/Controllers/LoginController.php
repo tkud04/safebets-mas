@@ -86,6 +86,7 @@ class LoginController extends Controller {
         $validator = Validator::make($req, [
                              'pass' => 'required|confirmed',
                              'email' => 'required|email',
+                             'sub' => 'required',
                              'fname' => 'required',
                              'lname' => 'required', 'username' => 'required',		
                              'phone' => 'required|numeric',
@@ -107,12 +108,13 @@ class LoginController extends Controller {
                        #dd($req);            
 
             $user =  $this->helpers->createUser($req);
-            $tk = Tokens::create(["user_id" => $user->id,"balance" => 0]);			
-            $st = Settings::create(["user_id" => $user->id,"category" => "unverified"]);			
-            $this->setCategory($user,"unverified");
+            $tk = Tokens::create(["user_id" => $user->id,"balance" => 0]);						
+            $this->helpers->setCategory($user,"unverified");
 			
-             //after creating the user, send back to the registration view with a success message
-             #$this->helpers->sendEmail($user->email,'Welcome To Disenado!',['name' => $user->fname, 'id' => $user->id],'emails.welcome','view');
+			if($user->sub == "yes"){
+               //after creating the user, send back to the registration view with a success message
+               #$this->helpers->sendEmail($user->email,'Welcome To Disenado!',['name' => $user->fname, 'id' => $user->id],'emails.welcome','view');
+			}
              Session::flash("signup-status", "success");
 			 Session::flash("notif","yes");
              return redirect()->intended('/');

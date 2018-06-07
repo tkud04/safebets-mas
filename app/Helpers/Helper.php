@@ -70,6 +70,7 @@ class Helper implements HelperContract
                                                       'phone' => $data['phone'], 
                                                       'email' => $data['email'], 
 													  'username' => $data['username'], 
+													  'sub' => $data['sub'], 
                                                       'role' => "punter", 
                                                       'status' => "active", 
                                                       'password' => bcrypt($data['pass']), 
@@ -140,6 +141,7 @@ class Helper implements HelperContract
 			   $betslip = Tickets::create(['type' => $type,
 									  'user_id' => $data['user_id'],
 									  'category' => $data['category'],
+									  'bsite' => $data['bsite'],
 									  'total_odds' => $data['total_odds'],
 									  'booking_code' => $data['booking_code'],
 									  'result' => "uncleared",
@@ -160,7 +162,7 @@ class Helper implements HelperContract
 			   $settings = Settings::where("user_id",$user->id)->first();
 			   
 			   if($settings == null) Settings::create(["user_id" => $user->id,"category" => $c]);
-			   $settings->update(["category" => $c]);
+			   else $settings->update(["category" => $c]);
 		   }           
 		   
 		   function getCategory($user)
@@ -171,7 +173,8 @@ class Helper implements HelperContract
 			   if($settings != null) $ret = $settings->category;
 			   
 			   return $ret;
-		   }             
+		   }
+		   
 		   
 		   function getOtherLeagues()
 		   {
@@ -282,12 +285,15 @@ class Helper implements HelperContract
 			            ["img" => "img/portfolio/thumbnails/6.jpg", "href" => "#"],**/
 			            ["img" => "img/sbimages/ad-1.jpeg", "href" => "http://www.informationhood.com/top-7-best-betting-websites-companies-nigeria"],
 			            ["img" => "img/sbimages/ad-2.jpeg", "href" => "http://www.nairabet.com"],
+			            ["img" => "img/sbimages/gif-1.gif", "href" => "#"],
 			            ["img" => "img/sbimages/ad-3.jpeg", "href" => "http://www.nairabet.com"],
 			            ["img" => "img/sbimages/ad-4.jpeg", "href" => "http://www.nairabet.com"],
+						["img" => "img/sbimages/gif-2.gif", "href" => "#"],
 			            ["img" => "img/sbimages/ad-5.jpeg", "href" => "http://www.nairabet.com"],
 			            ["img" => "img/sbimages/ad-6.png", "href" => "http://bet9ja.com"],
 			            ["img" => "img/sbimages/ad-7.jpeg", "href" => "#"],
 			            ["img" => "img/sbimages/ad-8.jpeg", "href" => "http://bet9ja.com"],
+						["img" => "img/sbimages/gif-3.gif", "href" => "#"],
 			            ["img" => "img/sbimages/ad-9.jpeg", "href" => "http://bet9ja.com"],
 			            ["img" => "img/sbimages/ad-10.jpeg", "href" => "http://bet9ja.com"],
 			            ["img" => "img/sbimages/ad-11.jpeg", "href" => "#"],
@@ -425,6 +431,7 @@ class Helper implements HelperContract
 					   $temp["product"] = $ticket->type;
 					   $temp["odds"] = $ticket->total_odds;
 					   $temp["category"] = $ticket->category;
+					   $temp["bsite"] = $ticket->bsite;
 					   $temp["booking-code"] = $ticket->booking_code;
 					   $temp["matches"] = [];
 					   
@@ -447,7 +454,7 @@ class Helper implements HelperContract
 						   {
 							   $fixtureDate = $data[8];
 							   $fixtureMatch = $data[3].": ".$data[5]." vs ".$data[7];
-							   $fixtureResult = "0 - 0";
+							   $fixtureResult = $m->scoreline;
 						   }						   
 						   
 						   else if($md == "fxt")
@@ -519,6 +526,7 @@ class Helper implements HelperContract
 					   $temp["product"] = $ticket->type;
 					   $temp["odds"] = $ticket->total_odds;
 					   $temp["category"] = $ticket->category;
+					   $temp["bsite"] = $ticket->bsite;
 					   $temp["booking-code"] = $ticket->booking_code;
 					   $temp["matches"] = [];
 					   
@@ -541,7 +549,7 @@ class Helper implements HelperContract
 						   {
 							   $fixtureDate = $data[8];
 							   $fixtureMatch = $data[3].": ".$data[5]." vs ".$data[7];
-							   $fixtureResult = "0 - 0";
+							   $fixtureResult = $m->scoreline;
 						   }						   
 						   
 						   else if($md == "fxt")
@@ -688,7 +696,7 @@ class Helper implements HelperContract
 			   
 			   if($u != null)
 			   {
-				   $u->update(['status' => "enabled"]);
+				   $u->update(['status' => "active"]);
 			   }
 		   }		   
 		   
@@ -816,11 +824,8 @@ class Helper implements HelperContract
 			   {
 				   if($buying)
 				   {
-					   $userTokens -= $amount;
-					   
-					   //update user bal and register transaction
-					   $tk = Tokens::where('user_id',$user->id)->first();
-					   if($tk != null) $tk->update(["balance" => $userTokens]);
+					   //deduct tokens and register transaction
+					   $this->removeTokens($user,$amount);
 					   $dat = ["type" => "betslip", "id" => $id];
 					   $p = $this->addToPurchases($user,$dat);
 				   }
@@ -872,7 +877,7 @@ class Helper implements HelperContract
 			   $tokens = Tokens::where('user_id',$userId)->first();
 			   if($tokens != null)
 			   {
-				   $newBalance = $token->balance + $tokens;
+				   $balance = $token->balance; $newBalance = $balance + $tokens;
 				  $tokens->update(["balance" =>$newBalance]);  
 			   }
 			   
@@ -883,7 +888,7 @@ class Helper implements HelperContract
 			   $tokens = Tokens::where('user_id',$userId)->first();
 			   if($tokens != null)
 			   {
-				   $newBalance = $token->balance - $tokens;
+				   $balance = $token->balance; $newBalance = $balance - $tokens;
 				  $tokens->update(["balance" =>$newBalance]);  
 			   }
 			   
@@ -898,7 +903,7 @@ class Helper implements HelperContract
 			   $ret = 0;
 			   $exchangeRate = $this->getExchangeRate();
 			   
-			   $purchases = Purchases::where('status',"sold")->get();
+			   $purchases = Purchases::orderBy('status',"sold")->get();
 			   
 			   if($purchases != null)
 			   {

@@ -10,7 +10,7 @@
                                 </div>
                                 <div class="media-body media-text-right">
                                     <h2>&#8358;{{$totalRevenue}}</h2>
-                                    <p class="m-b-0">Total Revenue</p>
+                                    <p class="m-b-0">Total revenue</p>
                                 </div>
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="media-body media-text-right">
                                     <h2>{{$tokenSold}}</h2>
-                                    <p class="m-b-0">Tokens Sold</p>
+                                    <p class="m-b-0">Tokens sold</p>
                                 </div>
                             </div>
                         </div>
