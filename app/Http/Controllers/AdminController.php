@@ -113,7 +113,7 @@ class AdminController extends Controller {
                
                 $validator = Validator::make($req, [
                              'action' => 'required',
-                             'gggg' => 'required|exists:id',
+                             'gggg' => 'required',
                              'username' => 'required|exists:users',
                              'tokens' => 'required|numeric',
                    ]);
@@ -270,7 +270,7 @@ class AdminController extends Controller {
 		{
 			$this->helpers->markBetSlip($id,$status);
 			Session::flash("mark-ticket-status","success");
-			return redirect()->intended('nimda/transactions');		
+			return redirect()->intended('nimda/betslips');		
 		}
     }	
 	
@@ -279,7 +279,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getMarkGame($status,$id)
+	public function getMarkGame($status,$id,$bsID)
     {
         $user = null;
 		
@@ -297,7 +297,7 @@ class AdminController extends Controller {
 		{
 			$this->helpers->markGame($id,$status);
 			Session::flash("mark-game-status","success");
-			$url = "nimda/betslip/".$id;
+			$url = "nimda/betslip/".$bsID;
 			return redirect()->intended($url);		
 		}
     }

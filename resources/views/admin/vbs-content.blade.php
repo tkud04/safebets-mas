@@ -25,6 +25,8 @@
                                         </thead>                                        
 										<tbody>
 										    @if(isset($bs))
+											<?php $bs_id = $bs["id"]; ?>
+										
 											@foreach($bs['matches'] as $m)
 										    <?php
 											    $date = $m[0];
@@ -43,8 +45,8 @@
 												$badgeClass = "badge-info";
 												$statusClass = "badge-info";
 												
-												$winURL = url("nimda/swqq/quee")."/".$id;
-												$lossURL = url("nimda/swqq/abra")."/".$id;
+												$winURL = url("nimda/swqq/quee")."/".$id."/".$bs_id;
+												$lossURL = url("nimda/swqq/abra")."/".$id."/".$bs_id;
 											?>
 											<script>
 													  document.querySelector('#bs-id').value = "{{$id}}";

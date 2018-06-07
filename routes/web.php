@@ -58,7 +58,7 @@ Route::get('nimda/enable/{id}', 'AdminController@getEnable');
 Route::get('nimda/disable/{id}', 'AdminController@getDisable');
 
 Route::get('nimda/shez/{status}/{id}', 'AdminController@getMarkTicket');
-Route::get('nimda/swqq/{status}/{id}', 'AdminController@getMarkGame');
+Route::get('nimda/swqq/{status}/{id}/{bsID}', 'AdminController@getMarkGame');
 Route::get('nimda/users', 'AdminController@getUsers');
 Route::get('nimda/ut/{action}/{id}', 'AdminController@getManageTokens');
 Route::post('nimda/ut', 'AdminController@postManageTokens');
