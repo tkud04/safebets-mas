@@ -1,5 +1,6 @@
 
       <div class="container-fluid">
+	  <input type="hidden" id="urlx" value="{{url('nimda/a-s')}}"/>
         <div class="row">
           <div class="col-lg-12 ml-auto text-center">
                         <div class="card">
@@ -31,7 +32,7 @@
 												$prediction = $m[2];
 												$result = $m[3];
 												$status = $m[4];
-												$id = $bs["id"];
+												$id = $m[5];
 
 												$gs = "fa fa-question-circle fa-2x";
 												
@@ -52,7 +53,16 @@
                                                 <td>{{$date}}</td>
                                                 <td>{{$match}}</td>
                                                 <td>{{$prediction}}</td>
-                                                <td>{{$result}}</td>
+                                                <td>
+												@if($result == "")
+												   <a href="#" class="btn btn-warning add-scoreline-btn">FT score?</a>
+											       <input type="text" class="ft-s" placeholder="1 - 0"/>
+											       <input type="hidden" class="dip" value="<?php echo $id; ?>"/>
+											       <button class="btn btn-warning ft-s-btn">Submit</button>
+											    @else
+ 			 				 					   {{$result}}
+											    @endif
+												</td>
                                                 <td>{{$status}}</td>
 												<td>
 												 @if($status == "uncleared")

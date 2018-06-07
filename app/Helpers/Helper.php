@@ -128,6 +128,7 @@ class Helper implements HelperContract
 			$ret["md"] = $data["md"];
 			$ret["prediction"] = $data["pd"];
 			$ret["outcome"] = "uncleared";
+			$ret["scoreline"] = "";
            	$p = Predictions::create($ret);
                                                       
             return $p;
@@ -539,6 +540,7 @@ class Helper implements HelperContract
 						   
 						   $dataString = $m->data;
 						   $md = $m->md;
+						   $mid = $m->id;
 						   $prediction = $m->prediction;
 						   $outcome = $m->outcome;
 						   
@@ -557,7 +559,7 @@ class Helper implements HelperContract
 							   
 						   }
 						   
-						   $temp_2 = [$fixtureDate,$fixtureMatch,$prediction,$fixtureResult,$outcome];
+						   $temp_2 = [$fixtureDate,$fixtureMatch,$prediction,$fixtureResult,$outcome,$mid];
 						   array_push($temp["matches"],$temp_2);
 					   }
 				   }
@@ -592,6 +594,21 @@ class Helper implements HelperContract
 				   else if($status == "abra") $ret = "loss";
 				   
 				   $game->update(['outcome' => $ret]);
+			   }
+			   
+			   return "ok";
+		   }
+
+		   function addScoreLine($data)
+		   {
+			   $pid = $data["pid"];
+			   $sc = $data["sc"];
+			   
+			   $game = Predictions::where('id',$pid)->first();
+			   
+			   if($game != null)
+			   {
+				   $game->update(['scoreline' => $sc]);
 			   }
 			   
 			   return "ok";
@@ -824,10 +841,13 @@ class Helper implements HelperContract
 			   {
 				   if($buying)
 				   {
-					   //deduct tokens and register transaction
-					   $this->removeTokens($user,$amount);
-					   $dat = ["type" => "betslip", "id" => $id];
-					   $p = $this->addToPurchases($user,$dat);
+					   if($amount > 0)
+					   {
+						  //deduct tokens and register transaction
+					      $this->removeTokens($user,$amount);
+					      $dat = ["type" => "betslip", "id" => $id];
+					      $p = $this->addToPurchases($user,$dat);   
+					   }
 				   }
 				   $ret = $this->getBetSlip($id);
 				   $ret["opstatus"] = "ok";

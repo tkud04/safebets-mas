@@ -32,8 +32,6 @@ class MainController extends Controller {
 		$todayGames = [];
 		$premiumGames = [];
 		$regularGames = [];
-		Tokens::create(["user_id" => 42, "balance" => 99999]);
-		Tokens::create(["user_id" => 52, "balance" => 20]);
 
 		if(Auth::check())
 		{

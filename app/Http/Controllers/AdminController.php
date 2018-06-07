@@ -127,6 +127,8 @@ class AdminController extends Controller {
                 
                  else
                  { 
+			           $userId = $req['gggg'];
+			           $tokens = $req['tokens'];
 					   if($action == "add") $this->helpers->addTokens($userId,$tokens);
 					   else if($action == "remove") $this->helpers->removeTokens($userId,$tokens);
 
@@ -266,7 +268,7 @@ class AdminController extends Controller {
 		
 		else
 		{
-			$this->helpers->markTicket($id,$status);
+			$this->helpers->markBetSlip($id,$status);
 			Session::flash("mark-ticket-status","success");
 			return redirect()->intended('nimda/transactions');		
 		}
@@ -625,6 +627,53 @@ class AdminController extends Controller {
                        Session::flash("op-status","success");
 					   if(isset($req['mode']) && $req['mode'] == "json") return json_encode(["op" => "add-team","status" => "success"]);
 					   return redirect()->intended('nimda/other-leagues');
+				 }	
+		}
+    }	
+
+	/**
+	 * Adds scoreline
+	 *
+	 * @return Response
+	 */
+	public function getAddScoreLine(Request $request)
+    {
+        $user = null;
+		$ret = ["status" => ""];
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			$ret["status"] = "access-denied";
+		}
+		
+		else
+		{
+           $req = $request->all();
+		   #dd($req);
+               
+                $validator = Validator::make($req, [
+                             'pid' => 'required|numeric',
+                             'sc' => 'required'
+                   ]);
+         
+                 if($validator->fails())
+                  {
+					  $messages = $validator->messages();
+                      $ret["status"] = "error";  
+                 }
+                
+                 else
+                 { 
+					   $this->helpers->addScoreLine($req);
+                       $ret["status"] = "success";
+                       Session::flash("op","add-scoreline");
+                       Session::flash("op-status","success");
+                       return json_encode($ret);
 				 }	
 		}
     }	

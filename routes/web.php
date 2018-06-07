@@ -74,3 +74,5 @@ Route::get('nimda/add-team', 'AdminController@getAddTeam');
 
 Route::get('nimda/get-competitions', 'AdminController@getCompetitions');
 Route::get('nimda/get-teams', 'AdminController@getTeams');
+
+Route::get('nimda/a-s', 'AdminController@getAddScoreLine');

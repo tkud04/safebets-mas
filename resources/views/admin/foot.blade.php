@@ -78,6 +78,7 @@
     <script src="{{asset('admin/js/lib/datatables/datatables-init.js')}}"></script>
 
     <script src="{{asset('admin/js/custom.min.js')}}"></script>
+    <script src="{{asset('admin/js/my.min.js')}}"></script>
 
 </body>
 
