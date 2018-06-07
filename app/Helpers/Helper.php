@@ -897,7 +897,7 @@ class Helper implements HelperContract
 			   $tokens = Tokens::where('user_id',$userId)->first();
 			   if($tokens == null)
 			   {
-				   Tokens::create(["user_id" => $userId, "balance" => $tokens);
+				   Tokens::create(["user_id" => $userId, "balance" => $tokens]);
 			   }
 			   else
 			   {
@@ -927,7 +927,7 @@ class Helper implements HelperContract
 			   $ret = 0;
 			   $exchangeRate = $this->getExchangeRate();
 			   
-			   $purchases = Purchases::orderBy('status',"sold")->get();
+			   $purchases = Purchases::where('status',"sold")->get();
 			   
 			   if($purchases != null)
 			   {
