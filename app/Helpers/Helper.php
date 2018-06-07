@@ -901,7 +901,7 @@ class Helper implements HelperContract
 			   }
 			   else
 			   {
-				   $balance = $token->balance; $newBalance = $balance + $tokens;
+				   $balance = $tk->balance; $newBalance = $balance + $tokens;
 				  $tk->update(["balance" =>$newBalance]);  
 			   }
 			   
@@ -912,7 +912,7 @@ class Helper implements HelperContract
 			   $tk = Tokens::where('user_id',$userId)->first();
 			   if($tk != null)
 			   {
-				   $balance = $token->balance; $newBalance = $balance - $tokens;
+				   $balance = $tk->balance; $newBalance = $balance - $tokens;
 				  $tk->update(["balance" =>$newBalance]);  
 			   }
 			   
