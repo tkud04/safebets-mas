@@ -6,7 +6,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Results</h4>
                                 <h6 class="card-subtitle">Daily Match Results</h6><br>
-								<a href="{{url('games')}}" class="btn btn-lg btn-primary">GET WINNING PREDICTIONS NOW</a><br>
+								<a href="{{url('games')}}" class="btn btn-lg btn-primary">GET WINNING TIPS</a><br>
 								<input type="hidden" value="{{csrf_token()}}" id="tk"/>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">

@@ -385,14 +385,30 @@ class Helper implements HelperContract
 				   foreach($leads as $l)
 				   {
 					   $temp = [];
-					   $temp['id'] = $lead->id;
-					   $temp['email'] = $lead->email;
+					   $temp['id'] = $l->id;
+					   $temp['email'] = $l->email;
 					   array_push($ret,$temp);
 				   }
 			   }
 			   
 			   
 			   return $ret;
+		   }
+
+		   function subscribe($em)
+		   {
+			   $lead = Leads::where('email',$em)->first();
+			   $u = User::where('email',$em)->first();
+			   
+			   if($lead != null)
+			   {
+				   if($u != null)
+				   {
+					   $u->update(['sub' => "yes"]);
+				   }
+				   
+				   $this->addLead(['email' => $em]);
+			   }
 		   }
 
 		   function unsubscribe($em)

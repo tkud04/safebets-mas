@@ -246,9 +246,40 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function getSubscribe($em)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($em == "")
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+		    $this->helpers->subscribe($em);
+        	return view('sub', compact(['user']));	
+		}
+    }
+
+	/**
+	 * Show the application Support screen to the user.
+	 *
+	 * @return Response
+	 */
 	public function getUnsubscribe($em)
     {
         $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
 		
 		if($em == "")
 		{
@@ -275,13 +306,9 @@ class MainController extends Controller {
 		{
 			$user = Auth::user();
 		}
-		else
-		{
-			return redirect()->intended('/');
-		}
 		
 		$ads = $this->helpers->getAds();
-		$betslips = $this->helpers->getResults($user);
+		$betslips = $this->helpers->getResults();
 		
     	return view('results', compact(['user','ads','betslips']));
     }
