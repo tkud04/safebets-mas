@@ -48,7 +48,7 @@ Route::get('gt', 'MainController@getTeams');
 Route::get('settings', 'MainController@getSettings');
 Route::post('settings', 'MainController@postSettings');
 
-Route::post('become-an-expert', 'MainController@postRequestExpert');
+Route::get('unsubscribe/{em}', 'MainController@getUnsubscribe');
 
 
 /**
@@ -79,3 +79,5 @@ Route::get('nimda/get-teams', 'AdminController@getTeams');
 Route::get('nimda/a-s', 'AdminController@getAddScoreLine');
 
 Route::get('nimda/leads', 'AdminController@getLeads');
+Route::post('nimda/add-leads', 'AdminController@getAddLeads');
+Route::post('nimda/add-leads', 'AdminController@postAddLeads');

@@ -101,7 +101,75 @@ class AdminController extends Controller {
 		}
 		
     	return json_encode($ret);
-    }	
+    }
+	
+	/**
+	 * Show the application Misc -> Add Leads screen to the admin.
+	 *
+	 * @return Response
+	 */
+	public function getAddLeads()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin" || ($id == "" || $action == "") )
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+			$breadCrumb = "Add leads";
+			return view('admin.leads', compact(['user','breadCrumb']));
+		}		
+    	
+    }
+
+   public function postAddLeads(Request $request)
+	{
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+		
+           $req = $request->all();
+		   #dd($req);
+           $ret = "";
+               
+                $validator = Validator::make($req, [
+                             'leads' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+					  $messages = $validator->messages();
+                       return redirect()->back()->withInput()->with('errors',$messages);
+                       
+                 }
+                
+                 else
+                 { 
+			           $leads = explode(PHP_EOL,$req['leads']);
+					   
+			           foreach($leads as $lead) $this->helpers->addLeads($lead);
+
+                       Session::flash("add-leads-status","success");
+					   return redirect()->intended('nimda/leads');
+				 }
+				 
+	}	
 	
 	/**
 	 * Show the application User Management -> Add/Remove Tokens screen to the admin.
@@ -136,6 +204,18 @@ class AdminController extends Controller {
 	
     public function postManageTokens(Request $request)
 	{
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			return redirect()->intended('/');
+		}
+		
            $req = $request->all();
 		   #dd($req);
            $ret = "";

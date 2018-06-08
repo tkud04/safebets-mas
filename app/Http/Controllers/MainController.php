@@ -10,7 +10,6 @@ use Session;
 use Validator; 
 use Football;
 use Carbon\Carbon; 
-use App\User;
 
 class MainController extends Controller {
 
@@ -32,14 +31,6 @@ class MainController extends Controller {
 		$todayGames = [];
 		$premiumGames = [];
 		$regularGames = [];
-
-		$ll = User::where('role',"punter")->get();
-		
-		foreach($ll as $l)
-		{
-			$d = ['email' => $l->email];
-			$this->helpers->addLead($d);
-		}
 		
 		if(Auth::check())
 		{
@@ -248,6 +239,27 @@ class MainController extends Controller {
 		$betslips = $this->helpers->getUserBetSlips($user);
 		
     	return view('betslips', compact(['user','ads','betslips']));
+    }
+
+	/**
+	 * Show the application Support screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getUnsubscribe($em)
+    {
+        $user = null;
+		
+		if($em == "")
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+		    $this->helpers->unsubscribe($em);
+        	return view('unsubscribe', compact(['user']));	
+		}
     }
 
 	/**

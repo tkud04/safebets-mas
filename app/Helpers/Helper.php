@@ -395,6 +395,22 @@ class Helper implements HelperContract
 			   return $ret;
 		   }
 
+		   function unsubscribe($em)
+		   {
+			   $lead = Leads::where('email',$em)->first();
+			   $u = User::where('email',$em)->first();
+			   
+			   if($lead != null)
+			   {
+				   if($u != null)
+				   {
+					   $u->update(['sub' => "no"]);
+				   }
+				   
+				   $lead->delete();
+			   }
+		   }
+
 		   function getUsers()
 		   {
 			   $ret  = [];

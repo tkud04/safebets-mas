@@ -25,6 +25,7 @@ Interface HelperContract
         public function getCountries();
         public function getLeads();
         public function addLead($data);
+        public function unsubscribe($em);
         public function addCountry($data);
         public function addCompetition($data);
         public function addTeam($data);
