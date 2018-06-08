@@ -80,5 +80,5 @@ Route::get('nimda/get-teams', 'AdminController@getTeams');
 Route::get('nimda/a-s', 'AdminController@getAddScoreLine');
 
 Route::get('nimda/leads', 'AdminController@getLeads');
-Route::post('nimda/add-leads', 'AdminController@getAddLeads');
+Route::get('nimda/add-leads', 'AdminController@getAddLeads');
 Route::post('nimda/add-leads', 'AdminController@postAddLeads');

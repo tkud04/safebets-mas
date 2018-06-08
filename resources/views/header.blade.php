@@ -33,9 +33,6 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('betslips')}}">Bet Slips</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('results')}}">Results</a>
-            </li>             
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('transactions')}}">Transactions</a>
             </li>
@@ -43,7 +40,7 @@
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('nimda')}}">SOS</a>
             </li>
-            @endif			
+            @endif
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('settings')}}">Settings</a>
             </li>
@@ -51,7 +48,10 @@
               <a class="nav-link js-scroll-trigger" href="{{url('logout')}}">Sign out</a>
             </li>
 		   @endif
-			<li class="nav-item">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{url('results')}}">Results</a>
+            </li>             			
+		   <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('pricing')}}">Pricing</a>
             </li>			
 			<li class="nav-item">
