@@ -49,7 +49,7 @@
 												$lossURL = url("nimda/swqq/abra")."/".$id."/".$bs_id;
 											?>
 											<script>
-													  document.querySelector('#bs-id').value = "{{$id}}";
+													  document.querySelector('#bs-id').textContent = "{{$id}}";
 											</script>
                                             <tr>
                                                 <td>{{$date}}</td>

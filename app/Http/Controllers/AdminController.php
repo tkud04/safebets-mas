@@ -309,7 +309,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getEnable($id="")
+	public function getEnable($id)
     {
         $user = null;
 		
@@ -336,7 +336,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getDisable($id="")
+	public function getDisable($id)
     {
         $user = null;
 		

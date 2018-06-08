@@ -9,6 +9,6 @@ class Settings extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['user_id', 'category'];
+	protected $fillable = ['user_id', 'category', 'bombed'];
 
 }

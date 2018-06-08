@@ -75,7 +75,9 @@ class Helper implements HelperContract
                                                       'status' => "active", 
                                                       'password' => bcrypt($data['pass']), 
                                                       ]);
-                                                      
+													  
+             Settings::create(["user_id" => $ret->id,"category" => "","bombed" => "no"]);
+			 
                 return $ret;
            }           
 		   
@@ -162,7 +164,7 @@ class Helper implements HelperContract
 		   {
 			   $settings = Settings::where("user_id",$user->id)->first();
 			   
-			   if($settings == null) Settings::create(["user_id" => $user->id,"category" => $c]);
+			   if($settings == null) Settings::create(["user_id" => $user->id,"category" => $c,"bombed" => "no"]);
 			   else $settings->update(["category" => $c]);
 		   }           
 		   
@@ -418,7 +420,7 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $betslips = Tickets::orderBy('created_at',"DESC")->get();
+				   $betslips = Tickets::orderBy('created_at',"ASC")->get();
 				   if($betslips != null)
 				   {   
 					   foreach($betslips as $ticket)
@@ -731,7 +733,7 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $purchases = Purchases::orderBy('created_at',"DESC")->get();
+				   $purchases = Purchases::orderBy('created_at',"ASC")->get();
 				   if($purchases != null)
 				   {
 					   $ret = [];

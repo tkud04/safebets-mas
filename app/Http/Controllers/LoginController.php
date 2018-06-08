@@ -58,6 +58,11 @@ class LoginController extends Controller {
 					Session::flash("notif","yes");
                      return redirect()->back()->withInput()->withErrors("This user doesn't exist!","errors"); 
                 }
+				elseif($user->status == "disabled")
+                {
+					Session::flash("notif","yes");
+                     return redirect()->back()->withInput()->withErrors("An unknown problem has occurred, please try again later.","errors"); 
+                }
          	//authenticate this login
             if(Auth::attempt(['email' => $req['email'],'password' => $req['password']]) || Auth::attempt(['username' => $req['email'],'password' => $req['password']]))
             {
