@@ -34,7 +34,7 @@
 											{
 												$btnClass = "btn-danger";
 												$badgeClass = "badge-danger";
-												$href = url("enable");
+												$href = url("nimda/enable");
 												$txt = "Enable";
 											}
 											

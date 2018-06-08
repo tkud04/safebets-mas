@@ -314,9 +314,9 @@ class Helper implements HelperContract
 			   $ret = [];
 			   $games = null;
 			   
-			   if($type == "today") $games = Tickets::orderBy('created_at',"DESC")->get();
-			   else if($type == "premium") $games = Tickets::where("category","premium")->orderBy('created_at',"DESC")->get();
-			   else if($type == "regular") $games = Tickets::where("category","regular")->orderBy('created_at',"DESC")->get();
+			   if($type == "today") $games = Tickets::where("result","uncleared")->orderBy('created_at',"DESC")->get();
+			   else if($type == "premium") $games = Tickets::where("result","uncleared")->where("category","premium")->orderBy('created_at',"DESC")->get();
+			   else if($type == "regular") $games = Tickets::where("result","uncleared")->where("category","regular")->orderBy('created_at',"DESC")->get();
 			   
 			   if($games != null)
 			   {
@@ -421,7 +421,7 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $betslips = Tickets::orderBy('created_at',"ASC")->get();
+				   $betslips = Tickets::orderBy('created_at',"DESC")->get();
 				   if($betslips != null)
 				   {   
 					   foreach($betslips as $ticket)
@@ -659,7 +659,9 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $purchases = Purchases::where("buyer_id",$user->id)->orWhere("seller_id",$user->id)->get();
+				   $purchases = Purchases::where("buyer_id",$user->id)
+				                          ->orWhere("seller_id",$user->id)
+				                          ->orderBy("created_at","DESC")->get();
 				   if($purchases != null)
 				   {
 					   $ret = [];
@@ -734,7 +736,7 @@ class Helper implements HelperContract
 		   {
 			   $ret = [];
 			   
-				   $purchases = Purchases::orderBy('created_at',"ASC")->get();
+				   $purchases = Purchases::orderBy('created_at',"DESC")->get();
 				   if($purchases != null)
 				   {
 					   $ret = [];
