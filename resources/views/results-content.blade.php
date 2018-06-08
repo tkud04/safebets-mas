@@ -16,6 +16,7 @@
                                                 <th>Product</th>
                                                 <th>Category</th>
                                                 <th>Odds</th>
+                                                <th>Seller</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -49,6 +50,7 @@
                                                 <td>{{$product}}</td>
                                                 <td><span class="badge {{$badgeClass}}">{{$category}}</span></td>
                                                 <td><a href='#'>{{$odds}}</a><br></td>
+                                                <td><a href='#'>{{$seller}}</a><br></td>
                                                 <td><i class="{{$gs}}"></i></td>
 												<td>
 												 <a class="btn btn-warning text-white" href="#" onclick="viewBS({{$id}},'<?php echo $url; ?>')">View</a>
