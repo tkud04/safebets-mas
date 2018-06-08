@@ -1,6 +1,6 @@
     <section class="bg-dark text-white">
       <div class="container text-center">
-        <h2 class="mb-4">Stop betting on your own, bet with SafeBets and we won't let you down.</h2>
+        <h2 class="mb-4">Stop losing money, join us today. We offer the best tips daily!</h2>
        <?php #<a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a> 
 	   ?>
       </div>
@@ -176,6 +176,7 @@
                         <div class="card">
                             <div class="card-title">
                                 <h4>Bet Slip #<span id="bs-id"></span> </h4>
+								<h5>Booking code: <span id="bc"></span></h5>
 								<div id="bs-error"></div>
 								<div id="bs-working"></div>
                             </div>
@@ -214,6 +215,7 @@
                         <div class="card">
                             <div class="card-title">
                                 <h4>Bet Slip #<span id="vg-id"></span> </h4>
+								<h5>Booking code: <span id="bc"></span></h5>
 								<div id="vg-error"></div>
 								<div id="vg-working"></div>
                             </div>

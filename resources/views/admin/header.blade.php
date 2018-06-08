@@ -42,10 +42,11 @@
                                         </ul>
                                     </li>
                                     <li class="col-lg-4 col-xlg-4 m-b-30">
-                                        <h4 class="m-b-20">Other leagues</h4>
+                                        <h4 class="m-b-20">Miscellaneous</h4>
                                         <!-- List style -->
                                         <ul class="list-style-none">
                                             <li><a href="{{url('nimda/other-leagues')}}"><i class="fa fa-check text-success"></i> Manage Other Leagues</a></li>
+                                            <li><a href="{{url('nimda/leads')}}"><i class="fa fa-check text-success"></i> Manage Leads</a></li>
                                         </ul>
                                     </li>									
                                 </ul>

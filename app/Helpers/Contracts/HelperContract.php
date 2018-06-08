@@ -23,6 +23,8 @@ Interface HelperContract
         public function enable($user_id);
         public function disable($user_id);
         public function getCountries();
+        public function getLeads();
+        public function addLead($data);
         public function addCountry($data);
         public function addCompetition($data);
         public function addTeam($data);
@@ -45,5 +47,6 @@ Interface HelperContract
 		public function getTotalPunters();
 		public function getRecentPurchases();
 		public function getRecentMessages();
+		public function getResults();
 }
  ?>

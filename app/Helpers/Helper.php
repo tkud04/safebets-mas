@@ -16,6 +16,7 @@ use App\Tokens;
 use App\Countries;
 use App\Competitions;
 use App\Teams;
+use App\Leads;
 
 class Helper implements HelperContract
 {
@@ -81,6 +82,13 @@ class Helper implements HelperContract
                 return $ret;
            }           
 		   
+		   function addLead($data)
+           {
+           	$ret = Leads::create(['email' => $data['email']]);
+                                                      
+                return $ret;
+           }
+
 		   function addCountry($data)
            {
            	$ret = Countries::create(['name' => $data['name']]);
@@ -366,6 +374,27 @@ class Helper implements HelperContract
 			   return $ret;
 		   }		   
 		   
+		   function getLeads()
+		   {
+			   $ret  = [];
+			   
+			   $leads = Leads::orderBy('created_at',"DESC")->get();
+			   
+			   if($leads != null)
+			   {
+				   foreach($leads as $l)
+				   {
+					   $temp = [];
+					   $temp['id'] = $lead->id;
+					   $temp['email'] = $lead->email;
+					   array_push($ret,$temp);
+				   }
+			   }
+			   
+			   
+			   return $ret;
+		   }
+
 		   function getUsers()
 		   {
 			   $ret  = [];
@@ -507,6 +536,20 @@ class Helper implements HelperContract
 				   {
 					   $temp = [];
 					   $temp = $this->getBetSlip($abs);
+					   array_push($ret,$temp);
+				   }
+			   return $ret;
+		   }	
+
+           function getResults()
+		   {
+			   $ret = [];
+			   $betslips = Tickets::where('result',"win")->orWhere('result',"loss")->orderBy('created_at',"DESC")->get();
+			       
+				   foreach($betslips as $bs)
+				   {
+					   $temp = [];
+					   $temp = $this->getBetSlip($bs->id);
 					   array_push($ret,$temp);
 				   }
 			   return $ret;
@@ -882,6 +925,7 @@ class Helper implements HelperContract
 				   $ret["balance"] = $tokens;
 				   $ret["category"] = $settings->category;
 				   $ret["status"] = $user->status;   
+				   $ret["bombed"] = $user->bombed;   
 			   }
 			   
 			   

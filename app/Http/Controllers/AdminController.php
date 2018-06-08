@@ -72,6 +72,35 @@ class AdminController extends Controller {
 		$users = $this->helpers->getUsers();
 		$breadCrumb = "Users";
     	return view('admin.vu', compact(['user','breadCrumb','users']));
+    }
+
+	/**
+	 * Show the application Leads screen to the admin.
+	 *
+	 * @return Response
+	 */
+	public function getLeads()
+    {
+        $user = null;
+		$ret = ["status" => "nothing"];
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($user == null || $user->role != "admin")
+		{
+			$ret = ["status" => "error", "msg" => "An unknown problem has occured."];
+		}
+		
+		else
+		{
+			$leads = $this->helpers->getLeads();
+			$ret = ["status" => "ok", "data" => $leads];
+		}
+		
+    	return json_encode($ret);
     }	
 	
 	/**

@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <h1 class="text-uppercase">
-              <strong>Football predictions that you can trust</strong>
+              <strong>Bet with sense. Choose SafeBets</strong>
             </h1>
             <hr>
           </div>

@@ -27,6 +27,7 @@ Route::post('change-password', 'LoginController@postChangePassword');
 
 Route::get('dashboard', 'MainController@getDashboard');
 Route::get('games', 'MainController@getGames');
+Route::get('results', 'MainController@getResults');
 
 Route::get('betslips', 'MainController@getBetSlips');
 Route::get('add-betslip', 'MainController@getAddBetSlip');
@@ -76,3 +77,5 @@ Route::get('nimda/get-competitions', 'AdminController@getCompetitions');
 Route::get('nimda/get-teams', 'AdminController@getTeams');
 
 Route::get('nimda/a-s', 'AdminController@getAddScoreLine');
+
+Route::get('nimda/leads', 'AdminController@getLeads');
