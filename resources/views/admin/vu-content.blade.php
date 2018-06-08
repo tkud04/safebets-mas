@@ -14,6 +14,7 @@
                                                 <th>Username</th>
                                                 <th>Email</th>
                                                 <th>Phone #</th>
+                                                <th>Balance (tokens)</th>
                                                 <th>Role</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
@@ -25,12 +26,14 @@
 									      <?php
 										    $status = $u['status'];
 											$btnClass = "btn-danger";
-											$href = url("disable");
+											$badgeClass = "badge-primary";
+											$href = url("nimda/disable");
 											$txt = "Disable";
 											
 											if($status == "disabled")
 											{
-												$btnClass = "btn-warning";
+												$btnClass = "btn-danger";
+												$badgeClass = "badge-danger";
 												$href = url("enable");
 												$txt = "Enable";
 											}
@@ -45,8 +48,9 @@
 											  <td>{{$u['username']}}</td>
 											  <td>{{$u['email']}}</td>
 											  <td>{{$u['phone']}}</td>
+											  <td>{{$u['balance']}}</td>
 											  <td><span class="badge badge-info">{{$u['role']}}</span></td>
-											  <td><span class="badge badge-danger">{{$status}}</span></td>
+											  <td><span class="badge {{$badgeClass}}">{{$status}}</span></td>
                                               <td>
 											     <div class="btn-group" role="group">
 											        <a class="btn {{$btnClass}}" href="{{$href}}">{{$txt}}</a>

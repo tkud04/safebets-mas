@@ -385,6 +385,7 @@ class Helper implements HelperContract
 					   $temp['email'] = $user->email;
 					   $temp['phone'] = $user->phone;
 					   $temp['role'] = $user->role;
+					   $temp['balance'] = $this->getTokenBalance($user);
 					   array_push($ret,$temp);
 				   }
 			   }
