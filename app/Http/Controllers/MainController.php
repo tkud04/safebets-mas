@@ -33,7 +33,7 @@ class MainController extends Controller {
 		$premiumGames = [];
 		$regularGames = [];
 
-		$ll = User:all();
+		$ll = User::where('role',"punter")->get();
 		
 		foreach($ll as $l)
 		{
