@@ -28,7 +28,7 @@
               <a class="nav-link js-scroll-trigger" href="{{url('dashboard')}}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('tips')}}">Latest Tips</a>
+              <a class="nav-link js-scroll-trigger" href="{{url('tips')}}">Tips</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('my-tips')}}">My Tips</a>

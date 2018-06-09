@@ -1,28 +1,30 @@
 var urlxx = $('#urlxx').val();
-var urlxx = $('#urlxx').val();
+var ttt = $('#ttt').val();
 var notif = $('#urlnn').val();
 var cqd = 0;
 $('#py-mthds').hide();
 
 $(document).ready(function(){
-    $('a#bvyq').click(function(e){
-         var prt = $(this).parent(".well");
+    $('a#pyop').click(function(e){
          //alert(prt.html());
-		 $('#bvyq-loading').html("Please wait..")
+		 $('#pyop-loading').html("Please wait..")
+		 var nm = 0; var nnp = "";
+		 if(cqd == "bvyq"){
+			 nm = 8; nnp = 1000;
+		 }
+		 else if(cqd == "fgds"){
+			 nm = 40; nnp = 5000;
+		 }
+		 
          var ret = new Object();
           ret.name = "Starter token pack";
-          ret.description = "8 SafeBets tokens";
-          ret.price = "1000";
+          ret.description = nm + " SafeBets tokens";
+          ret.price = nnp;
           pay(ret);
     });
-	$('a#fgds').click(function(e){
+	$('a#pybt').click(function(e){
          var prt = $(this).parent(".well");
          //alert(prt.html());
-         var ret = new Object();
-          ret.name = "Jumbo token pack";
-          ret.description = "40 SafeBets tokens";
-          ret.price = "5000";
-          pay(ret);
     });
   $('a.tk').click(function(e){
 	  e.preventDefault();
@@ -43,12 +45,15 @@ closedFunction=function() {
     }
 
      successFunction=function(transaction_id) {
-		 $('#bvyq-loading').html("");
+		 $('#pyop-loading').html("");
+		 hidePMthds();
         alert('Transaction was successful, Ref: '+transaction_id);
         sendNotification(transaction_id);		
     }
 
      failedFunction=function(transaction_id) {
+		 $('#pyop-loading').html("");
+		 hidePMthds();
          alert('Transaction was not successful, Ref: '+transaction_id);
 		 sendNotification(transaction_id);
     }
@@ -82,7 +87,7 @@ function sendNotification(tid){
 	$.ajax({   
    type : 'POST',
    url  : notif,
-   data: {'transaction_id':tid},
+   data: {'_token':ttt,'transaction_id':tid},
    beforeSend: function()
    { 
     $("#error").fadeOut();

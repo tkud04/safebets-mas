@@ -98,7 +98,7 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getNotification(Request $request)
+	public function postNotification(Request $request)
     {
            $req = $request->all();
 		   #dd($req);

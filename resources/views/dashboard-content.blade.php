@@ -4,7 +4,7 @@
                 <div class="row">
 				    <div class="col-md-2"></div>
                     <div class="col-md-4 text-success">
-                        <div class="card crd p-30">
+                        <div class="card crd">
                             <div class="row">
                                 <div class="col-md-4">
                                     <span><i class="db-icon fa fa-cubes fa-2x f-s-40 color-primary mt-3"></i></span>
@@ -18,7 +18,7 @@
                         </div>
                     </div>                    
 					<div class="col-md-4 text-primary">
-                        <div class="card crd p-30">
+                        <div class="card crd">
                             <div class="row">
                                 <div class="col-md-4">
                                     <span><i class="db-icon fa fa-soccer-ball-o fa-2x f-s-40 color-primary mt-3"></i></span>
@@ -32,7 +32,7 @@
                         </div>
                     </div>	
 					<div class="col-md-4 text-info">
-                        <div class="card crd p-30">
+                        <div class="card crd">
                             <div class="row">
                                 <div class="col-md-4">
                                     <span><i class="db-icon fa fa-soccer-ball-o fa-2x f-s-40 color-primary mt-3"></i></span>

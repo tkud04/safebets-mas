@@ -50,7 +50,7 @@ Route::post('profile', 'MainController@postSettings');
 Route::get('subscribe/{em}', 'MainController@getSubscribe');
 Route::get('unsubscribe/{em}', 'MainController@getUnsubscribe');
 
-Route::post('notiff', 'MainController@getNotification');
+Route::post('notiff', 'MainController@postNotification');
 
 
 /**

@@ -2,6 +2,7 @@
 	  <center><h2 class="section-heading">Buy token packs to get more winning tips!</h2></center>
 	  <hr class="hr-success">
 	  <input type="hidden" id="urlxx" value="{{url('notiff')}}"/>
+	  <input type="hidden" id="ttt" value="{{csrf_token()}}"/>
 	  <input type="hidden" id="urlnn" value="{{url('notiff')}}"/>
       <div class="container">
         <div class="row" id="tk-paks">		  
@@ -45,7 +46,7 @@
 					 <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion">
 					     <div class="card-body">
                             There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
-							<center><span id="bvyq-loading"></span><a href="#" class="btn btn-primary btn-lg mt-5" id="bvyq">Proceed</a></center>
+							<center><span id="pyop-loading"></span><a href="#" class="btn btn-primary btn-lg mt-5" id="pyop">Proceed</a></center>
 						 </div>
 					 </div>
 				 </div>                 
@@ -59,7 +60,7 @@
 					 <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion">
 					     <div class="card-body">
                              There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
-							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="fgds">Proceed</a></center>
+							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
 						 </div>
 					 </div>
 				 </div>                 
