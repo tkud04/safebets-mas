@@ -10,10 +10,10 @@ $(document).ready(function(){
 		 $('#pyop-loading').html("Please wait..")
 		 var nm = 0; var nnp = "";
 		 if(cqd == "bvyq"){
-			 nm = 8; nnp = 1000;
+			 nm = "8"; nnp = "1000";
 		 }
-		 else if(cqd == "fgds"){
-			 nm = 40; nnp = 5000;
+		 else if(cqd == "fdgs"){
+			 nm = "40"; nnp = "5000";
 		 }
 		 
          var ret = new Object();
