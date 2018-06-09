@@ -297,7 +297,7 @@
 					 <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion">
 					     <div class="card-body">
                             There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
-							<center><a href="#" class="btn btn-primary btn-lg mt-5" id="bvyq">Proceed</a></center>
+							<center><span id="bvyq-loading"></span><a href="#" class="btn btn-primary btn-lg mt-5" id="bvyq">Proceed</a></center>
 						 </div>
 					 </div>
 				 </div>                 

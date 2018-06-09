@@ -53,7 +53,11 @@
                                                 <td><a href='#'>{{$seller}}</a><br></td>
                                                 <td><i class="{{$gs}}"></i></td>
 												<td>
+												@if(isset($user) && $user != null)
 												 <a class="btn btn-warning text-white" href="#" onclick="viewBS({{$id}},'<?php echo $url; ?>')">View</a>
+											    @else
+												 <a class="btn btn-warning text-white mlm" href="#">View</a>												
+											    @endif
 												</td>
                                             </tr>  
 											@endforeach

@@ -8,6 +8,7 @@ $(document).ready(function(){
     $('a#bvyq').click(function(e){
          var prt = $(this).parent(".well");
          //alert(prt.html());
+		 $('#bvyq-loading').html("Please wait..")
          var ret = new Object();
           ret.name = "Starter token pack";
           ret.description = "8 SafeBets tokens";
@@ -42,6 +43,7 @@ closedFunction=function() {
     }
 
      successFunction=function(transaction_id) {
+		 $('#bvyq-loading').html("");
         alert('Transaction was successful, Ref: '+transaction_id);
         sendNotification(transaction_id);		
     }

@@ -44,9 +44,9 @@
 		$('#registerModal').modal("show");
 	});   	
 	
-	$("a#request-expert-btn").click(function(e){
+	$("a.mlm").click(function(e){
 		e.preventDefault();
-		$('#requestExpertModal').modal("hide");
+		$('#loginModal').modal("show");
 	});  	
 
   $('#fixtures').change(function(e){
