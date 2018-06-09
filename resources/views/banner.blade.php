@@ -9,7 +9,7 @@
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">Are you going to just stand there and watch WINNING PREDICTIONS go to waste?? Join us today for full access to Over 2.5, Over 3.5, Double Chance, Correct Score, Straight Win, Double Chance HT/FT matches and much much more!</p>
+            <p class="text-faded mb-5">Are you going to just stand there and watch WINNING TIPS go to waste?? Join us today for full access to Over 2.5, Over 3.5, Double Chance, Correct Score, Straight Win, Double Chance HT/FT match predictions and much much more!</p>
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">About Us</a>
           </div>
         </div>

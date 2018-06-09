@@ -1,5 +1,5 @@
-    <section id="todays-games">
-	  <center><h2 class="section-heading">Regular Predictions</h2></center>
+    <section id="todays-tips">
+	  <center><h2 class="section-heading">Regular Tips</h2></center>
 	  <hr>
       <div class="container">
 	    @if(isset($regularGames) && count($regularGames) > 0)
@@ -32,15 +32,15 @@
 			if($type == "single")
 			{
 				$typeText = "single game";
-				if($category == "beginner") $cta = "View this game";
-				else $cta = "Get this game";
+				if($category == "unverified") $cta = "View tip";
+				else $cta = "Get this tip";
 			}			
 			
 			else if($type == "multi")
 			{
 				$typeText = "bet slip";
-				if($category == "beginner") $cta = "View games";
-				else $cta = "Get this game";
+				if($category == "unverified") $cta = "View tip";
+				else $cta = "Get this tip";
 			}
 		
 		  ?>
@@ -67,7 +67,7 @@
 		<br><br>
 		<div class="row">
 		     <div class="col-md-12">
-			     <center><a href="{{url('games')}}" class="btn btn-primary btn-lg">View more games</a></center>
+			     <center><a href="{{url('games')}}" class="btn btn-primary btn-lg">View more tips</a></center>
 			 </div>
 		</div>
       </div>

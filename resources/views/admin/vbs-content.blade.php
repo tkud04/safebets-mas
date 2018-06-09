@@ -5,7 +5,8 @@
           <div class="col-lg-12 ml-auto text-center">
                         <div class="card">
                             <div class="card-title">
-                                <h4>Bet Slip #<span id="bs-id"></span> </h4>
+							<?php $rd = rand(2345621,99999999); ?>
+                                <h4>Bet Slip #{{$rd}}<span id="bs-id"></span> </h4>
 								<div id="bs-error"></div>
 								<div id="bs-working"></div>
                             </div>

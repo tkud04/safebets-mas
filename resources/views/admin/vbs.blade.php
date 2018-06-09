@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title',"View Bet Slip")
+@section('title',"View Tip")
 
 
 @section('content')

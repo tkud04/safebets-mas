@@ -25,8 +25,8 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h2>{{$totalBetSlipsSold}}</h2>
-                                    <p class="m-b-0">Bet slips sold</p>
-									<a href="{{url('betslips')}}" class="btn btn-primary">View bet slips</a>
+                                    <p class="m-b-0">Tips sold</p>
+									<a href="{{url('my-tips')}}" class="btn btn-primary">View tips</a>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +39,8 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h2>{{$totalBetSlipsPurchased}}</h2>
-                                    <p class="m-b-0">Bet slips purchased</p>
-									<a href="{{url('betslips')}}" class="btn btn-info">View bet slips</a>
+                                    <p class="m-b-0">Tips purchased</p>
+									<a href="{{url('my-tips')}}" class="btn btn-info">View tips</a>
                                 </div>
                             </div>
                         </div>

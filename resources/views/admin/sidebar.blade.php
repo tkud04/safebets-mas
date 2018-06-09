@@ -17,7 +17,7 @@
                         <li class="nav-label">Predictions</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Predictions<span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('nimda/betslips')}}">View Bet slips</a></li>
+                                <li><a href="{{url('nimda/tips')}}">View Tips</a></li>
 								<li><a href="{{url('nimda/transactions')}}">View Transactions</a></li>
                             </ul>
                         </li>                        

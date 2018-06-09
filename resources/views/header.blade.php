@@ -1,7 +1,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="{{url('/')}}"><img class="img img-responsive" src="{{asset('img/logo.png')}}" alt="Disenado" width="65"> SafeBets</a>
+        <a class="navbar-brand js-scroll-trigger" href="{{url('/')}}"><img class="img img-responsive" src="{{asset('img/logo.png')}}" alt="Disenado" width="69"> SafeBets</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,10 +12,10 @@
             </li>
 		   @if($user == null)
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#todays-games">Top Games Today</a>
+              <a class="nav-link js-scroll-trigger" href="#todays-tips">Top Tips Today</a>
             </li>			
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#premium-games">Premium Games</a>
+              <a class="nav-link js-scroll-trigger" href="#premium-tips">Premium Tips</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" id="login-btn" href="#">Sign in</a>
@@ -28,10 +28,10 @@
               <a class="nav-link js-scroll-trigger" href="{{url('dashboard')}}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('games')}}">Games</a>
+              <a class="nav-link js-scroll-trigger" href="{{url('tips')}}">Latest Tips</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('betslips')}}">Bet Slips</a>
+              <a class="nav-link js-scroll-trigger" href="{{url('my-tips')}}">My Tips</a>
             </li>
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('transactions')}}">Transactions</a>
@@ -42,7 +42,7 @@
             </li>
             @endif
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('settings')}}">Settings</a>
+              <a class="nav-link js-scroll-trigger" href="{{url('profile')}}">Profile</a>
             </li>
 		   <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('logout')}}">Sign out</a>

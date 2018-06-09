@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title',"Games")
+@section('title',"Tips")
 
 @section('content')
 @include('ad-section')

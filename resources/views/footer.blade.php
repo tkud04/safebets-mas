@@ -1,8 +1,6 @@
     <section class="bg-dark text-white">
       <div class="container text-center">
         <h2 class="mb-4">Stop losing money, join us today. We offer the best tips daily!</h2>
-       <?php #<a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a> 
-	   ?>
       </div>
     </section>
 
@@ -18,7 +16,7 @@
         <div class="row">
           <div class="col-lg-4 ml-auto text-center">
             <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>0705-429-1601</p>
+            <p>0705-429-1601<br>0802-420-4576</p>
           </div>
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
@@ -175,7 +173,8 @@
 						
                         <div class="card">
                             <div class="card-title">
-                                <h4>Bet Slip #<span id="bs-id"></span> </h4>
+							    <?php $rd = rand(2345621,99999999); ?>
+                                <h4>Tip #{{$rd}}<span id="bs-id"></span> </h4>
 								<h5>Booking code: <span id="bc"></span></h5>
 								<div id="bs-error"></div>
 								<div id="bs-working"></div>
@@ -214,7 +213,8 @@
 
                         <div class="card">
                             <div class="card-title">
-                                <h4>Bet Slip #<span id="vg-id"></span> </h4>
+							<?php $rd = rand(2345621,99999999); ?>
+                                <h4>Bet Slip #{{$rd}}<span id="vg-id"></span> </h4>
 								<h5>Booking code: <span id="bc"></span></h5>
 								<div id="vg-error"></div>
 								<div id="vg-working"></div>

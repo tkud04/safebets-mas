@@ -1,33 +1,3 @@
-   <section id="support">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading">How can we be of help?</h2>
-            <hr class="my-4">
-            <p class="mb-5">Call or text to get in touch with our agents for any complaints, issues or inquiries related to SafeBets and we will get back to you within 24 hours.</p>
-          </div>
-        </div>        
-		
-        <div class="row">
-          <div class="col-lg-4 ml-auto text-center">
-            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>0705-429-1601</p>
-          </div>
-          <div class="col-lg-4 mr-auto text-center">
-            <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
-            <p>
-              <a href="mailto:your-email@your-domain.com">safebets.disenado@gmail.com</a>
-            </p>
-          </div>
-        </div><br><br><br>
-		
-	  @include('ad-no-section')
-	  
-	  <br><br>
-		
-		<div class="row">
-          <div class="col-lg-12 mx-auto text-center">
-            <h2 class="section-heading">Commonly asked questions</h2>
             <hr class="my-4">
             <div id="accordion">
                  <div class="card">
@@ -173,8 +143,3 @@
 					 </div>
 				 </div>
 			</div>
-          </div>
-        </div>
-		
-      </div>
-    </section>

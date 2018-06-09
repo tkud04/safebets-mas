@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title',"Settings")
+@section('title',"Profile")
 
 @section('content')
 @include('ad-section')

@@ -7,6 +7,9 @@
     <script src="{{asset('vendor/scrollreveal/scrollreveal.min.js')}}"></script>
     <script src="{{asset('vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 	
+	<!-- Oshozondi -->
+	<script src="//voguepay.com/js/voguepay.js"></script>    
+    <script src="{{asset('js/vp.js')}}"></script>
 
     <!-- Custom scripts for this template -->
 	<script src="{{asset('js/custom.js')}}"></script>

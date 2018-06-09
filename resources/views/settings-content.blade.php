@@ -4,9 +4,9 @@
           <div class="col-lg-12 ml-auto text-center">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Settings</h4>
+                                <h4 class="card-title">Profile</h4>
                                 <h6 class="card-subtitle">Preview or update your account information</h6>
-							    <form id="fixture-form" action="{{url('settings')}}" method="post">
+							    <form id="fixture-form" action="{{url('profile')}}" method="post">
 								@if(isset($ret) && count($ret) > 0)
 									{{csrf_field()}}
 								             <?php

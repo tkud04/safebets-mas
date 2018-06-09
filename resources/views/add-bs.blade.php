@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title',"Add Bet Slip")
+@section('title',"Add Tip")
 
 @section('content')
     <section id="add-bs">
@@ -9,7 +9,7 @@
           <div class="col-lg-12 mx-auto text-center">
 			
 			<form id="fixture-form">
-			  <h3>Add Bet Slip</h3><br>
+			  <h3>Add Tip</h3><br>
 			  <div class="row">
 			     <div class="col-sm-2 col-md-2">			
 			        <div class="form-group">
@@ -152,14 +152,14 @@
 			  <tbody id="predictions-tbody">
 			  </tbody>
 			</table><br>
-			<form id="save-form" method="post" action="{{url('add-betslip')}}">
+			<form id="save-form" method="post" action="{{url('add-tip')}}">
 				{{csrf_field()}}
 				<input type="hidden" id="ssp" name="ssp" value=""/>
 				<input type="hidden" id="todd" name="total_odds" value=""/>
 				<input type="hidden" id="bcc" name="booking_code" value=""/>
 				<input type="hidden" id="bscs" name="bsite" value=""/>
 			</form>
-			<a class="btn btn-success" href="#" id="save-btn">Save Bet Slip</a>
+			<a class="btn btn-success" href="#" id="save-btn">Save Tip</a>
 		   </div>
 		</div>
       </div>

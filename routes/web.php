@@ -13,7 +13,6 @@
 
 Route::get('/', 'MainController@getIndex');
 Route::post('become-a-seller', 'MainController@postSellerJoin');
-// Route::get('file/sslsslsafetre', 'MainController@getFile');
 Route::get('football', 'MainController@getFootball');
 Route::get('gf', 'MainController@getFixtures');
 
@@ -26,12 +25,12 @@ Route::get('change-password/{rxf?}', 'LoginController@getChangePassword');
 Route::post('change-password', 'LoginController@postChangePassword');
 
 Route::get('dashboard', 'MainController@getDashboard');
-Route::get('games', 'MainController@getGames');
+Route::get('tips', 'MainController@getGames');
 Route::get('results', 'MainController@getResults');
 
-Route::get('betslips', 'MainController@getBetSlips');
-Route::get('add-betslip', 'MainController@getAddBetSlip');
-Route::post('add-betslip', 'MainController@postAddBetSlip');
+Route::get('my-tips', 'MainController@getBetSlips');
+Route::get('add-tip', 'MainController@getAddBetSlip');
+Route::post('add-tip', 'MainController@postAddBetSlip');
 
 Route::get('transactions', 'MainController@getPurchases');
 Route::get('transactions', 'MainController@getPurchases');
@@ -45,8 +44,8 @@ Route::get('pricing', 'MainController@getPricing');
 Route::get('gc', 'MainController@getCompetitions');
 Route::get('gt', 'MainController@getTeams');
 
-Route::get('settings', 'MainController@getSettings');
-Route::post('settings', 'MainController@postSettings');
+Route::get('profile', 'MainController@getSettings');
+Route::post('profile', 'MainController@postSettings');
 
 Route::get('subscribe/{em}', 'MainController@getSubscribe');
 Route::get('unsubscribe/{em}', 'MainController@getUnsubscribe');
@@ -66,8 +65,8 @@ Route::get('nimda/ut/{action}/{id}', 'AdminController@getManageTokens');
 Route::post('nimda/ut', 'AdminController@postManageTokens');
 
 Route::get('nimda/transactions', 'AdminController@getPurchases');
-Route::get('nimda/betslips', 'AdminController@getTickets');
-Route::get('nimda/betslip/{id}', 'AdminController@getBetSlip');
+Route::get('nimda/tips', 'AdminController@getTickets');
+Route::get('nimda/tip/{id}', 'AdminController@getBetSlip');
 
 Route::get('nimda/other-leagues', 'AdminController@getOtherLeagues');
 Route::get('nimda/add-country', 'AdminController@getAddCountry');

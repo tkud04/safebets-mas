@@ -37,7 +37,7 @@
                                         <h4 class="m-b-20">Predictions</h4>
                                         <!-- List style -->
                                         <ul class="list-style-none">
-                                            <li><a href="{{url('nimda/betslips')}}"><i class="fa fa-check text-success"></i> View Bet slips</a></li>
+                                            <li><a href="{{url('nimda/tips')}}"><i class="fa fa-check text-success"></i> View Tips</a></li>
                                             <li><a href="{{url('nimda/transactions')}}"><i class="fa fa-check text-success"></i> View Transactions</a></li>
                                         </ul>
                                     </li>

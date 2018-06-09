@@ -39,7 +39,7 @@
 												if($category == "regular") $badgeClass = "badge-success";
 												else if($category == "premium") $badgeClass = "badge-premium";
 																								
-												$url = url('nimda/betslip');
+												$url = url('nimda/tip');
 												$id = $p["id"];
 												$url .= "/".$bs_id;
 												
