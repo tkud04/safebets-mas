@@ -87,10 +87,7 @@ function sendNotification(tid){
    },
    success :  function(response)
       {         
-	   if(response.status == "error"){}
-	   else{
-			 console.log("Notification sent.");			 
-	   }   
+	   console.log(response);
      
      }
    });
