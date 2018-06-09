@@ -91,6 +91,37 @@ class MainController extends Controller {
                        #dd($ret);					   
                   }       
            return json_encode($ret);
+    }
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getNotification(Request $request)
+    {
+           $req = $request->all();
+		   #dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'transaction_id' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                       $ret = json_encode(["status" => "error","msg" => "An unknown error has occured."]);
+                       
+                 }
+                
+                 else
+                 {
+                       $t = $req['transaction_id'];					 
+                       $u = "http://voguepay.com/?v_transaction_id=".$t."&type=json";
+	                   $ret = file_get_contents($u);					   
+                 }       
+				 
+           return $ret;
     }   
     
     

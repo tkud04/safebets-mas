@@ -1,6 +1,8 @@
     <section id="pricing">
 	  <center><h2 class="section-heading">Buy token packs to get more winning tips!</h2></center>
 	  <hr class="hr-success">
+	  <input type="hidden" id="urlxx" value="{{url('notiff')}}"/>
+	  <input type="hidden" id="urlnn" value="{{url('notiff')}}"/>
       <div class="container">
         <div class="row" id="tk-paks">		  
 		  <div class="col-lg-6 col-md-12 ml-auto text-center">
@@ -27,7 +29,7 @@
                             </div>
                         </div>
           </div>		  
-          <div class="col-md-12 mt-5"><center><a href="{{url('/')}}" class="btn btn-primary btn-lg">View more tips</a></center></div>
+          <div class="col-md-12 mt-5"><center><a href="{{url('tips')}}" class="btn btn-primary btn-lg">View more tips</a></center></div>
         </div><br><br>	
 		<div class="row" id="py-mthds">
 		   <div class="col-md-12">
@@ -43,6 +45,7 @@
 					 <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion">
 					     <div class="card-body">
                             There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
+							<center><a href="#" class="btn btn-primary btn-lg mt-5" id="bvyq">Proceed</a></center>
 						 </div>
 					 </div>
 				 </div>                 
@@ -55,7 +58,8 @@
 
 					 <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion">
 					     <div class="card-body">
-                             There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.
+                             There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
+							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="fgds">Proceed</a></center>
 						 </div>
 					 </div>
 				 </div>                 

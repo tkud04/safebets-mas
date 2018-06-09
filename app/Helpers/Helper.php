@@ -757,8 +757,8 @@ class Helper implements HelperContract
 							   $temp["bs-id"] = $p->ticket_id;
 							   $t = Tickets::where('id',$p->ticket_id)->first();
 							   $type = $t->type;
-							   if($type == "single") $typeText = "Single-game bet slip";
-						       else if($type == "multi") $typeText = "Multi-game bet slip";
+							   if($type == "single") $typeText = "Single-game tip";
+						       else if($type == "multi") $typeText = "Multi-game tip";
 							   
 							   $temp["category"] = $t->category;
 						   }
@@ -833,8 +833,8 @@ class Helper implements HelperContract
 							   $temp["bs-id"] = $p->ticket_id;
 							   $t = Tickets::where('id',$p->ticket_id)->first();
 							   $type = $t->type;
-							   if($type == "single") $typeText = "Single-game bet slip";
-						       else if($type == "multi") $typeText = "Multi-game bet slip";
+							   if($type == "single") $typeText = "Single-game tip";
+						       else if($type == "multi") $typeText = "Multi-game tip";
 							   
 							   $temp["category"] = $t->category;
 						   }

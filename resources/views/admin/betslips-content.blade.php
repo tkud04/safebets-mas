@@ -4,8 +4,8 @@
           <div class="col-lg-12 ml-auto text-center">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Bet Slips</h4>
-                                <h6 class="card-subtitle">List of all betslips on SafeBets</h6>
+                                <h4 class="card-title">Tips</h4>
+                                <h6 class="card-subtitle">List of all tips on SafeBets</h6>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
@@ -42,7 +42,7 @@
 												if($category == "regular") $badgeClass = "label-success";
 												else if($category == "premium") $badgeClass = "label-danger";
 																								
-												$url = url('nimda/betslip');
+												$url = url('nimda/tip');
 												$seller = $bs["seller"];
 												$id = $bs["id"];
 												$url .= "/".$id;

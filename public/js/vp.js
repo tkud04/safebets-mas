@@ -1,15 +1,26 @@
 var urlxx = $('#urlxx').val();
+var urlxx = $('#urlxx').val();
+var notif = $('#urlnn').val();
 var cqd = 0;
 $('#py-mthds').hide();
 
 $(document).ready(function(){
-    $('a.pay').click(function(e){
+    $('a#bvyq').click(function(e){
          var prt = $(this).parent(".well");
          //alert(prt.html());
          var ret = new Object();
-          ret.name = prt.find('p#name').html();
-          ret.description = prt.find('p#description').html();
-          ret.price = prt.find('p > span#price').html();
+          ret.name = "Starter token pack";
+          ret.description = "8 SafeBets tokens";
+          ret.price = "1000";
+          pay(ret);
+    });
+	$('a#fgds').click(function(e){
+         var prt = $(this).parent(".well");
+         //alert(prt.html());
+         var ret = new Object();
+          ret.name = "Jumbo token pack";
+          ret.description = "40 SafeBets tokens";
+          ret.price = "5000";
           pay(ret);
     });
   $('a.tk').click(function(e){
@@ -48,7 +59,7 @@ function pay(ret){
             notify_url:urlxx,
             cur: 'NGN',
             merchant_ref: 'ref123',
-            memo:'Bet slip order from SafeBets',
+            memo:'Buy tokens from SafeBets',
             recurrent: false,
             developer_code: '5a61be72ab323',
             store_id:1,
@@ -68,7 +79,7 @@ function pay(ret){
 function sendNotification(tid){
 	$.ajax({   
    type : 'POST',
-   url  : 'http://localhost/vpay/notification.php',
+   url  : notif,
    data: {'transaction_id':tid},
    beforeSend: function()
    { 
@@ -76,9 +87,6 @@ function sendNotification(tid){
    },
    success :  function(response)
       {         
-       $('#working').html("");	   
-       $('#working').fadeOut();	   
-       //$('#result').html(response);	
 	   if(response.status == "error"){}
 	   else{
 			 console.log("Notification sent.");			 
@@ -92,6 +100,7 @@ function showPMthds(){
 	//cqd: bvyq - starter, fgds - jumbo
 	$('#tk-paks').hide();
 	$('#py-mthds').fadeIn();
+	window.location.href = "#py-mthds";
 }
 
 function hidePMthds(){

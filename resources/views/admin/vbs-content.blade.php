@@ -6,7 +6,7 @@
                         <div class="card">
                             <div class="card-title">
 							<?php $rd = rand(2345621,99999999); ?>
-                                <h4>Bet Slip #{{$rd}}<span id="bs-id"></span> </h4>
+                                <h4>Tip #{{$rd}}</h4>
 								<div id="bs-error"></div>
 								<div id="bs-working"></div>
                             </div>
@@ -49,9 +49,7 @@
 												$winURL = url("nimda/swqq/quee")."/".$id."/".$bs_id;
 												$lossURL = url("nimda/swqq/abra")."/".$id."/".$bs_id;
 											?>
-											<script>
-													  document.querySelector('#bs-id').textContent = "{{$id}}";
-											</script>
+											
                                             <tr>
                                                 <td>{{$date}}</td>
                                                 <td>{{$match}}</td>
