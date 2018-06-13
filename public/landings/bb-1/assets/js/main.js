@@ -129,7 +129,6 @@
 	$.ajax({   
    type : 'GET',
    url  : urlx,
-   data : dat,
    beforeSend: function()
    { 
     $("#error").fadeOut();
