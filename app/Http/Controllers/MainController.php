@@ -180,6 +180,23 @@ class MainController extends Controller {
     }
 
 	/**
+	 * Show the application Subscribe landing page to the user.
+	 *
+	 * @return Response
+	 */
+	public function getBB1()
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+    	return view('bb_1.index', compact(['user']));
+    }
+
+	/**
 	 * Show the application Support screen to the user.
 	 *
 	 * @return Response

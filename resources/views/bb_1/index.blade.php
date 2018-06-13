@@ -1,0 +1,6 @@
+@include("bb_1.head")
+@include("bb_1.slider")
+@include("bb_1.cta")
+@include("bb_1.body-copy")
+@include("bb_1.cta")
+@include("bb_1.foot")
