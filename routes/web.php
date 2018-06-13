@@ -46,7 +46,7 @@ Route::get('gt', 'MainController@getTeams');
 Route::get('profile', 'MainController@getSettings');
 Route::post('profile', 'MainController@postSettings');
 
-Route::get('get-free-odds', 'MainController@getBB1');
+Route::get('get-free-tips', 'MainController@getBB1');
 Route::get('subscribe/{em}', 'MainController@getSubscribe');
 Route::get('unsubscribe/{em}', 'MainController@getUnsubscribe');
 
