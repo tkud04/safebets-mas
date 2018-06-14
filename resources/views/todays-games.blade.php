@@ -8,8 +8,8 @@
 	    <input type="hidden" value="{{csrf_token()}}" id="tk"/>
 	
 		@foreach($todayGames as $t)
-		<?php ++$itemCount; ?>
-		@if($itemCount == 1 || $itemCount % 5 == 0)
+		<?php ++$itemCount; if($itemCount >= 5) $itemCount = 1;?>
+		@if($itemCount == 1)
         <div class="row">
 	    @endif
 		  <?php 
@@ -66,7 +66,7 @@
 							<div class="card-footer text-muted">{{$t["date"]}}</div>
                         </div>
           </div>
-		@if($itemCount % 5 == 0)
+		@if($itemCount == 4)
         </div> 
 	    @endif
         @endforeach	

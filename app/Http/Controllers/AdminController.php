@@ -135,7 +135,7 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin" || ($id == "" || $action == "") )
+		if($user == null || $user->role != "admin")
 		{
 			return redirect()->intended('/');
 		}
