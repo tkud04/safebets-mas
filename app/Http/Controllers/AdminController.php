@@ -113,8 +113,8 @@ class AdminController extends Controller {
 			}
 			else
 			{
-				$breadCrumb = "Add leads";
-				return view('admin.leads',compact(['user','leads']));
+				$breadCrumb = "Mailing list";
+				return view('admin.leads',compact(['user','leads','breadCrumb']));
 			} 
 		}
 		
