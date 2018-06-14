@@ -10,7 +10,7 @@ $(document).ready(function(){
 		 $('#pyop-loading').html("Please wait..")
 		 var nm = 0; var nnp = "";
 		 if(cqd == "bvyq"){
-			 nm = "8"; nnp = "1000";
+			 nm = "8"; nnp = "8";
 		 }
 		 else if(cqd == "fdgs"){
 			 nm = "40"; nnp = "5000";
@@ -18,7 +18,7 @@ $(document).ready(function(){
 		 
          var ret = new Object();
           ret.name = "Starter token pack";
-          ret.description = nm + " SafeBets tokens";
+          ret.description = nm + " units of tokens from safebets.disenado.gq";
           ret.price = nnp;
           pay(ret);
     });
@@ -31,6 +31,11 @@ $(document).ready(function(){
 	  cqd = $(this).attr("data-cqd");
 	  console.log("cdq = " + cqd);
 	  showPMthds();
+  });
+  
+  $('a.no').click(function(e){
+	  e.preventDefault();
+	  $('#loginModal').modal("show");
   });
   
   $('a#rambo').click(function(e){
@@ -47,14 +52,14 @@ closedFunction=function() {
      successFunction=function(transaction_id) {
 		 $('#pyop-loading').html("");
 		 hidePMthds();
-        alert('Transaction was successful, Ref: '+transaction_id);
+        //alert('Transaction was successful, Ref: '+transaction_id);
         sendNotification(transaction_id);		
     }
 
      failedFunction=function(transaction_id) {
 		 $('#pyop-loading').html("");
 		 hidePMthds();
-         alert('Transaction was not successful, Ref: '+transaction_id);
+         //alert('Transaction was not successful, Ref: '+transaction_id);
 		 sendNotification(transaction_id);
     }
 
@@ -93,7 +98,8 @@ function sendNotification(tid){
     $("#error").fadeOut();
    },
    success :  function(response)
-      {         
+      {    
+       alert(response);	  
 	   console.log(response);
      
      }

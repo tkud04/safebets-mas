@@ -5,7 +5,11 @@
 	  <input type="hidden" id="ttt" value="{{csrf_token()}}"/>
 	  <input type="hidden" id="urlnn" value="{{url('notiff')}}"/>
       <div class="container">
-        <div class="row" id="tk-paks">		  
+        <div class="row" id="tk-paks">
+        <?php
+		 $a = "no";
+         if(isset($user) && $user != null) $a = "tk";
+        ?>		
 		  <div class="col-lg-6 col-md-12 ml-auto text-center">
                         <div class="card mt-5">
                             <div class="card-body">
@@ -14,7 +18,7 @@
 								<hr class="hr-info"><br>
                                 <h5 class="card-subtitle">&#8358;1,000</h5><br>
 								<hr class="hr-info">
-								<a href="#" class="btn btn-info tk" data-cqd="bvyq">Buy now</a>
+								<a href="#" class="btn btn-info {{$a}}" data-cqd="bvyq">Buy now</a>
                             </div>
                         </div>
           </div>		  
@@ -26,7 +30,7 @@
 								<hr class="hr-success"><br>
                                 <h5 class="card-subtitle">&#8358;5,000</h5><br>
 								<hr class="hr-success">
-								<a href="#" class="btn btn-success tk" data-cqd="fdgs">Buy now</a>
+								<a href="#" class="btn btn-success {{$a}}" data-cqd="fdgs">Buy now</a>
                             </div>
                         </div>
           </div>		  
