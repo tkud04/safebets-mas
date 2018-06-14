@@ -387,6 +387,8 @@ class Helper implements HelperContract
 					   $temp = [];
 					   $temp['id'] = $l->id;
 					   $temp['email'] = $l->email;
+					   $temp['sub'] = $l->sub;
+					   $temp['date'] = $l->created_at->format("jS F,Y h:i A");
 					   array_push($ret,$temp);
 				   }
 			   }
@@ -407,7 +409,7 @@ class Helper implements HelperContract
 					   $u->update(['sub' => "yes"]);
 				   }
 				   
-				   $this->addLead(['email' => $em]);
+				   $this->addLead(['email' => $em,'sub' => "yes"]);
 			   }
 		   }
 

@@ -2,15 +2,17 @@ var urlxx = $('#urlxx').val();
 var ttt = $('#ttt').val();
 var notif = $('#urlnn').val();
 var cqd = 0;
+var nm = 0; var nnp = "";
+
 $('#py-mthds').hide();
+$('#vks').hide();
 
 $(document).ready(function(){
     $('a#pyop').click(function(e){
          //alert(prt.html());
-		 $('#pyop-loading').html("Please wait..")
-		 var nm = 0; var nnp = "";
+		 $('#pyop-loading').html("Please wait..");
 		 if(cqd == "bvyq"){
-			 nm = "8"; nnp = "8";
+			 nm = "8"; nnp = "1000";
 		 }
 		 else if(cqd == "fdgs"){
 			 nm = "40"; nnp = "5000";
@@ -23,8 +25,10 @@ $(document).ready(function(){
           pay(ret);
     });
 	$('a#pybt').click(function(e){
-         var prt = $(this).parent(".well");
-         //alert(prt.html());
+         showBnk();
+    });
+	$('a#bks-btn').click(function(e){
+         hideBnk();
     });
   $('a.tk').click(function(e){
 	  e.preventDefault();
@@ -104,6 +108,18 @@ function sendNotification(tid){
      
      }
    });
+}
+
+function showBnk(){
+	//cqd: bvyq - starter, fgds - jumbo
+	$('#bkf').hide();
+	$('#bks').fadeIn();
+}
+
+function hideBnk(){
+	//cqd: bvyq - starter, fgds - jumbo
+	$('#bks').hide();
+	$('#bkf').fadeIn();
 }
 
 function showPMthds(){

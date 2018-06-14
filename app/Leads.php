@@ -9,6 +9,6 @@ class Leads extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['id', 'email'];
+	protected $fillable = ['id', 'email', 'sub'];
 
 }

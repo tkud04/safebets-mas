@@ -50,10 +50,12 @@
 		   @endif
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('results')}}">Results</a>
-            </li>             			
+            </li>
+           @if($user == null)			
 		   <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('pricing')}}">Pricing</a>
             </li>			
+		   @endif
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('support')}}">Help</a>
             </li>

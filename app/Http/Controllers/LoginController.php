@@ -117,7 +117,7 @@ class LoginController extends Controller {
             $this->helpers->setCategory($user,"unverified");
 			
 			if($user->sub == "yes"){
-				$dd = ['email' => $user->email];
+				$dd = ['email' => $user->email,'sub' => "yes"];
 			    $this->helpers->addLead($dd);
 				
                //after creating the user, send back to the registration view with a success message

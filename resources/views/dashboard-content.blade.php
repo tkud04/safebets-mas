@@ -2,7 +2,6 @@
 	    <h2 class="section-header">Dashboard</h2>
 	     <div class="container">
                 <div class="row">
-				    <div class="col-md-2"></div>
                     <div class="col-md-4 text-success">
                         <div class="card crd">
                             <div class="row">
@@ -45,7 +44,6 @@
                             </div>
                         </div>
                     </div>
-					<div class="col-md-2"></div>
                 </div>
                 </div>
 		 </div>

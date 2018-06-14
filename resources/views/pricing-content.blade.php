@@ -40,34 +40,46 @@
 		   <div class="col-md-12">
             <p>Choose your preferred method of payment:</p>
             <div id="accordion">
-                 <div class="card">
+				 <div class="card">
 					 <div class="card-header" id="heading-1">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">Pay online with debit card</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">Banks Instant Deposit</button>
                          </h5>
 					 </div>
 
 					 <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion">
 					     <div class="card-body">
-                            There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
-							<center><span id="pyop-loading"></span><a href="#" class="btn btn-primary btn-lg mt-5" id="pyop">Proceed</a></center>
+						   <div id="bkf">
+                             There are no deposit fees with this method. If your transaction is authorized, your account will be credited immediately.<br>
+							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
+						   </div>
+						   <div id="bks">
+                             To make payment please pay <strong><span class="cdqq"></span></strong> to the <strong>GTBANK</strong> account below:
+							 <center>
+							   <h3 style="text-success">Bank: GTBANK</h3>
+							   <h3 style="text-success">Account Name: OLUWATOBI KUDAYISI</h3>
+							   <h3 style="text-success">Account Name: 0137606877</h3>
+							   <h3 style="text-success">Account Name: &#8358;<span class="cdqq"></span></h3>
+							 </center>
+							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="bks-btn">Back</a></center>
+						   </div>
 						 </div>
 					 </div>
-				 </div>                 
-				 <div class="card">
+				 </div>
+                 <div class="card">
 					 <div class="card-header" id="heading-2">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-2" aria-expanded="true" aria-controls="collapse-2">Banks Instant Deposit</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-2" aria-expanded="true" aria-controls="collapse-2">Pay online with debit card</button>
                          </h5>
 					 </div>
 
 					 <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion">
 					     <div class="card-body">
-                             There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
-							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
+                            There is no fee for deposits with this payment method. If your transaction is authorized, your account will be credited immediately.<br>
+							<center><span id="pyop-loading"></span><a href="#" class="btn btn-primary btn-lg mt-5" id="pyopp">Proceed</a></center>
 						 </div>
 					 </div>
-				 </div>                 
+				 </div>                                  
 			</div><br>
 			<center><a href="#" id="rambo" class="btn btn-primary btn-lg">Back</a></center>
 		  </div>

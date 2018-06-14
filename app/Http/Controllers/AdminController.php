@@ -79,10 +79,12 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getLeads()
+	public function getLeads(Request $request)
     {
         $user = null;
 		$ret = ["status" => "nothing"];
+		$req = $request->all();
+		$json = (isset($req['type']) && $req['type'] == "json") ? true : false;
 		
 		if(Auth::check())
 		{
@@ -91,16 +93,32 @@ class AdminController extends Controller {
 		
 		if($user == null || $user->role != "admin")
 		{
-			$ret = ["status" => "error", "msg" => "An unknown problem has occured."];
+			if($json)
+			{
+				$ret = ["status" => "error", "msg" => "An unknown problem has occured."];
+			} 
+			else
+			{
+				return redirect()->intended('/');
+			} 
 		}
 		
 		else
 		{
 			$leads = $this->helpers->getLeads();
-			$ret = ["status" => "ok", "data" => $leads];
+			
+			if($json)
+			{
+				$ret = ["status" => "ok", "data" => $leads];
+			}
+			else
+			{
+				$breadCrumb = "Add leads";
+				return view('admin.leads',compact(['user','leads']));
+			} 
 		}
 		
-    	return json_encode($ret);
+    	if($json) return json_encode($ret);
     }
 	
 	/**
