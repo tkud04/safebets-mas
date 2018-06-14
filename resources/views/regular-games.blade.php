@@ -3,15 +3,15 @@
 	  <hr>
       <div class="container">
 	    @if(isset($regularGames) && count($regularGames) > 0)
-		<?php $itemCount = 0; ?>
+		<?php $itemCount = 0; $counter = 0; $total = count($regularGames); ?>
 
 	    <input type="hidden" value="{{url('v-g')}}" id="urlx"/>
 	    <input type="hidden" value="{{csrf_token()}}" id="tk"/>
 
 	
 		@foreach($regularGames as $t)
-		<?php ++$itemCount; ?>
-		@if($itemCount == 1 || $itemCount % 5 == 0)
+		<?php ++$itemCount; ++$counter; if($itemCount >= 5) $itemCount = 1;?>
+		@if($itemCount == 1)
         <div class="row">
 	    @endif
 		  <?php 
@@ -58,7 +58,7 @@
 							<div class="card-footer text-muted">{{$t["date"]}}</div>
                         </div>
           </div>
-		@if($itemCount % 5 == 0)
+		@if($itemCount == 4 || $counter == $total)
         </div> 
 	    @endif
         @endforeach	
