@@ -5,7 +5,7 @@ var cqd = 0;
 var nm = 0; var nnp = "";
 
 $('#py-mthds').hide();
-$('#vks').hide();
+$('#bks').hide();
 
 $(document).ready(function(){
     $('a#pyop').click(function(e){
