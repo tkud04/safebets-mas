@@ -66,14 +66,14 @@ closedFunction=function() {
 function pay(ret){
        //Initiate voguepay inline payment
         Voguepay.init({
-            v_merchant_id: 'demo',
+            v_merchant_id: '3778-0037623',
             total: ret.price,
             notify_url:urlxx,
             cur: 'NGN',
             merchant_ref: 'ref123',
-            memo:'Buy tokens from SafeBets',
+            memo:'Buy token pack from SafeBets',
             recurrent: false,
-            developer_code: '5a61be72ab323',
+            developer_code: '5b2238c5423a9',
             store_id:1,
             items: [
                 {
