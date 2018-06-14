@@ -399,10 +399,10 @@ class Helper implements HelperContract
 
 		   function subscribe($em)
 		   {
-			   $lead = Leads::where('email',$em)->first();
-			   $u = User::where('email',$em)->first();
+			   $lead = Leads::where('email',$em)->where('sub',"yes")->first();
+			   $u = User::where('email',$em)->where('sub',"yes")->first();
 			   
-			   if($lead != null)
+			   if($lead == null)
 			   {
 				   if($u != null)
 				   {
@@ -415,8 +415,8 @@ class Helper implements HelperContract
 
 		   function unsubscribe($em)
 		   {
-			   $lead = Leads::where('email',$em)->first();
-			   $u = User::where('email',$em)->first();
+			   $lead = Leads::where('email',$em)->where('sub',"yes")->first();
+			   $u = User::where('email',$em)->where('sub',"yes")->first();
 			   
 			   if($lead != null)
 			   {
