@@ -109,7 +109,7 @@
 		 $('#thanksModal').modal("hide");
 	});
 	
-	$('#meke-btn').click(function(e){
+	$('.meke-btn').click(function(e){
 		e.preventDefault();
 		var meke = $('#meke').val();
 		
