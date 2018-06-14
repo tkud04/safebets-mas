@@ -67,7 +67,7 @@
 		<br><br>
 		<div class="row">
 		     <div class="col-md-12">
-			     <center><a href="{{url('games')}}" class="btn btn-primary btn-lg">View more tips</a></center>
+			     <center><a href="{{url('tips')}}" class="btn btn-primary btn-lg">View more tips</a></center>
 			 </div>
 		</div>
       </div>
