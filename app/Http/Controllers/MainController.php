@@ -117,7 +117,7 @@ class MainController extends Controller {
                  else
                  {
                        $t = $req['transaction_id'];					 
-                       $u = "http://voguepay.com/?v_transaction_id=".$t."&type=json";
+                       $u = "//voguepay.com/?v_transaction_id=".$t."&type=json&demo=true";
 	                   $ret = file_get_contents($u);					   
                  }       
 				 
