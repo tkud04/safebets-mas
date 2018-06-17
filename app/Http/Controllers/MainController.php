@@ -342,7 +342,8 @@ class MainController extends Controller {
 			return redirect()->intended('/');
 		}
 		
-		$ret = Football::getLeagues();
+		#$ret = Football::getLeagues();
+		$ret = [];
 		$countries = $this->helpers->getCountries();
     	return view('add-bs', compact(['user','ret','countries']));
     }

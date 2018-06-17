@@ -1,7 +1,6 @@
  var userPredictions = [];
    $('#predictions').hide();
-   $('#for-mt').hide();
-   var currentP = "fxt";
+   var currentP = "mt";
    
 (function($) {
   "use strict"; // Start of use strict

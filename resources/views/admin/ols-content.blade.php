@@ -39,6 +39,7 @@
                                                 <div class="form-group">
                                                     <label>Country</label>
                                                     <select class="form-control" name="country_id">
+													    <option value="none">Select country</option>
 													    @foreach($countries as $country)
 														   <option value="{{$country['id']}}">{{$country['name']}}</option>
 														@endforeach
@@ -74,6 +75,7 @@
                                                 <div class="form-group">
                                                     <label>Country</label>
                                                     <select class="form-control" id="countries" data-lef="{{url('nimda/get-competitions')}}" name="country_id">
+													    <option value="none">Select country</option>
 													    @foreach($countries as $country)
 														   <option value="{{$country['id']}}">{{$country['name']}}</option>
 														@endforeach

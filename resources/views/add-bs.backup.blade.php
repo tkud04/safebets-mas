@@ -12,6 +12,34 @@
 			  <h3>Add Tip</h3><br>
 			  <div class="row">
 			     <div class="col-sm-2 col-md-2">			
+			        <div class="form-group">
+			           <label for="league">Select league</label>
+				      <select class="form-control" id="league" data-lef="{{url('gf')}}">
+				        <option value="none">Select League</option>
+				        @foreach($ret as $r)
+						  <?php $id = $r->id; ?>
+					       <option value="{{$id}}">{{$r->caption}}</option>
+					    @endforeach
+						   <option value="other">Other</option>
+				      </select>
+			        </div>
+				 </div>
+			     <div class="col-sm-5 col-md-5">
+			        <div class="form-group" id="for-fxt">
+			           <label for="fixtures">Select fixtures</label>
+				       <select class="form-control" id="fixtures">
+				         <option value="none">Select fixture</option>
+				       </select>
+			        </div>			        
+					<div id="for-mt">
+					  <div class="row">
+					     <div class="col-md-12">
+							<div class="form-group">
+								<label for="other-date">Fixture Date</label>
+								<input class="form-control" type="text" placeholder="YYYY/MM/DD HH:MM AM/PM" id="other-date"/>
+							</div>							     
+						 </div><br>						     
+						 <div class="col-md-12">
 							<div class="form-group">
 								<label for="other-country">Country</label>
 								<select class="form-control" data-lef="{{url('gc')}}" id="other-country">
@@ -22,16 +50,7 @@
 					                 @endforeach
 								</select>
 							</div>							     
-				 </div>
-			     <div class="col-sm-5 col-md-5">			        
-					<div id="for-mt">
-					  <div class="row">
-					     <div class="col-md-12">
-							<div class="form-group">
-								<label for="other-date">Fixture Date</label>
-								<input class="form-control" type="text" placeholder="YYYY/MM/DD HH:MM AM/PM" id="other-date"/>
-							</div>							     
-						 </div><br>						     					     
+						 </div><br>					     
 						 <div class="col-md-12">
 							<div class="form-group">
 								<label for="other-competition">Competition</label>
