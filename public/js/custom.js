@@ -57,23 +57,6 @@
 	  var ct = "",cth="",cc="",cch="",ho="",hoh="",aw="",awh="",dy="";
 	  var status = "",errMsgs = [], dt = {};
 	  
-	  if(currentP == "fxt"){
-		  lg = $('#league').val(); lgh = $('#league > option:selected').html();
-		  fx = $('#fixtures').val(); fxh = $('#fixtures > option:selected').html();
-		  
-		  if(lg == "none" || fx == "none")
-	      {
-   		     status = "err"; errMsgs = [];
-		     if(lg == "none") errMsgs.push("Select a competition to continue.");
-		     if(fx == "none") errMsgs.push("Select a fixture to continue.");
-	      }
-		  
-		  else
-	      {
-		      dt = {"md":"fxt","lg":lg,"lgh":lgh,"pd":pd,"pdh":pdh,"fx":fx,"fxh":fxh};
-	      }
-	  }
-	  
 	  else if(currentP == "mt"){
 		  ct = $('#other-country').val(); cth = $('#other-country > option:selected').html();
 		  cc = $('#other-competition').val(); cch = $('#other-competition > option:selected').html();
@@ -86,13 +69,14 @@
 			  console.log("validDt: " + validDt);
 		  }
 		  
-		  if(ct == "none" || cc == "none" || ho == "none" || aw == "none" || dy == "" || validDt == false)
+		  if(ct == "none" || cc == "none" || ho == "none" || aw == "none" || ho == aw || dy == "" || validDt == false)
 	      {
    		     status = "err"; errMsgs = [];
 		     if(ct == "none") errMsgs.push("Select a country to continue.");
 		     if(cc == "none") errMsgs.push("Select a competition to continue.");
 		     if(ho == "none") errMsgs.push("Select the home team to continue.");
 		     if(aw == "none") errMsgs.push("Select the away team to continue.");
+		     if(ho == aw) errMsgs.push("Home and away team cannot be the same.");
 		     if(dy == "") errMsgs.push("Input the fixture date to continue.");
 		     if(validDt == false) errMsgs.push("Invalid date, please try again.");
 	      }
@@ -122,8 +106,11 @@
 		  userPredictions.push(dt);
 		  //add notification here
 		  window.setTimeout(refreshPredictions,1500);
-		  $('#league').val("none");
-	      $('#fixtures').val("none");
+		  $('#other-country').val("none");
+		  $('#other-date').val("");
+	      $('#other-competition').val("none");
+	      $('#other-home').val("none");
+	      $('#other-away').val("none");
 	      $('#prediction').val("none");
 	  }
   });
