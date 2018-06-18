@@ -57,7 +57,7 @@
 	  var ct = "",cth="",cc="",cch="",ho="",hoh="",aw="",awh="",dy="";
 	  var status = "",errMsgs = [], dt = {};
 	  
-	  else if(currentP == "mt"){
+	  if(currentP == "mt"){
 		  ct = $('#other-country').val(); cth = $('#other-country > option:selected').html();
 		  cc = $('#other-competition').val(); cch = $('#other-competition > option:selected').html();
 		  ho = $('#other-home').val(); hoh = $('#other-home > option:selected').html();
