@@ -475,7 +475,6 @@ class MainController extends Controller {
                              'em' => 'required',
                              'title' => 'required',
                              'type' => 'required',
-                             'msg' => 'required',
                    ]);
          
                  if($validator->fails())
