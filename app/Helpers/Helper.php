@@ -88,7 +88,7 @@ class Helper implements HelperContract
 					  
 					case "thanks-1":
 					 $dt = ['em' => $em];
-					 $v = 'bb_1.thank-you';
+					 $v = 'emails.thanks-1';
 				   break;
 			   }
 			   
