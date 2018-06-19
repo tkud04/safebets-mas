@@ -302,6 +302,34 @@ class MainController extends Controller {
 		}
     }
 
+		
+	/**
+	 * Show the application Support screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function postSubscribe($em)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($em == "")
+		{
+			return redirect()->intended('/');
+		}
+		
+		else
+		{
+		    $this->helpers->subscribe($em);
+        	return view('bb_1.thank-you', compact(['user']));	
+		}
+    }
+
+	
 	/**
 	 * Show the application Support screen to the user.
 	 *
