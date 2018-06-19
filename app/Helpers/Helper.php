@@ -68,7 +68,7 @@ class Helper implements HelperContract
 		   {
 			   $type = $data['type'];
 			   $em = $data['em'];
-			   $msg = $data['msg'];
+			   $msg = isset($data['msg']) ? $data['msg'] : "";
 			   $title = $data["title"];
 			   
 			   $dt = [];
