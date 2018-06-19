@@ -85,6 +85,11 @@ class Helper implements HelperContract
 					 $dt = ['em' => $em, 'msg' => "msg"];
 					 $v = 'emails.tips-1';
 				   break;
+					  
+					case "thanks-1":
+					 $dt = ['em' => $em];
+					 $v = 'bb_1.thank-you';
+				   break;
 			   }
 			   
 			   $this->sendEmail($em,$title,$dt,$v,'view');
