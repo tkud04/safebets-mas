@@ -49,6 +49,7 @@ Route::post('profile', 'MainController@postSettings');
 
 Route::get('free-tips', 'MainController@getBB1');
 Route::get('subscribe/{em}', 'MainController@getSubscribe');
+Route::post('subscribe/{em}', 'MainController@postSubscribe');
 Route::get('unsubscribe/{em}', 'MainController@getUnsubscribe');
 
 Route::post('notiff', 'MainController@postNotification');
