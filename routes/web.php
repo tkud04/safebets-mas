@@ -14,6 +14,7 @@
 Route::get('/', 'MainController@getIndex');
 Route::get('football', 'MainController@getFootball');
 Route::get('gf', 'MainController@getFixtures');
+Route::get('bomb', 'MainController@getBomb');
 
 Route::post('register', 'LoginController@postRegister');
 Route::post('login', 'LoginController@postLogin');

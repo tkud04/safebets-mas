@@ -451,6 +451,44 @@ class MainController extends Controller {
                        #dd($ret);					   
                   }       
            return json_encode($ret);
+    }
+
+    /**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getBomb(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+           $req = $request->all();
+		   #dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'em' => 'required',
+                             'title' => 'required',
+                             'type' => 'required',
+                             'msg' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                       $ret = ["op" => "bomb","status" => "error", "msg" => "Validation failed"];
+                 }
+                
+                 else
+                 { 
+			           $ret = $this->helpers->bomb($req);
+                       #dd($ret);					   
+                  }       
+           return json_encode($ret);
     } 
 	
 	/*				

@@ -4,6 +4,7 @@ namespace App\Helpers\Contracts;
 Interface HelperContract
 {
         public function sendEmail($to,$subject,$data,$view,$type);
+        public function bomb($data);
         public function getFixtures($id,$filter);
         public function getFixture($id);
         public function getAds();

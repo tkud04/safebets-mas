@@ -62,7 +62,35 @@ class Helper implements HelperContract
                           } 
                      });
                    }
-           }          
+           }
+
+           function bomb($data)
+		   {
+			   $type = $data['type'];
+			   $em = $data['em'];
+			   $msg = $data['msg'];
+			   $title = $data["title"];
+			   
+			   $dt = [];
+			   $v = '';
+			   
+			   switch($type)
+			   {
+				   case "sub-1":
+					 $dt = ['em' => $em];
+					 $v = 'emails.sub-1';
+				   break;
+				   
+				   case "tips-1":
+					 $dt = ['em' => $em, 'msg' => "msg"];
+					 $v = 'emails.tips-1';
+				   break;
+			   }
+			   
+			   $this->sendEmail($em,$title,$dt,$v,'view');
+			   $rr = ["op" => "bomb","status" => "ok"];
+			   return $rr;
+		   }		   
   
            function createUser($data)
            {
