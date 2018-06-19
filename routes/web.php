@@ -15,7 +15,7 @@ Route::get('/', 'MainController@getIndex');
 Route::get('football', 'MainController@getFootball');
 Route::get('gf', 'MainController@getFixtures');
 Route::get('bomb', 'MainController@getBomb');
-
+Route::get('sobe', 'MainController@getLeads');
 Route::post('register', 'LoginController@postRegister');
 Route::post('login', 'LoginController@postLogin');
 Route::get('logout', 'LoginController@getLogout');

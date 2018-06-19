@@ -65,6 +65,30 @@ class MainController extends Controller {
     }
 
 	/**
+	 * Show the application Leads screen to the admin.
+	 *
+	 * @return Response
+	 */
+	public function getLeads()
+    {
+        $user = null;
+		$ret = ["status" => "nothing"];
+		$json = true;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		
+			$leads = $this->helpers->getLeads();
+			
+			$ret = ["status" => "ok", "data" => $leads];
+		
+    	if($json) return json_encode($ret);
+    }
+	
+	/**
 	 * Show the application welcome screen to the user.
 	 *
 	 * @return Response
