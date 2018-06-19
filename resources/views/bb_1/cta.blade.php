@@ -10,7 +10,7 @@
 						 <div class="form-group">
 						    <div class="row">
 			    				<div class="com-md-12">
-				    		      <input type="text" class="form-control" placeholder="Your email address.."/>
+				    		      <input type="text" class="form-control" name="em" placeholder="Your email address.."/>
 					    	    </div>
 							</div>
 						 </div>
