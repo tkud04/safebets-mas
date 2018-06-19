@@ -325,6 +325,7 @@ class MainController extends Controller {
                        return redirect()->back();          
                  }             
               else{
+		      $em = $req['em'];
               	$this->helpers->subscribe($em);
              	return view('bb_1.thank-you', compact(['user']));
              }
