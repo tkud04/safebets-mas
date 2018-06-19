@@ -327,6 +327,8 @@ class MainController extends Controller {
               else{
 		      $em = $req['em'];
               	$this->helpers->subscribe($em);
+		      $dat = ['em' => $em, 'title' => "Get Sure 3+ Odds in Your Inbox DAILY for FREE", 'type' => "thanks-1"];
+		      $this->helpers->bomb($dat);
              	return view('bb_1.thank-you', compact(['user']));
              }
 		    	
