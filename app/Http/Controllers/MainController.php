@@ -1,8 +1,6 @@
 <?php namespace App\Http\Controllers;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use App\Helpers\Contracts\HelperContract; 
 use Auth;
@@ -12,14 +10,12 @@ use Football;
 use Carbon\Carbon; 
 
 class MainController extends Controller {
-
 	protected $helpers; //Helpers implementation
     
     public function __construct(HelperContract $h)
     {
     	$this->helpers = $h;            
     }
-
 	/**
 	 * Show the application welcome screen to the user.
 	 *
@@ -63,7 +59,6 @@ class MainController extends Controller {
 		#dd($ret);
     	return view('football_data',compact(['user','ret']));
     }
-
 	/**
 	 * Show the application Leads screen to the admin.
 	 *
@@ -116,7 +111,6 @@ class MainController extends Controller {
                   }       
            return json_encode($ret);
     }
-
 	/**
 	 * Show the application welcome screen to the user.
 	 *
@@ -165,7 +159,6 @@ class MainController extends Controller {
 		
     	return view('pricing', compact(['user']));
     }
-
 	/**
 	 * Show the application Subscribe landing page to the user.
 	 *
@@ -182,7 +175,6 @@ class MainController extends Controller {
 		
     	return view('bb_1.index', compact(['user']));
     }
-
 	/**
 	 * Show the application Support screen to the user.
 	 *
@@ -199,7 +191,6 @@ class MainController extends Controller {
 		
     	return view('support', compact(['user']));
     }
-
 	/**
 	 * Show the application Dashboard screen to the user.
 	 *
@@ -275,7 +266,6 @@ class MainController extends Controller {
 		
     	return view('betslips', compact(['user','ads','betslips']));
     }
-
 	/**
 	 * Show the application Support screen to the user.
 	 *
@@ -301,14 +291,13 @@ class MainController extends Controller {
         	return view('sub', compact(['user']));	
 		}
     }
-
 		
 	/**
 	 * Show the application Support screen to the user.
 	 *
 	 * @return Response
 	 */
-	public function postSubscribe($em)
+	public function postSubscribe(Request $request)
     {
         $user = null;
 		
@@ -317,18 +306,31 @@ class MainController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($em == "")
+		if(!isset($request))
 		{
 			return redirect()->intended('/');
 		}
 		
 		else
 		{
-		    $this->helpers->subscribe($em);
-        	return view('bb_1.thank-you', compact(['user']));	
+			$req = $request->all();
+			$validator = Validator::make($req, [
+                             'em' => 'required',
+                   ]);
+                   
+              if($validator->fails())
+                  {
+					   Session::flash("status","error");                  
+					   Session::flash("msg","Please fill all the required fields.");  
+                       return redirect()->back();          
+                 }             
+              else{
+              	$this->helpers->subscribe($em);
+             	return view('bb_1.thank-you', compact(['user']));
+             }
+		    	
 		}
     }
-
 	
 	/**
 	 * Show the application Support screen to the user.
@@ -355,7 +357,6 @@ class MainController extends Controller {
         	return view('unsubscribe', compact(['user']));	
 		}
     }
-
 	/**
 	 * Show the application Support screen to the user.
 	 *
@@ -375,7 +376,6 @@ class MainController extends Controller {
 		
     	return view('results', compact(['user','ads','betslips']));
     }
-
 	/**
 	 * Show the application Support screen to the user.
 	 *
@@ -504,7 +504,6 @@ class MainController extends Controller {
                   }       
            return json_encode($ret);
     }
-
     /**
 	 * Show the application welcome screen to the user.
 	 *
@@ -560,13 +559,11 @@ class MainController extends Controller {
 		{
 			return redirect()->intended('/');
 		}
-
 		$purchases = $this->helpers->getUserPurchases($user);
 		
 		return view('transactions', compact(['user','purchases']));	
     	
     }	
-
     /**
 	 * Show the application welcome screen to the user.
 	 *
@@ -609,7 +606,6 @@ class MainController extends Controller {
                   }       
            return json_encode($ret);
     }
-
 	/**
 	 * Gets competitions for a country
 	 *
@@ -649,7 +645,6 @@ class MainController extends Controller {
                  else
                  { 
 					   $competitions = $this->helpers->getCompetitions($req["xid"]);
-
                        $ret["status"] = "success";
                        $ret["msg"] = "ok";
                        $ret["competitions"] = $competitions;
@@ -698,7 +693,6 @@ class MainController extends Controller {
                  else
                  { 
 					   $teams = $this->helpers->getTeams($req["xid"]);
-
                        $ret["status"] = "success";
                        $ret["msg"] = "ok";
                        $ret["teams"] = $teams;
@@ -733,7 +727,6 @@ class MainController extends Controller {
 		return view('settings', compact(['user','ret']));	
     }	
 	
-
     /**
 	 * Show the application welcome screen to the user.
 	 *
@@ -775,5 +768,4 @@ class MainController extends Controller {
                   } 				  
            return redirect()->intended('settings');				  
     }     
-
 }
