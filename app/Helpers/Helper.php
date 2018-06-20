@@ -117,7 +117,9 @@ class Helper implements HelperContract
 		   
 		   function addLead($data)
            {
-           	$ret = Leads::create(['email' => $data['email']]);
+           	$ret = Leads::create(['email' => $data['email'],
+			                      'sub' => "yes",
+			                     ]);
                                                       
                 return $ret;
            }

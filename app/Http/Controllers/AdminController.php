@@ -528,7 +528,7 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin")
+		if(!isset($user))
 		{
 			$ret = ["status" => "error","msg" => "An unknown problem has occured."];
 		}
@@ -577,7 +577,7 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin")
+		if(!isset($user))
 		{
 			$ret = ["status" => "error","msg" => "An unknown problem has occured."];
 		}
@@ -722,7 +722,7 @@ class AdminController extends Controller {
 			$user = Auth::user();
 		}
 		
-		if($user == null || $user->role != "admin")
+		if(!isset($user))
 		{
 			return redirect()->intended('/');
 		}
@@ -733,8 +733,7 @@ class AdminController extends Controller {
 		   #dd($req);
            $ret = "";
                
-                $validator = Validator::make($req, [
-                             'country_id' => 'required|numeric',
+                $validator = Validator::make($req, [                  
                              'competition_id' => 'required|numeric',
                              'uid' => 'required|numeric',
                              'name' => 'required',
