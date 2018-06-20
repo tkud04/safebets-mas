@@ -398,7 +398,7 @@ class AdminController extends Controller {
 		{
 			$this->helpers->markBetSlip($id,$status);
 			Session::flash("mark-ticket-status","success");
-			return redirect()->intended('nimda/betslips');		
+			return redirect()->intended('nimda/tips');		
 		}
     }	
 	
@@ -425,7 +425,7 @@ class AdminController extends Controller {
 		{
 			$this->helpers->markGame($id,$status);
 			Session::flash("mark-game-status","success");
-			$url = "nimda/betslip/".$bsID;
+			$url = "nimda/tip/".$bsID;
 			return redirect()->intended($url);		
 		}
     }

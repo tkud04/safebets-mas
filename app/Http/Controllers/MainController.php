@@ -464,7 +464,7 @@ class MainController extends Controller {
                   } 
 				  				  
            Session::flash("notif","yes");				  
-           return redirect()->intended('betslips');				  
+           return redirect()->intended('tips');				  
     } 
 	
 	

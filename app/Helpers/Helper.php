@@ -82,7 +82,7 @@ class Helper implements HelperContract
 				   break;
 				   
 				   case "tips-1":
-					 $dt = ['em' => $em, 'msg' => "msg"];
+					 $dt = ['em' => $em, 'msg' => $msg];
 					 $v = 'emails.tips-1';
 				   break;
 					  
