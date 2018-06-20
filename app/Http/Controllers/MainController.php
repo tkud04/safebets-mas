@@ -542,7 +542,46 @@ class MainController extends Controller {
                        #dd($ret);					   
                   }       
            return json_encode($ret);
-    } 
+    }
+
+/**
+	 * Adds team
+	 *
+	 * @return Response
+	 */
+	public function getAddTeam(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+           $req = $request->all();
+		   #dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [                  
+                             'competition_id' => 'required|numeric',
+                             'uid' => 'required|numeric',
+                             'name' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+					  $ret = ["op" => "add-team","status" => "error","msg" => "Validation failed"];
+                       
+                 }
+                
+                 else
+                 { 
+					   $this->helpers->addTeam($req);
+                       $ret = ["op" => "add-team","status" => "success"]);
+			     }
+
+        return json_encode($ret);				 
+    }	
 	
 	/*				
 	 * Show the application Transactions screen to the user.
