@@ -577,7 +577,7 @@ class MainController extends Controller {
                  else
                  { 
 					   $this->helpers->addTeam($req);
-                       $ret = ["op" => "add-team","status" => "success"]);
+                       $ret = ["op" => "add-team","status" => "success"];
 			     }
 
         return json_encode($ret);				 
