@@ -689,8 +689,14 @@ class Helper implements HelperContract
 			   if($betslip != null)
 			   {
 				   $ret = "";
-				   if($status == "quee") $ret = "win";
-				   else if($status == "abra") $ret = "loss";
+				   if($status == "quee")
+				   {
+					 $ret = "win";  
+				   } 
+				   else if($status == "abra")
+				   {
+					 $ret = "loss";					 
+				   } 
 				   
 				   $betslip->update(['result' => $ret]);
 			   }
@@ -705,8 +711,16 @@ class Helper implements HelperContract
 			   if($game != null)
 			   {
 				   $ret = "";
-				   if($status == "quee") $ret = "win";
-				   else if($status == "abra") $ret = "loss";
+				   if($status == "quee")
+				   {
+					 $ret = "win";  
+				   } 
+				   else if($status == "abra")
+				   {
+					 $ret = "loss";
+					 $bs_id = Tickets::where('ticket_id',$id)->first();
+                     $this->refundGame($bs_id);					 
+				   }
 				   
 				   $game->update(['outcome' => $ret]);
 			   }
@@ -968,16 +982,7 @@ class Helper implements HelperContract
 				   }
 				   $ret = $this->getBetSlip($id);
 				   
-				   if($buying)
-				   {
-					   if($amount > 0)
-					   {
-						   //add tokens to seller
-						   $seller = User::where("username",$ret['seller'])->first();
-						   
-						   if($seller != null) $this->addTokens($seller->id,$amount);
-					   }
-				   }
+
 				   $ret["opstatus"] = "ok";
 			   }
 			   
@@ -989,6 +994,33 @@ class Helper implements HelperContract
 			   
 			   return $ret;
 		   }			   
+		   
+		   function refundGame($betSlipID)
+		   {
+			   $ret = ["status" => "unknown"];
+			   $purchases = Purchases::where('ticket_id',$betslipID)->get();
+			   
+			   if($purchases != null){
+			   $ticket = Tickets::where('id',$betSlipID)->first();
+			   $amount = 0;
+			   
+			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 1;
+			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 2;
+			   elseif($ticket->type == "single" && $ticket->category == "premium") $amount = 4;
+			   elseif($ticket->type == "multi" && $ticket->category == "premium") $amount = 8;
+			   
+               if($amount > 0)
+               {				   
+			     foreach($purchases as $p){
+				     $buyerID = $p->buyer_id;
+				     $this->addTokens($buyerID,$amount);
+			     }
+			   }
+			   $ret["status"] = "ok";
+			   }
+			   
+			   return $ret;
+		   }
 		   
 		   function getSettings($user)
 		   {
