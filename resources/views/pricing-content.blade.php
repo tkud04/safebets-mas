@@ -54,12 +54,12 @@
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
 						   </div>
 						   <div id="bks">
-                             To make payment please contact support <strong><span class="cdqq"></span></strong> to the <strong>GTBANK</strong> account below:
+                             Please make payments to the <strong>GTBANK</strong> account below:
 							 <center>
 							   <h4 style="text-success">Bank: GTBANK</h4>
-							   <h4 style="text-success">Account Name: OLUWATOBI KUDAYISI</h4>
-							   <h4 style="text-success">Account Number: 0137606877</h4>
-							   <h4 style="text-success">Amount: &#8358;<span class="cdqq"></span></h4>
+							   <h4 style="text-success">Account Name: <strong>OLUWATOBI KUDAYISI</strong></h4>
+							   <h4 style="text-success">Account Number: </strong>0137606877</strong></h4>
+							   <h4 style="text-success">Amount: &#8358;</strong><span class="cdqq"></span></strong></h4>
 							 </center><br><br>
 							 Immediately you make payment please text or Whatsapp support on <strong>07054291601</strong> with:
 							 <ul>

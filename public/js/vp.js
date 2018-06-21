@@ -33,7 +33,7 @@ $(document).ready(function(){
   $('a.tk').click(function(e){
 	  e.preventDefault();
 	  cqd = $(this).attr("data-cqd");
-	  console.log("cdq = " + cqd);
+	  console.log("cqd = " + cqd);
 	  showPMthds();
   });
   
@@ -116,7 +116,7 @@ function showBnk(){
 	$('#bks').fadeIn();
 	var vvv = 0; 
 	if(cqd == "bvyq") vvv = "1000";
-	if(cqd == "fgds") vvv = "5000";
+	else if(cqd == "fgds") vvv = "5000";
 	$('.cdqq').html(vvv);
 }
 
