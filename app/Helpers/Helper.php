@@ -997,7 +997,7 @@ class Helper implements HelperContract
 		   function refundGame($betSlipID)
 		   {
 			   $ret = ["status" => "unknown"];
-			   $purchases = Purchases::where('ticket_id',$betSlipID)->get();
+			   $purchases = Purchases::where('ticket_id',$betSlipID)->where('status',"sold")->get();
 			   
 			   if($purchases != null){
 			   $ticket = Tickets::where('id',$betSlipID)->first();
