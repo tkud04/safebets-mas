@@ -116,7 +116,7 @@ function showBnk(){
 	$('#bks').fadeIn();
 	var vvv = 0; 
 	if(cqd == "bvyq") vvv = "1000";
-	else if(cqd == "fgds") vvv = "5000";
+	else if(cqd == "fdgs") vvv = "5000";
 	$('.cdqq').html(vvv);
 }
 
