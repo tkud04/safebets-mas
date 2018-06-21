@@ -1,7 +1,7 @@
 var urlxx = $('#urlxx').val();
 var ttt = $('#ttt').val();
 var notif = $('#urlnn').val();
-var cqd = 0;
+var cqd = "";
 var nm = 0; var nnp = "";
 
 $('#py-mthds').hide();
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		 
          var ret = new Object();
           ret.name = "Starter token pack";
-          ret.description = nm + " units of tokens from safebets.disenado.gq";
+          ret.description = nm + " units of tokens from safebets.disenado.com.ng";
           ret.price = nnp;
           pay(ret);
     });
@@ -114,6 +114,10 @@ function showBnk(){
 	//cqd: bvyq - starter, fgds - jumbo
 	$('#bkf').hide();
 	$('#bks').fadeIn();
+	var vvv = 0; 
+	if(cqd == "bvyq") vvv = "1000";
+	if(cqd == "fgds") vvv = "5000";
+	$('.cdqq').val(vvv);
 }
 
 function hideBnk(){

@@ -38,6 +38,9 @@ function getGame(evt){
             title: "Confirm Action",
             text: "Click OK to continue ",
             type: "info",
+			showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
         }
 	}
 	
