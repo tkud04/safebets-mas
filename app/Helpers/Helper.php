@@ -718,7 +718,7 @@ class Helper implements HelperContract
 				   else if($status == "abra")
 				   {
 					 $ret = "loss";
-					 $bs_id = Tickets::where('ticket_id',$id)->first();
+					 $bs_id = Tickets::where('id',$id)->first();
                      $this->refundGame($bs_id);					 
 				   }
 				   
