@@ -54,19 +54,19 @@
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
 						   </div>
 						   <div id="bks">
-                             To make payment please pay <strong><span class="cdqq"></span></strong> to the <strong>GTBANK</strong> account below:
+                             To make payment please contact support <strong><span class="cdqq"></span></strong> to the <strong>GTBANK</strong> account below:
 							 <center>
 							   <h4 style="text-success">Bank: GTBANK</h4>
 							   <h4 style="text-success">Account Name: OLUWATOBI KUDAYISI</h4>
-							   <h4 style="text-success">Account Name: 0137606877</h4>
-							   <h4 style="text-success">Account Name: &#8358;<span class="cdqq"></span></h4>
+							   <h4 style="text-success">Account Number: 0137606877</h4>
+							   <h4 style="text-success">Amount: &#8358;<span class="cdqq"></span></h4>
 							 </center><br><br>
-							 Immediately you make payment please text or Whatsapp <strong>07054291601</strong> with:
+							 Immediately you make payment please text or Whatsapp support on <strong>07054291601</strong> with:
 							 <ul>
 							   <li>Proof of payment (<strong>teller number</strong> OR </strong>screenshot</strong>)</li>
 							   <li>Your username</li>
 							 </ul><br>
-							 As soon as payment is approved you will be credited instantly.<br><br>
+							 As soon as the transaction is approved you will be credited instantly.<br><br>
 							 <span class="text-success"><strong>FAST ACTION BONUS:</strong> When you pay using bank transfer you get <strong>2 extra tokens FREE!</strong>
 							 <br> <strong>** offer expires on 21st July, 2018</strong>
 							 </span>
