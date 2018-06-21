@@ -1014,6 +1014,7 @@ class Helper implements HelperContract
 			     foreach($purchases as $p){
 				     $buyerID = $p->buyer_id;
 				     $this->addTokens($buyerID,$amount);
+					 $p->update(['status' => "refunded"]);
 			     }
 			   }
 			   $ret["status"] = "ok";
