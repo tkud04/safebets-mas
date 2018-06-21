@@ -37,6 +37,7 @@ Interface HelperContract
         public function getTeams($competition);
         public function getCompetitions($country);
         public function buyGame($user,$data);
+        public function refundGame($betSlipID);
         public function addToPurchases($user,$betSlipID);
         public function getSettings($user);
         public function updateSettings($user,$data);
