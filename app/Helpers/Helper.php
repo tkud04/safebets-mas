@@ -1003,7 +1003,8 @@ class Helper implements HelperContract
 			   if($purchases != null){
 			   $ticket = Tickets::where('id',$betSlipID)->first();
 			   $amount = 0;
-			   
+			   echo "ticket: ".$ticket."<br>";
+			   dd($ticket);
 			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 1;
 			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 2;
 			   elseif($ticket->type == "single" && $ticket->category == "premium") $amount = 4;
