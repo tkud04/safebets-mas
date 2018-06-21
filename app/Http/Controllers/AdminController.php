@@ -423,7 +423,7 @@ class AdminController extends Controller {
 		
 		else
 		{
-			$this->helpers->markGame($id,$status);
+			$this->helpers->markGame($id,$bsID,$status);
 			Session::flash("mark-game-status","success");
 			$url = "nimda/tip/".$bsID;
 			return redirect()->intended($url);		

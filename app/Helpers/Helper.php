@@ -704,7 +704,7 @@ class Helper implements HelperContract
 			   return "ok";
 		   }				   
 		   
-		   function markGame($id,$status)
+		   function markGame($id,$bsID,$status)
 		   {
 			   $game = Predictions::where('id',$id)->first();
 			   
@@ -718,8 +718,7 @@ class Helper implements HelperContract
 				   else if($status == "abra")
 				   {
 					 $ret = "loss";
-					 $bs_id = Tickets::where('id',$game->ticket_id)->first();
-                     $this->refundGame($bs_id);					 
+					 $this->refundGame($bsID);					 
 				   }
 				   
 				   $game->update(['outcome' => $ret]);
@@ -1003,7 +1002,7 @@ class Helper implements HelperContract
 			   if($purchases != null){
 			   $ticket = Tickets::where('id',$betSlipID)->first();
 			   $amount = 0;
-			   echo "ticket: ".$ticket."<br>";
+			   echo "ticket ID: ".$betSlipID."<br>";
 			   dd($ticket);
 			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 1;
 			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 2;

@@ -17,7 +17,7 @@ Interface HelperContract
         public function getBetSlip($id);
         public function getUserBetSlips($user);
         public function markBetSlip($id,$result);
-        public function markGame($id,$result);
+        public function markGame($id,$bsID,$result);
         public function getTokenBalance($user);
         public function getTotalBetSlipsPurchased($user);
         public function getTotalBetSlipsSold($user);
