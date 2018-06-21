@@ -961,12 +961,23 @@ class Helper implements HelperContract
 					   if($amount > 0)
 					   {
 						  //deduct tokens and register transaction
-					      $this->removeTokens($user,$amount);
+					      $this->removeTokens($user->id,$amount);
 					      $dat = ["type" => "betslip", "id" => $id];
 					      $p = $this->addToPurchases($user,$dat);   
 					   }
 				   }
 				   $ret = $this->getBetSlip($id);
+				   
+				   if($buying)
+				   {
+					   if($amount > 0)
+					   {
+						   //add tokens to seller
+						   $seller = User::where("username",$ret['seller'])->first();
+						   
+						   if($seller != null) $this->addTokens($seller->id,$amount);
+					   }
+				   }
 				   $ret["opstatus"] = "ok";
 			   }
 			   
