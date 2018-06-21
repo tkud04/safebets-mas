@@ -117,7 +117,7 @@ function showBnk(){
 	var vvv = 0; 
 	if(cqd == "bvyq") vvv = "1000";
 	if(cqd == "fgds") vvv = "5000";
-	$('.cdqq').val(vvv);
+	$('.cdqq').html(vvv);
 }
 
 function hideBnk(){

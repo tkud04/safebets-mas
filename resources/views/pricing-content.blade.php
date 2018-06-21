@@ -67,7 +67,9 @@
 							   <li>Your username</li>
 							 </ul><br>
 							 As soon as payment is approved you will be credited instantly.<br><br>
-							 <span class="text-success"><strong>BONUS:</strong>Up until <strong>21st July, 2018</strong> When you pay using bank transfer you get <strong>2 extra tokens FREE!</strong></span>
+							 <span class="text-success"><strong>FAST ACTION BONUS:</strong> When you pay using bank transfer you get <strong>2 extra tokens FREE!</strong>
+							 <br> <strong>** offer expires on 21st July, 2018</strong>
+							 </span>
 							 
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="bks-btn">Back</a></center>
 						   </div>
