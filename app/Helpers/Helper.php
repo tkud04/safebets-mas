@@ -936,7 +936,8 @@ class Helper implements HelperContract
 				      $data['seller_id'] = $ticket->user_id;
 				      $data['ticket_id'] = $ticket->id;
                       $data['type'] = "betslip"; 					  
-                      $data['qty'] = 1; 					  
+                      $data['qty'] = 1;
+                      $data['status'] = "uncleared"; 					  
 			      }
 			   }
 			   
@@ -944,10 +945,10 @@ class Helper implements HelperContract
 			   {
 				   $data['seller_id'] = 42;
 				   $data['type'] = "tokens"; 
-				   $data['qty'] = $dt['qty']; 
+				   $data['qty'] = $dt['qty'];
+                   $data['status'] = "sold";				   
 			   }
-			   
-			   $data['status'] = "sold"; 
+			    
 			   $p = Purchases::create($data);
 			   
 			   return $p;
@@ -1030,7 +1031,7 @@ class Helper implements HelperContract
 		   function refundGame($betSlipID)
 		   {
 			   $ret = ["status" => "unknown"];
-			   $purchases = Purchases::where('ticket_id',$betSlipID)->where('status',"sold")->get();
+			   $purchases = Purchases::where('ticket_id',$betSlipID)->where('status',"uncleared")->get();
 			   
 			   if($purchases != null){
 			   $ticket = Tickets::where('id',$betSlipID)->first();
