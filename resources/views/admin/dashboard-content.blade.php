@@ -53,7 +53,7 @@
                                 <div class="media-body media-text-right">
                                     <h2>{{$totalPunters}}</h2>
                                     <p class="m-b-0">Punters</p>
-									<a class="btn btn-primary" href="{{url('nimda/transactions')}}">View details</a>
+									<a class="btn btn-primary" href="{{url('nimda/users')}}">View details</a>
                                 </div>
                             </div>
                         </div>

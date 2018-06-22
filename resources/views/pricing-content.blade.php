@@ -57,10 +57,10 @@
 						     <h4 style="text-success">Amount: &#8358;</strong><span class="cdqq"></span></strong></h4>
                              Payment methods available:
 							 <center>
-							   <h5 class="text-success"><i class="fa fa-check-o fa-2x">Bank transfer</h5>
-							   <h5 class="text-success"><i class="fa fa-check-o fa-2x">Western Union/MoneyGram</h5>
-							   <h5 class="text-success"><i class="fa fa-check-o fa-2x">Bitcoin</h5>
-							 </center><br><br>
+							   <h5 class="text-success"><i class="fa fa-check-o fa-2x"></i> Bank transfer</h5>
+							   <h5 class="text-success"><i class="fa fa-check-o fa-2x"></i> Western Union/MoneyGram</h5>
+							   <h5 class="text-success"><i class="fa fa-check-o fa-2x"></i>Bitcoin</h5>
+							 </center><br>
 							 Immediately you make payment please text or Whatsapp support on <strong>(+234)705 429 1601</strong> with:
 							 <ul>
 							   <li>Proof of payment (<strong>teller number,reference number,control number </strong> OR </strong>screenshot</strong>)</li>
