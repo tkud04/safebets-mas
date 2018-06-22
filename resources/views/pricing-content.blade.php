@@ -54,16 +54,16 @@
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
 						   </div>
 						   <div id="bks">
-                             Please make payments to the <strong>GTBANK</strong> account below:
+						     <h4 style="text-success">Amount: &#8358;</strong><span class="cdqq"></span></strong></h4>
+                             Payment methods available:
 							 <center>
-							   <h4 style="text-success">Bank: GTBANK</h4>
-							   <h4 style="text-success">Account Name: <strong>OLUWATOBI KUDAYISI</strong></h4>
-							   <h4 style="text-success">Account Number: </strong>0137606877</strong></h4>
-							   <h4 style="text-success">Amount: &#8358;</strong><span class="cdqq"></span></strong></h4>
+							   <h5 class="text-success"><i class="fa fa-check-o fa-2x">Bank transfer</h5>
+							   <h5 class="text-success"><i class="fa fa-check-o fa-2x">Western Union/MoneyGram</h5>
+							   <h5 class="text-success"><i class="fa fa-check-o fa-2x">Bitcoin</h5>
 							 </center><br><br>
-							 Immediately you make payment please text or Whatsapp support on <strong>07054291601</strong> with:
+							 Immediately you make payment please text or Whatsapp support on <strong>(+234)705 429 1601</strong> with:
 							 <ul>
-							   <li>Proof of payment (<strong>teller number</strong> OR </strong>screenshot</strong>)</li>
+							   <li>Proof of payment (<strong>teller number,reference number,control number </strong> OR </strong>screenshot</strong>)</li>
 							   <li>Your username</li>
 							 </ul><br>
 							 As soon as the transaction is approved you will be credited instantly.<br><br>
