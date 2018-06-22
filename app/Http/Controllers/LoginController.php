@@ -119,9 +119,11 @@ class LoginController extends Controller {
 			if($user->sub == "yes"){
 				$dd = ['email' => $user->email,'sub' => "yes"];
 			    $this->helpers->addLead($dd);
-				
-               //after creating the user, send back to the registration view with a success message
-               #$this->helpers->sendEmail($user->email,'Welcome To Disenado!',['name' => $user->fname, 'id' => $user->id],'emails.welcome','view');
+			    $this->helpers->addTokens($user->id,5);
+			   	
+               //after creating the user, send welcome email
+               $dat = ['em' => $user->email, 'title' => "Welcome to SafeBets (signup bonus inside)", 'type' => "thanks-1"];
+		      $this->helpers->bomb($dat);
 			}
              Session::flash("signup-status", "success");
 			 Session::flash("notif","yes");
