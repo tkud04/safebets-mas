@@ -43,14 +43,14 @@
 				 <div class="card">
 					 <div class="card-header" id="heading-1">
 					     <h5 class="mb-0">
-						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">Banks Instant Deposit</button>
+						     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">Instant Deposit</button>
                          </h5>
 					 </div>
 
 					 <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion">
 					     <div class="card-body">
 						   <div id="bkf">
-                             There are no deposit fees with this method. If your transaction is authorized, your account will be credited immediately.<br>
+                             Make a deposit or transfer using any of the payment methods listed. If your transaction is authorized, your account will be credited immediately.<br>
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
 						   </div>
 						   <div id="bks">
@@ -61,13 +61,14 @@
 							   <h5 class="text-success"><i class="fa fa-check-o fa-2x"></i> Western Union/MoneyGram</h5>
 							   <h5 class="text-success"><i class="fa fa-check-o fa-2x"></i>Bitcoin</h5>
 							 </center><br>
-							 Immediately you make payment please text or Whatsapp support on <strong>(+234)705 429 1601</strong> with:
+							 Contact customer support at <span class="text-success">safebets.disenado@gmail.com</span> to make payment<br><br>
+							 After payment you are required to send:<br>
 							 <ul>
-							   <li>Proof of payment (<strong>teller number,reference number,control number </strong> OR </strong>screenshot</strong>)</li>
+							   <li>Proof of payment (<strong>teller number,reference number,control number </strong> OR <strong>screenshot</strong>)</li>
 							   <li>Your username</li>
 							 </ul><br>
 							 As soon as the transaction is approved you will be credited instantly.<br><br>
-							 <span class="text-success"><strong>FAST ACTION BONUS:</strong> When you pay using bank transfer you get <strong>2 extra tokens FREE!</strong>
+							 <span class="text-success"><strong>FAST ACTION BONUS:</strong> When you pay using bank transfer you get <strong>5 extra tokens FREE!</strong>
 							 <br> <strong>** offer expires on 21st July, 2018</strong>
 							 </span>
 							 
