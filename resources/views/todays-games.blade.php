@@ -69,7 +69,13 @@
 		@if($itemCount == 4 || $counter == $total)
         </div> 
 	    @endif
-        @endforeach	
+        @endforeach
+        @else
+         <div class="row">
+	       <div class="col-md-12">
+		     <p>The predictions are coming in. Check back later? :)</p>
+		   </div>
+		 </div>			
         @endif		
 		
 		<br><br>

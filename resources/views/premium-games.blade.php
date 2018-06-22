@@ -62,7 +62,13 @@
         </div> 
 	    @endif
         @endforeach	
-        @endif		
+        @else
+         <div class="row">
+	       <div class="col-md-12">
+		     <p>The predictions are coming in. Check back later? :)</p>
+		   </div>
+		 </div>
+		 @endif		
 		
 		<br><br>
 		<div class="row">

@@ -692,6 +692,7 @@ class Helper implements HelperContract
 				   if($status == "quee")
 				   {
 					 $ret = "win";  
+					 $this->creditGame($id);
 				   } 
 				   else if($status == "abra")
 				   {
@@ -993,6 +994,33 @@ class Helper implements HelperContract
 			   
 			   return $ret;
 		   }			   
+		   
+		   function creditGame($id)
+		   {
+			   $ret = ["status" => "unknown"];
+			   $purchases = Purchases::where('ticket_id',$id)->where('status',"uncleared")->count();
+			   
+			   if($purchases != null && $purchases > 0){
+			   $ticket = Tickets::where('id',$id)->first();
+			   $amount = 0;
+
+			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 1;
+			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 2;
+			   elseif($ticket->type == "single" && $ticket->category == "premium") $amount = 4;
+			   elseif($ticket->type == "multi" && $ticket->category == "premium") $amount = 8;
+			   
+               if($amount > 0)
+               {				   
+			     $buyerID = $p->seller_id;
+				 $payday = $purchases * $amount;
+				 $this->addTokens($sellerID,$payday);
+					 $p->update(['status' => "refunded"]);
+			   }
+			   $ret["status"] = "ok";
+			   }
+			   
+			   return $ret;
+		   }
 		   
 		   function refundGame($betSlipID)
 		   {
