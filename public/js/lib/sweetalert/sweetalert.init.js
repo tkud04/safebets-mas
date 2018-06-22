@@ -103,6 +103,9 @@ function gg(al,ct,id,tk,url){
 	     if(al == "np"){
 		   swal("Payment successful!! Click View to continue");
 	     }
+		 else if(al == "py" || al == "mn"){
+		   swal("Click View to continue");
+	     }
 		 
 		 $('#viewGameModal').modal("show");
          $('#vg-table').fadeIn();
