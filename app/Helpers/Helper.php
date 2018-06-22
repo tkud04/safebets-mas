@@ -85,6 +85,11 @@ class Helper implements HelperContract
 					 $dt = ['em' => $em, 'msg' => $msg];
 					 $v = 'emails.tips-1';
 				   break;
+				   
+				   case "tips-2":
+					 $dt = ['em' => $em, 'msg' => $msg];
+					 $v = 'emails.tips-2';
+				   break;
 					  
 					case "thanks-1":
 					 $dt = ['em' => $em];
