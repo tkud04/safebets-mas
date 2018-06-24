@@ -175,7 +175,7 @@
                             <div class="card-title">
 							    <?php $rd = rand(2345621,99999999); ?>
                                 <h4>Tip #{{$rd}}<span id="bs-id"></span> </h4>
-								<h5>Booking code: <span id="bc"></span></h5>
+								<h5>Booking code: <span class="bc"></span></h5>
 								<div id="bs-error"></div>
 								<div id="bs-working"></div>
                             </div>
@@ -215,7 +215,7 @@
                             <div class="card-title">
 							<?php $rd = rand(2345621,99999999); ?>
                                 <h4>Bet Slip #{{$rd}}<span id="vg-id"></span> </h4>
-								<h5>Booking code: <span id="bc"></span></h5>
+								<h5>Booking code: <span class="bc"></span></h5>
 								<div id="vg-error"></div>
 								<div id="vg-working"></div>
                             </div>
