@@ -94,7 +94,8 @@ function gg(al,ct,id,tk,url){
 	   else if(ret['opstatus'] == "ok"){
 		   //$('#fixtures').html("<option value='none'>Select fixture</option>");
 		   $("#vg-id").html(ret['id']);
-		   $("#bc").html("<strong>" + ret['booking-code'] + "</strong> (" + ret['bsite'] + ")");
+		   console.log(ret);
+		   $(".bc").html("<strong>" + ret['booking-code'] + "</strong> (" + ret['bsite'] + ")");
 		   var vg = ret['matches'];
 		   console.log(vg);
 		   
