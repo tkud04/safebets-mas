@@ -649,6 +649,7 @@ class Helper implements HelperContract
 					   $temp["category"] = $ticket->category;
 					   $temp["bsite"] = $ticket->bsite;
 					   $temp["booking-code"] = $ticket->booking_code;
+					   $temp["bcode"] = $ticket->booking_code;
 					   $temp["matches"] = [];
 					   
 					   $matches = Predictions::where('ticket_id',$ticket->id)->get();

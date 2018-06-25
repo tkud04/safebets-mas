@@ -92,6 +92,7 @@
 				         <option value="12">12</option>
 				         <option value="X2">X2</option>				         
 						 <option value="none" disabled>Over</option>
+				         <option value="Over 0.5">Over 0.5</option>
 				         <option value="Over 1.5">Over 1.5</option>
 				         <option value="Over 2.5">Over 2.5</option>
 				         <option value="Over 3.5">Over 3.5</option>				         
@@ -104,9 +105,15 @@
 				         <option value="Under 4.5">Under 4.5</option>			         
 				         <option value="Under 5.5">Under 5.5</option>			         
 						 <option value="none" disabled>Over HT</option>
+				         <option value="Over 0.5 HT">Over 0.5 HT</option>
 				         <option value="Over 1.5 HT">Over 1.5 HT</option>
 				         <option value="Over 2.5 HT">Over 2.5 HT</option>
 				         <option value="Over 3.5 HT">Over 3.5 HT</option>				         				         
+						 <option value="none" disabled>Over 2HT</option>
+				         <option value="Over 0.5 2HT">Over 0.5 2HT</option>
+				         <option value="Over 1.5 2HT">Over 1.5 2HT</option>
+				         <option value="Over 2.5 2HT">Over 2.5 2HT</option>
+				         <option value="Over 3.5 2HT">Over 3.5 2HT</option>				         				         
 						 <option value="none" disabled>Double Chance HT</option>
 				         <option value="1X HT">1X HT</option>
 				         <option value="12 HT">12 HT</option>

@@ -359,7 +359,7 @@ function viewBS(id,url){
 		   var ret = JSON.parse(response);
 		   console.log(ret);
 		   $("#bs-id").html(ret['id']);
-		   $(".bc").html("<strong>" + ret['booking-code'] + "</strong> (" + ret['bsite'] + ")");
+		   $(".bc").html("<strong>" + ret['bcode'] + "</strong> (" + ret['bsite'] + ")");
 		   var gs = ret['matches'];
 		   console.log(gs);
 		   
