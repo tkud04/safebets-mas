@@ -560,7 +560,7 @@ class MainController extends Controller {
 		
         $req = $request->all();
 		#dd($req);
-        $ret = [];
+        $ret = ["op" => "wyxy"];
                
         $validator = Validator::make($req, [
                              'type' => 'required',
@@ -570,7 +570,8 @@ class MainController extends Controller {
          
         if($validator->fails())
             {
-                $ret = ["op" => "wyxy","status" => "error", "msg" => "Validation failed"];
+                $ret["status"] = "error";
+				$ret["message"] = "Validation failed";
             }
 		else
 		{
@@ -581,13 +582,15 @@ class MainController extends Controller {
 			if($type == "betslip")
 			{
 				$this->helpers->markBetSlip($id,$status);
-				$ret = ["op" => "wyxy", "type" => "betslip","status" => "ok"];
+				$ret["type"] = "betslip";
+				$ret["status"] = "ok";
 			}
 			else if($type == "game")
 			{
 				$bsID = $req['bs-id'];
 			   $this->helpers->markGame($id,$bsID,$status);	
-			   $ret = ["op" => "wyxy", "type" => "game","status" => "ok"];
+			   $ret["type"] = "game";
+				$ret["status"] = "ok";
 			}		
 		}
 		
@@ -610,7 +613,7 @@ class MainController extends Controller {
 		
         $req = $request->all();
 		#dd($req);
-        $ret = [];
+        $ret = ["op" => "add-scoreline"];
                
                 $validator = Validator::make($req, [
                              'pid' => 'required|numeric',
@@ -621,12 +624,13 @@ class MainController extends Controller {
                   {
 					  $messages = $validator->messages();
                       $ret["status"] = "error";  
+                      $ret["message"] = "validation failed.";  
                  }
                 
                  else
                  { 
 					   $this->helpers->addScoreLine($req);
-                       $ret = ["op" => "add-scoreline","status" => "ok");                      
+                       $ret["status"] = "ok";                      
 				 }
 		
 		return json_encode($ret);
