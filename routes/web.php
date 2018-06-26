@@ -17,6 +17,8 @@ Route::get('gf', 'MainController@getFixtures');
 Route::get('bomb', 'MainController@getBomb');
 Route::get('sobe', 'MainController@getLeads');
 Route::get('lape', 'MainController@getAddTeam');
+Route::get('wyxy', 'MainController@getMarkTip');
+Route::get('addsc', 'MainController@getAddScoreLine');
 Route::post('register', 'LoginController@postRegister');
 Route::post('login', 'LoginController@postLogin');
 Route::get('logout', 'LoginController@getLogout');

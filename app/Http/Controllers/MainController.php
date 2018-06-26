@@ -543,6 +543,94 @@ class MainController extends Controller {
                   }       
            return json_encode($ret);
     }
+	
+	/**
+	 * Marks selected game win or loss.
+	 *
+	 * @return Response
+	 */
+	public function getMarkTip(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+        $req = $request->all();
+		#dd($req);
+        $ret = [];
+               
+        $validator = Validator::make($req, [
+                             'type' => 'required',
+                             'id' => 'required',
+                             'status' => 'required',
+                   ]);
+         
+        if($validator->fails())
+            {
+                $ret = ["op" => "wyxy","status" => "error", "msg" => "Validation failed"];
+            }
+		else
+		{
+			$type = $req['type'];
+			$id = $req['id'];
+			$status = $req['status'];
+			
+			if($type == "betslip")
+			{
+				$this->helpers->markBetSlip($id,$status);
+				$ret = ["op" => "wyxy", "type" => "betslip","status" => "ok"];
+			}
+			else if($type == "game")
+			{
+				$bsID = $req['bs-id'];
+			   $this->helpers->markGame($id,$bsID,$status);	
+			   $ret = ["op" => "wyxy", "type" => "game","status" => "ok"];
+			}		
+		}
+		
+		return json_encode($ret);
+    }
+
+	/**
+	 * Adds scoreline for a match.
+	 *
+	 * @return Response
+	 */
+	public function getAddScoreLine(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+        $req = $request->all();
+		#dd($req);
+        $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'pid' => 'required|numeric',
+                             'sc' => 'required'
+                   ]);
+         
+                 if($validator->fails())
+                  {
+					  $messages = $validator->messages();
+                      $ret["status"] = "error";  
+                 }
+                
+                 else
+                 { 
+					   $this->helpers->addScoreLine($req);
+                       $ret = ["op" => "add-scoreline","status" => "ok");                      
+				 }
+		
+		return json_encode($ret);
+    }
 
 /**
 	 * Adds team
