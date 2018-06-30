@@ -1005,9 +1005,9 @@ class Helper implements HelperContract
 		   function creditGame($id)
 		   {
 			   $ret = ["status" => "unknown"];
-			   $purchases = Purchases::where('ticket_id',$id)->where('status',"uncleared")->count();
+			   $purchases = Purchases::where('ticket_id',$id)->where('status',"uncleared")->get();
 			   
-			   if($purchases != null){
+			   if($purchases != null && count($purchases) > 0){
 			   $ticket = Tickets::where('id',$id)->first();
 			   $amount = 0;
 
