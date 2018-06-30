@@ -1019,7 +1019,7 @@ class Helper implements HelperContract
                if($amount > 0)
                {				   
 			     $sellerID = $ticket->user_id;
-				 $payday = $purchases * $amount;
+				 $payday = count($purchases) * $amount;
 				 $this->addTokens($sellerID,$payday);
 					 foreach($purchases as $p) $p->update(['status' => "sold"]);
 			   }
