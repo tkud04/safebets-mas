@@ -1018,10 +1018,10 @@ class Helper implements HelperContract
 			   
                if($amount > 0)
                {				   
-			     $buyerID = $p->seller_id;
+			     $sellerID = $ticket->user_id;
 				 $payday = $purchases * $amount;
 				 $this->addTokens($sellerID,$payday);
-					 $p->update(['status' => "refunded"]);
+					 $p->update(['status' => "sold"]);
 			   }
 			   $ret["status"] = "ok";
 			   }
