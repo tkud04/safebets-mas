@@ -1007,7 +1007,7 @@ class Helper implements HelperContract
 			   $ret = ["status" => "unknown"];
 			   $purchases = Purchases::where('ticket_id',$id)->where('status',"uncleared")->count();
 			   
-			   if($purchases != null && $purchases > 0){
+			   if($purchases != null){
 			   $ticket = Tickets::where('id',$id)->first();
 			   $amount = 0;
 
@@ -1021,7 +1021,7 @@ class Helper implements HelperContract
 			     $sellerID = $ticket->user_id;
 				 $payday = $purchases * $amount;
 				 $this->addTokens($sellerID,$payday);
-					 $p->update(['status' => "sold"]);
+					 foreach($purchases as $p) $p->update(['status' => "sold"]);
 			   }
 			   $ret["status"] = "ok";
 			   }
