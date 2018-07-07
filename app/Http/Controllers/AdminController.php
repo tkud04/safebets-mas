@@ -257,8 +257,14 @@ class AdminController extends Controller {
 			           $userId = $req['gggg'];
 			           $tokens = $req['tokens'];
 			           $action = $req['action'];
-					   if($action == "add") $this->helpers->addTokens($userId,$tokens);
-					   else if($action == "remove") $this->helpers->removeTokens($userId,$tokens);
+					   if($action == "add"){   
+					      $this->helpers->addTokens($userId,$tokens);
+					      $dat = ["type" => "tokens", "qty" => $tokens];
+					      $p = $this->helpers->addToPurchases($user,$dat);
+					   }
+					   else if($action == "remove"){
+						   $this->helpers->removeTokens($userId,$tokens);
+					   }
 
                        Session::flash("manage-tokens-status","success");
 					   return redirect()->intended('nimda/users');

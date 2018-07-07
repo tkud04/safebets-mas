@@ -966,8 +966,8 @@ class Helper implements HelperContract
 			   if($al == "py" || $al == "mn"){ $allowed = true; }
 			   else
 			   {
-				   if($ct == "rs") $amount = 1;
-				   elseif($ct == "rm") $amount = 2;
+				   if($ct == "rs") $amount = 2;
+				   elseif($ct == "rm") $amount = 4;
 			       elseif($ct == "ps") $amount = 4;
 			       elseif($ct == "pm") $amount = 8;
 			   
@@ -1011,8 +1011,8 @@ class Helper implements HelperContract
 			   $ticket = Tickets::where('id',$id)->first();
 			   $amount = 0;
 
-			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 1;
-			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 2;
+			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 2;
+			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 4;
 			   elseif($ticket->type == "single" && $ticket->category == "premium") $amount = 4;
 			   elseif($ticket->type == "multi" && $ticket->category == "premium") $amount = 8;
 			   
@@ -1038,8 +1038,8 @@ class Helper implements HelperContract
 			   $ticket = Tickets::where('id',$betSlipID)->first();
 			   $amount = 0;
 
-			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 1;
-			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 2;
+			   if($ticket->type == "single" && $ticket->category == "regular") $amount = 2;
+			   elseif($ticket->type == "multi" && $ticket->category == "regular") $amount = 4;
 			   elseif($ticket->type == "single" && $ticket->category == "premium") $amount = 4;
 			   elseif($ticket->type == "multi" && $ticket->category == "premium") $amount = 8;
 			   

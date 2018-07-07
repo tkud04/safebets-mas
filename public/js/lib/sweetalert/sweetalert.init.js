@@ -19,8 +19,8 @@ function getGame(evt){
 	
 	if(ct == "pm") fee = 8;
 	else if(ct == "ps") fee = 4;
-	else if(ct == "rm") fee = 2;
-	else if(ct == "rs") fee = 1;
+	else if(ct == "rm") fee = 4;
+	else if(ct == "rs") fee = 2;
 	else if(ct == "uv") fee = 0;
 	
 	var tt = " token";
@@ -87,7 +87,7 @@ function gg(al,ct,id,tk,url){
 	   var ret = JSON.parse(response);	   
 	   if(ret['opstatus'] == "error"){
 	     if(ret['error'] == "insufficient-funds"){
-		   sweetAlert("Oops...", "You don't have enough tokens to buy this game.", "error");
+		   sweetAlert("Oops...", "You don't have enough tokens to buy this tip.", "error");
 		   $('#insufficientFundsModal').modal("show");
 	     }
 	   }
@@ -102,10 +102,10 @@ function gg(al,ct,id,tk,url){
 		   fillTable("vg",vg);  
 		   
 	     if(al == "np"){
-		   swal("Payment successful!! Click View to continue");
+		   swal("Payment successful! Click OK to continue");
 	     }
 		 else if(al == "py" || al == "mn"){
-		   swal("Click View to continue");
+		   swal("Click OK to continue");
 	     }
 		 
 		 $('#viewGameModal').modal("show");
