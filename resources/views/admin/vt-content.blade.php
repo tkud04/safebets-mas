@@ -30,7 +30,7 @@
 												$buyer = $p['buyer'];
 												$seller = $p['seller'];
 												$status = $p['status'];
-												
+											     $url = "#";	
 												if($category != "Tokens"){
 												   $bs_id = $p['bs-id'];
                                                    $url = url('nimda/tip');
@@ -55,7 +55,7 @@
                                                 <td><a href='#'>{{$seller}}</a><br></td>
                                                 <td>{{$status}}</td>
 												<td>
-												 <a class="btn btn-warning text-white" href="{{$url}}">View</a>
+												 @if($category != "Tokens")<a class="btn btn-warning text-white" href="{{$url}}">View</a>@endif
 												</td>
                                             </tr>  
 											@endforeach
