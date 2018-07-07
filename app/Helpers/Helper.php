@@ -1130,18 +1130,22 @@ class Helper implements HelperContract
 				   foreach($purchases as $p)
 				   {
 					      $temp = 0;
+						  $ttype = $p->type;
 						  
-						   $t = Tickets::where('id',$p->ticket_id)->first();						   
-						   $type = $t->type;
+						  if($ttype == "betslip")
+						  {
+							 $t = Tickets::where('id',$p->ticket_id)->first();						   
+						     $type = $t->type;
 						   
-						   if($type == "single" || $type == "multi"){
-							  if($type == "single") $temp = 1;
-							  else if($type == "multi") $temp = 4;
+						     if($type == "single" || $type == "multi"){
+							    if($type == "single") $temp = 2;
+							    else if($type == "multi") $temp = 4;
 							  
-							  if($t->category == "premium") $temp *= 2;
+							    if($t->category == "premium") $temp *= 2;
 							  
-							  $temp *= $exchangeRate;
-						   }
+							    $temp *= $exchangeRate;
+						   }  
+						  }
 						   
 				           else if($type == "tokens")
 						   {
