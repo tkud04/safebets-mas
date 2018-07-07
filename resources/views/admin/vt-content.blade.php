@@ -30,19 +30,21 @@
 												$buyer = $p['buyer'];
 												$seller = $p['seller'];
 												$status = $p['status'];
-												$bs_id = $p['bs-id'];
+												
+												if($category != "Tokens"){
+												   $bs_id = $p['bs-id'];
+                                                   $url = url('nimda/tip');
+                                                   $url .= "/".$bs_id;												   
+												}
 											
 												
 												$badgeClass = "badge-info";
 												$statusClass = "badge-info";
 			
 												if($category == "regular") $badgeClass = "badge-success";
-												else if($category == "premium") $badgeClass = "badge-premium";
+												else if($category == "premium") $badgeClass = "badge-danger";
 																								
-												$url = url('nimda/tip');
 												$id = $p["id"];
-												$url .= "/".$bs_id;
-												
 											?>
                                             <tr>
                                                 <td>{{$p["date"]}}</td>
