@@ -466,6 +466,7 @@ class Helper implements HelperContract
 				   }
 				   
 				   $lead->delete();
+				   $this->sendEmail("aquarius4tkud@yahoo.com",$em." just unsubscribed from SafeBets VIP list",["em" => $em],"unsub_alert",'view');
 			   }
 		   }
 
@@ -945,6 +946,7 @@ class Helper implements HelperContract
 			   elseif($type == "tokens")
 			   {
 				   $data['seller_id'] = 42;
+				   $data['buyer_id'] = $dt['buyer_id'];
 				   $data['type'] = "tokens"; 
 				   $data['qty'] = $dt['qty'];
                    $data['status'] = "sold";				   

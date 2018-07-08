@@ -259,7 +259,7 @@ class AdminController extends Controller {
 			           $action = $req['action'];
 					   if($action == "add"){   
 					      $this->helpers->addTokens($userId,$tokens);
-					      $dat = ["type" => "tokens", "qty" => $tokens];
+					      $dat = ["type" => "tokens", "buyer_id" => $gggg, "qty" => $tokens];
 					      $p = $this->helpers->addToPurchases($user,$dat);
 					   }
 					   else if($action == "remove"){

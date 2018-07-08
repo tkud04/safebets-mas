@@ -357,7 +357,7 @@ class MainController extends Controller {
 		else
 		{
 		    $this->helpers->unsubscribe($em);
-        	return view('unsubscribe', compact(['user']));	
+        	return view('unsub', compact(['user']));	
 		}
     }
 	/**
