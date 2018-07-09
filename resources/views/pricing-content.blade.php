@@ -51,6 +51,9 @@
 					     <div class="card-body">
 						   <div id="bkf">
                              Make a deposit or transfer using any of the payment methods listed. If your transaction is authorized, your account will be credited immediately.<br>
+                             <span class="text-success"><strong>FAST ACTION BONUS:</strong> When you pay using bank transfer you get <strong>5 extra tokens FREE!</strong>
+							 <br> <strong>** offer expires on 21st July, 2018</strong>
+							 </span>
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
 						   </div>
 						   <div id="bks">
@@ -61,7 +64,9 @@
 							   <h5 class="text-success"><i class="fa fa-check-o fa-2x"></i> Western Union/MoneyGram</h5>
 							   <h5 class="text-success"><i class="fa fa-check-o fa-2x"></i>Bitcoin</h5>
 							 </center><br>
-							 Contact customer support at <span class="text-success">safebets.disenado@gmail.com</span> to make payment<br><br>
+							 Contact customer support to make payment:<br>
+							 Email: <span class="text-success">safebets.disenado@gmail.com</span><br>
+							 Phone: <span class="text-success">(234)705 429 1601</span><br><br>
 							 After payment you are required to send:<br>
 							 <ul>
 							   <li>Proof of payment (<strong>teller number,reference number,control number </strong> OR <strong>screenshot</strong>)</li>

@@ -598,7 +598,7 @@ class MainController extends Controller {
     }
 
 	/**
-	 * Adds scoreline for a match.
+	 * Gets all uncleared predictions.
 	 *
 	 * @return Response
 	 */

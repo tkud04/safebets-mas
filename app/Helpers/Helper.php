@@ -752,7 +752,7 @@ class Helper implements HelperContract
 		   
 		   function oasis()
 		   {
-			   $ret = ["status" => "","msg" => "","data" => []];
+			   $ret = ["data" => []];
 			   $matches = Predictions::where('outcome','uncleared')->get();
 					   
 					   foreach($matches as $m)
