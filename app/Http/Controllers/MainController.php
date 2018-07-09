@@ -602,6 +602,24 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
+	 public function getUncleared(Request $request)
+	 {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		$ret = $this->helpers->oasis();
+		return json_encode($ret);
+	 }
+
+	 /**
+	 * Adds scoreline for a match.
+	 *
+	 * @return Response
+	 */
 	public function getAddScoreLine(Request $request)
     {
         $user = null;

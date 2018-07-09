@@ -750,6 +750,45 @@ class Helper implements HelperContract
 			   return "ok";
 		   }		   
 		   
+		   function oasis()
+		   {
+			   $ret = ["status" => "","msg" => "","data" => []];
+			   $matches = Predictions::where('outcome','uncleared')->get();
+					   
+					   foreach($matches as $m)
+					   {
+						   $temp_2 = [];
+						   $fixtureDate = ""; $fixtureMatch = ""; $fixtureResult = "";
+						   
+						   $dataString = $m->data;
+						   $md = $m->md;
+						   $mid = $m->id;
+						   $tid = $m->ticket_id;
+						   $prediction = $m->prediction;
+						   $outcome = $m->outcome;
+						   
+						   $data = explode("_",$dataString);
+						   
+						   //mt: ct_cth_cc_cch_ho_hoh_aw_awh_dy
+						   if($md == "mt")
+						   {
+							   $fixtureDate = $data[8];
+							   $fixtureMatch = $data[3].": ".$data[5]." - ".$data[7];
+							   $fixtureResult = $m->scoreline;
+						   }						   
+						   
+						   else if($md == "fxt")
+						   {
+							   
+						   }
+						   
+						   $temp_2 = [$fixtureDate,$fixtureMatch,$prediction,$fixtureResult,$outcome,$mid,$tid];
+						   array_push($ret["data"],$temp_2);
+					   }
+					   
+					   return $ret;
+		   }
+		   
 		   function getTokenBalance($user)
 		   {
 			   $ret = 0;

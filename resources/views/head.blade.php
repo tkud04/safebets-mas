@@ -7,8 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:image" content="{{asset('landings/bb-1/assets/img/safebets-logo.png')}}">
+    <meta property="og:title" content="SafeBets - Easy Winning Football Betting Tips!">
 
-    <title>@yield('title') | SafeBets From Disenado - Easy Winning Football Match Betting Tips!</title>
+
+    <title>@yield('title') | SafeBets - Easy Winning Football Betting Tips!</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

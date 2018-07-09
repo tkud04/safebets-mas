@@ -51,5 +51,6 @@ Interface HelperContract
 		public function getRecentPurchases();
 		public function getRecentMessages();
 		public function getResults();
+		public function oasis();
 }
  ?>
