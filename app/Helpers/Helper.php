@@ -600,8 +600,8 @@ class Helper implements HelperContract
 				   if(count($purchases) > 0)
 				   {   
 					   foreach($purchases as $p)
-					   {						 
-					     array_push($allBetSlipIDs,$p['bs-id']);
+					   {						   
+					     if(isset($p['bs-id'])) array_push($allBetSlipIDs,$p['bs-id']);
 					   }
 				   }
 				   
