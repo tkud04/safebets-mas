@@ -9,7 +9,6 @@
 @section('content')
 @include('cta')
 @include('services')
-@include('ad-section')
 @include('todays-games')
 @include('about')
 @include('premium-games')

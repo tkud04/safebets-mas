@@ -377,7 +377,7 @@ class Helper implements HelperContract
 					   $temp["type"] = $g->type;
 					   $temp["odds"] = $g->total_odds;
 					   $seller = User::where('id',$g->user_id)->first();
-					   $temp["seller"] = $seller->username;
+					   $temp["seller"] = ($seller->username == "admin") ? "sureman454" : $seller->username;
 					   
 					   
 					   $ct = "uv";
