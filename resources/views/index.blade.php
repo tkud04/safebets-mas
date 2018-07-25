@@ -10,8 +10,9 @@
 @include('cta')
 @include('services')
 @include('todays-games')
-@include('about')
+@include('guide-copy')
 @include('premium-games')
 @include('ad-section')
 @include('regular-games')
+@include('about')
 @stop
