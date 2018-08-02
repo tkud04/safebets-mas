@@ -50,10 +50,7 @@
 					 <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion">
 					     <div class="card-body">
 						   <div id="bkf">
-                             Make a deposit or transfer using any of the payment methods listed. If your transaction is authorized, your account will be credited immediately.<br>
-                             <span class="text-success"><strong>FAST ACTION BONUS:</strong> When you pay using bank transfer you get <strong>5 extra tokens FREE!</strong>
-							 <br> <strong>** offer expires on 21st July, 2018</strong>
-							 </span>
+                             Make a deposit or transfer using any of the payment methods listed. If your transaction is authorized, your account will be credited immediately.<br>              
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="pybt">Proceed</a></center>
 						   </div>
 						   <div id="bks">
@@ -73,9 +70,6 @@
 							   <li>Your username</li>
 							 </ul><br>
 							 As soon as the transaction is approved you will be credited instantly.<br><br>
-							 <span class="text-success"><strong>FAST ACTION BONUS:</strong> When you pay using bank transfer you get <strong>5 extra tokens FREE!</strong>
-							 <br> <strong>** offer expires on 21st July, 2018</strong>
-							 </span>
 							 
 							 <center><a href="#" class="btn btn-primary btn-lg mt-5" id="bks-btn">Back</a></center>
 						   </div>
