@@ -22,6 +22,7 @@ class Helper implements HelperContract
 {
 	
 	     public $otherLeagues = [];
+	     public $counter = 0;
 
           /**
            * Sends an email(blade view or text) to the recipient
@@ -71,6 +72,7 @@ class Helper implements HelperContract
 			   $msg = isset($data['msg']) ? $data['msg'] : "";
 			   $title = $data["title"];
 			   
+			   
 			   $dt = [];
 			   $v = '';
 			   
@@ -98,7 +100,8 @@ class Helper implements HelperContract
 			   }
 			   
 			   $this->sendEmail($em,$title,$dt,$v,'view');
-			   $rr = ["op" => "bomb","status" => "ok"];
+			 ++$this->counter; 
+			   $rr = ["op" => "bomb","status" => "ok","counter" => $this->counter];  
 			   return $rr;
 		   }		   
   
