@@ -1,20 +1,20 @@
  <hr><br>
   <div class="premium">
-<p>Subscribe for PREMIUM: N1500/week**</p><br>
+<p>Subscribe for PREMIUM: NGN1500 ($5) / week**</p><br>
 <p>7 tips, average of 1 daily for a week**</p><br><br>
 
 
 <h4 style="color:green;">Payment methods accepted:<h4>
 <ul>
-<li> Local bank transfer</li>
+<li>Local bank transfer</li>
 <li>Bitcoin</li>
 </ul><br><br>
 
 
 <h4 style="color:green;">Contact support to subscribe:</h4>
 <ul>
-<li> Call or Whatsapp: +234 705 429 1601</li> 
-<li> Email: safebets.disenado@gmail.com</li> 
+<li> Whatsapp: <a href="https://wa.me/2347054291601" target="_blank">(234) 705 429 1601</a></li> 
+<li> <a href="mailto:safebets.disenado@gmail.com">Email: safebets.disenado@gmail.com</a></li> 
 </ul>
 <br><br>
 <strong style="color: green;">**if any of the premium tips we send you daily is lost, you will get another premium tip FREE</strong><br><br><br>
