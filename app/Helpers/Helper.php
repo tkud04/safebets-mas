@@ -17,6 +17,8 @@ use App\Countries;
 use App\Competitions;
 use App\Teams;
 use App\Leads;
+use App\Tips;
+use App\TipsData;
 
 class Helper implements HelperContract
 {
@@ -78,9 +80,9 @@ class Helper implements HelperContract
 			   
 			   switch($type)
 			   {
-				   case "sub-1":
-					 $dt = ['em' => $em];
-					 $v = 'emails.sub-1';
+				   case "contact":
+					 $dt = ['em' => $em ,'msg' => $msg, 'title' => $title];
+					 $v = 'emails.contact';
 				   break;
 				   
 				   case "tips-1":
@@ -365,9 +367,9 @@ class Helper implements HelperContract
 			   $ret = [];
 			   $games = null;
 			   
-			   if($type == "today") $games = Tickets::where("result","uncleared")->orderBy('created_at',"DESC")->get();
-			   else if($type == "premium") $games = Tickets::where("result","uncleared")->where("category","premium")->orderBy('created_at',"DESC")->get();
-			   else if($type == "regular") $games = Tickets::where("result","uncleared")->where("category","regular")->orderBy('created_at',"DESC")->get();
+			   if($type == "today") $games = Tips::where("id","f-".date("d-m-Y"))->orderBy('created_at',"DESC")->get();
+			   else $games = Tips::orderBy('created_at',"DESC")->get();
+			  
 			   
 			   if($games != null)
 			   {
@@ -375,40 +377,13 @@ class Helper implements HelperContract
 				   {
 					   $temp = [];
 					   $temp["date"] = $g->created_at->format("jS F, Y h:i A");
-					   $temp["id"] = $g->id;
-					   $temp["category"] = $g->category;
-					   $temp["type"] = $g->type;
-					   $temp["odds"] = $g->total_odds;
-					   $seller = User::where('id',$g->user_id)->first();
-					   $temp["seller"] = ($seller->username == "admin") ? "sureman454" : $seller->username;
-					   
-					   
-					   $ct = "uv";
-					   if($g->category == "premium" && $g->type == "single") $ct = "ps";
-					   else if($g->category == "premium" && $g->type == "multi") $ct = "pm";
-					   else if($g->category == "regular" && $g->type == "single") $ct = "rs";
-					   else if($g->category == "regular" && $g->type == "multi") $ct = "rm";
-					   $temp["ct"] = $ct;
-					   
-					   $al = "np";
-					   
-					   if($user == null)
-					   {
-						   $al = "lg";
-					   }
-					   else
-					   {
-						   $isAllowed = Purchases::where('ticket_id',$g->id)
-					                         ->where('buyer_id',$user->id)						
-					                         ->orWhere('seller_id',$user->id)->first();
-											 
-						   $isMine = Tickets::where('id',$g->id)
-						                    ->where('user_id',$user->id)->first();
-											 
-						   if($isAllowed != null || $isMine != null) $al = "py";
-					   }
-					   
-						 $temp["al"] = $al;
+					   $temp["id"] = $g->tid;
+					   $temp["content"] = $g->content;
+					
+					   $tipsData = TipsData::where('tid',$g->tid)->first();
+					   $temp["confidence"] = $g->confidence;
+					   $temp["likes"] = $g->likes;
+					   $temp["comments"] = $g->comments;
 					   
 					    array_push($ret,$temp);
 				   }
