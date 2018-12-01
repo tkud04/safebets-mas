@@ -24,9 +24,7 @@ class MainController extends Controller {
 	public function getIndex()
     {
         $user = null;
-		$todayGames = [];
-		$premiumGames = [];
-		$regularGames = [];
+		$todayGames = "empty";
 		
 		if(Auth::check())
 		{
@@ -34,9 +32,7 @@ class MainController extends Controller {
 	    }
 		
 		$ads = $this->helpers->getAds();
-		$todayGames = $this->helpers->getGames($user,"today");
-		$premiumGames = $this->helpers->getGames($user,"premium");
-		$regularGames = $this->helpers->getGames($user,"regular");
+		$todayGames = $this->helpers->getGames("today");
 		
     	return view('index', compact(['user','ads','todayGames','regularGames','premiumGames']));
     }
@@ -230,17 +226,11 @@ class MainController extends Controller {
 		{
 			$user = Auth::user();
 		}
-		else
-		{
-			return redirect()->intended('/');
-		}
 		
 		$ads = $this->helpers->getAds();
 		$todayGames = $this->helpers->getGames($user,"today");
-		$premiumGames = $this->helpers->getGames($user,"premium");
-		$regularGames = $this->helpers->getGames($user,"regular");
 		
-    	return view('games', compact(['user','ads','todayGames','regularGames','premiumGames']));
+    	return view('tips', compact(['user','ads','todayGames']));
     }	
 	
 	/**
