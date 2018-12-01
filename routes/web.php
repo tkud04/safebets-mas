@@ -11,16 +11,18 @@
 |
 */
 
+
 Route::get('/', 'MainController@getIndex');
-Route::get('football', 'MainController@getFootball');
-Route::get('gf', 'MainController@getFixtures');
 Route::get('bomb', 'MainController@getBomb');
-Route::get('sobe', 'MainController@getLeads');
-Route::get('lape', 'MainController@getAddTeam');
-Route::get('wyxy', 'MainController@getMarkTip');
-Route::get('addsc', 'MainController@getAddScoreLine');
-Route::get('oasis', 'MainController@getUncleared');
-Route::post('register', 'LoginController@postRegister');
+Route::get('results', 'MainController@getResults');
+Route::get('tips', 'MainController@getGames');
+Route::get('premium', 'MainController@getPricing');
+Route::get('contact', 'MainController@getSupport');
+
+Route::get('subscribe/{em}', 'MainController@getSubscribe');
+Route::post('subscribe', 'MainController@postSubscribe');
+Route::get('unsubscribe/{em}', 'MainController@getUnsubscribe');
+
 Route::post('login', 'LoginController@postLogin');
 Route::get('logout', 'LoginController@getLogout');
 Route::get('lost-password', 'LoginController@getPassword');
@@ -28,9 +30,20 @@ Route::post('lost-password', 'LoginController@postPassword');
 Route::get('change-password/{rxf?}', 'LoginController@getChangePassword');
 Route::post('change-password', 'LoginController@postChangePassword');
 
+
+/** **** Old Routes ****
+Route::get('football', 'MainController@getFootball');
+Route::get('gf', 'MainController@getFixtures');
+
+Route::get('sobe', 'MainController@getLeads');
+Route::get('lape', 'MainController@getAddTeam');
+Route::get('wyxy', 'MainController@getMarkTip');
+Route::get('addsc', 'MainController@getAddScoreLine');
+Route::get('oasis', 'MainController@getUncleared');
+Route::post('register', 'LoginController@postRegister');
+
 Route::get('dashboard', 'MainController@getDashboard');
-Route::get('tips', 'MainController@getGames');
-Route::get('results', 'MainController@getResults');
+
 
 Route::get('my-tips', 'MainController@getBetSlips');
 Route::get('add-tip', 'MainController@getAddBetSlip');
@@ -42,8 +55,6 @@ Route::get('transactions', 'MainController@getPurchases');
 Route::post('view-bs', 'MainController@postBetSlip');
 Route::post('v-g', 'MainController@postGame');
 
-Route::get('support', 'MainController@getSupport');
-Route::get('pricing', 'MainController@getPricing');
 
 Route::get('gc', 'MainController@getCompetitions');
 Route::get('gt', 'MainController@getTeams');
@@ -52,12 +63,10 @@ Route::get('profile', 'MainController@getSettings');
 Route::post('profile', 'MainController@postSettings');
 
 Route::get('free-tips', 'MainController@getBB1');
-Route::get('subscribe/{em}', 'MainController@getSubscribe');
-Route::post('subscribe', 'MainController@postSubscribe');
-Route::get('unsubscribe/{em}', 'MainController@getUnsubscribe');
 
 Route::post('notiff', 'MainController@postNotification');
 
+**/
 
 /**
  Admin routes
