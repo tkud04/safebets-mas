@@ -24,7 +24,7 @@ class MainController extends Controller {
 	public function getIndex()
     {
         $user = null;
-		$todayGames = "empty";
+		$todayGames = [];
 		
 		if(Auth::check())
 		{
@@ -32,9 +32,9 @@ class MainController extends Controller {
 	    }
 		
 		$ads = $this->helpers->getAds();
-		$todayGames = $this->helpers->getGames("today");
+		$todayGames = $this->helpers->getGames($user,"today");
 		
-    	return view('index', compact(['user','ads','todayGames','regularGames','premiumGames']));
+    	return view('index', compact(['user','ads','todayGames']));
     }
 	
 	/**
