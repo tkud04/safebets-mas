@@ -15,7 +15,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-	<link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logo.jpg')}}">
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('landings/bb-1/assets/img/safebets-logo.png')}}">
 
     <!-- Custom fonts for this template -->
     <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
