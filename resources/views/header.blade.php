@@ -10,54 +10,17 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
             </li>
-		   @if($user == null)
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#todays-tips">Top Tips Today</a>
+              <a class="nav-link js-scroll-trigger" href="#todays-tips">Today's Tips</a>
             </li>			
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#premium-tips">Premium Tips</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" id="login-btn" href="#">Sign in</a>
-            </li>            
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" id="reg-btn" href="#">Sign up</a>
-            </li>
-		   @elseif($user->role == "punter" || $user->role == "admin")
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('dashboard')}}">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('tips')}}">Tips</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('my-tips')}}">My Tips</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('transactions')}}">Transactions</a>
-            </li>
-			@if($user->role == "admin")
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('nimda')}}">SOS</a>
-            </li>
-            @endif
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('profile')}}">Profile</a>
-            </li>
-		   <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('logout')}}">Sign out</a>
-            </li>
-		   @endif
+			
+
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('results')}}">Results</a>
             </li>
-           @if($user == null)			
-		   <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('pricing')}}">Pricing</a>
-            </li>			
-		   @endif
+           
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('support')}}">Help</a>
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
