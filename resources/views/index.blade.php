@@ -8,11 +8,9 @@
 
 @section('content')
 @include('cta')
-@include('services')
 @include('todays-games')
 @include('guide-copy')
-@include('premium-games')
+@include('services')
 @include('ad-section')
-@include('regular-games')
 @include('about')
 @stop
