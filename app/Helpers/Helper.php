@@ -367,7 +367,7 @@ class Helper implements HelperContract
 			   $ret = [];
 			   $games = null;
 			   
-			   if($type == "today") $games = Tips::where("id","f-".date("d-m-Y"))->orderBy('created_at',"DESC")->get();
+			   if($type == "today") $games = Tips::where("tid","f-".date("Y-m-d"))->where('type',"tips")->get();
 			   else $games = Tips::orderBy('created_at',"DESC")->get();
 			  
 			   
@@ -1137,45 +1137,9 @@ class Helper implements HelperContract
 	public function getRecentMessages();
 		   **/
 
-		   function getTotalRevenue()
-		   {
-			   $ret = 0;
-			   $exchangeRate = $this->getExchangeRate();
-			   
-			   $purchases = Purchases::where('status',"sold")->get();
-			   
-			   if($purchases != null)
-			   {
-				   foreach($purchases as $p)
-				   {
-					      $temp = 0;
-						  $ttype = $p->type;
-						  
-						  if($ttype == "betslip")
-						  {
-							 $t = Tickets::where('id',$p->ticket_id)->first();						   
-						     $type = $t->type;
-						   
-						     if($type == "single" || $type == "multi"){
-							    if($type == "single") $temp = 2;
-							    else if($type == "multi") $temp = 4;
-							  
-							    if($t->category == "premium") $temp *= 2;
-							  
-							    $temp *= $exchangeRate;
-						   }  
-						  }
-						   
-				           else if($type == "tokens")
-						   {
-							   $tk = $p->qty;
-							   $temp = $tk * $exchangeRate;
-						   }
-						   
-						   $ret += $temp;
-				   }				  
-			   }
-			   
+		   function getTotalTips()
+		   {   
+			   $ret = Tips::count();
                return $ret;			   
 		   }
 
@@ -1258,6 +1222,26 @@ class Helper implements HelperContract
 			   
 			   
 			   return $ret;
+		   }			   
+		
+		function uploadTips($ret)
+		   {
+			   $tid = "f-".$ret["tdate"];
+			   $type = $ret["type"];
+			   $content = $ret["content"];
+			   $confidence = ($type == "tips") ? $ret["confidence"] : 0;
+			   $likes = 0; $comments = 0;
+			
+			$t = Tips::create(['tid'=> $tid, 
+			                        'type' => $type, 
+			                        'content' => $content, 
+                                   ]);
+			   
+			$td = TipsData::create(['tid'=> $t->tid, 
+			                        'confidence' => $confidence, 
+			                        'likes' => $likes, 
+			                        'comments' => $comments, 
+                                   ]);
 		   }			   
 
 		   
