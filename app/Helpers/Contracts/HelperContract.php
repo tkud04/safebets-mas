@@ -52,5 +52,6 @@ Interface HelperContract
 		public function getRecentMessages();
 		public function getResults();
 		public function oasis();
+		public function uploadTips($ret);
 }
  ?>
