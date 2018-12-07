@@ -534,6 +534,43 @@ class MainController extends Controller {
            return json_encode($ret);
     }
 	
+	    /**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getTpanel(Request $request)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+           $req = $request->all();
+		   dd($req);
+           $ret = [];
+               
+                $validator = Validator::make($req, [
+                             'tdate' => 'required',
+                             'content' => 'required',
+                             'type' => 'required',
+                   ]);
+         
+                 if($validator->fails())
+                  {
+                       $ret = ["op" => "tpanel","status" => "error", "msg" => "Validation failed"];
+                 }
+                
+                 else
+                 { 
+			          # $ret = $this->helpers->bomb($req);
+                       #dd($ret);					   
+                  }       
+           return json_encode($ret);
+    }
+	
 	/**
 	 * Marks selected game win or loss.
 	 *
