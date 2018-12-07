@@ -14,6 +14,7 @@
 
 Route::get('/', 'MainController@getIndex');
 Route::get('bomb', 'MainController@getBomb');
+Route::get('tpanel', 'MainController@getTpanel');
 Route::get('results', 'MainController@getResults');
 Route::get('tips', 'MainController@getGames');
 Route::get('premium', 'MainController@getPricing');
@@ -29,6 +30,9 @@ Route::get('lost-password', 'LoginController@getPassword');
 Route::post('lost-password', 'LoginController@postPassword');
 Route::get('change-password/{rxf?}', 'LoginController@getChangePassword');
 Route::post('change-password', 'LoginController@postChangePassword');
+
+
+/** **** Admin Routes ****/
 
 
 /** **** Old Routes ****
