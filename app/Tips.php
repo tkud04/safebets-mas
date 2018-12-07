@@ -9,6 +9,6 @@ class Tips extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['id', 'tid', 'content'];
+	protected $fillable = ['id', 'tid', 'type', 'content'];
 
 }
