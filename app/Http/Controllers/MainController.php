@@ -539,7 +539,7 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getTpanel(Request $request)
+	public function getLazio(Request $request)
     {
         $user = null;
 		
