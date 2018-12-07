@@ -44,7 +44,7 @@ Interface HelperContract
         public function addTokens($userId,$tokens);
         public function removeTokens($userId,$tokens);
 		public function getExchangeRate();
-		public function getTotalRevenue();
+		#public function getTotalRevenue();
 		public function getTotalTokens();
 		public function getTotalBetSlips();
 		public function getTotalPunters();
