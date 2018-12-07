@@ -549,7 +549,7 @@ class MainController extends Controller {
 		}
 		
            $req = $request->all();
-		   dd($req);
+		   #dd($req);
            $ret = [];
                
                 $validator = Validator::make($req, [
@@ -565,7 +565,8 @@ class MainController extends Controller {
                 
                  else
                  { 
-			          # $ret = $this->helpers->bomb($req);
+			          $this->helpers->uploadTips($req);
+			            $ret = ["op" => "tpanel","status" => "ok", "msg" => ""];
                        #dd($ret);					   
                   }       
            return json_encode($ret);
