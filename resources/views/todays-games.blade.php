@@ -3,10 +3,11 @@
 	  <hr>
       <div class="container">
 	    @if(isset($todayGames) && count($todayGames) > 0)
+	     <?php $g = $todayGames[0];?>
         <div class="row">
           <div class="col-md-12">
-          	<span class="label label-info">{{ $todayGames['confidence'] }}</span>
-                {!! $todayGames['content'] !!}
+          	<span class="label label-info">{{ $g['confidence'] }}</span>
+                {!! $g['content'] !!}
           </div>
         </div> 
         @else
