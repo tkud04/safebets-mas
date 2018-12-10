@@ -33,7 +33,7 @@ class MainController extends Controller {
 		
 		$ads = $this->helpers->getAds();
 		$todayGames = $this->helpers->getGames($user,"today");
-		
+		dd($todayGames);
     	return view('index', compact(['user','ads','todayGames']));
     }
 	
