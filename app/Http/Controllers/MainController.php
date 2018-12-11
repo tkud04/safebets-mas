@@ -369,6 +369,34 @@ class MainController extends Controller {
 		
     	return view('results', compact(['user','ads','betslips']));
     }
+    /**
+	 * Show the application Support screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function getViewTip($id)
+    {
+        $user = null;
+		
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+		
+		if($id == "")
+        {
+        	return redirect()->intended('results');
+        }
+		
+		else
+        {
+        	$ads = $this->helpers->getAds();
+		  $tip = $this->helpers->getGame($user, $id);
+		
+    	return view('tip-single', compact(['user','ads','tip']));
+        }
+		
+    }
 	/**
 	 * Show the application Support screen to the user.
 	 *
