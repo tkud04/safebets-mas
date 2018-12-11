@@ -1235,9 +1235,9 @@ class Helper implements HelperContract
 			   $type = $ret["type"];
 			   $content = $ret["content"];
 			   $confidence = ($type == "tips") ? $ret["confidence"] : "";
-			   $category = ($type == "results") ? "$ret["category"] : "";
-			   $status = ($type == "results") ? "$ret["status"] : "";
-			   $odds = ($type == "results") ? "$ret["odds"] : "";
+			   $category = ($type == "results") ? $ret["category"] : "";
+			   $status = ($type == "results") ? $ret["status"] : "";
+			   $odds = ($type == "results") ? $ret["odds"] : "";
 			   $likes = 0; $comments = 0;
 			
 			$t = Tips::create(['tid'=> $tid, 
