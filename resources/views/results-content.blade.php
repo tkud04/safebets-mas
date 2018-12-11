@@ -48,7 +48,7 @@
                                                 <td><a href='#'>{{$odds}}</a><br></td>
                                                 <td><i class="{{$gs}}"></i></td>
 												<td>
-												 <a class="btn btn-warning text-white mlm" href="{{$url}}">View</a>												
+												 <a class="btn btn-warning text-white mlm" href="{{$url}}" target="_blank">View</a>												
 												</td>
                                             </tr>  
 											@endforeach
