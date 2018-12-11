@@ -394,6 +394,31 @@ class Helper implements HelperContract
 			   }
 			   
 			   return $ret;
+		   }		  
+
+          function getGame($user,$id)
+		   {
+			   $ret = [];
+			   $game = Tips::where("tid",$id)->first();
+			    
+			   if($game != null)
+			   {
+					   $temp = [];
+					   $temp["date"] = $g->created_at->format("jS F, Y h:i A");
+					   $temp["id"] = $g->tid;
+					   $temp["content"] = $g->content;
+					
+					   $tipsData = TipsData::where('tid',$g->tid)->first();
+					   $temp["confidence"] = $tipsData->confidence;
+					   $temp["likes"] = $tipsData->likes;
+					   $temp["comments"] = $tipsData->comments;
+					   $temp["odds"] = $tipsData->results;
+					   $temp["category"] = $tipsData->category;
+					   $temp["status"] = $tipsData->status;
+			   }
+			   
+			  $ret = $temp; 
+			   return $ret;
 		   }		   
 		   
 		   function getLeads()
