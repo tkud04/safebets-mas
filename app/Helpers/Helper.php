@@ -404,11 +404,11 @@ class Helper implements HelperContract
 			   if($game != null)
 			   {
 					   $temp = [];
-					   $temp["date"] = $g->created_at->format("jS F, Y h:i A");
-					   $temp["id"] = $g->tid;
-					   $temp["content"] = $g->content;
+					   $temp["date"] = $game->created_at->format("jS F, Y h:i A");
+					   $temp["id"] = $game->tid;
+					   $temp["content"] = $game->content;
 					
-					   $tipsData = TipsData::where('tid',$g->tid)->first();
+					   $tipsData = TipsData::where('tid',$game->tid)->first();
 					   $temp["confidence"] = $tipsData->confidence;
 					   $temp["likes"] = $tipsData->likes;
 					   $temp["comments"] = $tipsData->comments;
