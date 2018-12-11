@@ -15,6 +15,7 @@
 Route::get('/', 'MainController@getIndex');
 Route::get('bomb', 'MainController@getBomb');
 Route::get('tpanel', 'MainController@getLazio');
+Route::get('view-tip/{id}', 'MainController@getViewTip');
 Route::get('results', 'MainController@getResults');
 Route::get('tips', 'MainController@getGames');
 Route::get('premium', 'MainController@getPricing');
