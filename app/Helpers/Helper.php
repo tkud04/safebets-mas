@@ -368,6 +368,7 @@ class Helper implements HelperContract
 			   $games = null;
 			   
 			   if($type == "today") $games = Tips::where("tid","f-".date("Y-m-d"))->where('type',"tips")->get();
+			   else if($type == "results") $games = Tips::where("type","results")->get();
 			   else $games = Tips::orderBy('created_at',"DESC")->get();
 			  
 			   
@@ -381,9 +382,12 @@ class Helper implements HelperContract
 					   $temp["content"] = $g->content;
 					
 					   $tipsData = TipsData::where('tid',$g->tid)->first();
-					   $temp["confidence"] = $g->confidence;
-					   $temp["likes"] = $g->likes;
-					   $temp["comments"] = $g->comments;
+					   $temp["confidence"] = $tipsData->confidence;
+					   $temp["likes"] = $tipsData->likes;
+					   $temp["comments"] = $tipsData->comments;
+					   $temp["odds"] = $tipsData->results;
+					   $temp["category"] = $tipsData->category;
+					   $temp["status"] = $tipsData->status;
 					   
 					    array_push($ret,$temp);
 				   }
@@ -1226,10 +1230,14 @@ class Helper implements HelperContract
 		
 		function uploadTips($ret)
 		   {
-			   $tid = "f-".$ret["tdate"];
+			  $ab = ($type == "tips") ? "f-" : "r-";
+			   $tid = $ab.$ret["tdate"];
 			   $type = $ret["type"];
 			   $content = $ret["content"];
-			   $confidence = ($type == "tips") ? $ret["confidence"] : 0;
+			   $confidence = ($type == "tips") ? $ret["confidence"] : "";
+			   $category = ($type == "results") ? "$ret["category"] : "";
+			   $status = ($type == "results") ? "$ret["status"] : "";
+			   $odds = ($type == "results") ? "$ret["odds"] : "";
 			   $likes = 0; $comments = 0;
 			
 			$t = Tips::create(['tid'=> $tid, 
@@ -1241,9 +1249,12 @@ class Helper implements HelperContract
 			                        'confidence' => $confidence, 
 			                        'likes' => $likes, 
 			                        'comments' => $comments, 
+			                        'category' => $category, 
+			                        'results' => $odds, 
+			                        'status' => $status, 
                                    ]);
 		   }			   
-
+		
 		   
 }
 ?>
