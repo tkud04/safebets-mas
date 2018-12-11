@@ -45,3 +45,10 @@ card
 .db-icon {
     font-size: 1.5em;
 }
+
+.win{
+   color: green; 
+}
+.loss{
+   color: red; 
+}
