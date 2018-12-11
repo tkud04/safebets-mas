@@ -1230,9 +1230,9 @@ class Helper implements HelperContract
 		
 		function uploadTips($ret)
 		   {
+			 $type = $ret["type"];
 			  $ab = ($type == "tips") ? "f-" : "r-";
 			   $tid = $ab.$ret["tdate"];
-			   $type = $ret["type"];
 			   $content = $ret["content"];
 			   $confidence = ($type == "tips") ? $ret["confidence"] : "";
 			   $category = ($type == "results") ? $ret["category"] : "";
