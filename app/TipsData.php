@@ -9,6 +9,6 @@ class TipsData extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['id', 'tid', 'confidence', 'likes', 'comments'];
+	protected $fillable = ['id', 'tid', 'confidence', 'likes', 'comments', 'category', 'results', 'status'];
 
 }
