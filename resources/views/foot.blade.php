@@ -32,7 +32,16 @@
     <script src="{{asset('js/lib/sweetalert/sweetalert.min.js')}}"></script>
     <!-- scripit init-->
     <script src="{{asset('js/lib/sweetalert/sweetalert.init.js')}}"></script>
+    
+    <!-- Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130954606-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-130954606-1');
+</script>
   </body>
 
 </html>
